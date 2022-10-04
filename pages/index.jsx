@@ -5,6 +5,7 @@ import { SendTransaction } from '../components/sendTransaction';
 import SignIn from '../components/signin';
 import User from '../components/user';
 import ContractInfo from '../components/contractInfo';
+import { Deposit } from '../components/deposit';
 
 export default function Home({ session }) {
   const account = useAccount();
@@ -15,6 +16,7 @@ export default function Home({ session }) {
       <SignIn />
       <SendTransaction />
       <ContractInfo />
+      <Deposit />
     </div>
   );
 }

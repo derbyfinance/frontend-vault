@@ -7,7 +7,7 @@ function ContractInfo() {
   useEffect(() => {
     axios.get('/api/contract/readContract').then(({ data }) => {
       setExchangeRate(data.exchangeRate);
-    });
+    }, []);
   });
 
   return (

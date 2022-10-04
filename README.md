@@ -17,7 +17,7 @@ https://docs.moralis.io/docs/sign-in-with-metamask
 Example api at /api/contract/readContract, which uses the Moralis SDK. This will be used for all read functions:  
 https://docs.moralis.io/reference/runcontractfunction
 
-There is an example sendTransaction component which uses Wagmi. Wagmi will be used for all write functions.
+There is an example sendTransaction and Deposit component which uses Wagmi. Wagmi will be used for all write functions.
 
 Native transaction:  
 https://wagmi.sh/examples/send-transaction

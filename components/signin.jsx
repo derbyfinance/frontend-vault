@@ -66,7 +66,7 @@ function SignIn() {
       message,
       signature,
       redirect: false,
-      callbackUrl: '/user',
+      callbackUrl: '/',
     });
 
     push(url);

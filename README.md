@@ -1,12 +1,15 @@
 ## Derby frontend
 
-Create .env.local with:
+1. npm install
+2. Create .env.local with:
 
 APP_DOMAIN=derby.finance  
 MORALIS_API_KEY=XXX  
 NEXTAUTH_URL=http://localhost:3000  
 NEXTAUTH_SECRET=7197b3e8dbee5ea6274cab37245eec212  
 NEXT_PUBLIC_INFURA_ID=XXX
+
+3. npm run dev
 
 Next.js init and Moralis auth is mostly from:  
 https://docs.moralis.io/docs/sign-in-with-metamask

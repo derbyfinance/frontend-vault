@@ -26,3 +26,8 @@ Contract write:
 https://wagmi.sh/examples/contract-write
 
 Current setup is single chain on Goerli testnet
+
+## Deployed Contracts Goerli
+
+Vault:  
+0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA

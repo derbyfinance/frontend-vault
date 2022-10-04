@@ -31,3 +31,4 @@ Current setup is single chain on Goerli testnet
 
 Vault:  
 0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA
+You can interact with this contract via https://goerli.etherscan.io/ and connect your metamask

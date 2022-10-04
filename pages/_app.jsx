@@ -1,12 +1,5 @@
-import {
-  chain,
-  createClient,
-  configureChains,
-  defaultChains,
-  WagmiConfig,
-} from 'wagmi';
+import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
 import { infuraProvider } from 'wagmi/providers/infura';
-import { publicProvider } from 'wagmi/providers/public';
 import { SessionProvider } from 'next-auth/react';
 
 const { provider, webSocketProvider } = configureChains(

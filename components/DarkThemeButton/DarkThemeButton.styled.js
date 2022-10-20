@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const StyledDarkThemeButtonContainer = styled.div`
   position: relative;
   display: flex;
-  width: 59px;
-  height: 30px;
+  width: 49px;
+  height: 25px;
   background-color: ${({isDark}) => isDark ? '#000' : '#fff'};
   border-radius: 28px;
   padding: 7px 6px;
@@ -14,8 +14,8 @@ export const StyledDarkThemeButtonContainer = styled.div`
 export const StyledSwitcher = styled.div`
   position: absolute;
   background-color: ${({isDark}) => isDark ? '#fff' : '#000'};
-  height: 20px;
-  width: 20px;
+  height: 17px;
+  width: 17px;
   ${({ isDark }) => (isDark ? 'right: 6px;' : 'left: 6px;')}
   border-radius: 50%;
   align-self: center;

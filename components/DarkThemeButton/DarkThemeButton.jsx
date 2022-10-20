@@ -6,12 +6,8 @@ import {
 
 const DarkThemeButton = ({toggleTheme, isDark}) => {
 
-  const themeHandler = () => {
-    toggleTheme();
-  };
-
   return (
-    <StyledDarkThemeButtonContainer onClick={themeHandler} isDark={isDark}>
+    <StyledDarkThemeButtonContainer onClick={toggleTheme} isDark={isDark}>
       <StyledSwitcher isDark={isDark}/>
     </StyledDarkThemeButtonContainer>
   );

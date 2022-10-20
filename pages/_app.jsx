@@ -1,6 +1,8 @@
 import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { SessionProvider } from 'next-auth/react';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles, lightTheme } from '../styled/ThemeConfig';
 
 const { provider, webSocketProvider } = configureChains(
   [chain.goerli],
@@ -16,9 +18,12 @@ const client = createClient({
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={client}>
-      <SessionProvider session={pageProps.session} refetchInterval={0}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyles />
+        <SessionProvider session={pageProps.session} refetchInterval={0}>
+          <Component {...pageProps} />
+        </SessionProvider>
+      </ThemeProvider>
     </WagmiConfig>
   );
 }

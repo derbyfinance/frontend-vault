@@ -6,18 +6,24 @@ import SignIn from '../components/signin';
 import User from '../components/user';
 import ContractInfo from '../components/contractInfo';
 import { Deposit } from '../components/deposit';
+import NavBar from '../components/NavBar/NavBar';
+import GlobalStyle from '../styled/ThemeConfig';
+import Layout from '../components/Layout/Layout';
+import { ThemeProvider } from 'styled-components';
+// import { Navbar } from '../styled/Navbar.styled';
 
-export default function Home({ session }) {
+export default function Home({ session, ...props }) {
   const account = useAccount();
-
   return (
-    <div>
+    <>
+      <Layout></Layout>
       {session && <User user={session.user} />}
-      <SignIn />
+      {/* <SignIn />
       <SendTransaction />
       <ContractInfo />
       <Deposit />
-    </div>
+    </Navbar> */}
+    </>
   );
 }
 

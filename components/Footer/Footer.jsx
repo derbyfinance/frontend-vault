@@ -10,7 +10,7 @@ import {
 const Footer = ({isDark}) => {
   return (
     <StyledFooterWrapper>
-      <StyledFooterLinks isDark={isDark}>
+      <StyledFooterLinks>
         <StyledFooterLink>
           <Link href="/first">Privacy policy</Link>
         </StyledFooterLink>

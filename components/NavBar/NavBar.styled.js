@@ -22,7 +22,7 @@ export const StyledNavLinks = styled.ul`
   gap: 24px;
   & a {
     text-decoration: none;
-    color: ${({isDark}) => isDark ? '#fff;' : '#000;'}
+    color: ${props => props.theme.color}
 
   }
 `;

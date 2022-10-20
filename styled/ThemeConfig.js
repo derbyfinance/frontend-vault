@@ -24,6 +24,6 @@ body {
 }
 	`;
 
-export const lightTheme = { background: '#e6e6e6', color: '#160344' };
+export const lightTheme = { background: '#e6e6e6', color: '#160344', iconColor: '#000' };
 
-export const darkTheme = { background: '#000000' };
+export const darkTheme = { background: '#000000', color: '#fff', iconColor: '#fff' };

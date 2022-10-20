@@ -12,9 +12,8 @@ export const StyledFooterLinks = styled.ul`
   gap: 30px;
   & a {
     text-decoration: none;
-    color: ${({isDark}) => isDark ? '#fff;' : '#000;'}
+    color: ${props => props.theme.color}
   }
 `;
 
-export const StyledFooterLink = styled.li`
-`;
+export const StyledFooterLink = styled.li``;

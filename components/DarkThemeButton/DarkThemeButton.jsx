@@ -4,15 +4,15 @@ import {
   StyledSwitcher,
 } from './DarkThemeButton.styled';
 
-const DarkThemeButton = ({setTheme, isDark}) => {
+const DarkThemeButton = ({toggleTheme, isDark}) => {
 
   const themeHandler = () => {
-    setTheme();
+    toggleTheme();
   };
 
   return (
     <StyledDarkThemeButtonContainer onClick={themeHandler} isDark={isDark}>
-      <StyledSwitcher isDark={isDark} />
+      <StyledSwitcher isDark={isDark}/>
     </StyledDarkThemeButtonContainer>
   );
 };

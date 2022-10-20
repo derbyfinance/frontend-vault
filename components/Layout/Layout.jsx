@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <StyledLayoutWrapper isDark={isDark} >
       <NavBar setTheme={toggleTheme} isDark={isDark}/>
-      {children}s
+      {children}
       <Footer isDark={isDark}/>
     </StyledLayoutWrapper>
   );

@@ -10,9 +10,8 @@ import {
   StyledNavLinks,
 } from './NavBar.styled';
 
-const NavBar = () => {
+const NavBar = ({setTheme, isDark}) => {
   const router = useRouter();
-  console.log(router);
   return (
     <StyledNavBarWrapper>
       <StyledNavBarContent>
@@ -23,9 +22,9 @@ const NavBar = () => {
           height="63"
           layout="fixed"
         />
-        <StyledNavLinks>
+        <StyledNavLinks isDark={isDark}>
           <StyledNavLink>
-            <DarkThemeButton />
+            <DarkThemeButton setTheme={setTheme} isDark={isDark}/>
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/vaults'}>
             <Link href="/vaults">Vaults</Link>

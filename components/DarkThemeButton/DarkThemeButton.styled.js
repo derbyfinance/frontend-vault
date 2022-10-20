@@ -3,19 +3,20 @@ import styled from 'styled-components';
 export const StyledDarkThemeButtonContainer = styled.div`
   position: relative;
   display: flex;
-  width: 69px;
-  height: 40px;
-  background-color: #000;
+  width: 59px;
+  height: 30px;
+  background-color: ${({isDark}) => isDark ? '#000' : '#fff'};
   border-radius: 28px;
   padding: 7px 6px;
+  border: 1px solid ${({isDark}) => isDark ? '#fff;' : '#000;'}
 `;
 
 export const StyledSwitcher = styled.div`
   position: absolute;
-  background-color: white;
-  height: 25px;
-  width: 25px;
-  ${({ isDark }) => (isDark ? 'left: 6px;' : 'right: 6px;')}
+  background-color: ${({isDark}) => isDark ? '#fff' : '#000'};
+  height: 20px;
+  width: 20px;
+  ${({ isDark }) => (isDark ? 'right: 6px;' : 'left: 6px;')}
   border-radius: 50%;
   align-self: center;
 `;

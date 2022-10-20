@@ -4,7 +4,7 @@ export const StyledNavBarWrapper = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: ${(props) => props.theme.background};
+  background: transparent;
   padding: 64px 0 40px;
 `;
 
@@ -20,12 +20,13 @@ export const StyledNavLinks = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 24px;
+  & a {
+    text-decoration: none;
+    color: ${({isDark}) => isDark ? '#fff;' : '#000;'}
+
+  }
 `;
 
 export const StyledNavLink = styled.li`
   font-weight: ${({ active }) => (active ? 600 : 300)};
-  & a {
-    text-decoration: none;
-    color: #000;
-  }
 `;

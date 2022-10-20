@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { StyledLayoutWrapper } from './Layout.styled';
 
-const Layout = ({ children, ...props }) => {
-  console.log(props, 'props');
+const Layout = ({ children }) => {
+  const [isDark, setIsDark] = useState(false)
+  const toggleTheme = () => setIsDark(!isDark)
   return (
-    <StyledLayoutWrapper>
-      <NavBar />
-      {children}
-      <Footer />
+    <StyledLayoutWrapper isDark={isDark} >
+      <NavBar setTheme={toggleTheme} isDark={isDark}/>
+      {children}s
+      <Footer isDark={isDark}/>
     </StyledLayoutWrapper>
   );
 };

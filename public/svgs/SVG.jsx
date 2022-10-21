@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 export const Logo = () => {
   return (
@@ -164,7 +164,7 @@ export const Logo = () => {
   );
 };
 
-export const TwitterIcon = ({isDark}) => {
+export const TwitterIcon = ({ isDark, href }) => {
   return (
     <svg
       width="30"
@@ -181,7 +181,7 @@ export const TwitterIcon = ({isDark}) => {
   );
 };
 
-export const DiscordIcon = ({isDark}) => {
+export const DiscordIcon = ({ isDark }) => {
   return (
     <svg
       width="31"
@@ -198,7 +198,7 @@ export const DiscordIcon = ({isDark}) => {
   );
 };
 
-export const GithubIcon = ({isDark}) => {
+export const GithubIcon = ({ isDark }) => {
   return (
     <svg
       width="25"

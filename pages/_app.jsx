@@ -16,9 +16,9 @@ const client = createClient({
 function MyApp({ Component, pageProps, isDark }) {
   return (
     <WagmiConfig client={client}>
-        <SessionProvider session={pageProps.session} refetchInterval={0}>
-          <Component {...pageProps} switchTheme={() => setIsDark(!isDark)}/>
-        </SessionProvider>
+      <SessionProvider session={pageProps.session} refetchInterval={0}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </WagmiConfig>
   );
 }

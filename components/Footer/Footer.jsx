@@ -7,7 +7,7 @@ import {
   StyledFooterWrapper,
 } from './Footer.styled';
 
-const Footer = ({isDark}) => {
+const Footer = ({ isDark }) => {
   return (
     <StyledFooterWrapper>
       <StyledFooterLinks>
@@ -23,19 +23,31 @@ const Footer = ({isDark}) => {
       </StyledFooterLinks>
       <StyledFooterLinks>
         <StyledFooterLink>
-          <Link href="#">
-            <TwitterIcon isDark={isDark}/>
-          </Link>
+          <a
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <TwitterIcon isDark={isDark} />
+          </a>
         </StyledFooterLink>
         <StyledFooterLink>
-          <Link href="#">
-              <DiscordIcon isDark={isDark}/>
-          </Link>
+          <a
+            href="https://discord.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <DiscordIcon isDark={isDark} />
+          </a>
         </StyledFooterLink>
         <StyledFooterLink>
-          <Link href="#">
-            <GithubIcon isDark={isDark}/>
-          </Link>
+          <a
+            href="https://github.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GithubIcon isDark={isDark} />
+          </a>
         </StyledFooterLink>
       </StyledFooterLinks>
     </StyledFooterWrapper>

@@ -18,11 +18,10 @@ export default function Home({ session, ...props }) {
     <>
       <Layout></Layout>
       {session && <User user={session.user} />}
-      {/* <SignIn />
+      <SignIn />
       <SendTransaction />
       <ContractInfo />
       <Deposit />
-    </Navbar> */}
     </>
   );
 }

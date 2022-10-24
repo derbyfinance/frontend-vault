@@ -9,7 +9,7 @@ import {
 const data = [
   {
     id: 1,
-    icon: '',
+    icon: '/svgs/coins/USDC.svg',
     coinName: 'USD Coin',
     coinShortName: 'USDC',
     balance: 32000,
@@ -19,7 +19,7 @@ const data = [
   },
   {
     id: 2,
-    icon: '',
+    icon: '/svgs/coins/USDT.svg',
     coinName: 'USD Tether',
     coinShortName: 'USDT',
     balance: 45000,
@@ -29,7 +29,7 @@ const data = [
   },
   {
     id: 3,
-    icon: '',
+    icon: '/svgs/coins/DAI.svg',
     coinName: 'DAI',
     coinShortName: 'DAI',
     balance: 45000,
@@ -39,7 +39,7 @@ const data = [
   },
   {
     id: 4,
-    icon: '',
+    icon: '/svgs/coins/ETH.svg',
     coinName: 'Ethereum',
     coinShortName: 'ETH',
     balance: 450000,
@@ -49,7 +49,7 @@ const data = [
   },
   {
     id: 5,
-    icon: '',
+    icon: '/svgs/coins/WBTC.svg',
     coinName: 'Wrapped Bitcoin',
     coinShortName: 'WBTC',
     balance: 1800,

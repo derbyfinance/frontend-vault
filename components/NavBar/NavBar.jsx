@@ -15,14 +15,16 @@ const NavBar = ({ toggleTheme, isDark }) => {
   return (
     <StyledNavBarWrapper>
       <StyledNavBarContent>
-        <Image
-          src="/images/Logo1.svg"
-          alt="Logo"
-          width="205"
-          height="63"
-          layout="fixed"
-          priority
-        />
+        <Link href="/">
+          <Image
+            src="/images/Logo1.svg"
+            alt="Logo"
+            width="205"
+            height="63"
+            layout="fixed"
+            priority
+          />
+        </Link>
         <StyledNavLinks>
           <StyledNavLink>
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />

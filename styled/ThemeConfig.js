@@ -93,7 +93,6 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 
-
 *,
 *::before,
 *::after {
@@ -112,7 +111,7 @@ body {
 	`;
 
 export const lightTheme = {
-  background: '#e6e6e6',
+  background: '#fff',
   color: '#160344',
   iconColor: '#000',
 };

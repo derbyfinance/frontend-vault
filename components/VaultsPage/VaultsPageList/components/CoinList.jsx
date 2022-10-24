@@ -19,7 +19,7 @@ const CoinList = ({ coinsData }) => {
       </thead>
       <tbody>
         {coinsData.map((el) => (
-          <CoinListItem coinData={el} />
+          <CoinListItem key={el.id} coinData={el} />
         ))}
       </tbody>
     </StyledCoinsListTable>

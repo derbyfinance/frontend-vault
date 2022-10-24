@@ -1,4 +1,5 @@
 import { signOut } from 'next-auth/react';
+import Image from 'next/image';
 
 function User({ user }) {
   console.log(user);

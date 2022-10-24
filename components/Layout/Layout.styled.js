@@ -6,5 +6,5 @@ export const StyledLayoutWrapper = styled.div`
   justify-content: space-between;
   padding: 0 64px;
   min-height: 100vh;
-  background: ${props => props.theme.background}
+  background: ${(props) => props.theme.background};
 `;

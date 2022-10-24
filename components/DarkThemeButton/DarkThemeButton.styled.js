@@ -5,15 +5,15 @@ export const StyledDarkThemeButtonContainer = styled.div`
   display: flex;
   width: 49px;
   height: 25px;
-  background-color: ${({isDark}) => isDark ? '#000' : '#fff'};
+  background-color: ${({ isDark }) => (isDark ? '#000' : '#fff')};
   border-radius: 28px;
   padding: 7px 6px;
-  border: 1px solid ${({isDark}) => isDark ? '#fff;' : '#000;'}
+  border: 1px solid ${({ isDark }) => (isDark ? '#fff;' : '#000;')};
 `;
 
 export const StyledSwitcher = styled.div`
   position: absolute;
-  background-color: ${({isDark}) => isDark ? '#fff' : '#000'};
+  background-color: ${({ isDark }) => (isDark ? '#fff' : '#000')};
   height: 17px;
   width: 17px;
   ${({ isDark }) => (isDark ? 'right: 6px;' : 'left: 6px;')}

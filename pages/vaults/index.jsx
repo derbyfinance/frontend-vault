@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout/Layout';
 import VaultsPageHero from '../../components/VaultsPage/VaultsPageHero/VaultsPageHero';
+import VaultsPageList from '../../components/VaultsPage/VaultsPageList/VaultsPageList';
 import WalletInfo from '../../components/VaultsPage/WalletInformation/WalletInfo';
 import {
   StyledAvailableVaults,
@@ -18,7 +19,9 @@ const VaultsPage = () => {
           <StyledCoinsPartHero>
             <VaultsPageHero />
           </StyledCoinsPartHero>
-          <StyledAvailableVaults></StyledAvailableVaults>
+          <StyledAvailableVaults>
+            <VaultsPageList />
+          </StyledAvailableVaults>
         </StyledCoinsPart>
         <StyledConnectWallet>
           <WalletInfo />

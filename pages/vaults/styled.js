@@ -5,7 +5,10 @@ export const StyledVaultsPageWrapper = styled.div`
 `;
 
 export const StyledCoinsPart = styled.div`
-  flex-grow: 1;
+width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
 `;
 
 export const StyledCoinsPartHero = styled.div``;

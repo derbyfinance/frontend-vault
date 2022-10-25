@@ -4,8 +4,9 @@ export const StyledNavBarWrapper = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: transparent;
+  background: ${(props) => props.theme.background};
   padding: 64px 0 40px;
+  z-index: 100;
 `;
 
 export const StyledNavBarContent = styled.div`

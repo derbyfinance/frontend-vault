@@ -14,13 +14,13 @@ import {
   StyledValuePart,
   StyledHeroWrapper,
 } from './styled';
-import totalValueSVG from '../../../public/svgs/lock.svg';
-import vaultsSVG from '../../../public/svgs/vaults.svg';
-import membersSVG from '../../../public/svgs/members.svg';
-import ethereumSVG from '../../../public/svgs/ethereum.svg';
-import arrowDownSVG from '../../../public/svgs/arrowDown.svg';
-import circleSVG from '../../../public/svgs/circle.svg';
-import ethereumBigSVG from '../../../public/svgs/ethereumBig.png';
+import totalValueSVG from '../../../../public/svgs/lock.svg';
+import vaultsSVG from '../../../../public/svgs/vaults.svg';
+import membersSVG from '../../../../public/svgs/members.svg';
+import ethereumSVG from '../../../../public/svgs/ethereum.svg';
+import arrowDownSVG from '../../../../public/svgs/arrowDown.svg';
+import circleSVG from '../../../../public/svgs/circle.svg';
+import ethereumBigSVG from '../../../../public/svgs/ethereumBig.png';
 import Image from 'next/image';
 
 const networkData = {

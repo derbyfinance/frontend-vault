@@ -8,7 +8,7 @@ const StyledMainButton = styled.button`
   cursor: pointer;
   border: none;
   outline: none;
-  color: #fff;
+  color: ${({ theme }) => theme.textSecondary};
 `;
 
 export const ConnectYourWallet = styled(StyledMainButton)`

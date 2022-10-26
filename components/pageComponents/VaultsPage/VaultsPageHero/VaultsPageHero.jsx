@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Children } from 'react';
 import {
-  StyledArrowDown,
   StyledCircle,
   StyledDescription,
   StyledIcon,
@@ -14,14 +13,16 @@ import {
   StyledValuePart,
   StyledHeroWrapper,
 } from './styled';
-import totalValueSVG from '../../../../public/svgs/lock.svg';
-import vaultsSVG from '../../../../public/svgs/vaults.svg';
-import membersSVG from '../../../../public/svgs/members.svg';
-import ethereumSVG from '../../../../public/svgs/ethereum.svg';
-import arrowDownSVG from '../../../../public/svgs/arrowDown.svg';
-import circleSVG from '../../../../public/svgs/circle.svg';
-import ethereumBigSVG from '../../../../public/svgs/ethereumBig.png';
 import Image from 'next/image';
+import {
+  ArrowDown,
+  EthereumNetwork,
+  Lock,
+  Members,
+  Vaults,
+} from '@icons/index';
+import ethereumBig from '@images/EthereumBig.png';
+import HeroCircle from '@images/HeroCircle.png';
 
 const networkData = {
   title: 'Ethereum Network',
@@ -35,10 +36,8 @@ const { title, icon, totalValue, vaults, members } = networkData;
 const NetworkInfoBlock = ({ icon, value, description }) => {
   return (
     <StyledInfoBlockWrapper>
-      <StyledIcon>
-        <Image src={icon} alt="" />
-      </StyledIcon>
-      <StyledValuePart>
+      <StyledIcon>{icon}</StyledIcon>
+      <StyledValuePart alt="">
         <StyledValue>{value}</StyledValue>
         <StyledDescription>{description}</StyledDescription>
       </StyledValuePart>
@@ -50,34 +49,34 @@ const VaultsPageHero = () => {
   return (
     <StyledHeroWrapper>
       <StyledCircle>
-        <Image src={circleSVG} />
+        <Image src={HeroCircle} alt="Decorative Circle" />
       </StyledCircle>
       <StyledNetworkInfoSection>
         <StyledNetworkTitle>
-          <Image src={ethereumSVG} />
+          <EthereumNetwork />
           <StyledTitle>{title}</StyledTitle>
-          <Image src={arrowDownSVG} />
+          <ArrowDown />
         </StyledNetworkTitle>
         <StyledNetworkInfo>
           <NetworkInfoBlock
-            icon={totalValueSVG}
+            icon={<Lock />}
             value={totalValue}
             description="TOTAL VALUE LOCKED"
           />
           <NetworkInfoBlock
-            icon={vaultsSVG}
+            icon={<Vaults />}
             value={vaults}
             description="VAULTS"
           />
           <NetworkInfoBlock
-            icon={membersSVG}
+            icon={<Members />}
             value={members}
             description="MEMBERS"
           />
         </StyledNetworkInfo>
       </StyledNetworkInfoSection>
       <StyledNetworkIcon>
-        <Image alt="Ehereum Image" src={ethereumBigSVG} />
+        <Image alt="Ethereum Image" src={ethereumBig} />
       </StyledNetworkIcon>
     </StyledHeroWrapper>
   );

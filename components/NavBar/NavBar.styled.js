@@ -4,7 +4,7 @@ export const StyledNavBarWrapper = styled.nav`
   position: sticky;
   top: 0;
   width: 100%;
-  background: ${(props) => props.theme.background};
+  background: ${(props) => props.theme.backgroundMain};
   padding: 64px 0 40px;
   z-index: 100;
 `;
@@ -23,7 +23,7 @@ export const StyledNavLinks = styled.ul`
   gap: 24px;
   & a {
     text-decoration: none;
-    color: ${(props) => props.theme.color};
+    color: ${(props) => props.theme.textMain};
   }
 `;
 

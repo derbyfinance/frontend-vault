@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const StyledHeroContainer = styled.div`
+  position: relative;
+`;
+
 export const StyledHeroWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -63,12 +67,33 @@ export const StyledIcon = styled.div`
 
 export const StyledCircle = styled.div`
   position: absolute;
-  right: -50px;
-  top: -74px;
+  right: -24px;
+  top: 0;
 `;
 
 export const StyledNetworkIcon = styled.div`
   position: absolute;
   right: 70px;
   top: 30px;
+`;
+
+export const StyledChainsList = styled.div`
+  position: absolute;
+  top: 70px;
+  left: 170px;
+  z-index: 10;
+  border-radius: 28px;
+  padding: 15px;
+  border: 1px solid #e2e2e2;
+  background: #fff;
+`;
+
+export const StyledChain = styled.div`
+  border-bottom: 1px solid #e2e2e2;
+  padding: 15px 25px;
+`;
+
+export const StyledArrowIcon = styled.div`
+  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transition: transform 0.3s;
 `;

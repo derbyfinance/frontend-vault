@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React, { Children, useState } from 'react';
 import {
   StyledCircle,
   StyledDescription,
@@ -12,7 +12,9 @@ import {
   StyledValue,
   StyledValuePart,
   StyledHeroWrapper,
-} from './styled';
+  StyledHeroContainer,
+  StyledArrowIcon,
+} from './VaultsPageHero.styled';
 import Image from 'next/image';
 import {
   ArrowDown,
@@ -23,6 +25,7 @@ import {
 } from '@icons/index';
 import ethereumBig from '@images/EthereumBig.png';
 import HeroCircle from '@images/HeroCircle.png';
+import ChainsList from './ChainsList';
 
 const networkData = {
   title: 'Ethereum Network',
@@ -46,39 +49,49 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 };
 
 const VaultsPageHero = () => {
+  const [chainsOpen, setChainsOpen] = useState(false);
+
   return (
-    <StyledHeroWrapper>
-      <StyledCircle>
-        <Image src={HeroCircle} alt="Decorative Circle" />
-      </StyledCircle>
-      <StyledNetworkInfoSection>
-        <StyledNetworkTitle>
-          <EthereumNetwork />
-          <StyledTitle>{title}</StyledTitle>
-          <ArrowDown />
-        </StyledNetworkTitle>
-        <StyledNetworkInfo>
-          <NetworkInfoBlock
-            icon={<Lock />}
-            value={totalValue}
-            description="TOTAL VALUE LOCKED"
-          />
-          <NetworkInfoBlock
-            icon={<Vaults />}
-            value={vaults}
-            description="VAULTS"
-          />
-          <NetworkInfoBlock
-            icon={<Members />}
-            value={members}
-            description="MEMBERS"
-          />
-        </StyledNetworkInfo>
-      </StyledNetworkInfoSection>
-      <StyledNetworkIcon>
-        <Image alt="Ethereum Image" src={ethereumBig} />
-      </StyledNetworkIcon>
-    </StyledHeroWrapper>
+    <StyledHeroContainer>
+      {chainsOpen && <ChainsList />}
+      <StyledHeroWrapper>
+        <StyledCircle>
+          <Image src={HeroCircle} alt="Decorative Circle" />
+        </StyledCircle>
+        <StyledNetworkInfoSection>
+          <StyledNetworkTitle>
+            <EthereumNetwork />
+            <StyledTitle>{title}</StyledTitle>
+            <StyledArrowIcon
+              onClick={() => setChainsOpen(!chainsOpen)}
+              isOpen={chainsOpen}
+            >
+              <ArrowDown isOpen={chainsOpen} />
+            </StyledArrowIcon>
+          </StyledNetworkTitle>
+          <StyledNetworkInfo>
+            <NetworkInfoBlock
+              icon={<Lock />}
+              value={totalValue}
+              description="TOTAL VALUE LOCKED"
+            />
+            <NetworkInfoBlock
+              icon={<Vaults />}
+              value={vaults}
+              description="VAULTS"
+            />
+            <NetworkInfoBlock
+              icon={<Members />}
+              value={members}
+              description="MEMBERS"
+            />
+          </StyledNetworkInfo>
+        </StyledNetworkInfoSection>
+        <StyledNetworkIcon>
+          <Image alt="Ethereum Image" src={ethereumBig} />
+        </StyledNetworkIcon>
+      </StyledHeroWrapper>
+    </StyledHeroContainer>
   );
 };
 

@@ -12,9 +12,3 @@ export const StyledCoinsPart = styled.div`
   flex-direction: column;
   gap: 38px;
 `;
-
-export const StyledCoinsPartHero = styled.div``;
-
-export const StyledAvailableVaults = styled.div``;
-
-export const StyledConnectWallet = styled.div``;

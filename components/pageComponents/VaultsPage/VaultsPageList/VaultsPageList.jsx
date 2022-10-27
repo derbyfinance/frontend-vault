@@ -1,9 +1,6 @@
+import Table from '@components/Table/Table';
 import React from 'react';
-import Table from '../../../Table/Table';
-import {
-  StyledCoinsListContainer,
-  StyledCoinsListHeader,
-} from './VaultsPageList.styled';
+import { StyledCoinsListHeader } from './VaultsPageList.styled';
 
 const headers = ['NAME', 'BALANCE', 'APY', 'MEMBERS', 'TVL'];
 
@@ -62,10 +59,10 @@ const data = [
 
 const VaultsPageList = () => {
   return (
-    <StyledCoinsListContainer>
+    <>
       <StyledCoinsListHeader>Available Vaults</StyledCoinsListHeader>
       <Table tableData={data} headers={headers} />
-    </StyledCoinsListContainer>
+    </>
   );
 };
 

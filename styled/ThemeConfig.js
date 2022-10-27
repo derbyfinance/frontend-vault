@@ -64,15 +64,27 @@ body {
 	`;
 
 export const lightTheme = {
-  backgroundMain: '#fff',
   textMain: '#160344',
   textSecondary: '#fff',
+  textFaded: '#a9a6ae',
+  backgroundMain: '#fff',
+  headerMain: '#fe5e76',
   iconColor: '#000',
+  buttonMain: '#39079b',
+  gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
+  gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
+  borderMain: '#e2e2e2',
 };
 
 export const darkTheme = {
-  backgroundMain: '#000',
   textMain: '#fff',
   textSecondary: '#fff',
+  textFaded: '#a9a6ae',
+  backgroundMain: '#000',
+  headerMain: '#fe5e76',
   iconColor: '#fff',
+  buttonMain: '#39079b',
+  gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
+  gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
+  borderMain: '#e2e2e2',
 };

@@ -29,10 +29,6 @@ export const StyledNetworkTitle = styled.div`
   gap: 10px;
 `;
 
-export const StyledTitle = styled.h2``;
-
-export const StyledArrowDown = styled.div``;
-
 export const StyledNetworkInfo = styled.div`
   display: flex;
   justify-content: center;

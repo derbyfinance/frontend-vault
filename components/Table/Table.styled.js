@@ -8,13 +8,13 @@ export const StyledTable = styled.table`
 export const StyledColumnHeader = styled.th`
   text-align: left;
   font-size: 16px;
-  color: #a9a6ae;
+  color: ${({ theme }) => theme.textFaded};
 `;
 
 export const StyledRowItem = styled.tr`
   vertical-align: middle;
   border-collapse: collapse;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.borderMain};
 `;
 
 export const StyledRowCell = styled.td`
@@ -31,7 +31,7 @@ export const StyledRowCell = styled.td`
     & span {
       font-family: Roboto-Medium;
       font-size: 14px;
-      color: #a9a6ae;
+      color: ${({ theme }) => theme.textFaded};
     }
   }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledMainButton = styled.button`
-  background: linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%);
+  background: ${({ theme }) => theme.gradientMain};
   border-radius: 6px;
   padding: 12px 20px;
   font-family: Slab-Medium;

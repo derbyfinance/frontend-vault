@@ -1,6 +1,6 @@
+import { AddMoneyToVaultBtn } from '@components/MainButton/MainButton.styled';
 import Image from 'next/image';
 import React from 'react';
-import { AddMoneyToVaultBtn } from '../MainButton/MainButton.styled';
 import { StyledRowCell, StyledRowItem } from './Table.styled';
 
 const TableRow = ({ rowData, isVaultsPage }) => {

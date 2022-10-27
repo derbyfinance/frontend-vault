@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyledCircle,
   StyledDescription,
@@ -34,7 +34,7 @@ const networkData = {
   members: 2177,
 };
 
-const { title, icon, totalValue, vaults, members } = networkData;
+const { title, totalValue, vaults, members } = networkData;
 
 const NetworkInfoBlock = ({ icon, value, description }) => {
   return (
@@ -61,7 +61,7 @@ const VaultsPageHero = () => {
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
             <EthereumNetwork />
-            <StyledTitle>{title}</StyledTitle>
+            <h2>{title}</h2>
             <StyledArrowIcon
               onClick={() => setChainsOpen(!chainsOpen)}
               isOpen={chainsOpen}

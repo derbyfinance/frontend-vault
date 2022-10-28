@@ -81,7 +81,7 @@ export const StyledChainsList = styled.div`
   border-radius: 28px;
   padding: 15px;
   border: 1px solid ${({ theme }) => theme.borderMain};
-  background: #fff;
+  background: ${({ theme }) => theme.backgroundMain};
 `;
 
 export const StyledChain = styled.div`

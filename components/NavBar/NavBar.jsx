@@ -15,8 +15,10 @@ const NavBar = ({ toggleTheme, isDark }) => {
   return (
     <StyledNavBarWrapper>
       <StyledNavBarContent>
-        <Link href="/">
-          <Logo />
+        <Link href="/vaults" passHref>
+          <a>
+            <Logo />
+          </a>
         </Link>
         <StyledNavLinks>
           <StyledNavLink>

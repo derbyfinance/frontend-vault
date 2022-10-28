@@ -9,7 +9,7 @@ const Logo = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_104_225)">
+      <g clipPath="url(#clip0_104_225)">
         <path
           d="M7.24002 14.1118L6.0337 19.3385L12.0643 20.3839L7.71983 39.2L1.20632 40.2453L0 45.472H12.5441L15.4397 32.9279H27.9837L29.4326 26.6559H16.8885L18.3363 20.3839H37.1524L36.75 26.6559H41.9767L44.8723 14.1118H7.24002Z"
           fill="url(#paint0_linear_104_225)"
@@ -80,9 +80,9 @@ const Logo = () => {
           y2="29.7919"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_104_225"
@@ -92,9 +92,9 @@ const Logo = () => {
           y2="23.5201"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_104_225"
@@ -104,9 +104,9 @@ const Logo = () => {
           y2="12.545"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_104_225"
@@ -116,9 +116,9 @@ const Logo = () => {
           y2="15.3718"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_104_225"
@@ -128,9 +128,9 @@ const Logo = () => {
           y2="15.2137"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_104_225"
@@ -140,9 +140,9 @@ const Logo = () => {
           y2="11.919"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_104_225"
@@ -152,9 +152,9 @@ const Logo = () => {
           y2="18.6593"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.5" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#5F08EE" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.5" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#5F08EE" />
         </linearGradient>
         <clipPath id="clip0_104_225">
           <rect width="150" height="45.6981" fill="white" />

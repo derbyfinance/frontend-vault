@@ -12,11 +12,11 @@ const StyledMainButton = styled.button`
 `;
 
 export const ConnectYourWallet = styled(StyledMainButton)`
-  background: #39079b;
+  background: ${({ theme }) => theme.buttonMain};
 `;
 
 export const AddMoneyToVaultBtn = styled.button`
-  border: 1px solid #160344;
+  border: 1px solid ${({ theme }) => theme.borderSecondary};
   border-radius: 6px;
   padding: 10px 20px;
 `;

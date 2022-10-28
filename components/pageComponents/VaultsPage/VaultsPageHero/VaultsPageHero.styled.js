@@ -9,7 +9,7 @@ export const StyledHeroWrapper = styled.div`
   justify-content: space-between;
   padding: 24px 50px 46px 35px;
   width: 100%;
-  border: 1px solid #e2e2e2;
+  border: 1px solid ${({ theme }) => theme.borderMain};
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -54,7 +54,7 @@ export const StyledValue = styled.h2`
 `;
 export const StyledDescription = styled.h4`
   font-size: 12px;
-  color: #a9a6ae;
+  color: ${({ theme }) => theme.textFaded};
 `;
 
 export const StyledIcon = styled.div`
@@ -80,12 +80,12 @@ export const StyledChainsList = styled.div`
   z-index: 10;
   border-radius: 28px;
   padding: 15px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid ${({ theme }) => theme.borderMain};
   background: #fff;
 `;
 
 export const StyledChain = styled.div`
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid ${({ theme }) => theme.borderMain};
   padding: 15px 25px;
 `;
 

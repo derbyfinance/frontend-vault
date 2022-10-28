@@ -74,6 +74,7 @@ export const lightTheme = {
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
   borderMain: '#e2e2e2',
+  borderSecondary: '#160344',
 };
 
 export const darkTheme = {
@@ -87,4 +88,5 @@ export const darkTheme = {
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
   borderMain: '#e2e2e2',
+  borderSecondary: '#160344',
 };

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { darkTheme, GlobalStyles, lightTheme } from '../../styled/ThemeConfig';
-import Footer from '../Footer/Footer';
-import NavBar from '../NavBar/NavBar';
+import Footer from '@components/Footer/Footer';
+import NavBar from '@components/NavBar/NavBar';
 import { StyledLayoutWrapper } from './Layout.styled';
+import { darkTheme, GlobalStyles, lightTheme } from 'styled/ThemeConfig';
+import { ThemeProvider } from 'styled-components';
 
 const Layout = ({ children }) => {
   const [isDark, setIsDark] = useState(false);

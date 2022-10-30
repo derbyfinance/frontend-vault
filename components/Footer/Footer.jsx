@@ -1,6 +1,6 @@
+import { Discord, Github, Twitter } from '@icons/index';
 import Link from 'next/link';
 import React from 'react';
-import { DiscordIcon, GithubIcon, TwitterIcon } from '../../public/svgs/SVG';
 import {
   StyledFooterLink,
   StyledFooterLinks,
@@ -28,7 +28,7 @@ const Footer = ({ isDark }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TwitterIcon isDark={isDark} />
+            <Twitter isDark={isDark} />
           </a>
         </StyledFooterLink>
         <StyledFooterLink>
@@ -37,7 +37,7 @@ const Footer = ({ isDark }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <DiscordIcon isDark={isDark} />
+            <Discord isDark={isDark} />
           </a>
         </StyledFooterLink>
         <StyledFooterLink>
@@ -46,7 +46,7 @@ const Footer = ({ isDark }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GithubIcon isDark={isDark} />
+            <Github isDark={isDark} />
           </a>
         </StyledFooterLink>
       </StyledFooterLinks>

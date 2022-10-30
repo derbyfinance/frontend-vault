@@ -5,15 +5,15 @@ export const StyledDarkThemeButtonContainer = styled.div`
   display: flex;
   width: 49px;
   height: 25px;
-  background-color: ${({isDark}) => isDark ? '#000' : '#fff'};
+  background-color: ${(props) => props.theme.backgroundMain};
   border-radius: 28px;
   padding: 7px 6px;
-  border: 1px solid ${({isDark}) => isDark ? '#fff;' : '#000;'}
+  border: 1px solid ${({ theme }) => theme.textMain};
 `;
 
 export const StyledSwitcher = styled.div`
   position: absolute;
-  background-color: ${({isDark}) => isDark ? '#fff' : '#000'};
+  background-color: ${({ theme }) => theme.textMain};
   height: 17px;
   width: 17px;
   ${({ isDark }) => (isDark ? 'right: 6px;' : 'left: 6px;')}

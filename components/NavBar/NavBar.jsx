@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import DarkThemeButton from '../DarkThemeButton/DarkThemeButton';
@@ -15,14 +15,11 @@ const NavBar = ({ toggleTheme, isDark }) => {
   return (
     <StyledNavBarWrapper>
       <StyledNavBarContent>
-        <Image
-          src="/images/Logo1.svg"
-          alt="Logo"
-          width="205"
-          height="63"
-          layout="fixed"
-          priority
-        />
+        <Link href="/vaults" passHref>
+          <a>
+            <Logo />
+          </a>
+        </Link>
         <StyledNavLinks>
           <StyledNavLink>
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />

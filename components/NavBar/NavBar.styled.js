@@ -23,10 +23,16 @@ export const StyledNavLinks = styled.ul`
   gap: 24px;
   & a {
     text-decoration: none;
+    font-family: Slab-Light;
     color: ${(props) => props.theme.textMain};
+    padding: 10px 12px;
   }
 `;
 
 export const StyledNavLink = styled.li`
   font-weight: ${({ active }) => (active ? 600 : 300)};
+  border-bottom: ${({ active, theme }) =>
+    active ? `${theme.borderTertiary} solid 3px` : 'none'};
+  font-family: ${({ active }) => (active ? 'Slab-Medium' : 'Slab-Light')};
+  padding: 0 0 4px;
 `;

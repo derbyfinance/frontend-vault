@@ -24,7 +24,7 @@ const Footer = ({ isDark }) => {
       <StyledFooterLinks>
         <StyledFooterLink>
           <a
-            href="https://twitter.com/"
+            href="https://twitter.com/derby_finance"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -33,7 +33,7 @@ const Footer = ({ isDark }) => {
         </StyledFooterLink>
         <StyledFooterLink>
           <a
-            href="https://discord.com/"
+            href="https://discord.gg/DyxRxs9mQ6"
             target="_blank"
             rel="noopener noreferrer"
           >

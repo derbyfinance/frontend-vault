@@ -1,8 +1,7 @@
-import React from 'react';
-import Layout from '../../components/Layout/Layout';
+import Layout from '@components/Layout/Layout';
 
 const index = () => {
-  return <Layout>Game</Layout>;
+  return <Layout></Layout>;
 };
 
 export default index;

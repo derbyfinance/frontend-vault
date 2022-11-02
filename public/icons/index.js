@@ -9,3 +9,8 @@ export { default as Discord } from './Discord';
 export { default as Github } from './Github';
 export { default as WalletInfoLogo } from './WalletInfoLogo';
 export { default as WavesBackgroundTop } from './WavesBackgroundTop';
+export { default as ArrowRight } from './ArrowRight';
+export { default as DFConnectIcon } from './DFConnectIcon';
+export { default as MetaMask } from './MetaMask';
+export { default as Coinbase } from './Coinbase';
+export { default as WalletConnect } from './WalletConnect';

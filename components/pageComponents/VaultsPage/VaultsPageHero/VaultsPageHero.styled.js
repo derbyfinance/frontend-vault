@@ -10,7 +10,7 @@ export const StyledHeroWrapper = styled.div`
   padding: 24px 50px 46px 35px;
   width: 100%;
   border: 1px solid ${({ theme }) => theme.borderMain};
-  border-radius: 10px;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
 `;

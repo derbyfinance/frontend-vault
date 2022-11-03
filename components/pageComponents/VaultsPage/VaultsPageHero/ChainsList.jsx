@@ -3,6 +3,7 @@ import React from 'react';
 import {
   StyledChain,
   StyledChainsList,
+  StyledChainTitle,
   StyledChainWrapper,
   StyledSwitchTo,
 } from './VaultsPageHero.styled';
@@ -25,13 +26,13 @@ const ChainsList = React.forwardRef((props, ref) => {
     { id: 7, title: 'Fantom', img: Fantom, alt: 'fan' },
   ];
   return (
-    <StyledChainsList ref={ref}>
+    <StyledChainsList ref={ref} isOpen={props.chainsOpen}>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
       {chainsList.map((chain) => (
-        <StyledChainWrapper>
-          <StyledChain key={chain.id}>
+        <StyledChainWrapper key={chain.id}>
+          <StyledChain>
             <Image src={chain.img} alt={chain.alt} />
-            {chain.title}
+            <StyledChainTitle>{chain.title}</StyledChainTitle>
           </StyledChain>
         </StyledChainWrapper>
       ))}

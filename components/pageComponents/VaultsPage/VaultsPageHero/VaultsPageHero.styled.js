@@ -82,6 +82,7 @@ export const StyledChainsList = styled.div`
   border: 1px solid ${({ theme }) => theme.borderMain};
   background: ${({ theme }) => theme.backgroundMain};
   padding: 15px 0;
+  min-width: 300px;
 `;
 
 export const StyledChainWrapper = styled.div`
@@ -102,6 +103,11 @@ export const StyledChain = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.borderMain};
   padding: 15px 0;
   cursor: pointer;
+  &:hover {
+    & div {
+      font-family: 'Roboto-Medium';
+    }
+  }
 `;
 
 export const StyledArrowIcon = styled.div`
@@ -111,6 +117,12 @@ export const StyledArrowIcon = styled.div`
 
 export const StyledSwitchTo = styled.h6`
   padding: 0 15px;
+  font-family: 'Roboto-Medium';
   font-size: 12px;
   color: ${({ theme }) => theme.textFaded};
+`;
+
+export const StyledChainTitle = styled.div`
+  font-family: 'Roboto-Light';
+  font-size: 20px;
 `;

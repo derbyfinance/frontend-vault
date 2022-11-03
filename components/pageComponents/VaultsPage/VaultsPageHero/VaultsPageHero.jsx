@@ -80,7 +80,7 @@ const VaultsPageHero = () => {
             <h2>{title}</h2>
             <StyledArrowIcon
               onClick={() => {
-                setChainsOpen(!chainsOpen);
+                setChainsOpen((chainsOpen) => !chainsOpen);
               }}
               isOpen={chainsOpen}
               ref={arrowRef}

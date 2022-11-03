@@ -49,6 +49,7 @@ export const StyledValuePart = styled.div`
 `;
 
 export const StyledValue = styled.h2`
+  font-family: Slab-Medium;
   font-size: 32px;
   line-height: 37.5px;
 `;

@@ -26,6 +26,7 @@ import {
 import ethereumBig from '@images/EthereumBig.png';
 import HeroCircle from '@images/HeroCircle.png';
 import ChainsList from './ChainsList';
+import { useRef, useEffect } from 'react';
 
 const networkData = {
   title: 'Ethereum Network',
@@ -50,10 +51,25 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 
 const VaultsPageHero = () => {
   const [chainsOpen, setChainsOpen] = useState(false);
+  const arrowRef = useRef();
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (
+        !dropdownRef.current?.contains(e.target) &&
+        !arrowRef.current?.contains(e.target)
+      ) {
+        setChainsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  });
 
   return (
     <StyledHeroContainer>
-      {chainsOpen && <ChainsList />}
+      {chainsOpen && <ChainsList ref={dropdownRef} />}
       <StyledHeroWrapper>
         <StyledCircle>
           <Image src={HeroCircle} alt="Decorative Circle" />
@@ -63,8 +79,11 @@ const VaultsPageHero = () => {
             <EthereumNetwork />
             <h2>{title}</h2>
             <StyledArrowIcon
-              onClick={() => setChainsOpen(!chainsOpen)}
+              onClick={() => {
+                setChainsOpen((chainsOpen) => !chainsOpen);
+              }}
               isOpen={chainsOpen}
+              ref={arrowRef}
             >
               <ArrowDown isOpen={chainsOpen} />
             </StyledArrowIcon>

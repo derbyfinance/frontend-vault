@@ -1,13 +1,28 @@
-import React from 'react';
+import Head, { defaultHead } from 'next/head';
+import { getSession } from 'next-auth/react';
+import { useAccount, useNetwork } from 'wagmi';
+import User from '../components/user';
+import { SendTransaction } from '../components/sendTransaction';
+import SignIn from '../components/signin';
+import ContractInfo from '../components/contractInfo';
+import { Deposit } from '../components/deposit';
 import Layout from '../components/Layout/Layout';
-import VaultsPageComponent from '../components/pageComponents/VaultsPage';
-
-const VaultsPage = () => {
+export default function Home({ session, ...props }) {
+  const account = useAccount();
   return (
-    <Layout>
-      <VaultsPageComponent />
-    </Layout>
+    <>
+      <Layout></Layout>
+      {session && <User user={session.user} />}
+      {/* <SignIn /> */}
+      {/* <SendTransaction /> */}
+      {/* <ContractInfo /> */}
+      {/* <Deposit /> */}
+    </>
   );
-};
-
-export default VaultsPage;
+}
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  return {
+    props: { session: session },
+  };
+}

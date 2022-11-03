@@ -80,17 +80,50 @@ export const StyledChainsList = styled.div`
   left: 170px;
   z-index: 10;
   border-radius: 28px;
-  padding: 15px;
   border: 1px solid ${({ theme }) => theme.borderMain};
   background: ${({ theme }) => theme.backgroundMain};
+  padding: 15px 0;
+  min-width: 300px;
+`;
+
+export const StyledChainWrapper = styled.div`
+  padding: 0 15px;
+  width: 100%;
+  &:hover {
+    background: ${({ theme }) => theme.listHover};
+  }
+  &:last-child {
+    border: none;
+  }
 `;
 
 export const StyledChain = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
   border-bottom: 1px solid ${({ theme }) => theme.borderMain};
-  padding: 15px 25px;
+  padding: 15px 0;
+  cursor: pointer;
+  &:hover {
+    & div {
+      font-family: 'Roboto-Medium';
+    }
+  }
 `;
 
 export const StyledArrowIcon = styled.div`
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
   transition: transform 0.3s;
+`;
+
+export const StyledSwitchTo = styled.h6`
+  padding: 0 15px;
+  font-family: 'Roboto-Medium';
+  font-size: 12px;
+  color: ${({ theme }) => theme.textFaded};
+`;
+
+export const StyledChainTitle = styled.div`
+  font-family: 'Roboto-Light';
+  font-size: 20px;
 `;

@@ -10,3 +10,4 @@ export { default as Github } from './Github';
 export { default as WalletInfoLogo } from './WalletInfoLogo';
 export { default as WavesBackgroundTop } from './WavesBackgroundTop';
 export { default as WavesBackgroundBottom } from './WavesBackgroundBottom';
+export { default as MediumFooter } from './MediumFooter';

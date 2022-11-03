@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 
 export const StyledWalletInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  text-align: center;
-  margin-left: 16px;
-  gap: 35px;
-  color: white;
+  width: 427px;
+  height: 553px;
   max-width: 427px;
-  background: ${({ theme }) => theme.gradientWallet};
-  border: 2px solid ${({ theme }) => theme.borderMain};
+  max-height: 553px;
+  margin-left: 19px;
   border-radius: 6px;
-  padding: 140px 50px;
 `;

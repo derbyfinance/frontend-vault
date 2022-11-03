@@ -2,12 +2,13 @@ import React from 'react';
 import { WalletInfoLogo } from '@icons/index';
 import { StyledWalletInfoContainer } from './WalletInfo.styled';
 import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
+import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
+import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
 const WalletInfo = () => {
+  const isConnected = true;
   return (
     <StyledWalletInfoContainer>
-      <WalletInfoLogo />
-      <p>Go ahead, connect your wallet and try our super secure vault.</p>
-      <ConnectYourWallet>Connect Your Wallet</ConnectYourWallet>
+      {isConnected ? <WalletInfoConnected /> : <WalletInfoNotConnected />}
     </StyledWalletInfoContainer>
   );
 };

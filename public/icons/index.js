@@ -9,3 +9,6 @@ export { default as Discord } from './Discord';
 export { default as Github } from './Github';
 export { default as WalletInfoLogo } from './WalletInfoLogo';
 export { default as WavesBackgroundTop } from './WavesBackgroundTop';
+export { default as Portfolio } from './Portfolio';
+export { default as Rewards } from './Rewards';
+export { default as Yield } from './Yield';

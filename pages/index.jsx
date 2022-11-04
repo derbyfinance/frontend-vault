@@ -7,7 +7,13 @@ import SignIn from '../components/signin';
 import ContractInfo from '../components/contractInfo';
 import { Deposit } from '../components/deposit';
 import Layout from '../components/Layout/Layout';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 export default function Home({ session, ...props }) {
+  const router = useRouter();
+  useEffect(() => {
+    if (router.pathname === '/') router.push('/vaults');
+  }, []);
   const account = useAccount();
   return (
     <>

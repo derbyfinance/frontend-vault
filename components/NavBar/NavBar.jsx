@@ -24,8 +24,8 @@ const NavBar = ({ toggleTheme, isDark }) => {
           <StyledNavLink>
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
           </StyledNavLink>
-          <StyledNavLink active={router.pathname === '/'}>
-            <Link href="/">Vault</Link>
+          <StyledNavLink active={router.pathname === '/vaults'}>
+            <Link href="/vaults">Vault</Link>
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/game'}>
             <Link href="/game">Game</Link>

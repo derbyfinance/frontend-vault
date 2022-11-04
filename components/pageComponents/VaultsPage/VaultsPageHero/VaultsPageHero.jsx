@@ -64,7 +64,7 @@ const VaultsPageHero = () => {
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
-  });
+  }, []);
 
   return (
     <StyledHeroContainer>

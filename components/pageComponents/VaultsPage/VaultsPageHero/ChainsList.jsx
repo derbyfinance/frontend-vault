@@ -7,6 +7,7 @@ import {
   StyledChainWrapper,
   StyledSwitchTo,
 } from './VaultsPageHero.styled';
+
 import Ethereum from '@images/chainsIcons/Ethereum.png';
 import Optimism from '@images/chainsIcons/Optimism.png';
 import Arbitrum from '@images/chainsIcons/Arbitrum.png';

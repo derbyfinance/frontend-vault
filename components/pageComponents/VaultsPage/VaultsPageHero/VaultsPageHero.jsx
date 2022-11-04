@@ -8,7 +8,6 @@ import {
   StyledNetworkInfo,
   StyledNetworkInfoSection,
   StyledNetworkTitle,
-  StyledTitle,
   StyledValue,
   StyledValuePart,
   StyledHeroWrapper,

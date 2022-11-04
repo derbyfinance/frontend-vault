@@ -15,7 +15,11 @@ export const ConnectYourWallet = styled(StyledMainButton)`
   background: ${({ theme }) => theme.buttonMain};
 `;
 
-export const ClaimRewards = styled(StyledMainButton)``;
+export const ClaimRewards = styled(StyledMainButton)`
+  width: 208px;
+  height: 56px;
+  background: ${({ theme }) => theme.buttonMain};
+`;
 
 export const AddMoneyToVaultBtn = styled.button`
   border: 1px solid ${({ theme }) => theme.borderSecondary};

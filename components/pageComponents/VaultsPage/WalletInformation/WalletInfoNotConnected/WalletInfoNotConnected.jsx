@@ -1,7 +1,7 @@
 import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
 import { WalletInfoLogo } from '@icons/index';
 import React from 'react';
-import { StyledNotConnectedWrapper } from './WalletInfoNotConnected.styled';
+import { StyledNotConnectedWrapper } from '../WalletInfo.styled';
 
 const WalletInfoNotConnected = () => {
   return (

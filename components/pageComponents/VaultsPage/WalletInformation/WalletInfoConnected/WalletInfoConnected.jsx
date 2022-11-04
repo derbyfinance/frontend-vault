@@ -1,10 +1,13 @@
+import { ClaimRewards } from '@components/MainButton/MainButton.styled';
 import { Portfolio, Rewards, Yield } from '@icons/index';
 import React from 'react';
 import {
+  StyledConnectedItem,
+  StyledConnectedLeftWrapper,
   StyledWalletData,
   StyledWalletHoldings,
   WalletInfoConnectedStyled,
-} from './WalletInfoConnected.styled';
+} from '../WalletInfo.styled';
 
 const WalletInfoConnected = () => {
   const walletAmount = 1000;
@@ -21,14 +24,17 @@ const WalletInfoConnected = () => {
       <StyledWalletData>
         {dummyData.map((item, index) => {
           return (
-            <div key={index}>
-              {item.icon}
-              <p>{item.itemName}</p>
+            <StyledConnectedItem key={index}>
+              <StyledConnectedLeftWrapper>
+                {item.icon}
+                <p>{item.itemName}</p>
+              </StyledConnectedLeftWrapper>
               <p>{item.amount}</p>
-            </div>
+            </StyledConnectedItem>
           );
         })}
       </StyledWalletData>
+      <ClaimRewards>Claim Rewards</ClaimRewards>
     </WalletInfoConnectedStyled>
   );
 };

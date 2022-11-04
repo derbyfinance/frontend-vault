@@ -9,7 +9,6 @@ export const StyledColumnHeader = styled.th`
   text-align: left;
   font-size: 16px;
   font-family: Roboto-Medium;
-  font-weight: 500;
   color: ${({ theme }) => theme.textFaded};
 `;
 

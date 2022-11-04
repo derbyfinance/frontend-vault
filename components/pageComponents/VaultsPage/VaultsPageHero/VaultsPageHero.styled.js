@@ -93,7 +93,9 @@ export const StyledChainWrapper = styled.div`
     background: ${({ theme }) => theme.listHover};
   }
   &:last-child {
-    border: none;
+    & div {
+      border: none;
+    }
   }
 `;
 

@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 export const StyledModal = styled(Modal)`
   width: 423px;
   height: 653px;
+  padding: 50px 32px;
   background-color: white;
   top: 50%;
   left: 50%;
@@ -19,16 +20,27 @@ export const StyledModal = styled(Modal)`
   align-items: center;
   justify-content: space-between;
   align-content: center;
-  padding: 54px 0;
 `;
 
 export const StyledModalLogoAndText = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & h3 {
+    line-height: 23px;
+    font-size: 20px;
+    font-family: Roboto-Medium;
+    font-weight: 500;
+    color: ${({ theme }) => theme.textTertiary};
+  }
+  & h4 {
+    font-family: 'Roboto-Light';
+    font-weight: 300;
+  }
 `;
 
 export const StyledModalConnectOptions = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;

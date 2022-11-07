@@ -90,32 +90,34 @@ function SignIn() {
     handleAuth('wal');
   };
 
+  const wallets = [
+    {
+      name: 'MetaMask',
+      icon: <MetaMask />,
+      onClick: handleMetaMask,
+    },
+    {
+      name: 'Coinbase Wallet',
+      icon: <Coinbase />,
+      onClick: handleCoinbaseWallet,
+    },
+    {
+      name: 'WalletConnect',
+      icon: <WalletConnect />,
+      onClick: handleWalletConnect,
+    },
+  ];
+
   return (
     <SignInContainer>
-      {error && <div>{error.message}</div>}
-      <ConnectVia
-        svg={<MetaMask />}
-        walletName="Metamask"
-        clickHandler={handleMetaMask}
-      />
-      <ConnectVia
-        svg={<Coinbase />}
-        walletName="Coinbase Wallet"
-        clickHandler={handleCoinbaseWallet}
-      />
-      <button
-        onClick={() => {
-          disconnect();
-          console.log('Disconnected');
-        }}
-      >
-        Disconnect
-      </button>
-      <ConnectVia
-        svg={<WalletConnect />}
-        walletName="Wallet Connect"
-        clickHandler={handleWalletConnect}
-      />
+      {wallets.map(({ icon, name, onClick }, index) => (
+        <ConnectVia
+          key={index}
+          clickHandler={onClick}
+          svg={icon}
+          walletName={name}
+        />
+      ))}
     </SignInContainer>
   );
 }

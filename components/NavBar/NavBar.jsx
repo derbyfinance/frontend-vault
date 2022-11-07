@@ -15,7 +15,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
   return (
     <StyledNavBarWrapper>
       <StyledNavBarContent>
-        <Link href="/vaults" passHref>
+        <Link href="/" passHref>
           <a>
             <Logo />
           </a>
@@ -25,7 +25,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/vaults'}>
-            <Link href="/vaults">Vaults</Link>
+            <Link href="/vaults">Vault</Link>
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/game'}>
             <Link href="/game">Game</Link>
@@ -34,7 +34,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
           <StyledNavLink>
-            <MainButton btnText="Connect Your Wallet" />
+            <MainButton btnText="Connect your Wallet" />
           </StyledNavLink>
         </StyledNavLinks>
       </StyledNavBarContent>

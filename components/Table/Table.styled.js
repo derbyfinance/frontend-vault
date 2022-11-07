@@ -8,6 +8,7 @@ export const StyledTable = styled.table`
 export const StyledColumnHeader = styled.th`
   text-align: left;
   font-size: 16px;
+  font-family: Roboto-Medium;
   color: ${({ theme }) => theme.textFaded};
 `;
 
@@ -27,7 +28,7 @@ export const StyledRowCell = styled.td`
     align-items: center;
     gap: 12px;
     font-family: Slab-Medium;
-    font-size: 26px;
+    font-size: 20px;
     & span {
       font-family: Roboto-Medium;
       font-size: 14px;

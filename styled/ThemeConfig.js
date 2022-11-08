@@ -76,6 +76,8 @@ export const lightTheme = {
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   breadCrumbs: '#B4B1B8',
+  borderTertiary: '#f13abc',
+  listHover: '#f5f5f5',
 };
 
 export const darkTheme = {
@@ -91,4 +93,6 @@ export const darkTheme = {
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   breadCrumbs: '#B4B1B8',
+  borderTertiary: '#f13abc',
+  listHover: '#f5f5f5',
 };

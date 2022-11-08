@@ -4,8 +4,7 @@ import React from 'react';
 import { StyledRowCell, StyledRowItem } from './Table.styled';
 
 const TableRow = ({ rowData, isVaultsPage }) => {
-  const { id, icon, coinName, coinShortName, balance, apy, members, tvl } =
-    rowData;
+  const { icon, coinName, coinShortName, balance, apy, members, tvl } = rowData;
   return (
     <StyledRowItem>
       <StyledRowCell>

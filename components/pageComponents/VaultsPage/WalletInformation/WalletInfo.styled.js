@@ -12,7 +12,6 @@ export const StyledWalletInfoContainer = styled.div`
   color: white;
   max-width: 427px;
   background: ${({ theme }) => theme.gradientWallet};
-  border: 2px solid ${({ theme }) => theme.borderMain};
   border-radius: 6px;
   padding: 140px 50px;
 `;

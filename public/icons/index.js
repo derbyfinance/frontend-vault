@@ -12,3 +12,5 @@ export { default as WavesBackgroundTop } from './WavesBackgroundTop';
 export { default as Portfolio } from './Portfolio';
 export { default as Rewards } from './Rewards';
 export { default as Yield } from './Yield';
+export { default as WavesBackgroundBottom } from './WavesBackgroundBottom';
+export { default as MediumFooter } from './MediumFooter';

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledNavBarWrapper = styled.nav`
   position: sticky;
-  top: 0;
   width: 100%;
+  top: 0;
   background: ${(props) => props.theme.backgroundMain};
   padding: 64px 0 40px;
   z-index: 10;
@@ -21,14 +21,19 @@ export const StyledNavLinks = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 24px;
-  & a {
-    text-decoration: none;
-    color: ${(props) => props.theme.textMain};
-  }
 `;
 
 export const StyledNavLink = styled.li`
   font-weight: ${({ active }) => (active ? 600 : 300)};
+  font-family: ${({ active }) => (active ? 'Slab-Medium' : 'Slab-Light')};
+  & a {
+    text-decoration: none;
+    font-family: Slab-Light;
+    color: ${(props) => props.theme.textMain};
+    padding: 10px 12px;
+    border-bottom: ${({ active, theme }) =>
+      active ? `${theme.borderTertiary} solid 3px` : 'none'};
+  }
 `;
 
 export const StyledConnectDisclaimer = styled.p`

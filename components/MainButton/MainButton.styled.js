@@ -17,6 +17,9 @@ export const ConnectYourWallet = styled(StyledMainButton)`
 
 export const AddMoneyToVaultBtn = styled.button`
   border: 1px solid ${({ theme }) => theme.borderSecondary};
+  background-color: transparent;
+  font-family: 'Slab-Medium';
+  color: ${({ theme }) => theme.textMain};
   border-radius: 6px;
   padding: 10px 20px;
 `;

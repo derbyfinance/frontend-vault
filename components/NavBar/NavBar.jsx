@@ -56,7 +56,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
       )}
 
       <StyledNavBarContent>
-        <Link href="/vaults" passHref>
+        <Link href="/" passHref>
           <a>
             <Logo />
           </a>
@@ -66,7 +66,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/vaults'}>
-            <Link href="/vaults">Vaults</Link>
+            <Link href="/vaults">Vault</Link>
           </StyledNavLink>
           <StyledNavLink active={router.pathname === '/game'}>
             <Link href="/game">Game</Link>
@@ -75,7 +75,11 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
           <StyledNavLink>
+<<<<<<< HEAD
             <MainButton openModal={openModal} btnText="Connect Your Wallet" />
+=======
+            <MainButton btnText="Connect your Wallet" />
+>>>>>>> 0093a60d71a5aa9da47617013244098cc2467104
           </StyledNavLink>
         </StyledNavLinks>
       </StyledNavBarContent>

@@ -7,8 +7,13 @@ import SignIn from '../components/SignIn/SignIn';
 import ContractInfo from '../components/contractInfo';
 import { Deposit } from '../components/deposit';
 import Layout from '../components/Layout/Layout';
-
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 export default function Home({ session, ...props }) {
+  const router = useRouter();
+  useEffect(() => {
+    if (router.pathname === '/') router.push('/vaults');
+  }, []);
   const account = useAccount();
 
   return (
@@ -21,10 +26,8 @@ export default function Home({ session, ...props }) {
     </>
   );
 }
-
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-
   return {
     props: { session: session },
   };

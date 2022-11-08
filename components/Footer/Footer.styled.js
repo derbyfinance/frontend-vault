@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const StyledFooterWrapper = styled.footer`
+  position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 15px 0;
+  padding: 40px 0 15px;
 `;
 
 export const StyledFooterLinks = styled.ul`

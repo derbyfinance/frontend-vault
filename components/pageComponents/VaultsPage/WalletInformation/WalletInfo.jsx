@@ -5,7 +5,7 @@ import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
 import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
 import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
 const WalletInfo = () => {
-  const isConnected = true;
+  const isConnected = false;
   return (
     <div>
       {isConnected ? <WalletInfoConnected /> : <WalletInfoNotConnected />}

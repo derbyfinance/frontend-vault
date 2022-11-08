@@ -7,5 +7,5 @@ export const SignInContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-  gap: 40px;
+  gap: 30px;
 `;

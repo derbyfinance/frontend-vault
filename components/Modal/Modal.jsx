@@ -3,16 +3,16 @@ import { StyledModal } from './Modal.styled';
 const customStyles = {
   overlay: {
     zIndex: 1000,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', //todo
     backgroundFilter: 'blur(2px)',
   },
 };
-const ModalComponent = ({ children, modalIsOpen, closeModal }) => {
+const Modal = ({ children, isOpen, onClose }) => {
   return (
     <StyledModal
       style={customStyles}
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      isOpen={isOpen}
+      onRequestClose={onClose}
       ariaHideApp={false}
     >
       {children}
@@ -20,4 +20,4 @@ const ModalComponent = ({ children, modalIsOpen, closeModal }) => {
   );
 };
 
-export default ModalComponent;
+export default Modal;

@@ -39,12 +39,13 @@ export const StyledNavLink = styled.li`
 export const StyledConnectDisclaimer = styled.p`
   font-size: 12px;
   color: ${(props) => props.theme.textPrimary};
-  margin: 0;
+  margin-top: 54px;
   & a {
     background: linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
+    margin-left: 4px;
   }
 `;

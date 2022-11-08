@@ -1,4 +1,5 @@
-import ModalComponent from '@components/Modal/Modal';
+import ConnectWalletModal from '@components/Modal/ConnectWalletModal/ConnectWalletModal';
+import Modal from '@components/Modal/Modal';
 import {
   StyledModalConnectOptions,
   StyledModalLogoAndText,
@@ -19,7 +20,7 @@ import {
 } from './NavBar.styled';
 
 const NavBar = ({ toggleTheme, isDark }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -38,23 +39,11 @@ const NavBar = ({ toggleTheme, isDark }) => {
 
   return (
     <StyledNavBarWrapper>
-      {modalIsOpen && (
-        <ModalComponent modalIsOpen={modalIsOpen} closeModal={closeModal}>
-          <StyledModalLogoAndText>
-            <DFConnectIcon />
-            <h3>Connect Wallet</h3>
-            <h4>to start using Derby Finance</h4>
-          </StyledModalLogoAndText>
-          <StyledModalConnectOptions>
-            <SignIn />
-          </StyledModalConnectOptions>
-          <StyledConnectDisclaimer>
-            By connecting, I accept Derby Finance’s
-            <a href="#">terms of Service </a>
-          </StyledConnectDisclaimer>
-        </ModalComponent>
-      )}
-
+      <ConnectWalletModal
+        isOpen={isOpen}
+        openModal={openModal}
+        onClose={closeModal}
+      />
       <StyledNavBarContent>
         <Link href="/" passHref>
           <a>

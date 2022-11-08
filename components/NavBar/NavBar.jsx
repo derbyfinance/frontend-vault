@@ -75,11 +75,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
           <StyledNavLink>
-<<<<<<< HEAD
             <MainButton openModal={openModal} btnText="Connect Your Wallet" />
-=======
-            <MainButton btnText="Connect your Wallet" />
->>>>>>> 0093a60d71a5aa9da47617013244098cc2467104
           </StyledNavLink>
         </StyledNavLinks>
       </StyledNavBarContent>

@@ -1,0 +1,22 @@
+import styled from 'styled-components';
+
+export const StyledConnectVia = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 18px;
+  padding: 0 0 24px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.borderMain};
+  &:last-child {
+    border-bottom: 1px solid transparent;
+  }
+`;
+
+export const StyledConnectLeftContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-right: 90px;
+`;

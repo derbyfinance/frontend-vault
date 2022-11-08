@@ -6,7 +6,7 @@ export const StyledNavBarWrapper = styled.nav`
   top: 0;
   background: ${(props) => props.theme.backgroundMain};
   padding: 64px 0 40px;
-  z-index: 100;
+  z-index: 10;
 `;
 
 export const StyledNavBarContent = styled.div`
@@ -33,5 +33,18 @@ export const StyledNavLink = styled.li`
     padding: 10px 12px;
     border-bottom: ${({ active, theme }) =>
       active ? `${theme.borderTertiary} solid 3px` : 'none'};
+  }
+`;
+
+export const StyledConnectDisclaimer = styled.p`
+  font-size: 12px;
+  color: ${(props) => props.theme.textPrimary};
+  margin: 0;
+  & a {
+    background: linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
   }
 `;

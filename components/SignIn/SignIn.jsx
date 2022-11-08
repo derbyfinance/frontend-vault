@@ -5,10 +5,12 @@ import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import axios from 'axios';
-
+import ConnectVia from './ConnectVia/ConnectVia';
+import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
+import { SignInContainer } from './SignIn.styled';
 function SignIn() {
-  const { connectAsync } = useConnect();
-  const { disconnectAsync } = useDisconnect();
+  const { connectAsync, error } = useConnect();
+  const { disconnectAsync, disconnect } = useDisconnect();
   const { isConnected } = useAccount();
   const { signMessageAsync } = useSignMessage();
   const { push } = useRouter();
@@ -31,11 +33,15 @@ function SignIn() {
     }
 
     if (wal === 'coin') {
-      const { account, chain } = await connectAsync({
-        connector: new CoinbaseWalletConnector({}),
-      });
-      userData.address = account;
-      userData.chain = chain.id;
+      try {
+        const { account, chain } = await connectAsync({
+          connector: new CoinbaseWalletConnector({}),
+        });
+        userData.address = account;
+        userData.chain = chain.id;
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     if (wal === 'wal') {
@@ -72,21 +78,47 @@ function SignIn() {
     push(url);
   };
 
+  const handleMetaMask = () => {
+    handleAuth('meta');
+  };
+
+  const handleCoinbaseWallet = () => {
+    handleAuth('coin');
+  };
+
+  const handleWalletConnect = () => {
+    handleAuth('wal');
+  };
+
+  const wallets = [
+    {
+      name: 'MetaMask',
+      icon: <MetaMask />,
+      onClick: handleMetaMask,
+    },
+    {
+      name: 'Coinbase Wallet',
+      icon: <Coinbase />,
+      onClick: handleCoinbaseWallet,
+    },
+    {
+      name: 'WalletConnect',
+      icon: <WalletConnect />,
+      onClick: handleWalletConnect,
+    },
+  ];
+
   return (
-    <div>
-      <h3>Web3 Authentication</h3>
-      <button onClick={() => handleAuth('meta')}>
-        Authenticate via Metamask
-      </button>
-      <br />
-      <button onClick={() => handleAuth('coin')}>
-        Authenticate via Coinbase
-      </button>
-      <br />
-      <button onClick={() => handleAuth('wal')}>
-        Authenticate via Wallet Connect
-      </button>
-    </div>
+    <SignInContainer>
+      {wallets.map(({ icon, name, onClick }, index) => (
+        <ConnectVia
+          key={index}
+          clickHandler={onClick}
+          svg={icon}
+          walletName={name}
+        />
+      ))}
+    </SignInContainer>
   );
 }
 

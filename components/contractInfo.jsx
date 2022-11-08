@@ -5,9 +5,13 @@ function ContractInfo() {
   const [exchangeRate, setExchangeRate] = useState('');
 
   useEffect(() => {
-    axios.get('/api/contract/readContract').then(({ data }) => {
-      setExchangeRate(data.exchangeRate);
-    }, []);
+    try {
+      axios.get('/api/contract/readContract').then(({ data }) => {
+        setExchangeRate(data.exchangeRate);
+      }, []);
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   return (

@@ -66,6 +66,7 @@ body {
 export const lightTheme = {
   textMain: '#160344',
   textSecondary: '#fff',
+  textTertiary: '#121212',
   textFaded: '#a9a6ae',
   textWalletInfo: '#121212',
   backgroundMain: '#fff',
@@ -85,6 +86,7 @@ export const darkTheme = {
   textSecondary: '#fff',
   textFaded: '#a9a6ae',
   textWalletInfo: '#121212',
+  textTertiary: '#121212',
   backgroundMain: '#000',
   headerMain: '#fe5e76',
   iconColor: '#fff',

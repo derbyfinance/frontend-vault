@@ -14,3 +14,8 @@ export { default as Rewards } from './Rewards';
 export { default as Yield } from './Yield';
 export { default as WavesBackgroundBottom } from './WavesBackgroundBottom';
 export { default as MediumFooter } from './MediumFooter';
+export { default as ArrowRight } from './ArrowRight';
+export { default as DFConnectIcon } from './DFConnectIcon';
+export { default as MetaMask } from './MetaMask';
+export { default as Coinbase } from './Coinbase';
+export { default as WalletConnect } from './WalletConnect';

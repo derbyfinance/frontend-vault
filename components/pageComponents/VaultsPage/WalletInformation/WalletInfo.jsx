@@ -1,13 +1,13 @@
 import React from 'react';
-import { WalletInfoLogo } from '@icons/index';
-import { StyledWalletInfoContainer } from './WalletInfo.styled';
-import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
 import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
 import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
+import { useAccount, useDisconnect } from 'wagmi';
 const WalletInfo = () => {
-  const isConnected = false;
+  const { disconnect } = useDisconnect();
+  const { isConnected } = useAccount();
   return (
     <div>
+      <button onClick={() => disconnect()}>disconnect</button>
       {isConnected ? <WalletInfoConnected /> : <WalletInfoNotConnected />}
     </div>
   );

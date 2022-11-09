@@ -36,7 +36,7 @@ export const StyledNavLink = styled.li`
   }
 `;
 
-export const StyledConnectDisclaimer = styled.p`
+export const StyledConnectDisclaimer = styled.div`
   font-size: 12px;
   color: ${(props) => props.theme.textPrimary};
   margin-top: 54px;
@@ -45,7 +45,6 @@ export const StyledConnectDisclaimer = styled.p`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
     margin-left: 4px;
   }
 `;

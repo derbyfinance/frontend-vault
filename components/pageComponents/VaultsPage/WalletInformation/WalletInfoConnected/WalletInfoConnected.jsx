@@ -19,21 +19,21 @@ const WalletInfoConnected = () => {
   return (
     <WalletInfoConnectedStyled>
       <StyledWalletHoldings>
-        <div>Wallet Holdings</div> <div>{walletAmount}</div>
+        Wallet Holdings <span>{walletAmount}</span>
       </StyledWalletHoldings>
-      <StyledWalletData>
+      <div>
         {dummyData.map((item, index) => {
           return (
             <StyledConnectedItem key={index}>
               <StyledConnectedLeftWrapper>
                 {item.icon}
-                <p>{item.itemName}</p>
+                {item.itemName}
               </StyledConnectedLeftWrapper>
-              <p>{item.amount}</p>
+              {item.amount}
             </StyledConnectedItem>
           );
         })}
-      </StyledWalletData>
+      </div>
       <ClaimRewards>Claim Rewards</ClaimRewards>
     </WalletInfoConnectedStyled>
   );

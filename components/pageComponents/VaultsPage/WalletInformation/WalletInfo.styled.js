@@ -40,9 +40,6 @@ export const StyledConnectedItem = styled.div`
 export const StyledWalletHoldings = styled.div`
   display: flex;
   gap: 80px;
-  & > div {
-    white-space: nowrap;
-  }
 `;
 
 export const StyledConnectedLeftWrapper = styled.div`

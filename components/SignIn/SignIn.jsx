@@ -25,11 +25,15 @@ function SignIn() {
     const userData = { network: 'evm' };
 
     if (wal === 'meta') {
-      const { account, chain } = await connectAsync({
-        connector: new MetaMaskConnector({}),
-      });
-      userData.address = account;
-      userData.chain = chain.id;
+      try {
+        const { account, chain } = await connectAsync({
+          connector: new MetaMaskConnector({}),
+        });
+        userData.address = account;
+        userData.chain = chain.id;
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     if (wal === 'coin') {
@@ -45,11 +49,15 @@ function SignIn() {
     }
 
     if (wal === 'wal') {
-      const { account, chain } = await connectAsync({
-        connector: new WalletConnectConnector({ options: { qrcode: true } }),
-      });
-      userData.address = account;
-      userData.chain = chain.id;
+      try {
+        const { account, chain } = await connectAsync({
+          connector: new WalletConnectConnector({ options: { qrcode: true } }),
+        });
+        userData.address = account;
+        userData.chain = chain.id;
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     console.log('Sending Connected Account and Chain ID to Moralis Auth API');

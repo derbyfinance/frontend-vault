@@ -2,6 +2,7 @@ import { ClaimRewards } from '@components/MainButton/MainButton.styled';
 import { Portfolio, Rewards, Yield } from '@icons/index';
 import React from 'react';
 import {
+  StyledAmountConnected,
   StyledConnectedItem,
   StyledConnectedLeftWrapper,
   StyledWalletData,
@@ -29,7 +30,9 @@ const WalletInfoConnected = () => {
                 {item.icon}
                 {item.itemName}
               </StyledConnectedLeftWrapper>
-              {item.amount}
+              <StyledAmountConnected isBalanced={index === 1}>
+                {item.amount}
+              </StyledAmountConnected>
             </StyledConnectedItem>
           );
         })}

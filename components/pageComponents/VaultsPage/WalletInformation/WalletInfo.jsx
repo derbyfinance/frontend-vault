@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
 import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
 import { useAccount, useDisconnect } from 'wagmi';
+import StyledMainButton from '@components/MainButton/MainButton.styled';
 const WalletInfo = () => {
   const { disconnect } = useDisconnect();
   const { isConnected } = useAccount();
@@ -10,10 +11,12 @@ const WalletInfo = () => {
     setConnected(isConnected);
   }, [isConnected]);
   return (
-    <div>
-      <button onClick={() => disconnect()}>disconnect</button>
+    <>
       {connected ? <WalletInfoConnected /> : <WalletInfoNotConnected />}
-    </div>
+      {/* <StyledMainButton onClick={() => disconnect()}>
+        disconnect
+      </StyledMainButton> */}
+    </>
   );
 };
 

@@ -69,6 +69,9 @@ export const StyledCircle = styled.div`
 `;
 
 export const StyledNetworkIcon = styled.div`
+  & img {
+    transform: rotate(9deg);
+  }
   position: absolute;
   right: 70px;
   top: 30px;

@@ -1,15 +1,16 @@
+import { useEffect } from 'react';
 import Head, { defaultHead } from 'next/head';
-import { getSession } from 'next-auth/react';
 import { useAccount, useNetwork } from 'wagmi';
+import { getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 import User from '../components/user';
 import { SendTransaction } from '../components/sendTransaction';
 import SignIn from '../components/SignIn/SignIn';
 import ContractInfo from '../components/contractInfo';
 import { Deposit } from '../components/deposit';
 import Layout from '../components/Layout/Layout';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-export default function Home({ session, ...props }) {
+
+const Home = ({ session, ...props }) => {
   const router = useRouter();
   useEffect(() => {
     if (router.pathname === '/') router.push('/vaults');
@@ -25,10 +26,12 @@ export default function Home({ session, ...props }) {
       <Deposit />
     </>
   );
-}
-export async function getServerSideProps(context) {
+};
+
+export default Home;
+export const getServerSideProps = async (context) => {
   const session = await getSession(context);
   return {
     props: { session: session },
   };
-}
+};

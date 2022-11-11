@@ -75,10 +75,13 @@ export const lightTheme = {
   buttonMain: '#39079b',
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
+  gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   borderTertiary: '#f13abc',
   listHover: '#f5f5f5',
+  textBalancePositive: '#00c853',
+  textBalanceNegative: '#d50000',
 };
 
 export const darkTheme = {
@@ -93,8 +96,11 @@ export const darkTheme = {
   buttonMain: '#39079b',
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
+  gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   borderTertiary: '#f13abc',
   listHover: '#f5f5f5',
+  textBalancePositive: '#00c853',
+  textBalanceNegative: '#d50000',
 };

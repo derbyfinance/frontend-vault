@@ -6,7 +6,6 @@ export const StyledNotConnectedWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
-  /* align-content: center; */
   text-align: center;
   color: ${(props) => props.theme.textSecondary};
   background: ${({ theme }) => theme.gradientWallet};
@@ -53,7 +52,8 @@ export const StyledConnectedLeftWrapper = styled.div`
 
 export const StyledAmountConnected = styled.div`
   font-weight: ${(props) => (props.isBalanced ? '400' : 'black')};
-  color: ${(props) => (props.isBalanced ? '#00FF38' : 'black')};
+  color: ${(props) =>
+    props.isBalanced ? `${props.theme.textBalancePositive}` : 'black'};
 `;
 
 export const StyledWalletData = styled.div``;

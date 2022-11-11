@@ -7,7 +7,7 @@ const config = {
   timeout: 60,
 };
 
-export default async function handler(req, res) {
+const handler = async (req, res) => {
   const { address, chain, network } = req.body;
 
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
@@ -25,4 +25,6 @@ export default async function handler(req, res) {
     res.status(400).json({ error });
     console.error(error);
   }
-}
+};
+
+export default handler;

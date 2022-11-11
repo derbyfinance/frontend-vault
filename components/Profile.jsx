@@ -6,7 +6,7 @@ import {
   useEnsName,
 } from 'wagmi';
 
-function Profile() {
+const Profile = () => {
   const { address, connector, isConnected } = useAccount();
   const { data: ensAvatar } = useEnsAvatar({ addressOrName: address });
   const { data: ensName } = useEnsName({ address });
@@ -44,6 +44,6 @@ function Profile() {
       {error && <div>{error.message}</div>}
     </div>
   );
-}
+};
 
 export default Profile;

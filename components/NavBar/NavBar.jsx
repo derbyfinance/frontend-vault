@@ -1,18 +1,11 @@
 import ConnectWalletModal from '@components/Modal/ConnectWalletModal/ConnectWalletModal';
-import Modal from '@components/Modal/Modal';
-import {
-  StyledModalConnectOptions,
-  StyledModalLogoAndText,
-} from '@components/Modal/Modal.styled';
-import SignIn from '@components/SignIn/SignIn';
-import { DFConnectIcon, Logo } from '@icons/index';
+import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import DarkThemeButton from '../DarkThemeButton/DarkThemeButton';
 import MainButton from '../MainButton/MainButton';
 import {
-  StyledConnectDisclaimer,
   StyledNavBarContent,
   StyledNavBarWrapper,
   StyledNavLink,
@@ -22,18 +15,9 @@ import {
 const NavBar = ({ toggleTheme, isDark }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  const openModal = () => setIsOpen(true);
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const closeModal = () => setIsOpen(false);
 
   const router = useRouter();
 

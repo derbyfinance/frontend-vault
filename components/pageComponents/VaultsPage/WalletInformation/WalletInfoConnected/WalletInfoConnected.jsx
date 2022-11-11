@@ -5,41 +5,55 @@ import {
   StyledAmountConnected,
   StyledConnectedItem,
   StyledConnectedLeftWrapper,
-  StyledWalletData,
   StyledWalletHoldings,
   WalletInfoConnectedStyled,
 } from '../WalletInfo.styled';
-
+//mock temporary data
+const walletAmount = 1000;
+const mockData = {
+  portfolioAmount: 11645,
+  yieldAmount: '+935,86',
+  rewardsAmount: 11645,
+};
+const WalletInfoConnectedRow = ({ icon, title, amount }) => {
+  return (
+    <StyledConnectedItem>
+      <StyledConnectedLeftWrapper>
+        {icon}
+        {title}
+      </StyledConnectedLeftWrapper>
+      <StyledAmountConnected isBalanced={title === 'Yield'}>
+        {amount}
+      </StyledAmountConnected>
+    </StyledConnectedItem>
+  );
+};
 const WalletInfoConnected = () => {
-  const walletAmount = 1000;
-  const dummyData = [
-    { icon: <Portfolio />, itemName: 'Portfolio', amount: 11645 },
-    { icon: <Yield />, itemName: 'Yield', amount: '+935,85' },
-    { icon: <Rewards />, itemName: 'Rewards', amount: 11645 },
-  ];
+  const { portfolioAmount, yieldAmount, rewardsAmount } = mockData;
   return (
     <WalletInfoConnectedStyled>
       <StyledWalletHoldings>
         Wallet Holdings <span>{walletAmount}</span>
       </StyledWalletHoldings>
       <div>
-        {dummyData.map((item, index) => {
-          return (
-            <StyledConnectedItem key={index}>
-              <StyledConnectedLeftWrapper>
-                {item.icon}
-                {item.itemName}
-              </StyledConnectedLeftWrapper>
-              <StyledAmountConnected isBalanced={index === 1}>
-                {item.amount}
-              </StyledAmountConnected>
-            </StyledConnectedItem>
-          );
-        })}
+        <WalletInfoConnectedRow
+          icon={<Portfolio />}
+          title={'Portfolio'}
+          amount={portfolioAmount}
+        />
+        <WalletInfoConnectedRow
+          icon={<Yield />}
+          title={'Yield'}
+          amount={yieldAmount}
+        />
+        <WalletInfoConnectedRow
+          icon={<Rewards />}
+          title={'Rewards'}
+          amount={rewardsAmount}
+        />
       </div>
       <ClaimRewards>Claim Rewards</ClaimRewards>
     </WalletInfoConnectedStyled>
   );
 };
-
 export default WalletInfoConnected;

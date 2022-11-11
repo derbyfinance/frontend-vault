@@ -16,8 +16,7 @@ export const ConnectYourWallet = styled(StyledMainButton)`
 `;
 
 export const ClaimRewards = styled(StyledMainButton)`
-  width: 208px;
-  height: 56px;
+  padding: 18px 58px;
   background: ${({ theme }) => theme.buttonMain};
 `;
 

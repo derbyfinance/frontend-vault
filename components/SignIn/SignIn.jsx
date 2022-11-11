@@ -8,7 +8,8 @@ import axios from 'axios';
 import ConnectVia from './ConnectVia/ConnectVia';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
 import { SignInContainer } from './SignIn.styled';
-function SignIn() {
+
+const SignIn = () => {
   const { connectAsync, error } = useConnect();
   const { disconnectAsync, disconnect } = useDisconnect();
   const { isConnected } = useAccount();
@@ -128,6 +129,6 @@ function SignIn() {
       ))}
     </SignInContainer>
   );
-}
+};
 
 export default SignIn;

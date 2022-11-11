@@ -41,7 +41,7 @@ export const StyledConnectDisclaimer = styled.div`
   color: ${(props) => props.theme.textPrimary};
   margin-top: 54px;
   & a {
-    background: linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%);
+    background: ${(props) => props.theme.gradientTwo};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

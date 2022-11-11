@@ -10,7 +10,7 @@ export const StyledConnectVia = styled.div`
   padding: 0 0 24px 0;
   border-bottom: 1px solid ${({ theme }) => theme.borderMain};
   &:last-child {
-    border-bottom: 1px solid transparent;
+    border-bottom: none;
   }
 `;
 

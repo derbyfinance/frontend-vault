@@ -1,7 +1,5 @@
 import { signOut } from 'next-auth/react';
-
-function User({ user }) {
-  console.log(user);
+const User = ({ user }) => {
   return (
     <div>
       <h4>User session:</h4>
@@ -9,6 +7,6 @@ function User({ user }) {
       <button onClick={() => signOut({ redirect: '/' })}>Sign out</button>
     </div>
   );
-}
+};
 
 export default User;

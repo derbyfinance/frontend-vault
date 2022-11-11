@@ -13,7 +13,7 @@ const client = createClient({
   autoConnect: true,
 });
 
-function MyApp({ Component, pageProps, isDark }) {
+const MyPage = ({ Component, pageProps, isDark }) => {
   return (
     <WagmiConfig client={client}>
       <SessionProvider session={pageProps.session} refetchInterval={0}>
@@ -21,6 +21,6 @@ function MyApp({ Component, pageProps, isDark }) {
       </SessionProvider>
     </WagmiConfig>
   );
-}
+};
 
-export default MyApp;
+export default MyPage;

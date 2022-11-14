@@ -12,7 +12,7 @@ const data = [
     coinShortName: 'USDC',
     balance: 32000,
     apy: '11.4 %',
-    members: '18000',
+    members: '180',
     tvl: '$ 1.7 M',
   },
   {
@@ -22,7 +22,7 @@ const data = [
     coinShortName: 'USDT',
     balance: 45000,
     apy: '16.4 %',
-    members: '1800',
+    members: '800',
     tvl: '$ 131.7 M',
   },
   {

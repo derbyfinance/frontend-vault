@@ -24,11 +24,10 @@ export const StyledNavLinks = styled.ul`
 `;
 
 export const StyledNavLink = styled.li`
-  font-weight: ${({ active }) => (active ? 600 : 300)};
+  font-weight: ${({ active }) => (active ? 500 : 300)};
   font-family: ${({ active }) => (active ? 'Slab-Medium' : 'Slab-Light')};
   & a {
     text-decoration: none;
-    font-family: Slab-Light;
     color: ${(props) => props.theme.textMain};
     padding: 10px 12px;
     border-bottom: ${({ active, theme }) =>

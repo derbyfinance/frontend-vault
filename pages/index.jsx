@@ -10,6 +10,13 @@ import ContractInfo from '../components/contractInfo';
 import { Deposit } from '../components/deposit';
 import Layout from '../components/Layout/Layout';
 
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  return {
+    props: { session: session },
+  };
+};
+
 const Home = ({ session, ...props }) => {
   const router = useRouter();
   useEffect(() => {
@@ -19,6 +26,7 @@ const Home = ({ session, ...props }) => {
 
   return (
     <>
+      <SignIn />
       <Layout></Layout>
       {session && <User user={session.user} />}
       <SendTransaction />
@@ -29,9 +37,3 @@ const Home = ({ session, ...props }) => {
 };
 
 export default Home;
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-  return {
-    props: { session: session },
-  };
-};

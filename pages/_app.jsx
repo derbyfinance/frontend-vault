@@ -10,7 +10,7 @@ const { provider, webSocketProvider } = configureChains(
 const client = createClient({
   provider,
   webSocketProvider,
-  autoConnect: true,
+  autoConnect: false,
 });
 
 const MyPage = ({ Component, pageProps, isDark }) => {

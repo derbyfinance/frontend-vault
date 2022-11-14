@@ -88,7 +88,7 @@ export const darkTheme = {
   textMain: '#fff',
   textSecondary: '#fff',
   textFaded: '#a9a6ae',
-  textWalletInfo: '#121212',
+  textWalletInfo: '#fff',
   textTertiary: '#121212',
   backgroundMain: '#000',
   headerMain: '#fe5e76',

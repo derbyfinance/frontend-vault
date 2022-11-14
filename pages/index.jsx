@@ -3,11 +3,11 @@ import Head, { defaultHead } from 'next/head';
 import { useAccount, useNetwork } from 'wagmi';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import User from '../components/user';
-import { SendTransaction } from '../components/sendTransaction';
+import User from '../components/User';
+import SendTransaction from '../components/SendTransaction';
 import SignIn from '../components/SignIn/SignIn';
-import ContractInfo from '../components/contractInfo';
-import { Deposit } from '../components/deposit';
+import ContractInfo from '../components/ContractInfo';
+import Deposit from '../components/Deposit';
 import Layout from '../components/Layout/Layout';
 
 export const getServerSideProps = async (context) => {

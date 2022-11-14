@@ -61,3 +61,5 @@ const SendTransaction = () => {
     </form>
   );
 };
+
+export default SendTransaction;

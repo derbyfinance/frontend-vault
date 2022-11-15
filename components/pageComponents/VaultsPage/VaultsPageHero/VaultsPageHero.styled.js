@@ -49,7 +49,7 @@ export const StyledValuePart = styled.div`
 `;
 
 export const StyledValue = styled.h2`
-  font-family: Slab-Medium;
+  font: ${({ theme }) => theme.font.slabMedium};
   font-size: 32px;
   line-height: 37.5px;
 `;
@@ -108,7 +108,8 @@ export const StyledChain = styled.div`
   cursor: pointer;
   &:hover {
     & div {
-      font-family: 'Roboto-Medium';
+      font: ${({ theme }) => theme.font.robotoMedium};
+      font-size: 20px;
     }
   }
 `;
@@ -120,12 +121,12 @@ export const StyledArrowIcon = styled.div`
 
 export const StyledSwitchTo = styled.h6`
   padding: 0 15px;
-  font-family: 'Roboto-Medium';
+  font: ${({ theme }) => theme.font.robotoMedium};
   font-size: 12px;
   color: ${({ theme }) => theme.textFaded};
 `;
 
 export const StyledChainTitle = styled.div`
-  font-family: 'Roboto-Light';
+  font: ${({ theme }) => theme.font.robotoLight};
   font-size: 20px;
 `;

@@ -7,8 +7,8 @@ export const StyledNotConnectedWrapper = styled.div`
   align-items: center;
   gap: 30px;
   text-align: center;
-  color: ${(props) => props.theme.textSecondary};
-  background: ${({ theme }) => theme.gradientWallet};
+  color: ${({ theme }) => theme.colors.textSecondary};
+  background: ${({ theme }) => theme.colors.gradientWallet};
   padding: 148px 50px 133px;
   border-radius: 6px;
 `;
@@ -18,11 +18,11 @@ export const WalletInfoConnectedStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: ${({ theme }) => theme.backgroundMain};
-  font-family: 'Roboto-Regular';
+  background: ${({ theme }) => theme.colors.backgroundMain};
+  background: ${({ theme }) => theme.font.robotoRegular};
   font-weight: 400;
-  color: ${({ theme }) => theme.textWalletInfo};
-  border: 1px solid ${({ theme }) => theme.borderMain};
+  color: ${({ theme }) => theme.colors.textWalletInfo};
+  border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   padding: 50px 24px 38px;
   gap: 100px;
@@ -32,10 +32,9 @@ export const StyledConnectedItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Roboto-Regular;
-  font-weight: 400;
+  font: ${({ theme }) => theme.font.robotoRegular};
   padding: 28px 0;
-  border-top: 1px solid ${({ theme }) => theme.borderMain};
+  border-top: 1px solid ${({ theme }) => theme.colors.borderMain};
   gap: 120px;
 `;
 
@@ -51,9 +50,9 @@ export const StyledConnectedLeftWrapper = styled.div`
 `;
 
 export const StyledAmountConnected = styled.div`
-  font-weight: ${(props) => (props.isBalanced ? '400' : 'black')};
+  font-weight: ${({ isBalanced }) => (isBalanced ? '400' : 'black')};
   color: ${(props) =>
-    props.isBalanced ? `${props.theme.textBalancePositive}` : 'black'};
+    props.isBalanced ? `${props.theme.colors.textBalancePositive}` : 'black'};
 `;
 
 export const StyledWalletData = styled.div``;

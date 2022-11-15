@@ -7,7 +7,7 @@ export const StyledLayoutWrapper = styled.div`
   padding: 0 64px;
   min-height: 100vh;
   width: 1440px;
-  background: ${(props) => props.theme.backgroundMain};
+  background: ${(props) => props.theme.colors.backgroundMain};
 `;
 
 export const StyledLayoutContainer = styled.div`

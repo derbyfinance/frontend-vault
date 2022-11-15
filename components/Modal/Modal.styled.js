@@ -18,15 +18,13 @@ export const StyledModalLogoAndText = styled.div`
   align-items: center;
   margin-bottom: 58px;
   & h3 {
-    line-height: 23px;
+    font: ${({ theme }) => theme.font.robotoMedium};
     font-size: 20px;
-    font-family: Roboto-Medium;
-    font-weight: 500;
-    color: ${({ theme }) => theme.textTertiary};
+    color: ${({ theme }) => theme.colors.textTertiary};
   }
   & h4 {
-    font-family: 'Roboto-Light';
-    font-weight: 300;
+    font: ${({ theme }) => theme.font.robotoLight};
+    font-size: 16px;
   }
 `;
 

@@ -76,7 +76,7 @@ const VaultsPageHero = () => {
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
             <EthereumNetwork />
-            <h2>{title}</h2>
+            <div>{title}</div>
             <StyledArrowIcon
               onClick={() => {
                 setChainsOpen((chainsOpen) => !chainsOpen);

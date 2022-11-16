@@ -85,6 +85,7 @@ const lightThemeColors = {
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
+  modalOverlay: 'rgba(0, 0, 0, 0.5)',
 };
 
 const darkThemeColors = {
@@ -106,6 +107,7 @@ const darkThemeColors = {
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
+  modalOverlay: 'rgba(0, 0, 0, 0.5)',
 };
 
 const font = {

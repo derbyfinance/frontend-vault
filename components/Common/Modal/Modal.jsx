@@ -1,13 +1,19 @@
 import React from 'react';
 import { StyledModal } from './Modal.styled';
-const customStyles = {
-  overlay: {
-    zIndex: 1000,
-    backgroundColor: `${({ theme }) => theme.colors.modalOverlay}`,
-    backgroundFilter: 'blur(2px)',
-  },
-};
+import { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
+
 const Modal = ({ children, isOpen, onClose }) => {
+  const themeContext = useContext(ThemeContext);
+
+  const customStyles = {
+    overlay: {
+      zIndex: 1000,
+      backgroundColor: themeContext.colors.modalOverlay,
+      backgroundFilter: 'blur(2px)',
+    },
+  };
+
   return (
     <StyledModal
       style={customStyles}

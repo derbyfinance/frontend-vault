@@ -20,7 +20,6 @@ export const WalletInfoConnectedStyled = styled.div`
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.backgroundMain};
   background: ${({ theme }) => theme.font.robotoRegular};
-  font-weight: 400;
   color: ${({ theme }) => theme.colors.textWalletInfo};
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;

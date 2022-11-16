@@ -60,7 +60,7 @@ const SignIn = () => {
           userData.address = account;
           userData.chain = chain.id;
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
 
@@ -89,7 +89,7 @@ const SignIn = () => {
 
       push(url);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 

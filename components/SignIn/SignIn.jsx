@@ -1,6 +1,7 @@
 import { signIn } from 'next-auth/react';
 import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
 import { useRouter } from 'next/router';
+import { walletNames } from 'Constants/wallet';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -26,7 +27,7 @@ const SignIn = () => {
 
       const userData = { network: 'evm' };
 
-      if (wal === 'meta') {
+      if (wal === walletNames.metaMask) {
         try {
           const { account, chain } = await connectAsync({
             connector: new MetaMaskConnector({}),
@@ -38,7 +39,7 @@ const SignIn = () => {
         }
       }
 
-      if (wal === 'coin') {
+      if (wal === walletNames.coinBase) {
         try {
           const { account, chain } = await connectAsync({
             connector: new CoinbaseWalletConnector({}),
@@ -50,7 +51,7 @@ const SignIn = () => {
         }
       }
 
-      if (wal === 'wal') {
+      if (wal === walletNames.walletConnect) {
         try {
           const { account, chain } = await connectAsync({
             connector: new WalletConnectConnector({

@@ -1,4 +1,4 @@
-import Table from '@components/Table/Table';
+import Table from '@components/Common/Table/Table';
 import React from 'react';
 import { StyledCoinsListHeader } from './VaultsPageList.styled';
 

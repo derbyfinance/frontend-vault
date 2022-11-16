@@ -1,10 +1,10 @@
-import ConnectWalletModal from '@components/Modal/ConnectWalletModal/ConnectWalletModal';
+import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import DarkThemeButton from '../DarkThemeButton/DarkThemeButton';
-import MainButton from '../MainButton/MainButton';
+import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
+import MainButton from '../../Common/MainButton/MainButton';
 import {
   StyledNavBarContent,
   StyledNavBarWrapper,
@@ -48,7 +48,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
           <StyledNavLink>
-            <MainButton openModal={openModal} btnText="Connect Your Wallet" />
+            <MainButton onClick={openModal} btnText="Connect Your Wallet" />
           </StyledNavLink>
         </StyledNavLinks>
       </StyledNavBarContent>

@@ -3,7 +3,7 @@ import { StyledModal } from './Modal.styled';
 const customStyles = {
   overlay: {
     zIndex: 1000,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', //todo
+    backgroundColor: `${({ theme }) => theme.colors.modalOverlay}`,
     backgroundFilter: 'blur(2px)',
   },
 };

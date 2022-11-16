@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Footer from '@components/Footer/Footer';
-import NavBar from '@components/NavBar/NavBar';
+import Footer from '@components/Layout/Footer/Footer';
+import NavBar from '@components/Layout/NavBar/NavBar';
 import { StyledLayoutContainer, StyledLayoutWrapper } from './Layout.styled';
 import { darkTheme, GlobalStyles, lightTheme } from 'styled/ThemeConfig';
 import { ThemeProvider } from 'styled-components';

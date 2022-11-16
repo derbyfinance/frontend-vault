@@ -39,7 +39,7 @@ export const StyledInfoBlockWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 3px;
+  gap: 4px;
 `;
 
 export const StyledValuePart = styled.div`
@@ -48,10 +48,10 @@ export const StyledValuePart = styled.div`
   align-items: flex-start;
 `;
 
-export const StyledValue = styled.h2`
+export const StyledValue = styled.div`
   font: ${({ theme }) => theme.font.slabMedium};
   font-size: 32px;
-  line-height: 37.5px;
+  line-height: 38px;
 `;
 export const StyledDescription = styled.h4`
   font-size: 12px;
@@ -59,7 +59,7 @@ export const StyledDescription = styled.h4`
 `;
 
 export const StyledIcon = styled.div`
-  padding: 3px;
+  padding: 4px;
 `;
 
 export const StyledCircle = styled.div`
@@ -82,12 +82,12 @@ export const StyledChainsList = styled.div`
   border-radius: 28px;
   border: 1px solid ${({ theme }) => theme.borderMain};
   background: ${({ theme }) => theme.backgroundMain};
-  padding: 15px 0;
+  padding: 16px 0;
   min-width: 300px;
 `;
 
 export const StyledChainWrapper = styled.div`
-  padding: 0 15px;
+  padding: 0 16px;
   width: 100%;
   &:hover {
     background: ${({ theme }) => theme.listHover};
@@ -104,7 +104,7 @@ export const StyledChain = styled.div`
   align-items: center;
   gap: 14px;
   border-bottom: 1px solid ${({ theme }) => theme.borderMain};
-  padding: 15px 0;
+  padding: 16px 0;
   cursor: pointer;
   &:hover {
     & div {
@@ -119,8 +119,8 @@ export const StyledArrowIcon = styled.div`
   transition: transform 0.3s;
 `;
 
-export const StyledSwitchTo = styled.h6`
-  padding: 0 15px;
+export const StyledSwitchTo = styled.div`
+  padding: 0 16px;
   font: ${({ theme }) => theme.font.robotoMedium};
   font-size: 12px;
   color: ${({ theme }) => theme.textFaded};

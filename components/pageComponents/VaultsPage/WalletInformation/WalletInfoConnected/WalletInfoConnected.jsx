@@ -1,4 +1,4 @@
-import { ClaimRewards } from '@components/MainButton/MainButton.styled';
+import { ClaimRewards } from '@components/Common/MainButton/MainButton.styled';
 import { Portfolio, Rewards, Yield } from '@icons/index';
 import React from 'react';
 import {

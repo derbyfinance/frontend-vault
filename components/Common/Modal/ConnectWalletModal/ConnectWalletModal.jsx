@@ -1,4 +1,4 @@
-import { StyledConnectDisclaimer } from '@components/NavBar/NavBar.styled';
+import { StyledConnectDisclaimer } from '@components/Layout/NavBar/NavBar.styled';
 import SignIn from '@components/SignIn/SignIn';
 import { DFConnectIcon } from '@icons/index';
 import React, { useState } from 'react';

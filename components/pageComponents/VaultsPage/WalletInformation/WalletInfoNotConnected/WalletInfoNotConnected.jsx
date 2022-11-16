@@ -1,5 +1,5 @@
-import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
-import ConnectWalletModal from '@components/Modal/ConnectWalletModal/ConnectWalletModal';
+import { ConnectYourWallet } from '@components/Common/MainButton/MainButton.styled';
+import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 import { WalletInfoLogo } from '@icons/index';
 import React, { useState } from 'react';
 import { StyledNotConnectedWrapper } from '../WalletInfo.styled';

@@ -92,6 +92,14 @@ const chainsList = [
     members: 247,
   },
 ];
+const networkData = {
+  title: 'Ethereum Network',
+  totalValue: '$ 31.17M',
+  vaults: 5,
+  members: '2,177',
+};
+
+const { title, totalValue, vaults, members } = networkData;
 
 const NetworkInfoBlock = ({ icon, value, description }) => {
   return (

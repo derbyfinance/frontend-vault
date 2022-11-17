@@ -1,15 +1,21 @@
-import React from 'react';
-import { WalletInfoLogo } from '@icons/index';
-import { StyledWalletInfoContainer } from './WalletInfo.styled';
-import { ConnectYourWallet } from '@components/MainButton/MainButton.styled';
+import React, { useEffect, useState } from 'react';
+import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
+import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
+import { useAccount } from 'wagmi';
+
 const WalletInfo = () => {
-  return (
-    <StyledWalletInfoContainer>
-      <WalletInfoLogo />
-      <p>Go ahead, connect your wallet and try our super secure vault.</p>
-      <ConnectYourWallet>Connect Your Wallet</ConnectYourWallet>
-    </StyledWalletInfoContainer>
-  );
+  const { isConnected } = useAccount();
+  const [connected, setConnected] = useState();
+
+  useEffect(() => {
+    setConnected(isConnected);
+  }, [isConnected]);
+
+  if (connected) {
+    return <WalletInfoConnected />;
+  }
+
+  return <WalletInfoNotConnected />;
 };
 
 export default WalletInfo;

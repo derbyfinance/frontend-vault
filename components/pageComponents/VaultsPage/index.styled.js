@@ -4,6 +4,7 @@ export const StyledVaultsPageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  gap: 19px;
 `;
 
 export const StyledCoinsPart = styled.div`

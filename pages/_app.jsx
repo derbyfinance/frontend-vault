@@ -12,10 +12,10 @@ const { chains, provider, webSocketProvider } = configureChains(
 const client = createClient({
   provider,
   webSocketProvider,
-  autoConnect: true,
+  autoConnect: false,
 });
 
-function MyApp({ Component, pageProps, isDark }) {
+const MyPage = ({ Component, pageProps, isDark }) => {
   return (
     <Provider store={store}>
       <WagmiConfig client={client}>
@@ -25,6 +25,6 @@ function MyApp({ Component, pageProps, isDark }) {
       </WagmiConfig>
     </Provider>
   );
-}
+};
 
-export default MyApp;
+export default MyPage;

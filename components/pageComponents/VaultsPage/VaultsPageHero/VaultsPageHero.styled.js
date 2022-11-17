@@ -9,7 +9,7 @@ export const StyledHeroWrapper = styled.div`
   justify-content: space-between;
   padding: 24px 50px 46px 35px;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.borderMain};
+  border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   position: relative;
   overflow: hidden;
@@ -27,6 +27,10 @@ export const StyledNetworkTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  & div {
+    font-family: ${({ theme }) => theme.font.slabMedium};
+    font-size: 24px;
+  }
 `;
 
 export const StyledNetworkInfo = styled.div`
@@ -55,7 +59,7 @@ export const StyledValue = styled.div`
 `;
 export const StyledDescription = styled.h4`
   font-size: 12px;
-  color: ${({ theme }) => theme.textFaded};
+  color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledIcon = styled.div`
@@ -80,8 +84,8 @@ export const StyledChainsList = styled.div`
   left: 170px;
   z-index: 10;
   border-radius: 28px;
-  border: 1px solid ${({ theme }) => theme.borderMain};
-  background: ${({ theme }) => theme.backgroundMain};
+  border: 1px solid ${({ theme }) => theme.colors.borderMain};
+  background: ${({ theme }) => theme.colors.backgroundMain};
   padding: 16px 0;
   min-width: 300px;
 `;
@@ -90,7 +94,7 @@ export const StyledChainWrapper = styled.div`
   padding: 0 16px;
   width: 100%;
   &:hover {
-    background: ${({ theme }) => theme.listHover};
+    background: ${({ theme }) => theme.colors.listHover};
   }
   &:last-child {
     & div {
@@ -103,7 +107,7 @@ export const StyledChain = styled.div`
   display: flex;
   align-items: center;
   gap: 14px;
-  border-bottom: 1px solid ${({ theme }) => theme.borderMain};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
   padding: 16px 0;
   cursor: pointer;
   &:hover {
@@ -123,7 +127,7 @@ export const StyledSwitchTo = styled.div`
   padding: 0 16px;
   font: ${({ theme }) => theme.font.robotoMedium};
   font-size: 12px;
-  color: ${({ theme }) => theme.textFaded};
+  color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledChainTitle = styled.div`

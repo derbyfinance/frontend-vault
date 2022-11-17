@@ -76,6 +76,8 @@ const lightThemeColors = {
   headerMain: '#fe5e76',
   iconColor: '#000',
   buttonMain: '#39079b',
+  tabDepositWithdrawActive: '#f13abc',
+  buttonActive: '#fe5e76',
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
   gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
@@ -96,6 +98,7 @@ const darkThemeColors = {
   textTertiary: '#121212',
   backgroundMain: '#000',
   headerMain: '#fe5e76',
+  tabDepositWithdraw: '#f13abc',
   iconColor: '#fff',
   buttonMain: '#39079b',
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
@@ -111,13 +114,13 @@ const darkThemeColors = {
 };
 
 const font = {
-  robotoBold: ' 600 14px Roboto-Bold',
-  robotoMedium: '500 14px Roboto-Medium',
-  robotoRegular: '400 14px Roboto-Regular',
-  robotoLight: '300 14px Roboto-Light',
-  slabMedium: '500 14px Slab-Medium',
-  slabRegular: '400 14px Slab-Regular',
-  slabLight: '300 14px Slab-Light',
+  robotoBold: ' 600 20px Roboto-Bold',
+  robotoMedium: '500 20px Roboto-Medium',
+  robotoRegular: '400 20px Roboto-Regular',
+  robotoLight: '300 20px Roboto-Light',
+  slabMedium: '500 20px Slab-Medium',
+  slabRegular: '400 20px Slab-Regular',
+  slabLight: '300 20px Slab-Light',
 };
 
 export const lightTheme = {

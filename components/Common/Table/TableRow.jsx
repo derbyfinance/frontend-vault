@@ -1,10 +1,18 @@
 import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
+import DepositWithdrawalModal from '@components/DepositWithdrawalModal/DepositWithdrawalModal';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledRowCell, StyledRowItem } from './Table.styled';
 
 const TableRow = ({ rowData, isVaultsPage }) => {
   const { icon, coinName, coinShortName, balance, apy, members, tvl } = rowData;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+
+  const closeModal = () => setIsOpen(false);
+
   return (
     <StyledRowItem>
       <StyledRowCell>
@@ -18,7 +26,17 @@ const TableRow = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>{members}</StyledRowCell>
       <StyledRowCell>{tvl}</StyledRowCell>
       <StyledRowCell>
-        {isVaultsPage && <AddMoneyToVaultBtn>+ Add</AddMoneyToVaultBtn>}
+        {isVaultsPage && (
+          <>
+            <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
+            <DepositWithdrawalModal
+              isOpen={isOpen}
+              onClose={closeModal}
+              setIsOpen={setIsOpen}
+              APY={'5.43%'}
+            />
+          </>
+        )}
       </StyledRowCell>
     </StyledRowItem>
   );

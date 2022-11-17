@@ -28,7 +28,7 @@ export const StyledNetworkTitle = styled.div`
   align-items: center;
   gap: 10px;
   & div {
-    font-family: ${({ theme }) => theme.font.slabMedium};
+    font: ${({ theme }) => theme.font.slabMedium};
     font-size: 24px;
   }
 `;

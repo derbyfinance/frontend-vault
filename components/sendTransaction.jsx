@@ -7,7 +7,7 @@ import {
 } from 'wagmi';
 import { utils } from 'ethers';
 
-export function SendTransaction() {
+const SendTransaction = () => {
   const [to, setTo] = useState('');
   const [debouncedTo] = useDebounce(to, 500);
 
@@ -60,4 +60,6 @@ export function SendTransaction() {
       )}
     </form>
   );
-}
+};
+
+export default SendTransaction;

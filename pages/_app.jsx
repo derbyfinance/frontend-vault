@@ -10,10 +10,10 @@ const { provider, webSocketProvider } = configureChains(
 const client = createClient({
   provider,
   webSocketProvider,
-  autoConnect: true,
+  autoConnect: false,
 });
 
-function MyApp({ Component, pageProps, isDark }) {
+const MyPage = ({ Component, pageProps, isDark }) => {
   return (
     <WagmiConfig client={client}>
       <SessionProvider session={pageProps.session} refetchInterval={0}>
@@ -21,6 +21,6 @@ function MyApp({ Component, pageProps, isDark }) {
       </SessionProvider>
     </WagmiConfig>
   );
-}
+};
 
-export default MyApp;
+export default MyPage;

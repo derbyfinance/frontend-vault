@@ -7,19 +7,19 @@ export const StyledTable = styled.table`
 
 export const StyledColumnHeader = styled.th`
   text-align: left;
+  font: ${({ theme }) => theme.font.robotoMedium};
   font-size: 16px;
-  font-family: Roboto-Medium;
-  color: ${({ theme }) => theme.textFaded};
+  color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledRowItem = styled.tr`
   vertical-align: middle;
   border-collapse: collapse;
-  border-bottom: 1px solid ${({ theme }) => theme.borderMain};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
 `;
 
 export const StyledRowCell = styled.td`
-  font-family: Roboto-Regular;
+  font: ${({ theme }) => theme.font.robotoRegular};
   font-size: 18px;
   vertical-align: middle;
   padding: 12px;
@@ -27,12 +27,13 @@ export const StyledRowCell = styled.td`
     display: flex;
     align-items: center;
     gap: 12px;
-    font-family: Slab-Medium;
+    font: ${({ theme }) => theme.font.slabMedium};
     font-size: 20px;
     & span {
-      font-family: Roboto-Medium;
+      font: ${({ theme }) => theme.font.robotoMedium};
+
       font-size: 14px;
-      color: ${({ theme }) => theme.textFaded};
+      color: ${({ theme }) => theme.colors.textFaded};
     }
   }
 `;

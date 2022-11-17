@@ -6,7 +6,7 @@ import {
 } from 'wagmi';
 import { useDebounce } from 'use-debounce';
 
-export function Deposit() {
+const Deposit = () => {
   const [amount, setAmount] = useState(0);
   const debouncedAmount = useDebounce(amount, 500);
 
@@ -73,4 +73,6 @@ export function Deposit() {
       )}
     </form>
   );
-}
+};
+
+export default Deposit;

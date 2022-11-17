@@ -13,7 +13,7 @@ export const StyledFooterLinks = styled.ul`
   gap: 30px;
   & a {
     text-decoration: none;
-    color: ${(props) => props.theme.textMain};
+    color: ${({ theme }) => theme.colors.textMain};
   }
 `;
 

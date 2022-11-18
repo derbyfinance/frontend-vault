@@ -83,9 +83,14 @@ export const StyledDisclaimerDeposit = styled.div`
   font-size: 10px;
   text-align: center;
   padding-top: 20px;
+  padding-bottom: 40px;
+`;
+
+export const DepositWithdrawButtonContainer = styled.div`
+  padding: 28px 0px;
+  text-align: center;
 `;
 
 export const StyledModalDepositButton = styled.div`
-  padding: 28px 0px;
   text-align: center;
 `;

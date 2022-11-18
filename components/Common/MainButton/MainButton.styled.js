@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 const StyledMainButton = styled.button`
   background: ${({ theme }) => theme.colors.gradientMain};
+  font: ${({ theme }) => theme.font.slabRegular};
+  color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: 6px;
   padding: 12px 20px;
-  font: ${({ theme }) => theme.font.slabMedium};
-  font-size: 20px;
-
+  font-size: 16px;
   cursor: pointer;
   border: none;
   outline: none;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  min-width: 208px;
 `;
 
 export const ConnectYourWallet = styled(StyledMainButton)`

@@ -62,7 +62,7 @@ const WithdrawTab = ({ financialActionType }) => {
         There is sufficient liquidity to withdraw instantly'
       </StyledDisclaimerDeposit>
       <StyledModalDepositButton>
-        <MainButton btnText={financialActionTypes.WITHDRAW} minWidth="200px" />
+        <MainButton btnText={financialActionTypes.WITHDRAW} />
       </StyledModalDepositButton>
     </>
   );

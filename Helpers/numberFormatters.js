@@ -10,6 +10,5 @@ export const percentFormatter = (value) => {
   return new Intl.NumberFormat('en-US', {
     style: 'percent',
     minimumIntegerDigits: 1,
-    unit: 'percent',
   }).format(value);
 };

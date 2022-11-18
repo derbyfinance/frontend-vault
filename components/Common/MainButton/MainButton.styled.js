@@ -27,7 +27,6 @@ export const AddMoneyToVaultBtn = styled.button`
   background-color: transparent;
   font-family: 'Slab-Medium';
   color: ${({ theme }) => theme.colors.textMain};
-  color: ${({ theme }) => theme.colors.textMain};
   border-radius: 6px;
   padding: 10px 20px;
 `;

@@ -29,21 +29,21 @@ export const StyledDepositWithdrawButtons = styled.div`
     padding-bottom: 26px;
     text-align: center;
     cursor: pointer;
-    color: ${({ isDeposit, theme }) =>
-      isDeposit ? theme.colors.textMain : theme.colors.buttonActive};
+    color: ${({ financialActionType, theme }) =>
+      financialActionType ? theme.colors.textMain : theme.colors.buttonActive};
   }
 
   & > div:first-child {
-    color: ${({ isDeposit, theme }) =>
-      isDeposit ? theme.colors.buttonActive : theme.colors.textMain};
-    border-bottom: ${({ isDeposit, theme }) =>
-      isDeposit ? `2px solid ${theme.colors.buttonActive}` : 'none'};
+    color: ${({ financialActionType, theme }) =>
+      financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
+    border-bottom: ${({ financialActionType, theme }) =>
+      financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
   }
   & > div:last-child {
-    color: ${({ isDeposit, theme }) =>
-      isDeposit ? theme.colors.textMain : theme.colors.buttonActive};
-    border-bottom: ${({ isDeposit, theme }) =>
-      isDeposit ? 'none' : `2px solid ${theme.colors.buttonActive}`};
+    color: ${({ financialActionType, theme }) =>
+      financialActionType ? theme.colors.textMain : theme.colors.buttonActive};
+    border-bottom: ${({ financialActionType, theme }) =>
+      financialActionType ? 'none' : `2px solid ${theme.colors.buttonActive}`};
   }
 `;
 
@@ -52,8 +52,12 @@ export const StyledAPY = styled.div`
   text-align: end;
   font: ${({ theme }) => theme.font.robotoLight};
   font-size: 12px;
-  & > span {
-    font: ${({ theme }) => theme.font.robotoBold};
+  & > span:first-child {
+    font: ${({ theme }) => theme.font.robotoLight};
+    font-size: 12px;
+  }
+  & > span:last-child {
+    font: ${({ theme }) => theme.font.robotoMedium};
     font-size: 12px;
   }
 `;

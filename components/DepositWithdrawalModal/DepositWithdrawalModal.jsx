@@ -14,31 +14,67 @@ import {
 } from './DepositWithdrawalModal.styled';
 import DepositWithdrawInput from './DepositWithdrawInput';
 import DepositWithdrawRight from './DepositWithdrawRight';
-import StyledMainButton from '@components/Common/MainButton/MainButton.styled';
+import MainButton from '@components/Common/MainButton/MainButton';
+import { financialActionTypes } from 'Constants/wallet';
+import { currencyFormatter, percentFormatter } from 'Helpers/numberFormatters';
+import DepositTab from './DepositTab/DepositTab';
+import WithdrawTab from './WithdrawTab/WithdrawTab';
 
-const DepositWithdrawalModal = ({ isOpen, onClose, APY, gasPrice }) => {
-  const [isDeposit, setIsDeposit] = useState(true);
+const DepositWithdrawalModal = ({
+  isOpen,
+  onClose,
+  APY = 187,
+  gasPrice = 187,
+  availableLiquidity = 187000,
+}) => {
+  const [financialActionType, setFinancialActionType] = useState(
+    financialActionTypes.DEPOSIT,
+  );
 
-  const handleDeposit = () => setIsDeposit(true);
+  const handleDeposit = () =>
+    setFinancialActionType(financialActionTypes.DEPOSIT);
 
-  const handleWithdraw = () => setIsDeposit(false);
+  const handleWithdraw = () =>
+    setFinancialActionType(financialActionTypes.WITHDRAW);
+
+  const withdrawButton = () => (
+    <MainButton btnText={financialActionTypes.WITHDRAW} />
+  );
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
+      {/* {financialActionType === financialActionTypes.DEPOSIT ? (
+        <DepositTab />
+      ) : (
+        <WithdrawTab />
+      )} */}
       <StyledDepositWithdrawalModalContainer>
         <StyledTitle>USDC Vault</StyledTitle>
         <StyledClose onClick={onClose}>
           <CloseButton />
         </StyledClose>
-        <StyledDepositWithdrawButtons isDeposit={isDeposit}>
+        <StyledDepositWithdrawButtons
+          financialActionType={
+            financialActionType === financialActionTypes.DEPOSIT
+          }
+        >
           <div onClick={handleDeposit}>Deposit</div>
           <div onClick={handleWithdraw}>Withdraw</div>
         </StyledDepositWithdrawButtons>
-        <StyledInputsContainer>
+        {financialActionType === financialActionTypes.DEPOSIT ? (
+          <DepositTab />
+        ) : (
+          <WithdrawTab />
+        )}
+        {/* <StyledInputsContainer>
           <DepositWithdrawInput
-            label="YOU DEPOSIT"
+            label={
+              financialActionType === financialActionTypes.DEPOSIT
+                ? 'YOU DEPOSIT'
+                : 'YOU WITHDRAW'
+            }
             placeholder="0.00"
-            right={
+            endAddOn={
               <DepositWithdrawRight
                 balance={1553}
                 coinIcon={<USDC />}
@@ -50,7 +86,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose, APY, gasPrice }) => {
           <DepositWithdrawInput
             label={'YOU GET'}
             placeholder="0.00"
-            right={
+            endAddOn={
               <DepositWithdrawRight
                 balance={20}
                 coinIcon={<DFUSDC />}
@@ -60,21 +96,32 @@ const DepositWithdrawalModal = ({ isOpen, onClose, APY, gasPrice }) => {
             }
           />
         </StyledInputsContainer>
-        <StyledAPY>
-          APY: <span>{APY}</span>
-        </StyledAPY>
+        {financialActionType === financialActionTypes.DEPOSIT ? (
+          <StyledAPY>
+            <span>APY</span>
+            <span>{percentFormatter(APY)}</span>
+          </StyledAPY>
+        ) : (
+          <StyledAPY>
+            <span>Available Liquidity </span>
+            <span>{currencyFormatter(availableLiquidity)}</span>
+          </StyledAPY>
+        )}
         <StyledGasPrice>
           <Gas />
           <span>{(gasPrice = 541)}</span>
           <I />
         </StyledGasPrice>
         <StyledDisclaimerDeposit>
-          By depositing, I acknowledge that withdrawals can be subject to fixed
-          intervals
+          {financialActionType === financialActionTypes.DEPOSIT
+            ? 'By depositing, I acknowledge that withdrawals can be subject to fixed intervals'
+            : 'There is sufficient liquidity to withdraw instantly'}
         </StyledDisclaimerDeposit>
         <StyledModalDepositButton>
-          <StyledMainButton>Deposit USDC</StyledMainButton>
-        </StyledModalDepositButton>
+          {financialActionType === financialActionTypes.DEPOSIT
+            ? depositButton()
+            : withdrawButton()}
+        </StyledModalDepositButton> */}
       </StyledDepositWithdrawalModalContainer>
     </Modal>
   );

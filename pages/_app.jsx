@@ -3,9 +3,12 @@ import { infuraProvider } from 'wagmi/providers/infura';
 import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.goerli, chain.mainnet, chain.arbitrum, chain.optimism, chain.polygon],
+  [chain.mainnet, chain.polygon, chain.arbitrum, chain.optimism],
   [infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID })],
 );
 
@@ -13,9 +16,14 @@ const client = createClient({
   provider,
   webSocketProvider,
   autoConnect: false,
+  connectors: [
+    new MetaMaskConnector({ chains }),
+    new CoinbaseWalletConnector({ chains }),
+    new WalletConnectConnector({ chains }),
+  ],
 });
 
-const MyPage = ({ Component, pageProps, isDark }) => {
+const MyPage = ({ Component, pageProps }) => {
   return (
     <Provider store={store}>
       <WagmiConfig client={client}>

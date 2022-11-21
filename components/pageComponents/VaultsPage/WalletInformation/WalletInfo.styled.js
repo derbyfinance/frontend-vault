@@ -7,7 +7,7 @@ export const StyledNotConnectedWrapper = styled.div`
   align-items: center;
   gap: 30px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.textSecondary};
+  color: ${({ theme }) => theme.colors.textPrimary};
   background: ${({ theme }) => theme.colors.gradientWallet};
   padding: 148px 50px 133px;
   border-radius: 6px;
@@ -19,12 +19,14 @@ export const WalletInfoConnectedStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.backgroundMain};
-  background: ${({ theme }) => theme.font.robotoRegular};
-  color: ${({ theme }) => theme.colors.textWalletInfo};
+  font: ${({ theme }) => theme.font.slabMedium};
+  color: ${({ theme }) => theme.colors.textMain};
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   padding: 50px 24px 38px;
   gap: 100px;
+  height: 542px;
+  width: 425px;
 `;
 
 export const StyledConnectedItem = styled.div`
@@ -35,6 +37,7 @@ export const StyledConnectedItem = styled.div`
   padding: 28px 0;
   border-top: 1px solid ${({ theme }) => theme.colors.borderMain};
   gap: 120px;
+  color: ${({ theme }) => theme.colors.textMain};
 `;
 
 export const StyledWalletHoldings = styled.div`

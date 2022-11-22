@@ -7,7 +7,7 @@ export const StyledNotConnectedWrapper = styled.div`
   align-items: center;
   gap: 30px;
   text-align: center;
-  color: ${({ theme }) => theme.colors.textPrimary};
+  color: ${({ theme }) => theme.colors.textSecondary};
   background: ${({ theme }) => theme.colors.gradientWallet};
   padding: 148px 50px 133px;
   border-radius: 6px;

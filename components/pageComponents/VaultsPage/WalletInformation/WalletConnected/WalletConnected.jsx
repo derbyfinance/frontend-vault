@@ -1,26 +1,53 @@
-import { EyeOpen } from '@icons/index';
+import MainButton from '@components/Common/MainButton/MainButton';
+import { EyeOpen, Portfolio, Rewards } from '@icons/index';
 import React from 'react';
-import { StyledWalletConnectedContainer } from './WalletConnected.styled';
+import {
+  StyledConnectedCell,
+  StyledConnectedHeading,
+  StyledConnectedLogo,
+  StyledConnectedTitle,
+  StyledConnectedValue,
+  StyledWalletConnectedContainer,
+} from './WalletConnected.styled';
 
 const WalletConnected = () => {
   return (
     <StyledWalletConnectedContainer>
-      <div>
+      <StyledConnectedHeading>
         <div>Wallet Holdings</div>
         <div>
           <EyeOpen />
         </div>
-      </div>
+      </StyledConnectedHeading>
       <table>
         <tr>
-          <td>Portfolio</td>
-          <td>11645</td>
+          <StyledConnectedLogo>
+            <Portfolio />
+          </StyledConnectedLogo>
+          <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
+          <StyledConnectedValue>11645</StyledConnectedValue>
         </tr>
         <tr>
-          <td>Yield</td>
-          <td>+935,86</td>
+          <StyledConnectedLogo></StyledConnectedLogo>
+          <StyledConnectedTitle>Balance vault A</StyledConnectedTitle>
+          <StyledConnectedValue>7.656</StyledConnectedValue>
+        </tr>
+        <tr>
+          <StyledConnectedLogo></StyledConnectedLogo>
+          <StyledConnectedTitle>Balance vault B</StyledConnectedTitle>
+          <StyledConnectedValue>3.989</StyledConnectedValue>
+        </tr>
+        <tr>
+          <StyledConnectedLogo>
+            <Rewards />
+          </StyledConnectedLogo>
+          <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
+          <StyledConnectedValue>11645</StyledConnectedValue>
         </tr>
       </table>
+      <div>
+        <MainButton btnText="Stake Rewards" />
+      </div>
     </StyledWalletConnectedContainer>
   );
 };

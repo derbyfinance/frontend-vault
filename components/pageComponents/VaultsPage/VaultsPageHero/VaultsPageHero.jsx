@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
   StyledCircle,

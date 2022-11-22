@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNetwork } from 'wagmi';
+import { useAccount } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
   StyledCircle,
@@ -41,6 +41,7 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 };
 
 const VaultsPageHero = () => {
+  const { isConnected } = useAccount();
   const [chainsOpen, setChainsOpen] = useState(false);
   const arrowRef = useRef();
   const dropdownRef = useRef();
@@ -71,15 +72,17 @@ const VaultsPageHero = () => {
           <StyledNetworkTitle>
             <Image src={chainsIcons[chain?.id]} alt={`${chain?.name} image`} />
             <h2>{chain.name}</h2>
-            <StyledArrowIcon
-              onClick={() => {
-                setChainsOpen((chainsOpen) => !chainsOpen);
-              }}
-              isOpen={chainsOpen}
-              ref={arrowRef}
-            >
-              <ArrowDown isOpen={chainsOpen} />
-            </StyledArrowIcon>
+            {isConnected && (
+              <StyledArrowIcon
+                onClick={() => {
+                  setChainsOpen((chainsOpen) => !chainsOpen);
+                }}
+                isOpen={chainsOpen}
+                ref={arrowRef}
+              >
+                <ArrowDown isOpen={chainsOpen} />
+              </StyledArrowIcon>
+            )}
           </StyledNetworkTitle>
           <StyledNetworkInfo>
             <NetworkInfoBlock

@@ -1,8 +1,6 @@
 import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { SessionProvider } from 'next-auth/react';
-import { Provider } from 'react-redux';
-import { store } from 'redux/store';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -25,13 +23,11 @@ const client = createClient({
 
 const MyPage = ({ Component, pageProps }) => {
   return (
-    <Provider store={store}>
-      <WagmiConfig client={client}>
-        <SessionProvider session={pageProps.session} refetchInterval={0}>
-          <Component {...pageProps} />
-        </SessionProvider>
-      </WagmiConfig>
-    </Provider>
+    <WagmiConfig client={client}>
+      <SessionProvider session={pageProps.session} refetchInterval={0}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </WagmiConfig>
   );
 };
 

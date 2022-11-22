@@ -1,6 +1,6 @@
 import React from 'react';
 
-const I = () => {
+const Info = () => {
   return (
     <svg
       width="11"
@@ -18,4 +18,4 @@ const I = () => {
   );
 };
 
-export default I;
+export default Info;

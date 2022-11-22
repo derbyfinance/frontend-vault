@@ -1,8 +1,12 @@
+import React from 'react';
+
 import MainButton from '@components/Common/MainButton/MainButton';
-import { DFUSDC, Gas, I, USDC } from '@icons/index';
+import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter } from 'Helpers/numberFormatters';
-import React from 'react';
+
+import DepositWithdrawInput from '../DepositWithdrawInput';
+import DepositWithdrawRight from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
@@ -10,8 +14,6 @@ import {
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
-import DepositWithdrawInput from '../DepositWithdrawInput';
-import DepositWithdrawRight from '../DepositWithdrawRight';
 
 const WithdrawTab = ({ financialActionType }) => {
   const availableLiquidity = 187000; //backend
@@ -56,7 +58,7 @@ const WithdrawTab = ({ financialActionType }) => {
       <StyledGasPrice>
         <Gas />
         <span>{gasPrice}</span>
-        <I />
+        <Info />
       </StyledGasPrice>
       <StyledDisclaimerDeposit>
         There is sufficient liquidity to withdraw instantly'

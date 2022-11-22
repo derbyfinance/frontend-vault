@@ -1,24 +1,28 @@
 import React from 'react';
+
 import {
   StyledBalance,
-  StyledCoinName,
   StyledFlex,
   StyledFlexIcon,
-  StyledIcon,
   StyledMax,
   StyledRightWrapper,
-} from './DepositWithdrawRight.styled';
+} from './DepositWithdrawInputAdornment.styled';
 
-const DepositWithdrawRight = ({ coinIcon, coinName, balance, isMax }) => {
-  // isMax = true;
+const DepositWithdrawInputAdornment = ({
+  coinIcon,
+  coinName,
+  balance,
+  isMax,
+}) => {
+  isMax = true;
   return (
     <StyledRightWrapper>
       <StyledFlex>
         <StyledMax>{isMax ? 'MAX' : null}</StyledMax>
         <div>
           <StyledFlexIcon>
-            <StyledIcon>{coinIcon}</StyledIcon>
-            <StyledCoinName>{coinName}</StyledCoinName>
+            <div>{coinIcon}</div>
+            <div>{coinName}</div>
           </StyledFlexIcon>
           <StyledBalance>Balance: {balance}</StyledBalance>
         </div>
@@ -27,4 +31,4 @@ const DepositWithdrawRight = ({ coinIcon, coinName, balance, isMax }) => {
   );
 };
 
-export default DepositWithdrawRight;
+export default DepositWithdrawInputAdornment;

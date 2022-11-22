@@ -22,5 +22,5 @@ export { default as WalletConnect } from './WalletConnect';
 export { default as USDC } from './USDC';
 export { default as DFUSDC } from './DFUSDC';
 export { default as CloseButton } from './CloseButton';
-export { default as I } from './I';
+export { default as Info } from './Info';
 export { default as Gas } from './Gas';

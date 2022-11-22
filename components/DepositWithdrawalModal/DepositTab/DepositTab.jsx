@@ -1,8 +1,12 @@
+import React from 'react';
+
 import MainButton from '@components/Common/MainButton/MainButton';
-import { CloseButton, DFUSDC, Gas, I, USDC } from '@icons/index';
+import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter, percentFormatter } from 'Helpers/numberFormatters';
-import React from 'react';
+
+import DepositWithdrawInput from '../DepositWithdrawInput';
+import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
@@ -10,8 +14,6 @@ import {
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
-import DepositWithdrawInput from '../DepositWithdrawInput';
-import DepositWithdrawRight from '../DepositWithdrawRight';
 
 const DepositTab = ({ financialActionType }) => {
   const APY = 187; //backend
@@ -28,7 +30,7 @@ const DepositTab = ({ financialActionType }) => {
           }
           placeholder="0.00"
           endAddOn={
-            <DepositWithdrawRight
+            <DepositWithdrawInputAdornment
               balance={1553}
               coinIcon={<USDC />}
               coinName={'USDC'}
@@ -40,7 +42,7 @@ const DepositTab = ({ financialActionType }) => {
           label={'YOU GET'}
           placeholder="0.00"
           endAddOn={
-            <DepositWithdrawRight
+            <DepositWithdrawInputAdornment
               balance={20}
               coinIcon={<DFUSDC />}
               coinName={'dfUSDC'}
@@ -56,7 +58,7 @@ const DepositTab = ({ financialActionType }) => {
       <StyledGasPrice>
         <Gas />
         <span>{gasPrice}</span>
-        <I />
+        <Info />
       </StyledGasPrice>
       <StyledDisclaimerDeposit>
         By depositing, I acknowledge that withdrawals can be subject to fixed

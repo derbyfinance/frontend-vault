@@ -9,8 +9,6 @@ export const StyledMax = styled.button`
   background: none;
   cursor: pointer;
 `;
-export const StyledIcon = styled.div``;
-export const StyledCoinName = styled.div``;
 export const StyledBalance = styled.div`
   font: ${({ theme }) => theme.font.robotoLight};
   color: ${({ theme }) => theme.colors.textFaded};

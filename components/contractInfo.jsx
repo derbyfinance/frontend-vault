@@ -1,5 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+
+import axios from 'axios';
+
 const ContractInfo = () => {
   const [exchangeRate, setExchangeRate] = useState('');
 

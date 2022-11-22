@@ -9,7 +9,7 @@ const DepositWithdrawInput = ({ endAddOn, label, placeholder }) => {
   return (
     <StyledInputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput type="number" placeholder={placeholder} />
+      <StyledInput type="text" placeholder={placeholder} />
       {endAddOn}
     </StyledInputContainer>
   );

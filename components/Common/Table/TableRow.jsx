@@ -33,7 +33,7 @@ const TableRow = ({ rowData, isVaultsPage }) => {
               isOpen={isOpen}
               onClose={closeModal}
               setIsOpen={setIsOpen}
-              APY={5.43}
+              APY={apy}
             />
           </>
         )}

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledDepositWithdrawalModalContainer = styled.div`
-  height: 522px;
-  width: 359px;
   position: relative;
+  max-width: 360px;
 `;
 
 export const StyledTitle = styled.div`
@@ -24,29 +23,29 @@ export const StyledDepositWithdrawButtons = styled.div`
   font: ${({ theme }) => theme.font.robotoBold};
   margin-top: 44px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
-  & > div {
-    width: 100%;
-    padding-bottom: 26px;
-    text-align: center;
-    cursor: pointer;
-    color: ${({ financialActionType, theme }) =>
-      financialActionType ? theme.colors.textMain : theme.colors.buttonActive};
-  }
-
-  & > div:first-child {
-    color: ${({ financialActionType, theme }) =>
-      financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
-    border-bottom: ${({ financialActionType, theme }) =>
-      financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
-  }
-  & > div:last-child {
-    color: ${({ financialActionType, theme }) =>
-      financialActionType ? theme.colors.textMain : theme.colors.buttonActive};
-    border-bottom: ${({ financialActionType, theme }) =>
-      financialActionType ? 'none' : `2px solid ${theme.colors.buttonActive}`};
-  }
 `;
 
+export const StyledHandleWithdraw = styled.div`
+  color: ${({ financialActionType, theme }) =>
+    financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
+  border-bottom: ${({ financialActionType, theme }) =>
+    financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
+  width: 100%;
+  padding-bottom: 26px;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const StyledHandleDeposit = styled.div`
+  color: ${({ financialActionType, theme }) =>
+    financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
+  border-bottom: ${({ financialActionType, theme }) =>
+    financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
+  width: 100%;
+  padding-bottom: 26px;
+  text-align: center;
+  cursor: pointer;
+`;
 export const StyledAPY = styled.div`
   padding: 6px 6px;
   text-align: end;

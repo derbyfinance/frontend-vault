@@ -6,7 +6,7 @@ export const StyledInputContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 6px 6px;
+  padding: 6px;
   border-radius: 4px;
 `;
 
@@ -24,15 +24,7 @@ export const StyledLabel = styled.div`
 export const StyledInput = styled.input`
   width: 100%;
   border: none;
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
 
   font: ${({ theme }) => theme.font.robotoLight};
   font-size: 24px;
-  &[type='number'] {
-    -moz-appearance: textfield;
-  }
 `;

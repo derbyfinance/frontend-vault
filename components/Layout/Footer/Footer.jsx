@@ -1,6 +1,6 @@
+import React from 'react';
 import { Discord, Github, MediumFooter, Twitter } from '@icons/index';
 import Link from 'next/link';
-import React from 'react';
 import {
   StyledFooterLink,
   StyledFooterLinks,

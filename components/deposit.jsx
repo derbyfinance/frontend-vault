@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { useDebounce } from 'use-debounce';
 import {
-  usePrepareContractWrite,
   useContractWrite,
+  usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
-import { useDebounce } from 'use-debounce';
 
 const Deposit = () => {
   const [amount, setAmount] = useState(0);

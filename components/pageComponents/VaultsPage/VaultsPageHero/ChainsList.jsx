@@ -1,20 +1,19 @@
-import Image from 'next/image';
 import React from 'react';
+import Arbitrum from '@images/chainsIcons/Arbitrum.png';
+import Avalanche from '@images/chainsIcons/Avalanche.png';
+import Binance from '@images/chainsIcons/Binance.png';
+import Ethereum from '@images/chainsIcons/Ethereum.png';
+import Fantom from '@images/chainsIcons/Fantom.png';
+import Optimism from '@images/chainsIcons/Optimism.png';
+import Polygon from '@images/chainsIcons/Polygon.png';
+import Image from 'next/image';
 import {
   StyledChain,
-  StyledChainsList,
   StyledChainTitle,
   StyledChainWrapper,
+  StyledChainsList,
   StyledSwitchTo,
 } from './VaultsPageHero.styled';
-
-import Ethereum from '@images/chainsIcons/Ethereum.png';
-import Optimism from '@images/chainsIcons/Optimism.png';
-import Arbitrum from '@images/chainsIcons/Arbitrum.png';
-import Binance from '@images/chainsIcons/Binance.png';
-import Avalanche from '@images/chainsIcons/Avalanche.png';
-import Polygon from '@images/chainsIcons/Polygon.png';
-import Fantom from '@images/chainsIcons/Fantom.png';
 
 const ChainsList = React.forwardRef((props, ref) => {
   const chainsList = [

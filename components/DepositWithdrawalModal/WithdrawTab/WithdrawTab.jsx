@@ -1,10 +1,8 @@
 import React from 'react';
-
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter } from 'Helpers/numberFormatters';
-
 import DepositWithdrawInput from '../DepositWithdrawInput';
 import DepositWithdrawRight from '../DepositWithdrawInputAdornment';
 import {

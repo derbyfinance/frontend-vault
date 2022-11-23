@@ -1,7 +1,7 @@
-import Moralis from 'moralis';
 import { EvmChain } from '@moralisweb3/evm-utils';
-
+import Moralis from 'moralis';
 import vaultAbi from '/utils/abis/vault.json';
+
 const handler = async (req, res) => {
   await Moralis.start({ apiKey: process.env.MORALIS_API_KEY });
 

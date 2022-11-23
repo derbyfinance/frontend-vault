@@ -1,10 +1,10 @@
+import { useState } from 'react';
 import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
 import MainButton from '../../Common/MainButton/MainButton';
+import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
 import {
   StyledNavBarContent,
   StyledNavBarWrapper,

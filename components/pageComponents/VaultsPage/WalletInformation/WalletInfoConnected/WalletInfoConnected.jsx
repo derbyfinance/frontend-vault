@@ -1,6 +1,6 @@
+import React from 'react';
 import { ClaimRewards } from '@components/Common/MainButton/MainButton.styled';
 import { Portfolio, Rewards, Yield } from '@icons/index';
-import React from 'react';
 import {
   StyledAmountConnected,
   StyledConnectedItem,
@@ -8,6 +8,7 @@ import {
   StyledWalletHoldings,
   WalletInfoConnectedStyled,
 } from '../WalletInfo.styled';
+
 //mock temporary data
 const walletAmount = 1000;
 const mockData = {

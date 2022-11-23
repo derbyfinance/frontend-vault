@@ -1,6 +1,6 @@
-import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
-import { infuraProvider } from 'wagmi/providers/infura';
 import { SessionProvider } from 'next-auth/react';
+import { WagmiConfig, chain, configureChains, createClient } from 'wagmi';
+import { infuraProvider } from 'wagmi/providers/infura';
 
 const { provider, webSocketProvider } = configureChains(
   [chain.goerli],

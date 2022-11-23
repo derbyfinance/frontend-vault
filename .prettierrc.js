@@ -9,13 +9,13 @@ module.exports = {
   // "singleQuote": true,
   // "semi": true,
   importOrder: [
-    "react",
+    '^react$',
     '^@core/(.*)$',
     '<THIRD_PARTY_MODULES>',
     '^@server/(.*)$',
     '^@ui/(.*)$',
     '^[./]',
   ],
-  importOrderSeparation: true,
+  importOrderSeparation: false,
   importOrderSortSpecifiers: true,
 };

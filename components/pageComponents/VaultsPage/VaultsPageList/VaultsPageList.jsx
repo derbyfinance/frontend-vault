@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Table from '@components/Common/Table/Table';
-
 import { StyledCoinsListHeader } from './VaultsPageList.styled';
 
 const headers = ['NAME', 'BALANCE', 'APY', 'MEMBERS', 'TVL'];

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useAccount } from 'wagmi';
 import WalletInfoConnected from './WalletInfoConnected/WalletInfoConnected';
 import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
-import { useAccount } from 'wagmi';
 
 const WalletInfo = () => {
   const { isConnected } = useAccount();

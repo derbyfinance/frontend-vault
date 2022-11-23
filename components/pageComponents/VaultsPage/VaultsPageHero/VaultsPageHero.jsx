@@ -1,20 +1,5 @@
 import React, { useState } from 'react';
-import {
-  StyledCircle,
-  StyledDescription,
-  StyledIcon,
-  StyledInfoBlockWrapper,
-  StyledNetworkIcon,
-  StyledNetworkInfo,
-  StyledNetworkInfoSection,
-  StyledNetworkTitle,
-  StyledValue,
-  StyledValuePart,
-  StyledHeroWrapper,
-  StyledHeroContainer,
-  StyledArrowIcon,
-} from './VaultsPageHero.styled';
-import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import {
   ArrowDown,
   EthereumNetwork,
@@ -24,8 +9,23 @@ import {
 } from '@icons/index';
 import ethereumBig from '@images/EthereumBig.png';
 import HeroCircle from '@images/HeroCircle.png';
+import Image from 'next/image';
 import ChainsList from './ChainsList';
-import { useRef, useEffect } from 'react';
+import {
+  StyledArrowIcon,
+  StyledCircle,
+  StyledDescription,
+  StyledHeroContainer,
+  StyledHeroWrapper,
+  StyledIcon,
+  StyledInfoBlockWrapper,
+  StyledNetworkIcon,
+  StyledNetworkInfo,
+  StyledNetworkInfoSection,
+  StyledNetworkTitle,
+  StyledValue,
+  StyledValuePart,
+} from './VaultsPageHero.styled';
 
 const networkData = {
   title: 'Ethereum Network',

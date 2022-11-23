@@ -3,11 +3,7 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   tabWidth: 2,
-  // "printWidth": 80,
-  // "tabWidth": 4,
-  // "trailingComma": "all",
-  // "singleQuote": true,
-  // "semi": true,
+
   importOrder: [
     '^react$',
     '^@core/(.*)$',

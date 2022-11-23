@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-import { useEffect, useRef } from 'react';
-import {
-  ArrowDown,
-  EthereumNetwork,
-  Lock,
-  Members,
-  Vaults,
-} from '@icons/index';
-import ethereumBig from '@images/EthereumBig.png';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
+import { useAccount, useNetwork } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
   StyledArrowIcon,
@@ -26,15 +19,14 @@ import {
   StyledValue,
   StyledValuePart,
 } from './VaultsPageHero.styled';
+import { chainsIcons } from './chainsIcons';
 
-const networkData = {
-  title: 'Ethereum Network',
-  totalValue: '$ 31.17M',
+//dummy data for hero section values
+const selectedNetwork = {
+  totalValue: '$11M',
   vaults: 5,
-  members: '2,177',
+  members: 227,
 };
-
-const { title, totalValue, vaults, members } = networkData;
 
 const NetworkInfoBlock = ({ icon, value, description }) => {
   return (
@@ -49,9 +41,12 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 };
 
 const VaultsPageHero = () => {
+  const { isConnected } = useAccount();
   const [chainsOpen, setChainsOpen] = useState(false);
   const arrowRef = useRef();
   const dropdownRef = useRef();
+  //some default value, until we figure out what to show when wallet is not connected
+  const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
   useEffect(() => {
     const handler = (e) => {
@@ -75,38 +70,45 @@ const VaultsPageHero = () => {
         </StyledCircle>
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
-            <EthereumNetwork />
-            <div>{title}</div>
-            <StyledArrowIcon
-              onClick={() => {
-                setChainsOpen((chainsOpen) => !chainsOpen);
-              }}
-              isOpen={chainsOpen}
-              ref={arrowRef}
-            >
-              <ArrowDown isOpen={chainsOpen} />
-            </StyledArrowIcon>
+            <Image src={chainsIcons[chain?.id]} alt={`${chain?.name} image`} />
+            <h2>{chain.name}</h2>
+            {isConnected && (
+              <StyledArrowIcon
+                onClick={() => {
+                  setChainsOpen((chainsOpen) => !chainsOpen);
+                }}
+                isOpen={chainsOpen}
+                ref={arrowRef}
+              >
+                <ArrowDown isOpen={chainsOpen} />
+              </StyledArrowIcon>
+            )}
           </StyledNetworkTitle>
           <StyledNetworkInfo>
             <NetworkInfoBlock
               icon={<Lock />}
-              value={totalValue}
+              value={selectedNetwork.totalValue}
               description="TOTAL VALUE LOCKED"
             />
             <NetworkInfoBlock
               icon={<Vaults />}
-              value={vaults}
+              value={selectedNetwork.vaults}
               description="VAULTS"
             />
             <NetworkInfoBlock
               icon={<Members />}
-              value={members}
+              value={selectedNetwork.members}
               description="MEMBERS"
             />
           </StyledNetworkInfo>
         </StyledNetworkInfoSection>
         <StyledNetworkIcon>
-          <Image alt="Ethereum Image" src={ethereumBig} />
+          <Image
+            alt={`${chain.name} Image`}
+            src={chainsIcons[chain.id]}
+            width={'80px'}
+            height={'120px'}
+          />
         </StyledNetworkIcon>
       </StyledHeroWrapper>
     </StyledHeroContainer>

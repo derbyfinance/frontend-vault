@@ -1,7 +1,7 @@
-import { signIn } from 'next-auth/react';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
 import { walletNames } from 'Constants/wallet';
 import axios from 'axios';
+import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
@@ -11,61 +11,21 @@ import ConnectVia from './ConnectVia/ConnectVia';
 import { SignInContainer } from './SignIn.styled';
 
 const SignIn = () => {
-  const { connectAsync, error } = useConnect();
+  const { connectors, connectAsync } = useConnect();
   const { disconnectAsync, disconnect } = useDisconnect();
   const { isConnected } = useAccount();
   const { signMessageAsync } = useSignMessage();
   const { push } = useRouter();
 
-  const handleAuth = async (wal) => {
+  const connectWallet = async (connector) => {
     try {
       if (isConnected) {
         await disconnectAsync();
       }
-
-      console.log('Connect To Site Via Wallet');
-
       const userData = { network: 'evm' };
-
-      if (wal === walletNames.metaMask) {
-        try {
-          const { account, chain } = await connectAsync({
-            connector: new MetaMaskConnector({}),
-          });
-          userData.address = account;
-          userData.chain = chain.id;
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      if (wal === walletNames.coinBase) {
-        try {
-          const { account, chain } = await connectAsync({
-            connector: new CoinbaseWalletConnector({}),
-          });
-          userData.address = account;
-          userData.chain = chain.id;
-        } catch (error) {
-          console.log(error);
-        }
-      }
-
-      if (wal === walletNames.walletConnect) {
-        try {
-          const { account, chain } = await connectAsync({
-            connector: new WalletConnectConnector({
-              options: { qrcode: true },
-            }),
-          });
-          userData.address = account;
-          userData.chain = chain.id;
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
-      console.log('Sending Connected Account and Chain ID to Moralis Auth API');
+      const { account, chain } = await connectAsync({ connector });
+      userData.address = account;
+      userData.chain = chain.id;
 
       const { data } = await axios.post('/api/auth/request-message', userData, {
         headers: {
@@ -73,13 +33,9 @@ const SignIn = () => {
         },
       });
 
-      console.log('Received Signature Request From Moralis Auth API');
-
       const message = data.message;
 
       const signature = await signMessageAsync({ message });
-
-      console.log('Succesful Sign In, Redirecting to User Page');
 
       const { url } = await signIn('credentials', {
         message,
@@ -94,44 +50,20 @@ const SignIn = () => {
     }
   };
 
-  const handleMetaMask = () => {
-    handleAuth('meta');
+  const walletIcons = {
+    MetaMask: <MetaMask />,
+    'Coinbase Wallet': <Coinbase />,
+    WalletConnect: <WalletConnect />,
   };
-
-  const handleCoinbaseWallet = () => {
-    handleAuth('coin');
-  };
-
-  const handleWalletConnect = () => {
-    handleAuth('wal');
-  };
-
-  const wallets = [
-    {
-      name: 'MetaMask',
-      icon: <MetaMask />,
-      onClick: handleMetaMask,
-    },
-    {
-      name: 'Coinbase Wallet',
-      icon: <Coinbase />,
-      onClick: handleCoinbaseWallet,
-    },
-    {
-      name: 'WalletConnect',
-      icon: <WalletConnect />,
-      onClick: handleWalletConnect,
-    },
-  ];
 
   return (
     <SignInContainer>
-      {wallets.map(({ icon, name, onClick }, index) => (
+      {connectors.map((connector) => (
         <ConnectVia
-          key={index}
-          clickHandler={onClick}
-          svg={icon}
-          walletName={name}
+          key={connector.id}
+          clickHandler={() => connectWallet(connector)}
+          walletName={connector.name}
+          svg={walletIcons[connector.name]}
         />
       ))}
     </SignInContainer>

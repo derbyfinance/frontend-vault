@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
@@ -13,7 +14,8 @@ import {
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
 
-const DepositTab = ({ financialActionType }) => {
+const DepositTab = () => {
+  const [depositValue, setDepositValue] = useState();
   const APY = 187; //backend
   const gasPrice = 187; //backend
 
@@ -21,12 +23,9 @@ const DepositTab = ({ financialActionType }) => {
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          label={
-            financialActionType === financialActionTypes.DEPOSIT
-              ? 'YOU DEPOSIT'
-              : 'YOU WITHDRAW'
-          }
+          label={'YOU DEPOSIT'}
           placeholder="0.00"
+          value
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={1553}

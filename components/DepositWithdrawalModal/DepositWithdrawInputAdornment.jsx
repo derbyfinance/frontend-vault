@@ -13,7 +13,6 @@ const DepositWithdrawInputAdornment = ({
   balance,
   isMax,
 }) => {
-  isMax = true;
   return (
     <StyledRightWrapper>
       <StyledFlex>

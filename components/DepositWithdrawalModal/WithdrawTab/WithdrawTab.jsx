@@ -13,7 +13,7 @@ import {
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
 
-const WithdrawTab = ({ financialActionType }) => {
+const WithdrawTab = () => {
   const availableLiquidity = 187000; //backend
   let gasPrice = 187; //backend
 
@@ -21,11 +21,7 @@ const WithdrawTab = ({ financialActionType }) => {
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          label={
-            financialActionTypes === financialActionTypes.DEPOSIT
-              ? 'YOU DEPOSIT'
-              : 'YOU WITHDRAW'
-          }
+          label={'YOU WITHDRAW'}
           placeholder="0.00"
           endAddOn={
             <DepositWithdrawRight

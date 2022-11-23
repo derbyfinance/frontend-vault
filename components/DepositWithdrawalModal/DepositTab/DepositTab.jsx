@@ -4,6 +4,13 @@ import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter, percentFormatter } from 'Helpers/numberFormatters';
+import { useDebounce } from 'use-debounce';
+import { abi } from 'utils/abis/abi';
+import {
+  useContractWrite,
+  usePrepareContractWrite,
+  useWaitForTransaction,
+} from 'wagmi';
 import DepositWithdrawInput from '../DepositWithdrawInput';
 import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
@@ -16,16 +23,47 @@ import {
 
 const DepositTab = () => {
   const [depositValue, setDepositValue] = useState();
+  const debouncedValue = useDebounce(depositValue, 500);
+
   const APY = 187; //backend
   const gasPrice = 187; //backend
+
+  const {
+    config,
+    error: prepareError,
+    isError: isPrepareError,
+  } = usePrepareContractWrite({
+    addressOrName: '0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA',
+    contractInterface: abi,
+    functionName: 'deposit',
+    args: [parseInt(debouncedValue)],
+    enabled: Boolean(debouncedValue),
+  });
+
+  console.log(config);
+  console.log({ prepareError });
+  console.log({ isPrepareError });
+
+  const { data, write } = useContractWrite(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    write();
+  };
 
   return (
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          label={'YOU DEPOSIT'}
+          type="number"
+          label="YOU DEPOSIT"
           placeholder="0.00"
-          value
+          value={depositValue}
+          onChange={(e) => setDepositValue(e.target.value)}
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={1553}
@@ -35,6 +73,16 @@ const DepositTab = () => {
             />
           }
         />
+        {isPrepareError && <div>Error: {prepareError?.message}</div>}
+        {isLoading && <div>Waiting for transaction...</div>}
+        {isSuccess && (
+          <div>
+            Success!{' '}
+            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>
+              Etherscan
+            </a>
+          </div>
+        )}
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
@@ -62,7 +110,11 @@ const DepositTab = () => {
         intervals
       </StyledDisclaimerDeposit>
       <StyledModalDepositButton>
-        <MainButton btnText={financialActionTypes.DEPOSIT} />
+        <MainButton
+          disabled={!write}
+          btnText={financialActionTypes.DEPOSIT}
+          onClick={handleClick}
+        />
       </StyledModalDepositButton>
     </>
   );

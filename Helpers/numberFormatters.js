@@ -1,4 +1,8 @@
 export const currencyFormatter = (value, currency = 'usd') => {
+  if (typeof value !== 'number') {
+    return 0;
+  }
+
   return new Intl.NumberFormat('en-US', {
     notation: 'compact',
     style: 'currency',

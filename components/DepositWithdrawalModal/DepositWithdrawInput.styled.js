@@ -24,7 +24,6 @@ export const StyledLabel = styled.div`
 export const StyledInput = styled.input`
   width: 100%;
   border: none;
-
   font: ${({ theme }) => theme.font.robotoLight};
   font-size: 24px;
 `;

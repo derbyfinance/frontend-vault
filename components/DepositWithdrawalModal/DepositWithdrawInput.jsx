@@ -5,11 +5,23 @@ import {
   StyledLabel,
 } from './DepositWithdrawInput.styled';
 
-const DepositWithdrawInput = ({ endAddOn, label, placeholder }) => {
+const DepositWithdrawInput = ({
+  endAddOn,
+  label,
+  placeholder,
+  value,
+  onChange,
+  type,
+}) => {
   return (
     <StyledInputContainer>
       <StyledLabel>{label}</StyledLabel>
-      <StyledInput type="text" placeholder={placeholder} />
+      <StyledInput
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+      />
       {endAddOn}
     </StyledInputContainer>
   );

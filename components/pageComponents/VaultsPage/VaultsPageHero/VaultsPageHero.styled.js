@@ -67,14 +67,20 @@ export const StyledIcon = styled.div`
 `;
 
 export const StyledCircle = styled.div`
+  & img {
+    height: 180px !important;
+  }
   position: absolute;
   right: -24px;
   top: 0;
 `;
 
 export const StyledNetworkIcon = styled.div`
+  & img {
+    transform: rotate(9deg);
+  }
   position: absolute;
-  right: 70px;
+  right: 65px;
   top: 30px;
 `;
 

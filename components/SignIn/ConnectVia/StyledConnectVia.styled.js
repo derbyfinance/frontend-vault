@@ -8,7 +8,7 @@ export const StyledConnectVia = styled.div`
   width: 100%;
   gap: 18px;
   padding: 0 0 24px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.color?.borderMain};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
   &:last-child {
     border-bottom: none;
   }

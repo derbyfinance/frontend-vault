@@ -28,7 +28,7 @@ export const StyledNetworkTitle = styled.div`
   align-items: center;
   gap: 10px;
   & div {
-    font: ${({ theme }) => theme.font.slabMedium};
+    font: ${({ theme }) => theme.fonts.slabMedium};
     font-size: 24px;
   }
 `;
@@ -53,7 +53,7 @@ export const StyledValuePart = styled.div`
 `;
 
 export const StyledValue = styled.div`
-  font: ${({ theme }) => theme.font.slabMedium};
+  font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 32px;
   line-height: 38px;
 `;
@@ -118,7 +118,7 @@ export const StyledChain = styled.div`
   cursor: pointer;
   &:hover {
     & div {
-      font: ${({ theme }) => theme.font.robotoMedium};
+      font: ${({ theme }) => theme.fonts.robotoMedium};
       font-size: 20px;
     }
   }
@@ -131,12 +131,12 @@ export const StyledArrowIcon = styled.div`
 
 export const StyledSwitchTo = styled.div`
   padding: 0 16px;
-  font: ${({ theme }) => theme.font.robotoMedium};
+  font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 12px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledChainTitle = styled.div`
-  font: ${({ theme }) => theme.font.robotoLight};
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 20px;
 `;

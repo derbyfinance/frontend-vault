@@ -12,13 +12,11 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <StyledLayoutContainer>
-        <StyledLayoutWrapper>
-          <NavBar toggleTheme={toggleTheme} isDark={isDark} />
-          {children}
-          <Footer isDark={isDark} />
-        </StyledLayoutWrapper>
-      </StyledLayoutContainer>
+      <StyledLayoutWrapper>
+        <NavBar toggleTheme={toggleTheme} isDark={isDark} />
+        {children}
+        <Footer isDark={isDark} />
+      </StyledLayoutWrapper>
     </ThemeProvider>
   );
 };

@@ -20,7 +20,7 @@ export const WalletInfoConnectedStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   background: ${({ theme }) => theme.colors.backgroundMain};
-  font: ${({ theme }) => theme.font.slabMedium};
+  font: ${({ theme }) => theme.fonts.slabMedium};
   color: ${({ theme }) => theme.colors.textMain};
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
@@ -34,7 +34,7 @@ export const StyledConnectedItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font: ${({ theme }) => theme.font.robotoRegular};
+  font: ${({ theme }) => theme.fonts.robotoRegular};
   padding: 28px 0;
   border-top: 1px solid ${({ theme }) => theme.colors.borderMain};
   gap: 120px;

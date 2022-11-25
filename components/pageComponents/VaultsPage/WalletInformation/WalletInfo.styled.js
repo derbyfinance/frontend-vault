@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledNotConnectedWrapper = styled.div`
+  position: sticky;
+  top: 155px;
   display: flex;
   flex-direction: column;
   justify-content: center;

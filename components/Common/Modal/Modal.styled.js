@@ -18,12 +18,12 @@ export const StyledModalLogoAndText = styled.div`
   align-items: center;
   margin-bottom: 58px;
   & h3 {
-    font: ${({ theme }) => theme.font.robotoMedium};
+    font: ${({ theme }) => theme.fonts.robotoMedium};
     font-size: 20px;
     color: ${({ theme }) => theme.colors.textTertiary};
   }
   & h4 {
-    font: ${({ theme }) => theme.font.robotoLight};
+    font: ${({ theme }) => theme.fonts.robotoLight};
     font-size: 16px;
   }
 `;

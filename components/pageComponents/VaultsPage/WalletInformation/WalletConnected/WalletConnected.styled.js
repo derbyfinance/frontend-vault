@@ -27,16 +27,21 @@ export const StyledWalletConnectedHeader = styled.div`
   white-space: nowrap;
 `;
 
-export const StyledConnectedRow = styled.tr``;
+export const StyledConnectedRow = styled.tr`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
+`;
 
 export const StyledVaultRow = styled.tr`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderSecondary};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
   //TODO
 `;
 
 export const StyledWalletConnectedTable = styled.table`
   border-collapse: collapse;
   width: 100%;
+  & > :last-child {
+    border: none;
+  }
 `;
 
 export const StyledConnectedIcon = styled.td`

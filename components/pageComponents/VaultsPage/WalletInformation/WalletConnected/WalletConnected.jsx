@@ -59,7 +59,7 @@ const WalletConnected = () => {
             <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
           )}
         </StyledVaultRow>
-        <tr>
+        <StyledVaultRow>
           <StyledConnectedIcon></StyledConnectedIcon>
           <StyledVaultTitle>Balance vault B</StyledVaultTitle>
           {showBalance ? (
@@ -67,7 +67,7 @@ const WalletConnected = () => {
           ) : (
             <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
           )}
-        </tr>
+        </StyledVaultRow>
         <StyledConnectedRow>
           <StyledConnectedIcon>
             <Rewards />

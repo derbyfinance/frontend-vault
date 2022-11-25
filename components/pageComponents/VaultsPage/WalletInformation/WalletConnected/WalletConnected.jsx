@@ -10,7 +10,6 @@ import {
   StyledConnectedRow,
   StyledConnectedTitle,
   StyledConnectedValue,
-  StyledConnectedWalletButton,
   StyledHiddenBalance,
   StyledStakeAwardsButton,
   StyledVaultBalance,
@@ -28,6 +27,10 @@ const WalletConnected = () => {
     setShowBalance(!showBalance);
   };
 
+  const handleStakeRewards = () => {
+    console.log('Clicked On Stake rewards');
+  };
+
   return (
     <StyledWalletConnectedContainer>
       <StyledConnectedHeading>
@@ -39,49 +42,53 @@ const WalletConnected = () => {
         </div>
       </StyledConnectedHeading>
       <StyledWalletConnectedTable>
-        <StyledConnectedRow>
-          <StyledConnectedIcon>
-            <Portfolio />
-          </StyledConnectedIcon>
-          <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
-          {showBalance ? (
-            <StyledConnectedValue>11645</StyledConnectedValue>
-          ) : (
-            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
-          )}
-        </StyledConnectedRow>
-        <StyledVaultRow>
-          <StyledConnectedIcon></StyledConnectedIcon>
-          <StyledVaultTitle>Balance vault A</StyledVaultTitle>
-          {showBalance ? (
-            <StyledVaultBalance>7.656</StyledVaultBalance>
-          ) : (
-            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
-          )}
-        </StyledVaultRow>
-        <StyledVaultRow>
-          <StyledConnectedIcon></StyledConnectedIcon>
-          <StyledVaultTitle>Balance vault B</StyledVaultTitle>
-          {showBalance ? (
-            <StyledVaultBalance>3.989</StyledVaultBalance>
-          ) : (
-            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
-          )}
-        </StyledVaultRow>
-        <StyledConnectedRow>
-          <StyledConnectedIcon>
-            <Rewards />
-          </StyledConnectedIcon>
-          <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
-          {showBalance ? (
-            <StyledConnectedValue>11645</StyledConnectedValue>
-          ) : (
-            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
-          )}
-        </StyledConnectedRow>
+        <tbody>
+          <StyledConnectedRow>
+            <StyledConnectedIcon>
+              <Portfolio />
+            </StyledConnectedIcon>
+            <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
+            {showBalance ? (
+              <StyledConnectedValue>11645</StyledConnectedValue>
+            ) : (
+              <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+            )}
+          </StyledConnectedRow>
+          <StyledVaultRow>
+            <StyledConnectedIcon></StyledConnectedIcon>
+            <StyledVaultTitle>Balance vault A</StyledVaultTitle>
+            {showBalance ? (
+              <StyledVaultBalance>7.656</StyledVaultBalance>
+            ) : (
+              <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+            )}
+          </StyledVaultRow>
+          <StyledVaultRow>
+            <StyledConnectedIcon></StyledConnectedIcon>
+            <StyledVaultTitle>Balance vault B</StyledVaultTitle>
+            {showBalance ? (
+              <StyledVaultBalance>3.989</StyledVaultBalance>
+            ) : (
+              <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+            )}
+          </StyledVaultRow>
+          <StyledConnectedRow>
+            <StyledConnectedIcon>
+              <Rewards />
+            </StyledConnectedIcon>
+            <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
+            {showBalance ? (
+              <StyledConnectedValue>11645</StyledConnectedValue>
+            ) : (
+              <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+            )}
+          </StyledConnectedRow>
+        </tbody>
       </StyledWalletConnectedTable>
       <StyledButtonWrapper>
-        <StyledStakeAwardsButton>Stake Rewards</StyledStakeAwardsButton>
+        <StyledStakeAwardsButton onClick={handleStakeRewards}>
+          Stake Rewards
+        </StyledStakeAwardsButton>
       </StyledButtonWrapper>
     </StyledWalletConnectedContainer>
   );

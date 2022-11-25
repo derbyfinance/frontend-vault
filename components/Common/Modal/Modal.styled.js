@@ -20,7 +20,7 @@ export const StyledModalLogoAndText = styled.div`
   & h3 {
     font: ${({ theme }) => theme.fonts.robotoMedium};
     font-size: 20px;
-    color: ${({ theme }) => theme.colors.textTertiary};
+    color: ${({ theme }) => theme.colors.textMain};
   }
   & h4 {
     font: ${({ theme }) => theme.fonts.robotoLight};

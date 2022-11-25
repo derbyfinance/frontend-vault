@@ -4,6 +4,8 @@ import StyledMainButton, {
 import styled from 'styled-components';
 
 export const StyledWalletConnectedContainer = styled.div`
+  position: sticky;
+  top: 155px;
   text-align: left;
   max-width: 425px;
   background: ${({ theme }) => theme.colors?.backgroundMain};

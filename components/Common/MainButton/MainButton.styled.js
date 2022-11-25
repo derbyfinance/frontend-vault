@@ -6,7 +6,9 @@ const StyledMainButton = styled.button`
   color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: 6px;
   padding: 12px 20px;
+  font: ${({ theme }) => theme.font.slabMedium};
   font-size: 16px;
+
   cursor: pointer;
   border: none;
   outline: none;

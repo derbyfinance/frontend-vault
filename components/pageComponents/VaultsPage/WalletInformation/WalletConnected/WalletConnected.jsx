@@ -1,53 +1,88 @@
 import MainButton from '@components/Common/MainButton/MainButton';
+import EyeClosed from '@icons/EyeClosed';
 import { EyeOpen, Portfolio, Rewards } from '@icons/index';
-import React from 'react';
+import React, { useState } from 'react';
 import {
+  StyledButtonWrapper,
   StyledConnectedCell,
   StyledConnectedHeading,
-  StyledConnectedLogo,
+  StyledConnectedIcon,
+  StyledConnectedRow,
   StyledConnectedTitle,
   StyledConnectedValue,
+  StyledConnectedWalletButton,
+  StyledHiddenBalance,
+  StyledStakeAwardsButton,
+  StyledVaultBalance,
+  StyledVaultRow,
+  StyledVaultTitle,
   StyledWalletConnectedContainer,
+  StyledWalletConnectedHeader,
+  StyledWalletConnectedTable,
 } from './WalletConnected.styled';
 
 const WalletConnected = () => {
+  const [showBalance, setShowBalance] = useState(true);
+
+  const toggleBalance = () => {
+    setShowBalance(!showBalance);
+  };
+
   return (
     <StyledWalletConnectedContainer>
       <StyledConnectedHeading>
-        <div>Wallet Holdings</div>
-        <div>
-          <EyeOpen />
+        <StyledWalletConnectedHeader>
+          Wallet holdings
+        </StyledWalletConnectedHeader>
+        <div onClick={toggleBalance}>
+          {showBalance ? <EyeOpen /> : <EyeClosed />}
         </div>
       </StyledConnectedHeading>
-      <table>
-        <tr>
-          <StyledConnectedLogo>
+      <StyledWalletConnectedTable>
+        <StyledConnectedRow>
+          <StyledConnectedIcon>
             <Portfolio />
-          </StyledConnectedLogo>
+          </StyledConnectedIcon>
           <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
-          <StyledConnectedValue>11645</StyledConnectedValue>
-        </tr>
+          {showBalance ? (
+            <StyledConnectedValue>11645</StyledConnectedValue>
+          ) : (
+            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+          )}
+        </StyledConnectedRow>
+        <StyledVaultRow>
+          <StyledConnectedIcon></StyledConnectedIcon>
+          <StyledVaultTitle>Balance vault A</StyledVaultTitle>
+          {showBalance ? (
+            <StyledVaultBalance>7.656</StyledVaultBalance>
+          ) : (
+            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+          )}
+        </StyledVaultRow>
         <tr>
-          <StyledConnectedLogo></StyledConnectedLogo>
-          <StyledConnectedTitle>Balance vault A</StyledConnectedTitle>
-          <StyledConnectedValue>7.656</StyledConnectedValue>
+          <StyledConnectedIcon></StyledConnectedIcon>
+          <StyledVaultTitle>Balance vault B</StyledVaultTitle>
+          {showBalance ? (
+            <StyledVaultBalance>3.989</StyledVaultBalance>
+          ) : (
+            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+          )}
         </tr>
-        <tr>
-          <StyledConnectedLogo></StyledConnectedLogo>
-          <StyledConnectedTitle>Balance vault B</StyledConnectedTitle>
-          <StyledConnectedValue>3.989</StyledConnectedValue>
-        </tr>
-        <tr>
-          <StyledConnectedLogo>
+        <StyledConnectedRow>
+          <StyledConnectedIcon>
             <Rewards />
-          </StyledConnectedLogo>
+          </StyledConnectedIcon>
           <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
-          <StyledConnectedValue>11645</StyledConnectedValue>
-        </tr>
-      </table>
-      <div>
-        <MainButton btnText="Stake Rewards" />
-      </div>
+          {showBalance ? (
+            <StyledConnectedValue>11645</StyledConnectedValue>
+          ) : (
+            <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
+          )}
+        </StyledConnectedRow>
+      </StyledWalletConnectedTable>
+      <StyledButtonWrapper>
+        <StyledStakeAwardsButton>Stake Rewards</StyledStakeAwardsButton>
+      </StyledButtonWrapper>
     </StyledWalletConnectedContainer>
   );
 };

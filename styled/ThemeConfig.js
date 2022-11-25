@@ -110,7 +110,7 @@ const darkThemeColors = {
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
 };
 
-const font = {
+const fonts = {
   robotoBold: ' 600 14px Roboto-Bold',
   robotoMedium: '500 14px Roboto-Medium',
   robotoRegular: '400 14px Roboto-Regular',
@@ -122,10 +122,10 @@ const font = {
 
 export const lightTheme = {
   colors: lightThemeColors,
-  font,
+  fonts,
 };
 
 export const darkTheme = {
   colors: darkThemeColors,
-  font,
+  fonts,
 };

@@ -7,7 +7,7 @@ export const StyledTable = styled.table`
 
 export const StyledColumnHeader = styled.th`
   text-align: left;
-  font: ${({ theme }) => theme.font.robotoMedium};
+  font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
@@ -19,7 +19,7 @@ export const StyledRowItem = styled.tr`
 `;
 
 export const StyledRowCell = styled.td`
-  font: ${({ theme }) => theme.font.robotoRegular};
+  font: ${({ theme }) => theme.fonts.robotoRegular};
   font-size: 18px;
   vertical-align: middle;
   padding: 12px;
@@ -27,10 +27,10 @@ export const StyledRowCell = styled.td`
     display: flex;
     align-items: center;
     gap: 12px;
-    font: ${({ theme }) => theme.font.slabMedium};
+    font: ${({ theme }) => theme.fonts.slabMedium};
     font-size: 20px;
     & span {
-      font: ${({ theme }) => theme.font.robotoMedium};
+      font: ${({ theme }) => theme.fonts.robotoMedium};
 
       font-size: 14px;
       color: ${({ theme }) => theme.colors.textFaded};

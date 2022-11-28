@@ -61,9 +61,15 @@ const VaultsPageHero = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  const handleChainsOpen = () => {
+    setChainsOpen(!chainsOpen);
+  };
+
   return (
     <StyledHeroContainer>
-      {chainsOpen && <ChainsList ref={dropdownRef} />}
+      {chainsOpen && (
+        <ChainsList setChainsOpen={setChainsOpen} ref={dropdownRef} />
+      )}
       <StyledHeroWrapper>
         <StyledCircle>
           <Image src={HeroCircle} alt="Decorative Circle" />

@@ -98,6 +98,7 @@ export const StyledErrorDepositWithdraw = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
   font: ${({ theme }) => theme.font.robotoLight};
   font-size: 10px;
   color: ${({ theme }) => theme.colors.textError};

@@ -11,13 +11,11 @@ const DepositWithdrawInput = ({
   placeholder,
   value,
   onChange,
-  type,
 }) => {
   return (
     <StyledInputContainer>
       <StyledLabel>{label}</StyledLabel>
       <StyledInput
-        type={type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

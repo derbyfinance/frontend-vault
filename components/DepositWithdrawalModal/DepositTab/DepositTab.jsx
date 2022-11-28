@@ -23,7 +23,10 @@ import {
 } from '../DepositWithdrawalModal.styled';
 
 const DepositTab = () => {
-  const [depositValue, setDepositValue] = useState();
+  const [depositValue, setDepositValue] = useState({
+    deposit: '',
+    youGet: '',
+  });
   const debouncedValue = useDebounce(depositValue, 500);
 
   const APY = 187; //backend
@@ -44,16 +47,20 @@ const DepositTab = () => {
   console.log(config);
   console.log({ prepareError });
   console.log({ isPrepareError });
-  console.log(
-    prepareError,
-    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<',
-  );
-
   const { data, write } = useContractWrite(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
+
+  const handleDepositField = (e) => {
+    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    setDepositValue({ deposit: e.target.value, youGet: e.target.value * 2 });
+  };
+  const handleDepositFieldYouGet = (e) => {
+    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    setDepositValue({ deposit: e.target.value / 2, youGet: e.target.value });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -68,11 +75,11 @@ const DepositTab = () => {
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          type="number"
+          // type="number"
           label="YOU DEPOSIT"
           placeholder="0.00"
-          value={depositValue}
-          onChange={(e) => setDepositValue(e.target.value)}
+          value={depositValue.deposit}
+          onChange={handleDepositField}
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={1553}
@@ -95,6 +102,8 @@ const DepositTab = () => {
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
+          onChange={handleDepositFieldYouGet}
+          value={depositValue.youGet}
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={20}
@@ -124,12 +133,14 @@ const DepositTab = () => {
           btnText={financialActionTypes.DEPOSIT}
           onClick={handleClick}
         />
-        <StyledErrorDepositWithdraw>
-          <div>
-            <Warning />
-          </div>{' '}
-          {isPrepareError && <div>{prepareError?.message}</div>}
-        </StyledErrorDepositWithdraw>
+        {isPrepareError && (
+          <StyledErrorDepositWithdraw>
+            <div>
+              <Warning />
+            </div>
+            <div>{prepareError?.message}</div>
+          </StyledErrorDepositWithdraw>
+        )}
       </StyledModalDepositButton>
     </>
   );

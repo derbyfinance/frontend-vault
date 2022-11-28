@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import StyledMainButton from '@components/Common/MainButton/MainButton.styled';
-import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter } from 'Helpers/numberFormatters';
 import { useDebounce } from 'use-debounce';
@@ -16,17 +16,29 @@ import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
+  StyledErrorDepositWithdraw,
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
 
 const WithdrawTab = () => {
-  const [withdrawValue, setWithdrawValue] = useState();
+  const [withdrawValue, setWithdrawValue] = useState({
+    withdraw: '',
+    youGet: '',
+  });
 
   const debouncedValue = useDebounce(withdrawValue, 500);
 
-  const handleWithdrawField = (e) => setWithdrawValue(e.target.value);
+  const handleWithdrawField = (e) => {
+    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    setWithdrawValue(e.target.value);
+  };
+
+  const handleWithdrawFieldYouGet = (e) => {
+    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    setWithdrawValue(e.target.value);
+  };
 
   const {
     config,
@@ -53,15 +65,14 @@ const WithdrawTab = () => {
 
   const availableLiquidity = 187000; //backend
   let gasPrice = 187; //backend
-  console.log(prepareError);
+  // console.log(prepareError);
   return (
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          type="number"
           label="YOU WITHDRAW"
           placeholder={'0.00'}
-          value={withdrawValue}
+          value={withdrawValue.withdraw}
           onChange={handleWithdrawField}
           endAddOn={
             <DepositWithdrawInputAdornment
@@ -85,6 +96,8 @@ const WithdrawTab = () => {
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
+          value={withdrawValue.youGet}
+          onChange={handleWithdrawFieldYouGet}
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={20}
@@ -108,12 +121,21 @@ const WithdrawTab = () => {
         There is sufficient liquidity to withdraw instantly'
       </StyledDisclaimerDeposit>
       <StyledModalDepositButton>
-        <StyledMainButton
+        <MainButton
           disabled={!write}
-          onClick={handleWithdraw}
           btnText={financialActionTypes.WITHDRAW}
+          onClick={handleWithdraw}
         />
       </StyledModalDepositButton>
+
+      {isPrepareError && (
+        <StyledErrorDepositWithdraw>
+          <div>
+            <Warning />
+          </div>
+          <div>{prepareError?.message}</div>
+        </StyledErrorDepositWithdraw>
+      )}
     </>
   );
 };

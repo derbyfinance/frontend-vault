@@ -27,9 +27,7 @@ const WalletConnected = () => {
     setShowBalance(!showBalance);
   };
 
-  const handleStakeRewards = () => {
-    console.log('Clicked On Stake rewards');
-  };
+  const handleStakeRewards = () => {};
 
   return (
     <StyledWalletConnectedContainer>
@@ -76,7 +74,7 @@ const WalletConnected = () => {
             <StyledConnectedIcon>
               <Rewards />
             </StyledConnectedIcon>
-            <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
+            <StyledConnectedTitle>Rewards</StyledConnectedTitle>
             {showBalance ? (
               <StyledConnectedValue>11645</StyledConnectedValue>
             ) : (

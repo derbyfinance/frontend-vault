@@ -44,9 +44,6 @@ const DepositTab = () => {
     enabled: Boolean(debouncedValue),
   });
 
-  console.log(config);
-  console.log({ prepareError });
-  console.log({ isPrepareError });
   const { data, write } = useContractWrite(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({

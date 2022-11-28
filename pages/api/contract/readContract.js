@@ -16,7 +16,6 @@ const handler = async (req, res) => {
     address,
     chain,
   });
-  console.log(response.result);
 
   res.status(200).json({
     exchangeRate: response.result,

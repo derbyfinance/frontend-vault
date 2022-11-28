@@ -11,13 +11,10 @@ import {
 import { chainsIcons } from './chainsIcons';
 
 const ChainsList = React.forwardRef((props, ref) => {
-  console.log(ref, 'ref');
-  console.log(props, 'props');
   const { chain } = useNetwork();
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork();
   //make sure that the chain has switched
-  console.log(chain);
 
   const handleCloseChains = () => {
     props.setChainsOpen(false);

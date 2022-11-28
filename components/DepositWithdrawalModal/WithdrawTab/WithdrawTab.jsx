@@ -65,7 +65,6 @@ const WithdrawTab = () => {
 
   const availableLiquidity = 187000; //backend
   let gasPrice = 187; //backend
-  // console.log(prepareError);
   return (
     <>
       <StyledInputsContainer>

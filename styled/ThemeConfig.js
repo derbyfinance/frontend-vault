@@ -117,22 +117,22 @@ const darkThemeColors = {
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
 };
 
-const font = {
-  robotoBold: ' 600 20px Roboto-Bold',
-  robotoMedium: '500 20px Roboto-Medium',
-  robotoRegular: '400 20px Roboto-Regular',
-  robotoLight: '300 20px Roboto-Light',
-  slabMedium: '500 20px Slab-Medium',
-  slabRegular: '400 20px Slab-Regular',
-  slabLight: '300 20px Slab-Light',
+const fonts = {
+  robotoBold: ' 600 14px Roboto-Bold',
+  robotoMedium: '500 14px Roboto-Medium',
+  robotoRegular: '400 14px Roboto-Regular',
+  robotoLight: '300 14px Roboto-Light',
+  slabMedium: '500 14px Slab-Medium',
+  slabRegular: '400 14px Slab-Regular',
+  slabLight: '300 14px Slab-Light',
 };
 
 export const lightTheme = {
   colors: lightThemeColors,
-  font,
+  fonts,
 };
 
 export const darkTheme = {
   colors: darkThemeColors,
-  font,
+  fonts,
 };

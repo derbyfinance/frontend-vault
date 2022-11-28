@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 const StyledMainButton = styled.button`
   background: ${({ theme }) => theme.colors.gradientMain};
-  font: ${({ theme }) => theme.font.slabRegular};
+  font: ${({ theme }) => theme.font?.slabRegular};
   color: ${({ theme }) => theme.colors.textSecondary};
   border-radius: 6px;
   padding: 12px 20px;
-  font: ${({ theme }) => theme.font.slabMedium};
+  font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 16px;
   cursor: pointer;
   border: none;

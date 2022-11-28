@@ -25,3 +25,5 @@ export { default as CloseButton } from './CloseButton';
 export { default as Info } from './Info';
 export { default as Gas } from './Gas';
 export { default as Warning } from './Warning';
+export { default as EyeOpen } from './EyeOpen';
+export { default as EyeClosed } from './EyeClosed';

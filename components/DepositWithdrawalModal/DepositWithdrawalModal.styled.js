@@ -93,3 +93,13 @@ export const DepositWithdrawButtonContainer = styled.div`
 export const StyledModalDepositButton = styled.div`
   text-align: center;
 `;
+
+export const StyledErrorDepositWithdraw = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: ${({ theme }) => theme.font.robotoLight};
+  font-size: 10px;
+  color: ${({ theme }) => theme.colors.textError};
+  overflow: hidden;
+`;

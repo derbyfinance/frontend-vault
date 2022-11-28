@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
-import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
 import { currencyFormatter, percentFormatter } from 'Helpers/numberFormatters';
 import { useDebounce } from 'use-debounce';
@@ -16,6 +16,7 @@ import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
+  StyledErrorDepositWithdraw,
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
@@ -43,6 +44,10 @@ const DepositTab = () => {
   console.log(config);
   console.log({ prepareError });
   console.log({ isPrepareError });
+  console.log(
+    prepareError,
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<',
+  );
 
   const { data, write } = useContractWrite(config);
 
@@ -52,7 +57,11 @@ const DepositTab = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    write();
+    try {
+      write();
+    } catch (error) {
+      console.log(error, 'wallet not connected');
+    }
   };
 
   return (
@@ -73,7 +82,7 @@ const DepositTab = () => {
             />
           }
         />
-        {isPrepareError && <div>Error: {prepareError?.message}</div>}
+
         {isLoading && <div>Waiting for transaction...</div>}
         {isSuccess && (
           <div>
@@ -115,6 +124,12 @@ const DepositTab = () => {
           btnText={financialActionTypes.DEPOSIT}
           onClick={handleClick}
         />
+        <StyledErrorDepositWithdraw>
+          <div>
+            <Warning />
+          </div>{' '}
+          {isPrepareError && <div>{prepareError?.message}</div>}
+        </StyledErrorDepositWithdraw>
       </StyledModalDepositButton>
     </>
   );

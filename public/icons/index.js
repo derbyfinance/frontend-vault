@@ -24,3 +24,4 @@ export { default as DFUSDC } from './DFUSDC';
 export { default as CloseButton } from './CloseButton';
 export { default as Info } from './Info';
 export { default as Gas } from './Gas';
+export { default as Warning } from './Warning';

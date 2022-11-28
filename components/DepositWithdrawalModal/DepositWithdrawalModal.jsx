@@ -27,8 +27,6 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
     setFinancialActionType(financialActionTypes.WITHDRAW);
   };
 
-  console.log(financialActionType);
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <StyledDepositWithdrawalModalContainer>

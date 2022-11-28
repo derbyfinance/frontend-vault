@@ -71,6 +71,7 @@ const lightThemeColors = {
   textSecondary: '#fff',
   textTertiary: '#121212',
   textFaded: '#a9a6ae',
+  textError: '#E84142',
   textWalletInfo: '#121212',
   backgroundMain: '#fff',
   headerMain: '#fe5e76',
@@ -96,6 +97,9 @@ const darkThemeColors = {
   textFaded: '#a9a6ae',
   textWalletInfo: '#fff',
   textTertiary: '#121212',
+
+  textError: '#E84142',
+
   backgroundMain: '#000',
   headerMain: '#fe5e76',
   tabDepositWithdraw: '#f13abc',

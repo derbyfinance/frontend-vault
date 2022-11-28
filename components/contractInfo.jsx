@@ -10,7 +10,7 @@ const ContractInfo = () => {
         setExchangeRate(data.exchangeRate);
       }, []);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   });
 

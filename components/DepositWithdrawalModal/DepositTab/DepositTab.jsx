@@ -51,11 +51,11 @@ const DepositTab = () => {
   });
 
   const handleDepositField = (e) => {
-    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    if (e.target.value.replace(/[0-9]/g, '')) return false;
     setDepositValue({ deposit: e.target.value, youGet: e.target.value * 2 });
   };
   const handleDepositFieldYouGet = (e) => {
-    if (e.target.value.replace(/[1-9]/g, '')) return false;
+    if (e.target.value.replace(/[0-9]/g, '')) return false;
     setDepositValue({ deposit: e.target.value / 2, youGet: e.target.value });
   };
 
@@ -64,7 +64,7 @@ const DepositTab = () => {
     try {
       write();
     } catch (error) {
-      console.log(error, 'wallet not connected');
+      console.error(error, 'wallet not connected');
     }
   };
 
@@ -72,7 +72,6 @@ const DepositTab = () => {
     <>
       <StyledInputsContainer>
         <DepositWithdrawInput
-          // type="number"
           label="YOU DEPOSIT"
           placeholder="0.00"
           value={depositValue.deposit}

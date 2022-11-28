@@ -9,7 +9,9 @@ const ContractInfo = () => {
       axios.get('/api/contract/readContract').then(({ data }) => {
         setExchangeRate(data.exchangeRate);
       }, []);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   return (

@@ -6,7 +6,7 @@ export const StyledDepositWithdrawalModalContainer = styled.div`
 `;
 
 export const StyledTitle = styled.div`
-  font: ${({ theme }) => theme.font.slabMedium};
+  font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 20px;
 `;
 
@@ -20,7 +20,7 @@ export const StyledClose = styled.div`
 export const StyledDepositWithdrawButtons = styled.div`
   display: flex;
   justify-content: space-around;
-  font: ${({ theme }) => theme.font.robotoBold};
+  font: ${({ theme }) => theme.fonts.robotoBold};
   margin-top: 44px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
 `;
@@ -49,14 +49,14 @@ export const StyledHandleDeposit = styled.div`
 export const StyledAPY = styled.div`
   padding: 6px 6px;
   text-align: end;
-  font: ${({ theme }) => theme.font.robotoLight};
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 12px;
   & > span:first-child {
-    font: ${({ theme }) => theme.font.robotoLight};
+    font: ${({ theme }) => theme.fonts.robotoLight};
     font-size: 12px;
   }
   & > span:last-child {
-    font: ${({ theme }) => theme.font.robotoMedium};
+    font: ${({ theme }) => theme.fonts.robotoMedium};
     font-size: 12px;
   }
 `;
@@ -77,7 +77,7 @@ export const StyledGasPrice = styled.div`
 `;
 
 export const StyledDisclaimerDeposit = styled.div`
-  font: ${({ theme }) => theme.font.robotoLight};
+  font: ${({ theme }) => theme.fonts.robotoLight};
   color: ${({ theme }) => theme.colors.textFaded};
   font-size: 10px;
   text-align: center;
@@ -99,8 +99,14 @@ export const StyledErrorDepositWithdraw = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  font: ${({ theme }) => theme.font.robotoLight};
+  gap: 10px;
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 10px;
   color: ${({ theme }) => theme.colors.textError};
   overflow: hidden;
+  text-align: center;
+`;
+
+export const StyledErrorMessage = styled.div`
+  justify-content: center;
 `;

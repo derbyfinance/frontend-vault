@@ -17,6 +17,7 @@ import {
   StyledAPY,
   StyledDisclaimerDeposit,
   StyledErrorDepositWithdraw,
+  StyledErrorMessage,
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
@@ -82,7 +83,6 @@ const WithdrawTab = () => {
             />
           }
         />
-        {isPrepareError && <p>Error: {prepareError?.message}</p>}
         {isLoading && <p>Transaction is pending...</p>}
         {isSuccess && (
           <p>
@@ -132,7 +132,7 @@ const WithdrawTab = () => {
           <div>
             <Warning />
           </div>
-          <div>{prepareError?.message}</div>
+          <StyledErrorMessage>{prepareError?.message}</StyledErrorMessage>
         </StyledErrorDepositWithdraw>
       )}
     </>

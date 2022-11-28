@@ -16,7 +16,7 @@ export const StyledLabel = styled.div`
   top: -8px;
   background-color: ${({ theme }) => theme.colors.backgroundMain};
   padding: 0 4px;
-  font: ${({ theme }) => theme.font.robotoMedium};
+  font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 12px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
@@ -24,6 +24,6 @@ export const StyledLabel = styled.div`
 export const StyledInput = styled.input`
   width: 100%;
   border: none;
-  font: ${({ theme }) => theme.font.robotoLight};
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 24px;
 `;

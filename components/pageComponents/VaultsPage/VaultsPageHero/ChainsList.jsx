@@ -14,18 +14,13 @@ const ChainsList = React.forwardRef((props, ref) => {
   const { chain } = useNetwork();
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork();
-  //make sure that the chain has switched
 
   const handleCloseChains = () => {
     props.setChainsOpen(false);
   };
 
   return (
-    <StyledChainsList
-      onClick={handleCloseChains}
-      ref={ref}
-      isOpen={props.chainIsOpen}
-    >
+    <StyledChainsList onClick={handleCloseChains} ref={ref}>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
       {chains.map((chain) => (
         <StyledChainWrapper

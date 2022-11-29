@@ -10,9 +10,9 @@ export const currencyFormatter = (value, currency = 'usd') => {
   }).format(value);
 };
 
-export const percentFormatter = (value) => {
+export const percentageFormatter = (value) => {
   return new Intl.NumberFormat('en-US', {
     style: 'percent',
-    minimumIntegerDigits: 1,
-  }).format(value);
+    maximumFractionDigits: 2,
+  }).format(value / 100);
 };

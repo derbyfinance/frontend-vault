@@ -8,4 +8,5 @@ export const chainsIcons = {
   10: Optimism,
   137: Polygon,
   1: Ethereum,
+  5: Ethereum,
 };

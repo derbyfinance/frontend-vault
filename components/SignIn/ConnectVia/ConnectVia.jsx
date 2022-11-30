@@ -1,5 +1,5 @@
-import { ArrowRight } from '@icons/index';
 import React from 'react';
+import { ArrowRight } from '@icons/index';
 import {
   StyledConnectLeftContainer,
   StyledConnectVia,

@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { utils } from 'ethers';
 import { useDebounce } from 'use-debounce';
 import {
   usePrepareSendTransaction,
   useSendTransaction,
   useWaitForTransaction,
 } from 'wagmi';
-import { utils } from 'ethers';
 
 const SendTransaction = () => {
   const [to, setTo] = useState('');

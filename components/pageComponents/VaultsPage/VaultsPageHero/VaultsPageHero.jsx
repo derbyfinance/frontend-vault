@@ -1,9 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
+import HeroCircle from '@images/HeroCircle.png';
+import Image from 'next/image';
 import { useAccount, useNetwork } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
+  StyledArrowIcon,
   StyledCircle,
   StyledDescription,
+  StyledHeroContainer,
+  StyledHeroWrapper,
   StyledIcon,
   StyledInfoBlockWrapper,
   StyledNetworkIcon,
@@ -12,14 +18,8 @@ import {
   StyledNetworkTitle,
   StyledValue,
   StyledValuePart,
-  StyledHeroWrapper,
-  StyledHeroContainer,
-  StyledArrowIcon,
 } from './VaultsPageHero.styled';
 import { chainsIcons } from './chainsIcons';
-import Image from 'next/image';
-import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
-import HeroCircle from '@images/HeroCircle.png';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -61,9 +61,15 @@ const VaultsPageHero = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  const handleChainsOpen = () => {
+    setChainsOpen(!chainsOpen);
+  };
+
   return (
     <StyledHeroContainer>
-      {chainsOpen && <ChainsList ref={dropdownRef} />}
+      {chainsOpen && (
+        <ChainsList setChainsOpen={setChainsOpen} ref={dropdownRef} />
+      )}
       <StyledHeroWrapper>
         <StyledCircle>
           <Image src={HeroCircle} alt="Decorative Circle" />

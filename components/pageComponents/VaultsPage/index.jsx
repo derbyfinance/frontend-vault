@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyledCoinsPart, StyledVaultsPageWrapper } from './index.styled';
 import VaultsPageHero from './VaultsPageHero/VaultsPageHero';
 import VaultsPageList from './VaultsPageList/VaultsPageList';
 import WalletInfo from './WalletInformation/WalletInfo';
+import { StyledCoinsPart, StyledVaultsPageWrapper } from './index.styled';
+
 const VaultsPageComponent = () => {
   return (
     <StyledVaultsPageWrapper>

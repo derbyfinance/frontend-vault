@@ -1,23 +1,26 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
+import { useNetwork, useSwitchNetwork } from 'wagmi';
 import {
   StyledChain,
-  StyledChainsList,
   StyledChainTitle,
   StyledChainWrapper,
+  StyledChainsList,
   StyledSwitchTo,
 } from './VaultsPageHero.styled';
 import { chainsIcons } from './chainsIcons';
-import { useNetwork, useSwitchNetwork } from 'wagmi';
 
 const ChainsList = React.forwardRef((props, ref) => {
   const { chain } = useNetwork();
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork();
-  //make sure that the chain has switched
-  console.log(chain);
+
+  const handleCloseChains = () => {
+    props.setChainsOpen(false);
+  };
+
   return (
-    <StyledChainsList ref={ref} isOpen={props.chainsOpen}>
+    <StyledChainsList onClick={handleCloseChains} ref={ref}>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
       {chains.map((chain) => (
         <StyledChainWrapper

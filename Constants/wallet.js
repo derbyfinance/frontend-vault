@@ -3,3 +3,8 @@ export const walletNames = {
   coinBase: 'coin',
   walletConnect: 'wal',
 };
+
+export const financialActionTypes = {
+  DEPOSIT: 'DEPOSIT',
+  WITHDRAW: 'WITHDRAW',
+};

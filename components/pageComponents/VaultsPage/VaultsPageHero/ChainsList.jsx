@@ -8,10 +8,9 @@ import {
   StyledChainsList,
   StyledSwitchTo,
 } from './VaultsPageHero.styled';
-import { chainsIcons } from './chainsIcons';
+import { chainIcons } from './chainIcons';
 
 const ChainsList = React.forwardRef((props, ref) => {
-  const { chain } = useNetwork();
   const { chains, error, isLoading, pendingChainId, switchNetwork } =
     useSwitchNetwork();
 
@@ -28,7 +27,7 @@ const ChainsList = React.forwardRef((props, ref) => {
           onClick={() => switchNetwork(chain.id)}
         >
           <StyledChain>
-            <Image src={chainsIcons[chain.id]} alt={chain.name} />
+            <Image src={chainIcons[chain.id]} alt={chain.name} />
             <StyledChainTitle>{chain.name}</StyledChainTitle>
           </StyledChain>
         </StyledChainWrapper>

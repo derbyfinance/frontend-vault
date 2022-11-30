@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
-import { financialActionTypes } from 'Constants/wallet';
+import { financialActionTypes } from 'constants/wallet';
 import {
   currencyFormatter,
   percentageFormatter,

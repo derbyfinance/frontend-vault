@@ -1,5 +1,5 @@
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
-import { walletNames } from 'Constants/wallet';
+import { walletNames } from 'constants/wallet';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';

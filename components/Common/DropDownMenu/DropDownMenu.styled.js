@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledDropDownMenu = styled.div``;
+export const StyledDropDownMenu = styled.div`
+  position: absolute;
+  background: #ffffff;
+  z-index: 999;
+`;
 
 export const StyledDropDownIcon = styled.div`
   cursor: pointer;

@@ -19,7 +19,7 @@ import {
   StyledValue,
   StyledValuePart,
 } from './VaultsPageHero.styled';
-import { chainsIcons } from './chainsIcons';
+import { chainIcons } from './chainIcons';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -76,7 +76,7 @@ const VaultsPageHero = () => {
         </StyledCircle>
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
-            <Image src={chainsIcons[chain?.id]} alt={`${chain?.name} image`} />
+            <Image src={chainIcons[chain?.id]} alt={`${chain?.name} image`} />
             <h2>{chain.name}</h2>
             {isConnected && (
               <StyledArrowIcon
@@ -111,7 +111,7 @@ const VaultsPageHero = () => {
         <StyledNetworkIcon>
           <Image
             alt={`${chain.name} Image`}
-            src={chainsIcons[chain.id]}
+            src={chainIcons[chain.id]}
             width={'80px'}
             height={'120px'}
           />

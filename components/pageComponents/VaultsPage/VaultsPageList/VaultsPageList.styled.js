@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-export const StyledCoinsListHeader = styled.h2`
-  color: ${({ theme }) => theme.headerMain};
+export const StyledCoinsListHeader = styled.div`
+  color: ${({ theme }) => theme.colors.headerMain};
+  font: ${({ theme }) => theme.fonts.robotoMedium};
   margin-bottom: 30px;
-  font-family: Slab-Medium;
-  font-weight: 500;
 `;

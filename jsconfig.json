@@ -4,7 +4,10 @@
     "paths": {
       "@images/*": ["public/images/*"],
       "@icons/*": ["public/icons/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@pages/*": ["pages/*"],
+      "@utils/*": ["utils/*"],
+      "@helpers/*": ["helpers/*"]
     }
   }
 }

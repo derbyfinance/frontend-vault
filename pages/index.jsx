@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import Head, { defaultHead } from 'next/head';
-import { useAccount, useNetwork } from 'wagmi';
 import { getSession } from 'next-auth/react';
+import Head, { defaultHead } from 'next/head';
 import { useRouter } from 'next/router';
-import User from '../components/User';
-import SendTransaction from '../components/SendTransaction';
-import SignIn from '../components/SignIn/SignIn';
+import { useAccount, useNetwork } from 'wagmi';
 import ContractInfo from '../components/ContractInfo';
 import Deposit from '../components/Deposit';
 import Layout from '../components/Layout/Layout';
+import SendTransaction from '../components/SendTransaction';
+import SignIn from '../components/SignIn/SignIn';
+import User from '../components/User';
 
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);

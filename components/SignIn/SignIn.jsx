@@ -1,9 +1,13 @@
-import { signIn } from 'next-auth/react';
-import { useAccount, useConnect, useSignMessage, useDisconnect } from 'wagmi';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import ConnectVia from './ConnectVia/ConnectVia';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
+import { walletNames } from 'Constants/wallet';
+import axios from 'axios';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import ConnectVia from './ConnectVia/ConnectVia';
 import { SignInContainer } from './SignIn.styled';
 
 const SignIn = () => {

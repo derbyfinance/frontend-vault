@@ -1,12 +1,12 @@
-import { chain, createClient, configureChains, WagmiConfig } from 'wagmi';
-import { infuraProvider } from 'wagmi/providers/infura';
 import { SessionProvider } from 'next-auth/react';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
+import { WagmiConfig, chain, configureChains, createClient } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { infuraProvider } from 'wagmi/providers/infura';
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.arbitrum, chain.optimism],
+  [chain.mainnet, chain.polygon, chain.arbitrum, chain.optimism, chain.goerli],
   [infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID })],
 );
 

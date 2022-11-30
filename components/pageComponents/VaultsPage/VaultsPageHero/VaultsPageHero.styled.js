@@ -27,7 +27,7 @@ export const StyledNetworkTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  & div {
+  & h2 {
     font: ${({ theme }) => theme.fonts.slabMedium};
     font-size: 24px;
   }

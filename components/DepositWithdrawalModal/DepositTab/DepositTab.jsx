@@ -3,7 +3,11 @@ import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
 import { financialActionTypes } from 'Constants/wallet';
-import { currencyFormatter, percentFormatter } from 'Helpers/numberFormatters';
+import {
+  currencyFormatter,
+  percentageFormatter,
+  percentFormatter,
+} from 'Helpers/numberFormatters';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -27,7 +31,7 @@ const DepositTab = () => {
     deposit: '',
     youGet: '',
   });
-  const debouncedValue = useDebounce(depositValue, 500);
+  const debouncedValue = useDebounce(depositValue.deposit, 500);
 
   const APY = 187; //backend
   const gasPrice = 187; //backend
@@ -112,7 +116,7 @@ const DepositTab = () => {
       </StyledInputsContainer>
       <StyledAPY>
         <span>APY </span>
-        <span>{percentFormatter(APY)}</span>
+        <span>{percentageFormatter(APY)}</span>
       </StyledAPY>
       <StyledGasPrice>
         <Gas />

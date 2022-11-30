@@ -26,9 +26,9 @@ const DFUSDC = () => {
           y2="32"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FE5E76" />
-          <stop offset="0.453125" stop-color="#F13ABC" />
-          <stop offset="1" stop-color="#2775C9" />
+          <stop stopColor="#FE5E76" />
+          <stop offset="0.453125" stopColor="#F13ABC" />
+          <stop offset="1" stopColor="#2775C9" />
         </linearGradient>
       </defs>
     </svg>

@@ -29,7 +29,7 @@ const WithdrawTab = () => {
     youGet: '',
   });
 
-  const debouncedValue = useDebounce(withdrawValue, 500);
+  const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
 
   const handleWithdrawField = (e) => {
     if (e.target.value.replace(/[1-9]/g, '')) return false;

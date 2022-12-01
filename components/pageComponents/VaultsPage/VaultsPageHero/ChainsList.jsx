@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import Image from 'next/image';
-import { useNetwork, useSwitchNetwork } from 'wagmi';
+import { useSwitchNetwork } from 'wagmi';
 import {
   StyledChain,
   StyledChainTitle,
@@ -11,20 +11,19 @@ import {
 import { chainIcons } from './chainIcons';
 
 const ChainsList = React.forwardRef((props, ref) => {
-  const { chains, error, isLoading, pendingChainId, switchNetwork } =
-    useSwitchNetwork();
+  const { chains, switchNetwork } = useSwitchNetwork();
 
-  const handleCloseChains = () => {
-    props.setChainsOpen(false);
+  const handleSwitchNetwork = (id) => {
+    switchNetwork(id);
   };
 
   return (
-    <StyledChainsList onClick={handleCloseChains} ref={ref}>
+    <StyledChainsList ref={ref}>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
       {chains.map((chain) => (
         <StyledChainWrapper
           key={chain.id}
-          onClick={() => switchNetwork(chain.id)}
+          onClick={() => handleSwitchNetwork(chain.id)}
         >
           <StyledChain>
             <Image src={chainIcons[chain.id]} alt={chain.name} />

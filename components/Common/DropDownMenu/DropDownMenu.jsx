@@ -6,28 +6,23 @@ import {
   StyledDropDownMenu,
 } from './DropDownMenu.styled';
 
-const DropDownMenu = ({ children, dropDownButton = <ArrowDown /> }) => {
-  const [isContentVisible, setIsContentVisible] = useState(false);
-
-  const toggleContentVisibility = () => {
-    setIsContentVisible(!isContentVisible);
-    console.log('Clicked on the arrow in DropDownMenu');
+const DropDownMenu = ({
+  children,
+  dropDownButton = <ArrowDown />,
+  open,
+  setOpen,
+}) => {
+  const toggleMenu = () => {
+    setOpen(!open);
   };
 
   return (
     <StyledDropDownMenu>
-      <StyledDropDownIcon
-        isContentVisible={isContentVisible}
-        onClick={toggleContentVisibility}
-      >
+      <StyledDropDownIcon isOpen={open} onClick={toggleMenu}>
         {dropDownButton}
       </StyledDropDownIcon>
 
-      {isContentVisible && (
-        <StyledDropDownContent isContentVisible={isContentVisible}>
-          {children}
-        </StyledDropDownContent>
-      )}
+      {open && <StyledDropDownContent>{children}</StyledDropDownContent>}
     </StyledDropDownMenu>
   );
 };

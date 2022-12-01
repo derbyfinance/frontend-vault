@@ -10,3 +10,9 @@ export const StyledSingleChainContainer = styled.div`
     border-bottom: none;
   }
 `;
+
+export const StyledSingleChainIcon = styled.div`
+  width: 24px;
+  height: 24px;
+  position: relative;
+`;

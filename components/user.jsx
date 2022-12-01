@@ -1,4 +1,5 @@
 import { signOut } from 'next-auth/react';
+
 const User = ({ user }) => {
   return (
     <div>

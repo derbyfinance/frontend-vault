@@ -35,7 +35,6 @@ export const StyledConnectedRow = styled.tr`
 
 export const StyledVaultRow = styled.tr`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
-  //TODO
 `;
 
 export const StyledWalletConnectedTable = styled.table`

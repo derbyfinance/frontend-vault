@@ -16,3 +16,7 @@ export const percentageFormatter = (value) => {
     maximumFractionDigits: 2,
   }).format(value / 100);
 };
+
+export const hideMiddleCharacters = (address) => {
+  return address.slice(0, 4) + '...' + address.slice(-4);
+};

@@ -130,11 +130,6 @@ export const StyledChain = styled.div`
   }
 `;
 
-export const StyledArrowIcon = styled.div`
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
-  transition: transform 0.3s;
-`;
-
 export const StyledSwitchTo = styled.div`
   padding: 0 16px;
   font: ${({ theme }) => theme.fonts.robotoMedium};

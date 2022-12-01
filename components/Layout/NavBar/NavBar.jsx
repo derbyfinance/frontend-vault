@@ -11,9 +11,13 @@ import {
   StyledNavLink,
   StyledNavLinks,
 } from './NavBar.styled';
+import { useAccount } from 'wagmi';
+import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 
 const NavBar = ({ toggleTheme, isDark }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { isConnected, address } = useAccount();
 
   const openModal = () => setIsOpen(true);
 
@@ -47,9 +51,14 @@ const NavBar = ({ toggleTheme, isDark }) => {
           <StyledNavLink active={router.pathname === '/governance'}>
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
-          <StyledNavLink>
-            <MainButton onClick={openModal} btnText="Connect Your Wallet" />
-          </StyledNavLink>
+
+          {isConnected ? (
+            <ConnectedWalletAddress />
+          ) : (
+            <StyledNavLink>
+              <MainButton onClick={openModal} btnText="Connect Your Wallet" />
+            </StyledNavLink>
+          )}
         </StyledNavLinks>
       </StyledNavBarContent>
     </StyledNavBarWrapper>

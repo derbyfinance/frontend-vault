@@ -6,19 +6,18 @@ import {
   StyledDropDownMenu,
 } from './DropDownMenu.styled';
 
-const DropDownMenu = ({
-  children,
-  dropDownButton = <ArrowDown />,
-  open,
-  setOpen,
-}) => {
+const DropDownMenu = ({ onOpen, onClose, open, children, dropDownButton }) => {
   const toggleMenu = () => {
-    setOpen(!open);
+    if (open) {
+      onClose();
+    } else {
+      onOpen();
+    }
   };
 
   return (
     <StyledDropDownMenu>
-      <StyledDropDownIcon isOpen={open} onClick={toggleMenu}>
+      <StyledDropDownIcon onClick={toggleMenu}>
         {dropDownButton}
       </StyledDropDownIcon>
 

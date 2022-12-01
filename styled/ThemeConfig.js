@@ -85,8 +85,10 @@ const lightThemeColors = {
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   borderTertiary: '#f13abc',
+  borderFaded: '#6a7278',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
+  online: '#00FF38',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
 };
@@ -97,9 +99,8 @@ const darkThemeColors = {
   textFaded: '#a9a6ae',
   textWalletInfo: '#fff',
   textTertiary: '#121212',
-
+  online: '#00FF38',
   textError: '#E84142',
-
   backgroundMain: '#000',
   headerMain: '#fe5e76',
   tabDepositWithdraw: '#f13abc',
@@ -111,6 +112,7 @@ const darkThemeColors = {
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
   borderTertiary: '#f13abc',
+  borderFaded: '#6a7278',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',

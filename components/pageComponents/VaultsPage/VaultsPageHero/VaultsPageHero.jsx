@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Lock, Members, Vaults } from '@icons/index';
+import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
@@ -21,6 +21,7 @@ import {
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
+import BtnArrow from './BtnArrow';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -67,6 +68,13 @@ const VaultsPageHero = () => {
 
   const [open, setOpen] = useState(false);
 
+  const onOpen = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
     <StyledHeroContainer>
       <StyledHeroWrapper>
@@ -75,7 +83,12 @@ const VaultsPageHero = () => {
             <Image src={chainIcons[chain?.id]} alt={`${chain?.name} image`} />
             <h2>{chain.name}</h2>
             {isConnected && (
-              <DropDownMenu open={open} setOpen={setOpen}>
+              <DropDownMenu
+                open={open}
+                onOpen={onOpen}
+                onClose={onClose}
+                dropDownButton={<BtnArrow open={open} />}
+              >
                 <ChainsList setChainsOpen={setChainsOpen} ref={dropdownRef} />
               </DropDownMenu>
             )}

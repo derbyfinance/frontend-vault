@@ -1,9 +1,8 @@
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
-import React, { useState } from 'react';
 import { useAccount } from 'wagmi';
-import { StyledWalletAddressContainer } from './ConnectedWalletAddress.styled';
 import WalletAddressButton from './WalletAddressButton/WalletAddressButton';
 import WalletDropdown from './WalletDropdown/WalletDropdown';
+import React, { useState } from 'react';
 
 const ConnectedWalletAddress = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +17,7 @@ const ConnectedWalletAddress = () => {
   const { address } = useAccount();
 
   return (
-    <StyledWalletAddressContainer>
+    <>
       <DropDownMenu
         dropDownButton={<WalletAddressButton address={address} open={open} />}
         open={open}
@@ -27,7 +26,7 @@ const ConnectedWalletAddress = () => {
       >
         {open && <WalletDropdown address={address} />}
       </DropDownMenu>
-    </StyledWalletAddressContainer>
+    </>
   );
 };
 

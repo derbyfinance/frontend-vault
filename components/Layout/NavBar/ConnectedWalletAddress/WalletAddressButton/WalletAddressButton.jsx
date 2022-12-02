@@ -1,5 +1,5 @@
 import { ArrowDown } from '@icons/index';
-import { hideMiddleCharacters } from 'Helpers/numberFormatters';
+import { hideMiddleCharacters } from '@helpers/helperFunctions';
 import Image from 'next/image';
 import React from 'react';
 import {

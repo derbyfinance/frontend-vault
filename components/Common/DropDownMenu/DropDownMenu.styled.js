@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledDropDownMenu = styled.div`
   position: relative;
-  background: #ffffff;
+  background: ${(props) => props.theme.colors.backgroundMain};
 `;
 
 export const StyledDropDownIcon = styled.div`

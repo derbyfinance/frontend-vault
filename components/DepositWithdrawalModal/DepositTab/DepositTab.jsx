@@ -7,7 +7,7 @@ import {
   currencyFormatter,
   percentageFormatter,
   percentFormatter,
-} from 'Helpers/numberFormatters';
+} from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {

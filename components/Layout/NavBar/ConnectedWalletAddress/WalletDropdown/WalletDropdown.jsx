@@ -1,7 +1,10 @@
-import { hideMiddleCharacters } from 'Helpers/numberFormatters';
-import Image from 'next/image';
 import React from 'react';
-import { chain, chainId, useDisconnect, useNetwork } from 'wagmi';
+import {
+  copyToClipboard,
+  hideMiddleCharacters,
+} from '@helpers/helperFunctions';
+import Image from 'next/image';
+import { useAccount, useDisconnect, useNetwork } from 'wagmi';
 import { StyledAddressWrapper } from '../WalletAddressButton/WalletAddressButton.styled';
 import {
   StyledAddressAvatar,
@@ -23,10 +26,13 @@ const WalletDropdown = ({ address }) => {
   };
 
   const handleCopyAddress = () => {
-    navigator.clipboard.writeText(address);
+    copyToClipboard(address);
   };
 
   const { chain } = useNetwork();
+
+  const { connector } = useAccount();
+
   return (
     <StyledWalletMenuContent>
       <StyledAddressAvatar>
@@ -41,7 +47,7 @@ const WalletDropdown = ({ address }) => {
         </StyledAddressWrapper>
       </StyledAddressAvatar>
       <StyledConnectedWith>
-        Connected with: <br /> Metamask
+        Connected with: <br /> {connector.name}
       </StyledConnectedWith>
       <StyledButtonWrapper>
         <StyledButtonWalletMenu>Switch</StyledButtonWalletMenu>

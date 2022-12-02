@@ -5,7 +5,7 @@ export const StyledWalletAddressBtn = styled.button`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background: #f5f5f5;
+  background: ${({ theme }) => theme.colors.backgroundButton};
   border: 1px solid ${({ theme }) => theme.colors.tabDepositWithdrawActive};
   padding: 12px 18px;
   margin: 0;

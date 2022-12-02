@@ -3,7 +3,7 @@ import MainButton from '@components/Common/MainButton/MainButton';
 import StyledMainButton from '@components/Common/MainButton/MainButton.styled';
 import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
 import { financialActionTypes } from 'constants/wallet';
-import { currencyFormatter } from 'Helpers/numberFormatters';
+import { currencyFormatter } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {

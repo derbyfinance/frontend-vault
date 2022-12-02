@@ -14,7 +14,9 @@ import {
   StyledRowIcon,
   StyledRowOnline,
   StyledRowText,
+  StyledWalletAndButtons,
   StyledWalletMenuContent,
+  StyledWalletMenuRows,
   StyledWalletRow,
 } from './WalletDropdown.styled';
 
@@ -35,44 +37,48 @@ const WalletDropdown = ({ address }) => {
 
   return (
     <StyledWalletMenuContent>
-      <StyledAddressAvatar>
-        <Image
-          src="/icons/MetamaskAvatar.svg"
-          alt="Metamask Avatar"
-          width={32}
-          height={32}
-        />
-        <StyledAddressWrapper>
-          {hideMiddleCharacters(address)}
-        </StyledAddressWrapper>
-      </StyledAddressAvatar>
-      <StyledConnectedWith>
-        Connected with: <br /> {connector.name}
-      </StyledConnectedWith>
-      <StyledButtonWrapper>
-        <StyledButtonWalletMenu>Switch</StyledButtonWalletMenu>
-        <StyledButtonWalletMenu onClick={disconnect}>
-          Disconnect
-        </StyledButtonWalletMenu>
-      </StyledButtonWrapper>
-      <StyledWalletRow>
-        <StyledRowOnline>
-          <div></div>
-        </StyledRowOnline>
-        <StyledRowText>{chain.name}</StyledRowText>
-      </StyledWalletRow>
-      <StyledWalletRow onClick={handleCopyAddress}>
-        <StyledRowIcon>
-          <Image src="/icons/Copy.svg" layout="fill" />
-        </StyledRowIcon>
-        <StyledRowText>Copy Address</StyledRowText>
-      </StyledWalletRow>
-      <StyledWalletRow onClick={handleViewOnEtherscan}>
-        <StyledRowIcon>
-          <Image src="/icons/ViewOnEtherscan.svg" layout="fill" />
-        </StyledRowIcon>
-        <StyledRowText>View On Etherscan</StyledRowText>
-      </StyledWalletRow>
+      <StyledWalletAndButtons>
+        <StyledAddressAvatar>
+          <Image
+            src="/icons/MetamaskAvatar.svg"
+            alt="Metamask Avatar"
+            width={32}
+            height={32}
+          />
+          <StyledAddressWrapper>
+            {hideMiddleCharacters(address)}
+          </StyledAddressWrapper>
+        </StyledAddressAvatar>
+        <StyledConnectedWith>
+          Connected with: <br /> {connector.name}
+        </StyledConnectedWith>
+        <StyledButtonWrapper>
+          <StyledButtonWalletMenu>Switch</StyledButtonWalletMenu>
+          <StyledButtonWalletMenu onClick={disconnect}>
+            Disconnect
+          </StyledButtonWalletMenu>
+        </StyledButtonWrapper>
+      </StyledWalletAndButtons>
+      <StyledWalletMenuRows>
+        <StyledWalletRow>
+          <StyledRowOnline>
+            <div></div>
+          </StyledRowOnline>
+          <StyledRowText>{chain.name}</StyledRowText>
+        </StyledWalletRow>
+        <StyledWalletRow onClick={handleCopyAddress}>
+          <StyledRowIcon>
+            <Image src="/icons/Copy.svg" layout="fill" />
+          </StyledRowIcon>
+          <StyledRowText>Copy Address</StyledRowText>
+        </StyledWalletRow>
+        <StyledWalletRow onClick={handleViewOnEtherscan}>
+          <StyledRowIcon>
+            <Image src="/icons/ViewOnEtherscan.svg" layout="fill" />
+          </StyledRowIcon>
+          <StyledRowText>View On Etherscan</StyledRowText>
+        </StyledWalletRow>
+      </StyledWalletMenuRows>
     </StyledWalletMenuContent>
   );
 };

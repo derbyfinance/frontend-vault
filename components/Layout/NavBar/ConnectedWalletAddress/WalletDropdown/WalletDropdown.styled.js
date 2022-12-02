@@ -5,7 +5,7 @@ export const StyledWalletMenuContent = styled.div`
   background: ${({ theme }) => theme.colors.backgroundMain};
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 28px;
-  padding: 30px 14px;
+  padding: 30px 0px;
 `;
 
 export const StyledAddressAvatar = styled.div`
@@ -54,6 +54,18 @@ export const StyledWalletRow = styled.div`
   &:last-child {
     padding-bottom: 0;
   }
+  padding: 30px 16px;
+  &:hover {
+    background: #f5f5f5;
+  }
+`;
+
+export const StyledWalletAndButtons = styled.div`
+  padding: 0 16px;
+`;
+
+export const StyledWalletMenuRows = styled.div`
+  /* padding: 16px; */
 `;
 
 export const StyledRowIcon = styled.div`

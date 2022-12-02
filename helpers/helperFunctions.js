@@ -18,7 +18,7 @@ export const percentageFormatter = (value) => {
 };
 
 export const hideMiddleCharacters = (address) => {
-  return address.slice(0, 4) + '...' + address.slice(-4);
+  return address.slice(0, 6) + '...' + address.slice(-4);
 };
 
 export const copyToClipboard = (text) => {

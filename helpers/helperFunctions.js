@@ -16,3 +16,11 @@ export const percentageFormatter = (value) => {
     maximumFractionDigits: 2,
   }).format(value / 100);
 };
+
+export const hideMiddleCharacters = (address) => {
+  return address.slice(0, 6) + '...' + address.slice(-4);
+};
+
+export const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text);
+};

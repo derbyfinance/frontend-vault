@@ -90,6 +90,7 @@ const lightThemeColors = {
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  vaultTitle: '#5F08EE',
 };
 
 const darkThemeColors = {
@@ -117,6 +118,7 @@ const darkThemeColors = {
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  vaultTitle: '#5F08EE',
 };
 
 const fonts = {

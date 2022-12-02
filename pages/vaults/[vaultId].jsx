@@ -1,7 +1,8 @@
-import Layout from '@components/Layout/Layout';
-import SingleVaultPageComponent from '@components/pageComponents/SingleVaultPage';
-import { useRouter } from 'next/router';
 import React from 'react';
+import { useRouter } from 'next/router';
+import SingleVaultPageComponent from '@components/pageComponents/SingleVaultPage';
+import Layout from '@components/Layout/Layout';
+
 
 const SingleVaultPage = () => {
   const router = useRouter();

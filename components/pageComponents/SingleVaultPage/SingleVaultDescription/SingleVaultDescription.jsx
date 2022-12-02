@@ -1,6 +1,5 @@
-import { HideIcon } from '@icons/index';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   StyledDescriptionBody,
   StyledDescriptionHeader,
@@ -8,25 +7,26 @@ import {
   StyledHideBtn,
   StyledHideExplanation,
   StyledVault,
-  StyledVaultLogo,
   StyledVaultTitle,
 } from './SingleVaultDescription.styled';
+import { HideIcon } from '@icons/index';
 import USDC from '@images/usdc-single.png';
 
 const SingleVaultDescription = ({ vault, description }) => {
   const [descVisible, setDescVisible] = useState(true);
+
+  const toggleHideDescription = () => {
+    setDescVisible(!descVisible)
+  }
+
   return (
     <StyledDescriptionWrapper>
       <StyledDescriptionHeader>
         <StyledVault>
-          <StyledVaultLogo>
-            <Image src={USDC} />
-          </StyledVaultLogo>
+          <Image src={USDC} alt='vault' />
           <StyledVaultTitle>{vault}</StyledVaultTitle>
         </StyledVault>
-        <StyledHideExplanation
-          onClick={() => setDescVisible((descVisible) => !descVisible)}
-        >
+        <StyledHideExplanation onClick={toggleHideDescription}>
           <HideIcon />
           <StyledHideBtn>Hide explanation</StyledHideBtn>
         </StyledHideExplanation>

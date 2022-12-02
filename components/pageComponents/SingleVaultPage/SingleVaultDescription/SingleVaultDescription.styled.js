@@ -5,14 +5,14 @@ export const StyledDescriptionWrapper = styled.div`
   flex-direction: column;
   gap: 17px;
   padding: 32px;
-  border: 1px solid ${({ theme }) => theme.borderMain};
+  border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
 `;
 
 export const StyledDescriptionHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  font-family: 'Slab-Medium';
+  font: ${({ theme }) => theme.fonts.slabMedium}
 `;
 
 export const StyledVault = styled.div`
@@ -20,8 +20,6 @@ export const StyledVault = styled.div`
   align-items: center;
   gap: 5px;
 `;
-
-export const StyledVaultLogo = styled.div``;
 
 export const StyledVaultTitle = styled.div`
   font-size: 26px;
@@ -32,15 +30,17 @@ export const StyledHideBtn = styled.button`
   background: none;
   border: none;
   font-size: 14px;
-  color: ${({ theme }) => theme.textFaded};
+  color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledDescriptionBody = styled.div`
-  font-family: 'Roboto-Regular';
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 18px;
+  color: ${({ theme }) => theme.colors.textMain}
 `;
 
 export const StyledHideExplanation = styled.div`
   cursor: pointer;
   display: flex;
+  align-items: center;
 `;

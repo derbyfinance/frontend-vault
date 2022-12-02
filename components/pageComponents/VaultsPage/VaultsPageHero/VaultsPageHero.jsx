@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
 import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
+import BtnArrow from './BtnArrow';
 import ChainsList from './ChainsList';
 import {
   StyledCircle,
@@ -12,16 +14,14 @@ import {
   StyledIcon,
   StyledInfoBlockWrapper,
   StyledNetworkIcon,
+  StyledNetworkIconContainer,
   StyledNetworkInfo,
   StyledNetworkInfoSection,
   StyledNetworkTitle,
   StyledValue,
   StyledValuePart,
-  StyledNetworkIconContainer,
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
-import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
-import BtnArrow from './BtnArrow';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -113,7 +113,7 @@ const VaultsPageHero = () => {
         </StyledNetworkInfoSection>
         <StyledNetworkIconContainer>
           <StyledCircle>
-            <Image src={HeroCircle} alt="Decorative Circle" />
+            <Image src={HeroCircle} priority alt="Decorative Circle" />
           </StyledCircle>
           <StyledNetworkIcon>
             <Image

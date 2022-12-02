@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import ErrorMessage from '@components/UI/ErrorMessage';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
@@ -12,6 +14,7 @@ const SignIn = ({ closeModal }) => {
   const { isConnected } = useAccount();
   const { signMessageAsync } = useSignMessage();
   const { push } = useRouter();
+  const [walletIsDetected, setWalletIsDetected] = useState(true);
 
   const connectWallet = async (connector) => {
     try {
@@ -47,8 +50,10 @@ const SignIn = ({ closeModal }) => {
   };
 
   const handleWalletConnect = (connector) => {
-    connectWallet(connector);
-    closeModal();
+    if (connector) {
+      connectWallet(connector);
+      closeModal();
+    }
   };
 
   const walletIcons = {
@@ -59,6 +64,7 @@ const SignIn = ({ closeModal }) => {
 
   return (
     <SignInContainer>
+      {<ErrorMessage />}
       {connectors.map((connector) => (
         <ConnectVia
           key={connector.id}

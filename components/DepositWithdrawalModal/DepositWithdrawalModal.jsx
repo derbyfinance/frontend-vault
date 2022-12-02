@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '@components/Common/Modal/Modal';
 import { CloseButton } from '@icons/index';
-import { financialActionTypes } from 'Constants/wallet';
+import { financialActionTypes } from 'constants/wallet';
 import DepositTab from './DepositTab/DepositTab';
 import {
   StyledClose,

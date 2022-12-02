@@ -84,11 +84,13 @@ const lightThemeColors = {
   gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
+  breadCrumbs: '#B4B1B8',
   borderTertiary: '#f13abc',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  vaultTitle: '#5F08EE',
 };
 
 const darkThemeColors = {
@@ -110,11 +112,13 @@ const darkThemeColors = {
   gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
+  breadCrumbs: '#B4B1B8',
   borderTertiary: '#f13abc',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  vaultTitle: '#5F08EE',
 };
 
 const fonts = {

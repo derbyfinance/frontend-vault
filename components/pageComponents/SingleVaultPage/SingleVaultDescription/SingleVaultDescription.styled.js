@@ -1,6 +1,7 @@
-import styled, { ThemeConsumer } from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledDescriptionWrapper = styled.div`
+margin-bottom: 60px;
   display: flex;
   flex-direction: column;
   gap: 17px;
@@ -12,7 +13,7 @@ export const StyledDescriptionWrapper = styled.div`
 export const StyledDescriptionHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  font-family: 'Slab-Medium';
+  font: ${({ theme }) => theme.fonts.slabMedium}
 `;
 
 export const StyledVault = styled.div`
@@ -20,8 +21,6 @@ export const StyledVault = styled.div`
   align-items: center;
   gap: 5px;
 `;
-
-export const StyledVaultLogo = styled.div``;
 
 export const StyledVaultTitle = styled.div`
   font-size: 26px;
@@ -31,15 +30,14 @@ export const StyledHideBtn = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  font: ${({theme}) => theme.fonts.slabRegular};
   font-size: 14px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledDescriptionBody = styled.div`
-  font: ${({theme}) => theme.fonts.robotoRegular};
-  color: ${({theme}) => theme.colors.textMain};
+  font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 18px;
+  color: ${({ theme }) => theme.colors.textMain}
 `;
 
 export const StyledHideExplanation = styled.div`

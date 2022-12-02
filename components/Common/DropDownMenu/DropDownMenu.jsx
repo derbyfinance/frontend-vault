@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ArrowDown } from '@icons/index';
 import {
   StyledDropDownContent,
   StyledDropDownIcon,

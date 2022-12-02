@@ -1,7 +1,7 @@
-import { ArrowDown } from '@icons/index';
+import React from 'react';
+import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import { hideMiddleCharacters } from '@helpers/helperFunctions';
 import Image from 'next/image';
-import React from 'react';
 import {
   StyledAddressWrapper,
   StyledArrowContainer,
@@ -21,7 +21,7 @@ const WalletAddressButton = ({ open, address }) => {
         {hideMiddleCharacters(address)}
       </StyledAddressWrapper>
       <StyledArrowContainer open={open}>
-        <ArrowDown />
+        <ArrowDownComponent />
       </StyledArrowContainer>
     </StyledWalletAddressBtn>
   );

@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
+import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import { useAccount } from 'wagmi';
 import WalletAddressButton from './WalletAddressButton/WalletAddressButton';
 import WalletDropdown from './WalletDropdown/WalletDropdown';
-import React, { useState } from 'react';
 
 const ConnectedWalletAddress = () => {
   const [open, setOpen] = useState(false);

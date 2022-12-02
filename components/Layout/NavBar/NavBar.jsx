@@ -3,16 +3,16 @@ import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/Conn
 import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAccount } from 'wagmi';
 import MainButton from '../../Common/MainButton/MainButton';
 import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
+import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 import {
   StyledNavBarContent,
   StyledNavBarWrapper,
   StyledNavLink,
   StyledNavLinks,
 } from './NavBar.styled';
-import { useAccount } from 'wagmi';
-import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 
 const NavBar = ({ toggleTheme, isDark }) => {
   const [isOpen, setIsOpen] = useState(false);

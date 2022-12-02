@@ -1,6 +1,5 @@
-import { ArrowDown } from '@icons/index';
 import React from 'react';
-
+import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import styled from 'styled-components';
 
 const StyledButtonContainer = styled.div`
@@ -11,7 +10,7 @@ const StyledButtonContainer = styled.div`
 const BtnArrow = ({ open }) => {
   return (
     <StyledButtonContainer open={open}>
-      <ArrowDown />
+      <ArrowDownComponent />
     </StyledButtonContainer>
   );
 };

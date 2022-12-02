@@ -1,7 +1,7 @@
+import React, { useState } from 'react';
 import { StyledConnectDisclaimer } from '@components/Layout/NavBar/NavBar.styled';
 import SignIn from '@components/SignIn/SignIn';
 import { DFConnectIcon } from '@icons/index';
-import React, { useState } from 'react';
 import Modal from '../Modal';
 import {
   StyledModalConnectOptions,
@@ -17,7 +17,7 @@ const ConnectWalletModal = ({ isOpen, onClose }) => {
         <h4>to start using Derby Finance</h4>
       </StyledModalLogoAndText>
       <StyledModalConnectOptions>
-        <SignIn />
+        <SignIn closeModal={onClose} />
       </StyledModalConnectOptions>
       <StyledConnectDisclaimer>
         By connecting, I accept Derby Finance’s

@@ -1,16 +1,12 @@
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
-import { walletNames } from 'constants/wallet';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import ConnectVia from './ConnectVia/ConnectVia';
 import { SignInContainer } from './SignIn.styled';
 
-const SignIn = () => {
+const SignIn = ({ closeModal }) => {
   const { connectors, connectAsync } = useConnect();
   const { disconnectAsync, disconnect } = useDisconnect();
   const { isConnected } = useAccount();
@@ -50,6 +46,11 @@ const SignIn = () => {
     }
   };
 
+  const handleWalletConnect = (connector) => {
+    connectWallet(connector);
+    closeModal();
+  };
+
   const walletIcons = {
     MetaMask: <MetaMask />,
     'Coinbase Wallet': <Coinbase />,
@@ -61,7 +62,7 @@ const SignIn = () => {
       {connectors.map((connector) => (
         <ConnectVia
           key={connector.id}
-          clickHandler={() => connectWallet(connector)}
+          clickHandler={() => handleWalletConnect(connector)}
           walletName={connector.name}
           svg={walletIcons[connector.name]}
         />

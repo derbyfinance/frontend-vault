@@ -25,27 +25,19 @@ export const StyledDepositWithdrawButtons = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
 `;
 
-export const StyledHandleWithdraw = styled.div`
+export const StyledHandleAction = styled.div`
+font: ${({ financialActionType, theme }) => !financialActionType ? theme.fonts.robotoLight : theme.fonts.robotoMedium};
   color: ${({ financialActionType, theme }) =>
     financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
   border-bottom: ${({ financialActionType, theme }) =>
-    financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
+    financialActionType ? `4px solid ${theme.colors.buttonActive}` : 'none'};
   width: 100%;
   padding-bottom: 26px;
   text-align: center;
   cursor: pointer;
+  font-size: 16px;
 `;
 
-export const StyledHandleDeposit = styled.div`
-  color: ${({ financialActionType, theme }) =>
-    financialActionType ? theme.colors.buttonActive : theme.colors.textMain};
-  border-bottom: ${({ financialActionType, theme }) =>
-    financialActionType ? `2px solid ${theme.colors.buttonActive}` : 'none'};
-  width: 100%;
-  padding-bottom: 26px;
-  text-align: center;
-  cursor: pointer;
-`;
 export const StyledAPY = styled.div`
   padding: 6px 6px;
   text-align: end;
@@ -69,6 +61,8 @@ export const StyledInputsContainer = styled.div`
 `;
 
 export const StyledGasPrice = styled.div`
+color: ${({ theme }) => theme.colors.textFaded};
+font-size: 12px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -81,8 +75,8 @@ export const StyledDisclaimerDeposit = styled.div`
   color: ${({ theme }) => theme.colors.textFaded};
   font-size: 10px;
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 40px;
+  padding-top: 15px;
+  padding-bottom: 20px;
 `;
 
 export const DepositWithdrawButtonContainer = styled.div`
@@ -92,21 +86,4 @@ export const DepositWithdrawButtonContainer = styled.div`
 
 export const StyledModalDepositButton = styled.div`
   text-align: center;
-`;
-
-export const StyledErrorDepositWithdraw = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
-  gap: 10px;
-  font: ${({ theme }) => theme.fonts.robotoLight};
-  font-size: 10px;
-  color: ${({ theme }) => theme.colors.textError};
-  overflow: hidden;
-  text-align: center;
-`;
-
-export const StyledErrorMessage = styled.div`
-  justify-content: center;
 `;

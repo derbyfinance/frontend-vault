@@ -70,13 +70,13 @@ const WalletDropdown = ({ address }) => {
           <StyledRowIcon>
             <Image src="/icons/Copy.svg" layout="fill" />
           </StyledRowIcon>
-          <StyledRowText>Copy Address</StyledRowText>
+          <StyledRowText>Copy address</StyledRowText>
         </StyledWalletRow>
         <StyledWalletRow onClick={handleViewOnEtherscan}>
           <StyledRowIcon>
             <Image src="/icons/ViewOnEtherscan.svg" layout="fill" />
           </StyledRowIcon>
-          <StyledRowText>View On Etherscan</StyledRowText>
+          <StyledRowText>View on Etherscan</StyledRowText>
         </StyledWalletRow>
       </StyledWalletMenuRows>
     </StyledWalletMenuContent>

@@ -24,3 +24,7 @@ export const hideMiddleCharacters = (address) => {
 export const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text);
 };
+
+export const numberPrettier = (number) => {
+  return number.toLocaleString('en-US');
+}

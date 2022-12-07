@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 
 export const StyledWalletAddressBtn = styled.button`
+color: ${({ theme }) => theme.colors.textMain};
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
   gap: 20px;
-  background: ${({ theme }) => theme.colors.backgroundButton};
   border: 1px solid ${({ theme }) => theme.colors.tabDepositWithdrawActive};
   padding: 12px 18px;
   margin: 0;
   border-radius: 28px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.listHover};
+  }
 `;
 
 export const StyledArrowContainer = styled.div`
@@ -19,6 +23,6 @@ export const StyledArrowContainer = styled.div`
 
 export const StyledAddressWrapper = styled.div`
   font: ${({ theme }) => theme.fonts.robotoBold};
-  color: ${({ theme }) => theme.colors.textTertiary};
-  font-size: 20px;
+  color: ${({ theme }) => theme.colors.textMain};
+  font-size: 16px;
 `;

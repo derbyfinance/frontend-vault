@@ -1,3 +1,4 @@
+import { numberPrettier } from '@helpers/helperFunctions';
 import React from 'react';
 import {
   StyledInput,
@@ -11,13 +12,15 @@ const DepositWithdrawInput = ({
   placeholder,
   value,
   onChange,
+  onKeyDown
 }) => {
   return (
     <StyledInputContainer>
       <StyledLabel>{label}</StyledLabel>
       <StyledInput
         placeholder={placeholder}
-        value={value}
+        value={numberPrettier(value)}
+        onKeyDown={onKeyDown}
         onChange={onChange}
       />
       {endAddOn}

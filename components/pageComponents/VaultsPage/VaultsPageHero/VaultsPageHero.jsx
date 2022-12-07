@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
+import { Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
-import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
   StyledCircle,
@@ -44,8 +44,13 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 
 const VaultsPageHero = () => {
   const [chainsOpen, setChainsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const arrowRef = useRef();
   const dropdownRef = useRef();
+
+  const { isConnected } = useAccount();
+
   //some default value, until we figure out what to show when wallet is not connected
   const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
@@ -55,18 +60,12 @@ const VaultsPageHero = () => {
         !dropdownRef.current?.contains(e.target) &&
         !arrowRef.current?.contains(e.target)
       ) {
-        setChainsOpen(false);
+        setOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
-
-  const { chains } = useSwitchNetwork();
-
-  const { isConnected } = useAccount();
-
-  const [open, setOpen] = useState(false);
 
   const onOpen = () => {
     setOpen(true);
@@ -89,7 +88,7 @@ const VaultsPageHero = () => {
                 onClose={onClose}
                 dropDownButton={<BtnArrow open={open} />}
               >
-                <ChainsList setChainsOpen={setChainsOpen} ref={dropdownRef} />
+                <ChainsList setChainsOpen={onOpen} ref={dropdownRef} />
               </DropDownMenu>
             )}
           </StyledNetworkTitle>

@@ -5,7 +5,8 @@ export const StyledWalletMenuContent = styled.div`
   background: ${({ theme }) => theme.colors.backgroundMain};
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 28px;
-  padding: 30px 0px;
+  padding-top: 30px;
+  overflow: hidden;
 `;
 
 export const StyledAddressAvatar = styled.div`
@@ -19,7 +20,7 @@ export const StyledConnectedWith = styled.div`
   text-align: center;
   font: ${({ theme }) => theme.fonts.robotoLight};
   color: ${({ theme }) => theme.colors.textTertiary};
-  font-size: 20px;
+  font-size: 16px;
   padding: 18px 0;
 `;
 
@@ -30,12 +31,12 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledButtonWalletMenu = styled.button`
+
   background: #f5f5f5;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
   border-radius: 28px;
   padding: 12px 16px;
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 20px;
+  font-size: 16px;
   min-width: 130px;
   border: 0.5px solid ${({ theme }) => theme.colors.borderFaded};
   cursor: pointer;
@@ -49,11 +50,8 @@ export const StyledWalletRow = styled.div`
   align-items: center;
   gap: 14px;
   cursor: pointer;
-  padding: 30px 0;
+  padding: 30px 16px;
   border-top: 1px solid ${({ theme }) => theme.colors.borderMain};
-  &:last-child {
-    padding-bottom: 0;
-  }
   padding: 30px 16px;
   &:hover {
     background: #f5f5f5;
@@ -76,7 +74,7 @@ export const StyledRowIcon = styled.div`
 
 export const StyledRowText = styled.div`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 export const StyledRowOnline = styled.div`

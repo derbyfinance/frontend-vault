@@ -91,6 +91,7 @@ const lightThemeColors = {
   online: '#00FF38',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  errorBackground: 'rgba(232, 65, 66, 0.1)',
 };
 
 const darkThemeColors = {
@@ -118,6 +119,7 @@ const darkThemeColors = {
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+  errorBackground: 'rgba(232, 65, 66, 0.1)',
 };
 
 const fonts = {

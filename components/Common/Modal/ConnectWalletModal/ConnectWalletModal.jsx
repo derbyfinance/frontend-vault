@@ -7,8 +7,10 @@ import {
   StyledModalConnectOptions,
   StyledModalLogoAndText,
 } from '../Modal.styled';
+import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 
 const ConnectWalletModal = ({ isOpen, onClose }) => {
+  const [walletDetected, setWalletDetected] = useState(false)
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <StyledModalLogoAndText>
@@ -16,6 +18,9 @@ const ConnectWalletModal = ({ isOpen, onClose }) => {
         <h3>Connect Wallet</h3>
         <h4>to start using Derby Finance</h4>
       </StyledModalLogoAndText>
+      {
+        !walletDetected && <ErrorMessage message='wallet not detected. Connect or install wallet and retry' />
+      }
       <StyledModalConnectOptions>
         <SignIn closeModal={onClose} />
       </StyledModalConnectOptions>

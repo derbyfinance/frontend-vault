@@ -9,6 +9,7 @@ export const StyledErrorContainer = styled.div`
 
 export const StyledErrorWrapper = styled.div`
     display: flex;
+    align-items: center;
     gap: 8px;
 `
 

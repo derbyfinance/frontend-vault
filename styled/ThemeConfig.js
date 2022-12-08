@@ -91,7 +91,11 @@ const lightThemeColors = {
   online: '#00FF38',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
+<<<<<<< HEAD
   errorBackground: 'rgba(232, 65, 66, 0.1)',
+=======
+  errorBackground: 'rgba(232, 65, 66, 0.1)'
+>>>>>>> 1f453596fa4d0e11810fbd5c99fcba40dcfd2a56
 };
 
 const darkThemeColors = {

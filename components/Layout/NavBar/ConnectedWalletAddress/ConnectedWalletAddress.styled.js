@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledAddressWrapper = styled.div`
   font: ${({ theme }) => theme.fonts.robotoBold};
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 export const StyledWalletMenuContainer = styled.div`

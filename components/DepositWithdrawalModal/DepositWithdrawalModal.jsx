@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import Modal from '@components/Common/Modal/Modal';
 import { CloseButton } from '@icons/index';
-import { financialActionTypes } from 'Constants/wallet';
-import { ContractResultDecodeError } from 'wagmi';
+import { financialActionTypes } from 'Constants/walletConstants';
 import DepositTab from './DepositTab/DepositTab';
 import {
   StyledClose,
   StyledDepositWithdrawButtons,
   StyledDepositWithdrawalModalContainer,
-  StyledHandleDeposit,
-  StyledHandleWithdraw,
   StyledTitle,
+  StyledHandleAction,
 } from './DepositWithdrawalModal.styled';
 import WithdrawTab from './WithdrawTab/WithdrawTab';
 
@@ -35,22 +33,22 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
           <CloseButton />
         </StyledClose>
         <StyledDepositWithdrawButtons>
-          <StyledHandleDeposit
+          <StyledHandleAction
             financialActionType={
               financialActionType === financialActionTypes.DEPOSIT
             }
             onClick={handleDeposit}
           >
             Deposit
-          </StyledHandleDeposit>
-          <StyledHandleWithdraw
+          </StyledHandleAction>
+          <StyledHandleAction
             financialActionType={
               financialActionType === financialActionTypes.WITHDRAW
             }
             onClick={handleWithdraw}
           >
             Withdraw
-          </StyledHandleWithdraw>
+          </StyledHandleAction>
         </StyledDepositWithdrawButtons>
         {financialActionType === financialActionTypes.DEPOSIT ? (
           <DepositTab />

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledInputContainer = styled.div`
   display: flex;
-  border: 2px solid ${({ theme }) => theme.colors.borderMain};
+  border: 1px solid ${({ theme }) => theme.colors.borderMain};
   justify-content: center;
   align-items: center;
   position: relative;

@@ -12,7 +12,6 @@ export const StyledHeroWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   position: relative;
-  overflow: hidden;
 `;
 
 export const StyledNetworkInfoSection = styled.div`
@@ -66,13 +65,20 @@ export const StyledIcon = styled.div`
   padding: 4px;
 `;
 
+export const StyledNetworkIconContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+`;
+
 export const StyledCircle = styled.div`
   & img {
     height: 180px !important;
   }
-  position: absolute;
+  position: relative;
   right: -24px;
-  top: 0;
+  overflow: hidden;
 `;
 
 export const StyledNetworkIcon = styled.div`
@@ -85,7 +91,6 @@ export const StyledNetworkIcon = styled.div`
 `;
 
 export const StyledChainsList = styled.div`
-  position: absolute;
   top: 70px;
   left: 170px;
   z-index: 10;
@@ -122,11 +127,6 @@ export const StyledChain = styled.div`
       font-size: 20px;
     }
   }
-`;
-
-export const StyledArrowIcon = styled.div`
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
-  transition: transform 0.3s;
 `;
 
 export const StyledSwitchTo = styled.div`

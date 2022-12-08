@@ -3,7 +3,6 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   tabWidth: 2,
-
   importOrder: [
     '^react$',
     '^@core/(.*)$',
@@ -12,6 +11,7 @@ module.exports = {
     '^@ui/(.*)$',
     '^[./]',
   ],
+
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
 };

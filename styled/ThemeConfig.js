@@ -86,11 +86,14 @@ const lightThemeColors = {
   borderSecondary: '#160344',
   breadCrumbs: '#B4B1B8',
   borderTertiary: '#f13abc',
+  borderFaded: '#6a7278',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
+  online: '#00FF38',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   vaultTitle: '#5F08EE',
+  errorBackground: 'rgba(232, 65, 66, 0.1)',
 };
 
 const darkThemeColors = {
@@ -99,14 +102,14 @@ const darkThemeColors = {
   textFaded: '#a9a6ae',
   textWalletInfo: '#fff',
   textTertiary: '#121212',
-
+  online: '#00FF38',
   textError: '#E84142',
-
   backgroundMain: '#000',
   headerMain: '#fe5e76',
   tabDepositWithdraw: '#f13abc',
   iconColor: '#fff',
   buttonMain: '#39079b',
+  buttonSecondary: '#f5f5f5',
   gradientMain: 'linear-gradient(90deg, #fe5e76 0%, #f13abc 100.33%)',
   gradientWallet: 'linear-gradient(149.11deg, #f13abc 0.41%, #5f08ee 99.26%);',
   gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
@@ -114,11 +117,13 @@ const darkThemeColors = {
   borderSecondary: '#160344',
   breadCrumbs: '#B4B1B8',
   borderTertiary: '#f13abc',
+  borderFaded: '#6a7278',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',
   textBalanceNegative: '#d50000',
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   vaultTitle: '#5F08EE',
+  errorBackground: 'rgba(232, 65, 66, 0.1)',
 };
 
 const fonts = {

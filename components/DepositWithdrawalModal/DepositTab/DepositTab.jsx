@@ -1,13 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
-import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
-import { financialActionTypes } from 'Constants/wallet';
-import {
-  currencyFormatter,
-  percentageFormatter,
-  percentFormatter,
-} from 'Helpers/numberFormatters';
+import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { financialActionTypes } from 'Constants/walletConstants';
+import { percentageFormatter } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -20,11 +16,11 @@ import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
-  StyledErrorDepositWithdraw,
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
+import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 
 const DepositTab = () => {
   const [depositValue, setDepositValue] = useState({
@@ -55,11 +51,9 @@ const DepositTab = () => {
   });
 
   const handleDepositField = (e) => {
-    if (e.target.value.replace(/[0-9]/g, '')) return false;
     setDepositValue({ deposit: e.target.value, youGet: e.target.value * 2 });
   };
   const handleDepositFieldYouGet = (e) => {
-    if (e.target.value.replace(/[0-9]/g, '')) return false;
     setDepositValue({ deposit: e.target.value / 2, youGet: e.target.value });
   };
 
@@ -72,6 +66,11 @@ const DepositTab = () => {
     }
   };
 
+  const validateInput = (e) => {
+    const number = Number(e.key)
+    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault()
+  }
+
   return (
     <>
       <StyledInputsContainer>
@@ -80,6 +79,7 @@ const DepositTab = () => {
           placeholder="0.00"
           value={depositValue.deposit}
           onChange={handleDepositField}
+          onKeyDown={validateInput}
           endAddOn={
             <DepositWithdrawInputAdornment
               balance={1553}
@@ -102,6 +102,7 @@ const DepositTab = () => {
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
+          onKeyDown={validateInput}
           onChange={handleDepositFieldYouGet}
           value={depositValue.youGet}
           endAddOn={
@@ -127,20 +128,13 @@ const DepositTab = () => {
         By depositing, I acknowledge that withdrawals can be subject to fixed
         intervals
       </StyledDisclaimerDeposit>
+      {isPrepareError && <ErrorMessage message={prepareError.message} />}
       <StyledModalDepositButton>
         <MainButton
           disabled={!write}
           btnText={financialActionTypes.DEPOSIT}
           onClick={handleClick}
         />
-        {isPrepareError && (
-          <StyledErrorDepositWithdraw>
-            <div>
-              <Warning />
-            </div>
-            <div>{prepareError?.message}</div>
-          </StyledErrorDepositWithdraw>
-        )}
       </StyledModalDepositButton>
     </>
   );

@@ -6,7 +6,7 @@ export const StyledNavBarWrapper = styled.nav`
   top: 0;
   background: ${({ theme }) => theme.colors.backgroundMain};
   padding: 64px 0 40px;
-  z-index: 10;
+  z-index: 20;
 `;
 
 export const StyledNavBarContent = styled.div`

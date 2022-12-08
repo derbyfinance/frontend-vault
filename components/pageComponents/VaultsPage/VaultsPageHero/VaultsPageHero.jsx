@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowDown, Lock, Members, Vaults } from '@icons/index';
+import { Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
 import { useAccount, useNetwork } from 'wagmi';
 import ChainsList from './ChainsList';
 import {
-  StyledArrowIcon,
   StyledCircle,
   StyledDescription,
   StyledHeroContainer,
@@ -18,8 +17,11 @@ import {
   StyledNetworkTitle,
   StyledValue,
   StyledValuePart,
+  StyledNetworkIconContainer,
 } from './VaultsPageHero.styled';
-import { chainsIcons } from './chainsIcons';
+import { chainIcons } from './chainIcons';
+import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
+import BtnArrow from './BtnArrow';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -41,10 +43,14 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
 };
 
 const VaultsPageHero = () => {
-  const { isConnected } = useAccount();
   const [chainsOpen, setChainsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
   const arrowRef = useRef();
   const dropdownRef = useRef();
+
+  const { isConnected } = useAccount();
+
   //some default value, until we figure out what to show when wallet is not connected
   const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
@@ -54,40 +60,36 @@ const VaultsPageHero = () => {
         !dropdownRef.current?.contains(e.target) &&
         !arrowRef.current?.contains(e.target)
       ) {
-        setChainsOpen(false);
+        setOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const handleChainsOpen = () => {
-    setChainsOpen(!chainsOpen);
+  const onOpen = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setOpen(false);
   };
 
   return (
     <StyledHeroContainer>
-      {chainsOpen && (
-        <ChainsList setChainsOpen={setChainsOpen} ref={dropdownRef} />
-      )}
       <StyledHeroWrapper>
-        <StyledCircle>
-          <Image src={HeroCircle} alt="Decorative Circle" />
-        </StyledCircle>
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
-            <Image src={chainsIcons[chain?.id]} alt={`${chain?.name} image`} />
+            <Image src={chainIcons[chain?.id]} alt={`${chain?.name} image`} />
             <h2>{chain.name}</h2>
             {isConnected && (
-              <StyledArrowIcon
-                onClick={() => {
-                  setChainsOpen((chainsOpen) => !chainsOpen);
-                }}
-                isOpen={chainsOpen}
-                ref={arrowRef}
+              <DropDownMenu
+                open={open}
+                onOpen={onOpen}
+                onClose={onClose}
+                dropDownButton={<BtnArrow open={open} />}
               >
-                <ArrowDown isOpen={chainsOpen} />
-              </StyledArrowIcon>
+                <ChainsList setChainsOpen={onOpen} ref={dropdownRef} />
+              </DropDownMenu>
             )}
           </StyledNetworkTitle>
           <StyledNetworkInfo>
@@ -108,14 +110,19 @@ const VaultsPageHero = () => {
             />
           </StyledNetworkInfo>
         </StyledNetworkInfoSection>
-        <StyledNetworkIcon>
-          <Image
-            alt={`${chain.name} Image`}
-            src={chainsIcons[chain.id]}
-            width={'80px'}
-            height={'120px'}
-          />
-        </StyledNetworkIcon>
+        <StyledNetworkIconContainer>
+          <StyledCircle>
+            <Image src={HeroCircle} alt="Decorative Circle" />
+          </StyledCircle>
+          <StyledNetworkIcon>
+            <Image
+              alt={`${chain.name} Image`}
+              src={chainIcons[chain.id]}
+              width={'80px'}
+              height={'120px'}
+            />
+          </StyledNetworkIcon>
+        </StyledNetworkIconContainer>
       </StyledHeroWrapper>
     </StyledHeroContainer>
   );

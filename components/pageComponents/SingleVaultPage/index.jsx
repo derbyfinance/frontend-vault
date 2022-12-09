@@ -6,6 +6,7 @@ import {
   StyledHeaderText,
   StyledVaultInformation,
 } from './index.styled';
+import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 
 const SingleVaultPageComponent = ({ vaultInfo }) => {
   return (
@@ -18,6 +19,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           Technical information regarding the performance of your selected
           vault.
         </StyledHeaderText>
+        <SingleVaultDescription vault={vaultInfo} />
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

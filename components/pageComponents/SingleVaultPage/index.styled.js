@@ -23,4 +23,5 @@ export const StyledHeaderText = styled.div`
   font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 20px;
   color: ${({ theme }) => theme.colors.textFaded};
+  margin-bottom: 30px;
 `;

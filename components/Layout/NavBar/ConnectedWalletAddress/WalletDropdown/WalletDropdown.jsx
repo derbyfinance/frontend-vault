@@ -19,6 +19,9 @@ import {
   StyledWalletMenuRows,
   StyledWalletRow,
 } from './WalletDropdown.styled';
+import copy from 'public/icons/copy.svg';
+import etherscan from 'public/icons/etherscan.svg';
+
 
 const WalletDropdown = ({ address }) => {
   const { disconnect } = useDisconnect();
@@ -68,13 +71,13 @@ const WalletDropdown = ({ address }) => {
         </StyledWalletRow>
         <StyledWalletRow onClick={handleCopyAddress}>
           <StyledRowIcon>
-            <Image src="/icons/Copy.svg" layout="fill" />
+            <Image src={copy} layout="fill" />
           </StyledRowIcon>
           <StyledRowText>Copy address</StyledRowText>
         </StyledWalletRow>
         <StyledWalletRow onClick={handleViewOnEtherscan}>
           <StyledRowIcon>
-            <Image src="/icons/ViewOnEtherscan.svg" layout="fill" />
+            <Image src={etherscan} layout="fill" />
           </StyledRowIcon>
           <StyledRowText>View on Etherscan</StyledRowText>
         </StyledWalletRow>

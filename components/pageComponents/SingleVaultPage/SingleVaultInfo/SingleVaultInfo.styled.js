@@ -38,7 +38,7 @@ export const StyledChangeLabel = styled.div`
     color: ${({ theme }) => theme.colors.textSecondary};
     padding: 6px;
     gap: 4px;
-    background-color: ${({ theme }) => theme.colors.chageLabelGreen};
+    background-color: ${({ theme }) => theme.colors.changeLabelGreen};
     border-radius: 6px;
 `
 export const StyledBlockDescription = styled.div`

@@ -27,3 +27,4 @@ export { default as Gas } from './Gas';
 export { default as Warning } from './Warning';
 export { default as EyeOpen } from './EyeOpen';
 export { default as EyeClosed } from './EyeClosed';
+export { default as HideIcon } from './HideIcon';

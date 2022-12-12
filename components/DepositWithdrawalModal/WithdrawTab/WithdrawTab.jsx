@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
-import StyledMainButton from '@components/Common/MainButton/MainButton.styled';
-import { DFUSDC, Gas, Info, USDC, Warning } from '@icons/index';
-import { financialActionTypes } from 'Constants/wallet';
-import { currencyFormatter } from 'Helpers/numberFormatters';
+import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { financialActionTypes } from 'Constants/walletConstants';
+import { currencyFormatter } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -16,12 +15,11 @@ import DepositWithdrawInputAdornment from '../DepositWithdrawInputAdornment';
 import {
   StyledAPY,
   StyledDisclaimerDeposit,
-  StyledErrorDepositWithdraw,
-  StyledErrorMessage,
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
+import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 
 const WithdrawTab = () => {
   const [withdrawValue, setWithdrawValue] = useState({
@@ -32,14 +30,17 @@ const WithdrawTab = () => {
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
 
   const handleWithdrawField = (e) => {
-    if (e.target.value.replace(/[1-9]/g, '')) return false;
-    setWithdrawValue(e.target.value);
+    setWithdrawValue({ withdraw: e.target.value, youGet: e.target.value * 2 });
   };
 
   const handleWithdrawFieldYouGet = (e) => {
-    if (e.target.value.replace(/[1-9]/g, '')) return false;
-    setWithdrawValue(e.target.value);
+    setWithdrawValue({ youGet: e.target.value, withdraw: e.target.value / 2 });
   };
+
+  const validateInput = (e) => {
+    const number = Number(e.key)
+    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault()
+  }
 
   const {
     config,
@@ -73,6 +74,7 @@ const WithdrawTab = () => {
           label="YOU WITHDRAW"
           placeholder={'0.00'}
           value={withdrawValue.withdraw}
+          onKeyDown={validateInput}
           onChange={handleWithdrawField}
           endAddOn={
             <DepositWithdrawInputAdornment
@@ -96,6 +98,7 @@ const WithdrawTab = () => {
           label={'YOU GET'}
           placeholder="0.00"
           value={withdrawValue.youGet}
+          onKeyDown={validateInput}
           onChange={handleWithdrawFieldYouGet}
           endAddOn={
             <DepositWithdrawInputAdornment
@@ -119,6 +122,7 @@ const WithdrawTab = () => {
       <StyledDisclaimerDeposit>
         There is sufficient liquidity to withdraw instantly'
       </StyledDisclaimerDeposit>
+      {isPrepareError && <ErrorMessage message={prepareError.message} />}
       <StyledModalDepositButton>
         <MainButton
           disabled={!write}
@@ -126,15 +130,6 @@ const WithdrawTab = () => {
           onClick={handleWithdraw}
         />
       </StyledModalDepositButton>
-
-      {isPrepareError && (
-        <StyledErrorDepositWithdraw>
-          <div>
-            <Warning />
-          </div>
-          <StyledErrorMessage>{prepareError?.message}</StyledErrorMessage>
-        </StyledErrorDepositWithdraw>
-      )}
     </>
   );
 };

@@ -1,10 +1,12 @@
 import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
 import DepositWithdrawalModal from '@components/DepositWithdrawalModal/DepositWithdrawalModal';
-import Image from 'next/image';
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import { StyledRowCell, StyledRowItem } from './Table.styled';
 
 const TableRow = ({ rowData, isVaultsPage }) => {
+  const router = useRouter();
   const { icon, coinName, coinShortName, balance, apy, members, tvl } = rowData;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,7 @@ const TableRow = ({ rowData, isVaultsPage }) => {
   const closeModal = () => setIsOpen(false);
 
   return (
-    <StyledRowItem>
+    <StyledRowItem onClick={() => router.push(`/vaults/${coinShortName}`)}>
       <StyledRowCell>
         <div>
           <Image src={icon} alt={coinShortName} height="64" width="64"></Image>

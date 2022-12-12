@@ -15,7 +15,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
     <StyledSingleVaultPageWrapper>
       <StyledSingleVaultPart>
         <StyledVaultInformation>
-          Vault information {vaultInfo}
+          Vault information {vaultInfo?.toUpperCase()}
         </StyledVaultInformation>
         <StyledHeaderText>
           Technical information regarding the performance of your selected

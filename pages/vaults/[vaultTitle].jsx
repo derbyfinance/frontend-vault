@@ -6,10 +6,10 @@ import Layout from '@components/Layout/Layout';
 
 const SingleVaultPage = () => {
   const router = useRouter();
-  const { vaultId } = router.query;
+  const { vaultTitle } = router.query;
   return (
     <Layout>
-      <SingleVaultPageComponent vaultInfo={vaultId} />
+      <SingleVaultPageComponent vaultInfo={vaultTitle} />
     </Layout>
   );
 };

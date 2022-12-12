@@ -3,8 +3,10 @@ import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/Conn
 import { Logo } from '@icons/index';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAccount } from 'wagmi';
 import MainButton from '../../Common/MainButton/MainButton';
 import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
+import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 import {
   StyledNavBarContent,
   StyledNavBarWrapper,
@@ -14,6 +16,8 @@ import {
 
 const NavBar = ({ toggleTheme, isDark }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const { isConnected, address } = useAccount();
 
   const openModal = () => setIsOpen(true);
 
@@ -47,9 +51,14 @@ const NavBar = ({ toggleTheme, isDark }) => {
           <StyledNavLink active={router.pathname === '/governance'}>
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
-          <StyledNavLink>
-            <MainButton onClick={openModal} btnText="Connect Your Wallet" />
-          </StyledNavLink>
+
+          {isConnected ? (
+            <ConnectedWalletAddress />
+          ) : (
+            <StyledNavLink>
+              <MainButton onClick={openModal} btnText="Connect Your Wallet" />
+            </StyledNavLink>
+          )}
         </StyledNavLinks>
       </StyledNavBarContent>
     </StyledNavBarWrapper>

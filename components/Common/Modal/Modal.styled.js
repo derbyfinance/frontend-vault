@@ -8,7 +8,7 @@ export const StyledModal = styled(Modal)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 28px;
+  border-radius: 6px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
 `;
 

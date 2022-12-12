@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { StyledRowCell, StyledRowItem } from './Table.styled';
+import Link from 'next/link';
 
 const TableRow = ({ rowData, isVaultsPage }) => {
   const router = useRouter();
@@ -11,18 +12,23 @@ const TableRow = ({ rowData, isVaultsPage }) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => setIsOpen(true);
+  const openModal = (e) => {
+    e.preventDefault();
+    setIsOpen(true);
+  }
 
   const closeModal = () => setIsOpen(false);
 
   return (
-    <StyledRowItem onClick={() => router.push(`/vaults/${coinShortName}`)}>
-      <StyledRowCell>
-        <div>
-          <Image src={icon} alt={coinShortName} height="64" width="64"></Image>
-          <div>{coinName}</div> <span>{coinShortName}</span>
-        </div>
-      </StyledRowCell>
+    <StyledRowItem>
+      <Link href={`/vaults/${coinShortName}`}>
+        <StyledRowCell>
+          <div>
+            <Image src={icon} alt={coinShortName} height="64" width="64"></Image>
+            <div>{coinName}</div> <span>{coinShortName}</span>
+          </div>
+        </StyledRowCell>
+      </Link>
       <StyledRowCell>{balance}</StyledRowCell>
       <StyledRowCell>{apy}</StyledRowCell>
       <StyledRowCell>{members}</StyledRowCell>
@@ -41,6 +47,7 @@ const TableRow = ({ rowData, isVaultsPage }) => {
         )}
       </StyledRowCell>
     </StyledRowItem>
+
   );
 };
 

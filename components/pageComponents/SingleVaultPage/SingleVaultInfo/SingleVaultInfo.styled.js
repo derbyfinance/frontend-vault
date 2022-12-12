@@ -10,7 +10,6 @@ export const StyledSingleVaultInfoContainer = styled.div`
 export const StyledBlockWrapper = styled.div`
     padding: 20px;
     border-right: 1px solid ${({ theme }) => theme.colors.borderMain};
-    min-width: 300px;
 `
 export const StyledBlockInfo = styled.div`
     display: flex;

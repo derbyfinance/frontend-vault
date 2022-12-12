@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import React from 'react';
+import Image from 'next/image';
 import price from '@images/singleVaultIcons/price.svg';
 import yieldIcon from '@images/singleVaultIcons/yield.svg';
 import locked from '@images/singleVaultIcons/locked.svg';
@@ -60,7 +60,6 @@ const SingleVaultInfo = () => {
                     </StyledBlockWrapper>
                 ))
             }
-
         </StyledSingleVaultInfoContainer>
     )
 }

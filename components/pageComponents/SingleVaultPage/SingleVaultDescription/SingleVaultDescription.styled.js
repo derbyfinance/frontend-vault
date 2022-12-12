@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledDescriptionWrapper = styled.div`
-margin-bottom: 60px;
+  margin-bottom: 40px;
   display: flex;
   flex-direction: column;
   gap: 17px;
@@ -13,7 +13,7 @@ margin-bottom: 60px;
 export const StyledDescriptionHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  font: ${({ theme }) => theme.fonts.slabMedium}
+  font: ${({ theme }) => theme.fonts.slabMedium};
 `;
 
 export const StyledVault = styled.div`
@@ -37,7 +37,7 @@ export const StyledHideBtn = styled.button`
 export const StyledDescriptionBody = styled.div`
   font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 18px;
-  color: ${({ theme }) => theme.colors.textMain}
+  color: ${({ theme }) => theme.colors.textMain};
 `;
 
 export const StyledHideExplanation = styled.div`

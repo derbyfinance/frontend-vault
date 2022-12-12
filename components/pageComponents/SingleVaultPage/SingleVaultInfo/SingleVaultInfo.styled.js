@@ -35,10 +35,10 @@ export const StyledValueAndChange = styled.div`
 
 export const StyledChangeLabel = styled.div`
     display: flex;
-    color: white;
+    color: ${({ theme }) => theme.colors.textSecondary};
     padding: 6px;
     gap: 4px;
-    background-color: #26A17B;
+    background-color: ${({ theme }) => theme.colors.chageLabelGreen};
     border-radius: 6px;
 `
 export const StyledBlockDescription = styled.div`

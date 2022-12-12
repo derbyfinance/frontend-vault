@@ -27,7 +27,7 @@ const SingleVaultDescription = ({ vault }) => {
                 </StyledVault>
                 <StyledHideExplanation onClick={toggleHideDescription}>
                     <HideIcon />
-                    <StyledHideBtn>Hide explanation</StyledHideBtn>
+                    <StyledHideBtn>{descVisible ? 'Hide' : 'Show'} explanation</StyledHideBtn>
                 </StyledHideExplanation>
             </StyledDescriptionHeader>
             {descVisible && (

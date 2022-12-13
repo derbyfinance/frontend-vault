@@ -3,7 +3,7 @@ import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { percentageFormatter } from '@helpers/helperFunctions';
+import { percentageFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -51,10 +51,10 @@ const DepositTab = () => {
   });
 
   const handleDepositField = (e) => {
-    setDepositValue({ deposit: e.target.value, youGet: e.target.value * 2 });
+    setDepositValue({ deposit: +removeNonNumeric(e.target.value), youGet: +removeNonNumeric(e.target.value) * 2 });
   };
   const handleDepositFieldYouGet = (e) => {
-    setDepositValue({ deposit: e.target.value / 2, youGet: e.target.value });
+    setDepositValue({ deposit: +removeNonNumeric(e.target.value) / 2, youGet: +removeNonNumeric(e.target.value) });
   };
 
   const handleClick = (e) => {

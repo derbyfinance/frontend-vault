@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { currencyFormatter } from '@helpers/helperFunctions';
+import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -30,11 +30,11 @@ const WithdrawTab = () => {
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
 
   const handleWithdrawField = (e) => {
-    setWithdrawValue({ withdraw: e.target.value, youGet: e.target.value * 2 });
+    setWithdrawValue({ withdraw: +removeNonNumeric(e.target.value), youGet: +removeNonNumeric(e.target.value) * 2 });
   };
 
   const handleWithdrawFieldYouGet = (e) => {
-    setWithdrawValue({ youGet: e.target.value, withdraw: e.target.value / 2 });
+    setWithdrawValue({ youGet: +removeNonNumeric(e.target.value), withdraw: +removeNonNumeric(e.target.value) / 2 });
   };
 
   const validateInput = (e) => {

@@ -93,6 +93,7 @@ const lightThemeColors = {
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   vaultTitle: '#5F08EE',
   errorBackground: 'rgba(232, 65, 66, 0.1)',
+  changeLabelGreen: '#26A17B',
 };
 
 const darkThemeColors = {
@@ -122,6 +123,7 @@ const darkThemeColors = {
   modalOverlay: 'rgba(0, 0, 0, 0.5)',
   vaultTitle: '#5F08EE',
   errorBackground: 'rgba(232, 65, 66, 0.1)',
+  changeLabelGreen: '#26A17B',
 };
 
 const fonts = {

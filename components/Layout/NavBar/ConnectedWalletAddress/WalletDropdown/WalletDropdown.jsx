@@ -19,7 +19,7 @@ import {
   StyledWalletMenuRows,
   StyledWalletRow,
 } from './WalletDropdown.styled';
-import copy from 'public/icons/copy.svg';
+import copy from 'public/icons/copyIcon.svg';
 import etherscan from 'public/icons/etherscan.svg';
 
 

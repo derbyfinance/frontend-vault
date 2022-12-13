@@ -7,7 +7,7 @@ module.exports = {
       {
         source: '/',
         destination: '/vaults',
-        permanent: true,
+        permanent: false,
       },
     ];
   },

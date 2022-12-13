@@ -30,3 +30,5 @@ export const numberPrettier = (number) => {
 }
 
 export const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "");
+
+export const notValidNumberInput = (key, number) => !number && key !== 'Backspace' && key !== 'Tab' && key !== '0';

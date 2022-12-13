@@ -3,7 +3,7 @@ import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { percentageFormatter, removeNonNumeric } from '@helpers/helperFunctions';
+import { percentageFormatter, removeNonNumeric, notValidNumberInput } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -68,7 +68,7 @@ const DepositTab = () => {
 
   const validateInput = (e) => {
     const number = Number(e.key)
-    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault()
+    if (notValidNumberInput(e.key, number)) e.preventDefault()
   }
 
   return (

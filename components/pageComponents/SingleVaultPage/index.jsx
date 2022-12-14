@@ -4,7 +4,12 @@ import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
 import {
+  StyledChartOption,
+  StyledChartOptions,
+  StyledChartTitle,
+  StyledChartTitleOptions,
   StyledHeaderText,
+  StyledPerformanceChart,
   StyledSingleVaultPageWrapper,
   StyledSingleVaultPart,
   StyledVaultInformation,
@@ -30,7 +35,21 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
         </StyledHeaderText>
         <SingleVaultDescription description={description} vault={vaultInfo} />
         <SingleVaultInfo />
-        <PerformanceGraph />
+        <StyledPerformanceChart>
+          <StyledChartTitleOptions>
+            <StyledChartTitle>
+              Historical Performance USDC Vault
+            </StyledChartTitle>
+            <StyledChartOptions>
+              <StyledChartOption>D</StyledChartOption>
+              <StyledChartOption>W</StyledChartOption>
+              <StyledChartOption>M</StyledChartOption>
+              <StyledChartOption>Y</StyledChartOption>
+              <StyledChartOption>All Time</StyledChartOption>
+            </StyledChartOptions>
+          </StyledChartTitleOptions>
+          <PerformanceGraph chartData={null} />
+        </StyledPerformanceChart>
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

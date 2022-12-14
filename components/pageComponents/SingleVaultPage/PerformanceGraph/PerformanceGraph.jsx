@@ -2,24 +2,27 @@ import React from 'react';
 import {
   CategoryScale,
   Chart as ChartJS,
+  Filler,
   LineElement,
   LinearScale,
   PointElement,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
+ChartJS.register(CategoryScale, Filler, LinearScale, PointElement, LineElement);
 
-const PerformanceGraph = () => {
-  const data = {
+const PerformanceGraph = ({ chartData }) => {
+  chartData = {
     labels: ['OCT 14', 'OCT 16', 'OCT 18', 'OCT 20', 'OCT 22', 'OCT 24'],
     datasets: [
       {
         label: 'Performance',
-        data: [0, 10, 5, 2, 20, 30, 45],
+        data: [0, 10, 5, 2, 20, 30, 100],
+        backgroundColor: '#a02bbd',
+        borderColor: '#a02bbd',
         fill: true,
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgba(255, 99, 132, 0.2)',
+        lineTension: 0.5,
+        tension: 0.1,
       },
     ],
   };
@@ -48,7 +51,7 @@ const PerformanceGraph = () => {
   };
   return (
     <>
-      <Line data={data} options={options}></Line>
+      <Line data={chartData} options={options}></Line>
     </>
   );
 };

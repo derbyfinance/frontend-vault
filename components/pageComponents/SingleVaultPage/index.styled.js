@@ -17,7 +17,7 @@ export const StyledVaultInformation = styled.div`
   font: ${({ theme }) => theme.fonts.slabRegular};
   font-size: 26px;
   color: ${({ theme }) => theme.colors.vaultTitle};
-`
+`;
 
 export const StyledHeaderText = styled.div`
   font: ${({ theme }) => theme.fonts.robotoMedium};
@@ -25,3 +25,15 @@ export const StyledHeaderText = styled.div`
   color: ${({ theme }) => theme.colors.textFaded};
   margin-bottom: 30px;
 `;
+
+export const StyledPerformanceChart = styled.div``;
+
+export const StyledChartTitleOptions = styled.div``;
+
+export const StyledChartTitle = styled.div`
+  font: ${({ theme }) => theme.fonts.robotoMedium};
+`;
+
+export const StyledChartOptions = styled.div``;
+
+export const StyledChartOption = styled.div``;

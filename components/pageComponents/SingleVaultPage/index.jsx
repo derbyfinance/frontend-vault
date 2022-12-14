@@ -1,13 +1,14 @@
 import React from 'react';
 import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
-import {
-  StyledSingleVaultPart,
-  StyledSingleVaultPageWrapper,
-  StyledHeaderText,
-  StyledVaultInformation,
-} from './index.styled';
+import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
+import {
+  StyledHeaderText,
+  StyledSingleVaultPageWrapper,
+  StyledSingleVaultPart,
+  StyledVaultInformation,
+} from './index.styled';
 
 const description = `Oh no, don't touch that. That's some new specialized weather sensing equipment. 
                     Hey, hey, I've seen this one, I've seen this one. This is a classic, this is 
@@ -29,6 +30,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
         </StyledHeaderText>
         <SingleVaultDescription description={description} vault={vaultInfo} />
         <SingleVaultInfo />
+        <PerformanceGraph />
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

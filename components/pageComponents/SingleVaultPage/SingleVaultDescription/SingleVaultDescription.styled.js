@@ -44,4 +44,5 @@ export const StyledHideExplanation = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 5px;
 `;

@@ -14,7 +14,6 @@ export const StyledErrorWrapper = styled.div`
 `
 
 export const StyledErrorMessage = styled.div`
-    max-width: 255px;
     font: ${({ theme }) => theme.fonts.robotoLight};
     font-size: 12px;
 `

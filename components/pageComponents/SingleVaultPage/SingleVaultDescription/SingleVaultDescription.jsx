@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { EyeClosed, EyeOpen, HideIcon } from '@icons/index';
+import { EyeClosed, EyeOpen } from '@icons/index';
 import USDC from '@images/usdc-single.svg';
-import { StyledDescriptionBody, StyledDescriptionHeader, StyledDescriptionWrapper, StyledHideBtn, StyledHideExplanation, StyledVault, StyledVaultTitle } from './SingleVaultDescription.styled';
+import {
+    StyledDescriptionBody,
+    StyledDescriptionHeader,
+    StyledDescriptionWrapper,
+    StyledHideBtn,
+    StyledHideExplanation,
+    StyledVault,
+    StyledVaultTitle
+} from './SingleVaultDescription.styled';
 
 const SingleVaultDescription = ({ vault, description }) => {
     const [descVisible, setDescVisible] = useState(true);

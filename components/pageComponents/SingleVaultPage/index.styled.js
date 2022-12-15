@@ -28,12 +28,35 @@ export const StyledHeaderText = styled.div`
 
 export const StyledPerformanceChart = styled.div``;
 
-export const StyledChartTitleOptions = styled.div``;
-
-export const StyledChartTitle = styled.div`
-  font: ${({ theme }) => theme.fonts.robotoMedium};
+export const StyledChartTitleOptions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 200px;
 `;
 
-export const StyledChartOptions = styled.div``;
+export const StyledChartTitle = styled.div`
+  font: ${({ theme }) => theme.fonts.slabRegular};
+  font-size: 22px;
+`;
 
-export const StyledChartOption = styled.div``;
+export const StyledChartOptions = styled.ul`
+  display: flex;
+  font: ${({ theme }) => theme.fonts.slabMedium};
+  font-size: 20px;
+`;
+
+export const StyledChartOption = styled.li`
+  cursor: pointer;
+  border-bottom: ${({ active, theme }) =>
+    active ? `4px solid ${theme.colors.borderTertiary}` : 'none'};
+  padding: 10px 20px;
+`;
+
+export const StyledKeyStatistics = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 64px;
+`;

@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
 @font-face {
 	font-family: "Roboto-Bold";
 	src: url("/fonts/roboto/Roboto-Bold.ttf");
-	font-weight: 600;
+	font-weight: 700;
 }
 
 @font-face {

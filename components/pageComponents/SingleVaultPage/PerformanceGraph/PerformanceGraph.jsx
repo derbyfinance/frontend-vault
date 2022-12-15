@@ -11,13 +11,43 @@ import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, Filler, LinearScale, PointElement, LineElement);
 
-const PerformanceGraph = ({ chartData }) => {
-  chartData = {
+const mockChartData = {
+  D: {
     labels: ['OCT 14', 'OCT 16', 'OCT 18', 'OCT 20', 'OCT 22', 'OCT 24'],
+    datasets: [0, 10, 5, 2, 20, 30],
+  },
+  W: {
+    labels: [
+      '01/01/2022 - 08/01/2022',
+      '08/08/2022 - 15/01/2022',
+      '15/01/2022 - 22/01/2022',
+      '22/01/2022 - 29/01/2022',
+      '29/01/2022 - 05/02/2022',
+      '05/02/2022 - 13/02/2022',
+    ],
+    datasets: [0, 15, 0, 25, 20, 30],
+  },
+  M: {
+    labels: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL'],
+    datasets: [0, 15, 0, 25, 20, 30],
+  },
+  Y: {
+    labels: [2017, 2018, 2019, 2020, 2021, 2022],
+    datasets: [0, 30, 15, 8, 21, 30],
+  },
+  All: {
+    labels: [2017, 2018, 2019, 2020, 2021, 2022],
+    datasets: [0, 30, 15, 8, 21, 30],
+  },
+};
+
+const PerformanceGraph = ({ chartView }) => {
+  const chartData = {
+    labels: mockChartData[chartView]?.labels.map((label) => label),
     datasets: [
       {
         label: 'Performance',
-        data: [0, 10, 5, 2, 20, 30, 100],
+        data: mockChartData[chartView]?.datasets.map((data) => data),
         backgroundColor: '#a02bbd',
         borderColor: '#a02bbd',
         fill: true,
@@ -41,7 +71,7 @@ const PerformanceGraph = ({ chartData }) => {
         },
       },
       y: {
-        display: true,
+        display: false,
         title: {
           display: true,
           text: 'Value',

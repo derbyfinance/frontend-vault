@@ -74,6 +74,7 @@ const lightThemeColors = {
   textError: '#E84142',
   textWalletInfo: '#121212',
   backgroundMain: '#fff',
+  backgroundChart: '#F2E6F1',
   headerMain: '#fe5e76',
   iconColor: '#000',
   buttonMain: '#39079b',
@@ -105,6 +106,8 @@ const darkThemeColors = {
   online: '#00FF38',
   textError: '#E84142',
   backgroundMain: '#000',
+  backgroundChart: '#F2E6F1',
+
   headerMain: '#fe5e76',
   tabDepositWithdraw: '#f13abc',
   iconColor: '#fff',

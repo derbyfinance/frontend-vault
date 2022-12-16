@@ -148,6 +148,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           you investing in specifically.
         </StyledHeaderText>
         <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
+        <Table headers={headersSingleVault} tableData={data} />
       </StyledSingleVaultPart>
       <TreemapChart />
       <WalletInfo />

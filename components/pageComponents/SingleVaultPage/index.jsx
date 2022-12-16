@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import KeyStatisticsItem from '@components/Common/KeyStatisticItem/KeyStatisticsItem';
+import Table from '@components/Common/Table/Table';
+import ReusableTable from '@components/ReusableTable/ReusableTable';
 import {
   currencyFormatter,
   percentageFormatter,
 } from '@helpers/helperFunctions';
+import { data } from '../VaultsPage/VaultsPageList/VaultsPageList';
 import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
 import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
+import TreemapChart from './TreemapChart';
 import {
   StyledChartOption,
   StyledChartOptions,
@@ -46,6 +50,47 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
       setView(localStorage.getItem('chartView'));
     }
   }, []);
+
+  const dataSingleVault = [
+    {
+      id: 1,
+      icon: '/images/ProtocolIcons/yearn-finance.svg',
+      name: 'USDC yVault',
+      network: 'ETH',
+      protocol: 'Yearn Finance',
+      value: 1150000,
+      weight: 11.64,
+    },
+    {
+      id: 2,
+      icon: '/images/ProtocolIcons/aave.svg',
+      name: 'USD Coin',
+      network: 'ETH',
+      protocol: 'Aave',
+      value: 925000,
+      weight: 9.35,
+    },
+    {
+      id: 3,
+      icon: '/images/ProtocolIcons/gearbox.svg',
+      name: 'dUSDC',
+      network: 'ETH',
+      protocol: 'Gearbox',
+      value: 743000,
+      weight: 7.51,
+    },
+    {
+      id: 4,
+      icon: '/images/ProtocolIcons/harvest-finance-farm.svg',
+      name: 'fUSDC',
+      network: 'ETH',
+      protocol: 'Harvest Finance',
+      value: 287000,
+      weight: 2.9,
+    },
+  ];
+
+  const headersSingleVault = ['NAME', 'PROTOCOL', 'WEIGHT', 'VALUE'];
 
   return (
     <StyledSingleVaultPageWrapper>
@@ -102,8 +147,9 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           How is this specific vault split into different protocols, what are
           you investing in specifically.
         </StyledHeaderText>
+        <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
       </StyledSingleVaultPart>
-
+      <TreemapChart />
       <WalletInfo />
     </StyledSingleVaultPageWrapper>
   );

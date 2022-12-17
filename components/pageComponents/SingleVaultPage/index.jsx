@@ -11,7 +11,6 @@ import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
 import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
-import TreemapChart from './TreemapChart';
 import {
   StyledChartOption,
   StyledChartOptions,
@@ -19,12 +18,12 @@ import {
   StyledChartTitleOptions,
   StyledHeaderText,
   StyledKeyStatistics,
-  StyledKeyStatisticsItem,
   StyledPerformanceChart,
   StyledSingleVaultPageWrapper,
   StyledSingleVaultPart,
   StyledVaultInformation,
 } from './index.styled';
+import TreeMapGraph from './TreeMapGraph/TreeMapGraph';
 
 const description = `Oh no, don't touch that. That's some new specialized weather sensing equipment. 
                     Hey, hey, I've seen this one, I've seen this one. This is a classic, this is 
@@ -147,9 +146,9 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           How is this specific vault split into different protocols, what are
           you investing in specifically.
         </StyledHeaderText>
+        <TreeMapGraph />
         <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
       </StyledSingleVaultPart>
-      <TreemapChart />
       <WalletInfo />
     </StyledSingleVaultPageWrapper>
   );

@@ -8,6 +8,7 @@ import {
   PointElement,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useTheme } from 'styled-components';
 
 ChartJS.register(CategoryScale, Filler, LinearScale, PointElement, LineElement);
 
@@ -42,13 +43,15 @@ const mockChartData = {
 };
 
 const PerformanceGraph = ({ chartView }) => {
+  const theme = useTheme();
+
   const chartData = {
     labels: mockChartData[chartView]?.labels.map((label) => label),
     datasets: [
       {
         label: 'Performance',
         data: mockChartData[chartView]?.datasets.map((data) => data),
-        backgroundColor: '#a02bbd',
+        backgroundColor: theme.colors.backgroundChart,
         borderColor: '#a02bbd',
         fill: true,
         lineTension: 0.5,

@@ -33,7 +33,7 @@ export const StyledChartTitleOptions = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 40px;
-  margin-bottom: 200px;
+  margin-bottom: 40px;
 `;
 
 export const StyledChartTitle = styled.div`

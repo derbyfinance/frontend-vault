@@ -85,7 +85,7 @@ const PerformanceGraph = ({ chartView }) => {
 
   const options = {
     plugins: {
-      legend: true,
+      legend: false,
       gradient,
     },
 

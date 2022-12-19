@@ -51,7 +51,7 @@ const mockChartData = {
 };
 
 const PerformanceGraph = ({ chartView }) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   const chartData = {
     labels: mockChartData[chartView]?.labels.map((label) => label),

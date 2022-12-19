@@ -36,17 +36,8 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
   const [view, setView] = useState('D');
 
   const setChartView = (value) => {
-    if (typeof window !== 'undefined') {
-      setView(value);
-      localStorage.setItem('chartView', value);
-    }
+    setView(value);
   };
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setView(localStorage.getItem('chartView'));
-    }
-  }, []);
 
   const dataSingleVault = [
     {
@@ -109,7 +100,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
             <StyledChartOptions>
               {options.map((option) => (
                 <StyledChartOption
-                  onClick={() => setChartView(option)}
+                  onClick={() => setView(option)}
                   active={view === option}
                   key={option}
                 >

@@ -16,7 +16,14 @@ const TableReusableRow = ({ rowData }) => {
       <StyledRowReusableCell>
         <div>
           <StyledImageCont>
-            {<Image src={rowData.icon} height={24} width={24} />}
+            {
+              <Image
+                src={rowData.icon}
+                height={24}
+                width={24}
+                alt="Vault icon"
+              />
+            }
           </StyledImageCont>
           <div>{rowData.name}</div>
           <span>{rowData.network}</span>

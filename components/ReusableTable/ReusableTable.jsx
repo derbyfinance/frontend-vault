@@ -10,8 +10,10 @@ const ReusableTable = ({ data, headers }) => {
     <StyledReusableTable>
       <thead>
         <tr>
-          {headers.map((header) => (
-            <StyledColumnReusableHeader>{header}</StyledColumnReusableHeader>
+          {headers.map((header, i) => (
+            <StyledColumnReusableHeader key={i}>
+              {header}
+            </StyledColumnReusableHeader>
           ))}
         </tr>
       </thead>

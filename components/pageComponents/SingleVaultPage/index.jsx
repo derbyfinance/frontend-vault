@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import KeyStatisticsItem from '@components/Common/KeyStatisticItem/KeyStatisticsItem';
-import Table from '@components/Common/Table/Table';
 import ReusableTable from '@components/ReusableTable/ReusableTable';
 import {
   currencyFormatter,
@@ -112,6 +111,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
                 <StyledChartOption
                   onClick={() => setChartView(option)}
                   active={view === option}
+                  key={option}
                 >
                   {option}
                 </StyledChartOption>

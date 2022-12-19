@@ -11,7 +11,6 @@ import {
 } from './ReusableTable.styled';
 
 const TableReusableRow = ({ rowData }) => {
-  console.log(rowData);
   return (
     <StyledReusableRowItem>
       <StyledRowReusableCell>

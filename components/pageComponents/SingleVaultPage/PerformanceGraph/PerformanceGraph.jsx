@@ -93,14 +93,14 @@ const PerformanceGraph = ({ chartView }) => {
       x: {
         display: true,
         title: {
-          display: true,
+          display: false,
           text: 'Month',
         },
       },
       y: {
         display: false,
         title: {
-          display: true,
+          display: false,
           text: 'Value',
         },
       },

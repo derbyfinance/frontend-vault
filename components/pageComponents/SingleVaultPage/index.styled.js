@@ -17,11 +17,46 @@ export const StyledVaultInformation = styled.div`
   font: ${({ theme }) => theme.fonts.slabRegular};
   font-size: 26px;
   color: ${({ theme }) => theme.colors.vaultTitle};
-`
+`;
 
 export const StyledHeaderText = styled.div`
   font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 20px;
   color: ${({ theme }) => theme.colors.textFaded};
   margin-bottom: 30px;
+`;
+
+export const StyledPerformanceChart = styled.div``;
+
+export const StyledChartTitleOptions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+`;
+
+export const StyledChartTitle = styled.div`
+  font: ${({ theme }) => theme.fonts.slabRegular};
+  font-size: 22px;
+`;
+
+export const StyledChartOptions = styled.ul`
+  display: flex;
+  font: ${({ theme }) => theme.fonts.slabMedium};
+  font-size: 20px;
+`;
+
+export const StyledChartOption = styled.li`
+  cursor: pointer;
+  border-bottom: ${({ active, theme }) =>
+    active ? `4px solid ${theme.colors.borderTertiary}` : 'none'};
+  padding: 10px 20px;
+`;
+
+export const StyledKeyStatistics = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 64px;
 `;

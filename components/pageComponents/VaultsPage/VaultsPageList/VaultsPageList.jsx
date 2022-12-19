@@ -6,7 +6,7 @@ const headers = ['NAME', 'BALANCE', 'APY', 'MEMBERS', 'TVL'];
 
 // TODO: remove mock data this comes from backend
 
-const data = [
+export const data = [
   {
     id: 1,
     icon: '/images/Usdc.png',

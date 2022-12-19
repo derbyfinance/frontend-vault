@@ -1,13 +1,27 @@
-import React from 'react';
-import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
+import React, { useEffect, useState } from 'react';
+import KeyStatisticsItem from '@components/Common/KeyStatisticItem/KeyStatisticsItem';
+import ReusableTable from '@components/ReusableTable/ReusableTable';
 import {
-  StyledSingleVaultPart,
-  StyledSingleVaultPageWrapper,
-  StyledHeaderText,
-  StyledVaultInformation,
-} from './index.styled';
+  currencyFormatter,
+  percentageFormatter,
+} from '@helpers/helperFunctions';
+import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
+import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
+import TreeMapGraph from './TreeMapGraph/TreeMapGraph';
+import {
+  StyledChartOption,
+  StyledChartOptions,
+  StyledChartTitle,
+  StyledChartTitleOptions,
+  StyledHeaderText,
+  StyledKeyStatistics,
+  StyledPerformanceChart,
+  StyledSingleVaultPageWrapper,
+  StyledSingleVaultPart,
+  StyledVaultInformation,
+} from './index.styled';
 
 const description = `Oh no, don't touch that. That's some new specialized weather sensing equipment. 
                     Hey, hey, I've seen this one, I've seen this one. This is a classic, this is 
@@ -17,6 +31,55 @@ const description = `Oh no, don't touch that. That's some new specialized weathe
                     planning it for two weeks.`;
 
 const SingleVaultPageComponent = ({ vaultInfo }) => {
+  const options = ['D', 'W', 'M', 'Y', 'All'];
+
+  const [view, setView] = useState('D');
+
+  const setChartView = (value) => {
+    setView(value);
+  };
+
+  const dataSingleVault = [
+    {
+      id: 1,
+      icon: '/images/ProtocolIcons/yearn-finance.svg',
+      name: 'USDC yVault',
+      network: 'ETH',
+      protocol: 'Yearn Finance',
+      value: 1150000,
+      weight: 11.64,
+    },
+    {
+      id: 2,
+      icon: '/images/ProtocolIcons/aave.svg',
+      name: 'USD Coin',
+      network: 'ETH',
+      protocol: 'Aave',
+      value: 925000,
+      weight: 9.35,
+    },
+    {
+      id: 3,
+      icon: '/images/ProtocolIcons/gearbox.svg',
+      name: 'dUSDC',
+      network: 'ETH',
+      protocol: 'Gearbox',
+      value: 743000,
+      weight: 7.51,
+    },
+    {
+      id: 4,
+      icon: '/images/ProtocolIcons/harvest-finance-farm.svg',
+      name: 'fUSDC',
+      network: 'ETH',
+      protocol: 'Harvest Finance',
+      value: 287000,
+      weight: 2.9,
+    },
+  ];
+
+  const headersSingleVault = ['NAME', 'PROTOCOL', 'WEIGHT', 'VALUE'];
+
   return (
     <StyledSingleVaultPageWrapper>
       <StyledSingleVaultPart>
@@ -29,6 +92,52 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
         </StyledHeaderText>
         <SingleVaultDescription description={description} vault={vaultInfo} />
         <SingleVaultInfo />
+        <StyledPerformanceChart>
+          <StyledChartTitleOptions>
+            <StyledChartTitle>
+              Historical Performance USDC Vault
+            </StyledChartTitle>
+            <StyledChartOptions>
+              {options.map((option) => (
+                <StyledChartOption
+                  onClick={() => setView(option)}
+                  active={view === option}
+                  key={option}
+                >
+                  {option}
+                </StyledChartOption>
+              ))}
+            </StyledChartOptions>
+          </StyledChartTitleOptions>
+          <PerformanceGraph chartView={view} />
+        </StyledPerformanceChart>
+        <StyledVaultInformation>
+          Key statistics USDC Vault
+        </StyledVaultInformation>
+        <StyledHeaderText>
+          The most important data of this vault, use it to compare
+        </StyledHeaderText>
+        <StyledKeyStatistics>
+          <KeyStatisticsItem
+            value={currencyFormatter(9900000)}
+            description="Total Value Locked"
+          />
+          <KeyStatisticsItem value={'$157.74'} description="Price LP Token" />
+          <KeyStatisticsItem
+            value={percentageFormatter(6.32)}
+            description="Annual Percentage Yield"
+          />
+          <KeyStatisticsItem value="USD Stablecoin" description="Type" />
+          <KeyStatisticsItem value={593} description="Depositors" />
+          <KeyStatisticsItem value="6 Days" description="Time To Rebalance" />
+        </StyledKeyStatistics>
+        <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
+        <StyledHeaderText>
+          How is this specific vault split into different protocols, what are
+          you investing in specifically.
+        </StyledHeaderText>
+        <TreeMapGraph />
+        <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

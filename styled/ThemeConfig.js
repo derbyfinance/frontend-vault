@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
 @font-face {
 	font-family: "Roboto-Bold";
 	src: url("/fonts/roboto/Roboto-Bold.ttf");
-	font-weight: 600;
+	font-weight: 700;
 }
 
 @font-face {
@@ -74,6 +74,7 @@ const lightThemeColors = {
   textError: '#E84142',
   textWalletInfo: '#121212',
   backgroundMain: '#fff',
+  backgroundChart: '#F2E6F1',
   headerMain: '#fe5e76',
   iconColor: '#000',
   buttonMain: '#39079b',
@@ -105,6 +106,8 @@ const darkThemeColors = {
   online: '#00FF38',
   textError: '#E84142',
   backgroundMain: '#000',
+  backgroundChart: '#F2E6F1',
+
   headerMain: '#fe5e76',
   tabDepositWithdraw: '#f13abc',
   iconColor: '#fff',

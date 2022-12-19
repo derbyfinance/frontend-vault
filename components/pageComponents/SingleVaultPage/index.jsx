@@ -6,11 +6,11 @@ import {
   currencyFormatter,
   percentageFormatter,
 } from '@helpers/helperFunctions';
-import { data } from '../VaultsPage/VaultsPageList/VaultsPageList';
 import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
 import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
 import SingleVaultInfo from './SingleVaultInfo/SingleVaultInfo';
+import TreeMapGraph from './TreeMapGraph/TreeMapGraph';
 import {
   StyledChartOption,
   StyledChartOptions,
@@ -23,7 +23,6 @@ import {
   StyledSingleVaultPart,
   StyledVaultInformation,
 } from './index.styled';
-import TreeMapGraph from './TreeMapGraph/TreeMapGraph';
 
 const description = `Oh no, don't touch that. That's some new specialized weather sensing equipment. 
                     Hey, hey, I've seen this one, I've seen this one. This is a classic, this is 
@@ -148,7 +147,6 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
         </StyledHeaderText>
         <TreeMapGraph />
         <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
-        <Table headers={headersSingleVault} tableData={data} />
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

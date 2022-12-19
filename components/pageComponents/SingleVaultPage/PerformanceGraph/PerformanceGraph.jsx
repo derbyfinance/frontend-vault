@@ -7,10 +7,18 @@ import {
   LinearScale,
   PointElement,
 } from 'chart.js';
+import gradient from 'chartjs-plugin-gradient';
 import { Line } from 'react-chartjs-2';
 import { useTheme } from 'styled-components';
 
-ChartJS.register(CategoryScale, Filler, LinearScale, PointElement, LineElement);
+ChartJS.register(
+  CategoryScale,
+  Filler,
+  LinearScale,
+  PointElement,
+  LineElement,
+  gradient,
+);
 
 const mockChartData = {
   D: {
@@ -51,11 +59,26 @@ const PerformanceGraph = ({ chartView }) => {
       {
         label: 'Performance',
         data: mockChartData[chartView]?.datasets.map((data) => data),
-        backgroundColor: theme.colors.backgroundChart,
-        borderColor: '#a02bbd',
+        // borderColor: '#a02bbd',
         fill: true,
         lineTension: 0.5,
         tension: 0.1,
+        gradient: {
+          backgroundColor: {
+            axis: 'y',
+            colors: {
+              1: 'rgba(254, 94, 118, 0.2)',
+              50: 'rgba(57, 7, 155, 0.2)',
+            },
+          },
+          borderColor: {
+            axis: 'x',
+            colors: {
+              1: '#B034B1',
+              2: '#6A0EE5',
+            },
+          },
+        },
       },
     ],
   };
@@ -63,6 +86,7 @@ const PerformanceGraph = ({ chartView }) => {
   const options = {
     plugins: {
       legend: true,
+      gradient,
     },
 
     scales: {

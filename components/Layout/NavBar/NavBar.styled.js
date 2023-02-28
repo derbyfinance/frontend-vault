@@ -24,7 +24,7 @@ export const StyledNavLinks = styled.ul`
 `;
 
 export const StyledNavLink = styled.li`
-  font-family: ${({ active }) => (active ? 'Slab-Medium' : 'Slab-Light')};
+  font-family: ${({ active }) => (active ? 'Roboto-Bold' : 'Roboto-Regular')};
   font-size: 20px;
   & a {
     text-decoration: none;
@@ -33,6 +33,12 @@ export const StyledNavLink = styled.li`
     border-bottom: ${({ active, theme }) =>
       active ? `${theme.colors.borderTertiary} solid 3px` : 'none'};
   }
+  font-weight:${({ active }) => (active ? '700' : '400')};
+
+`;
+
+export const DivMarginLeft = styled.div`
+  margin-left: 20px;
 `;
 
 export const StyledConnectDisclaimer = styled.div`

@@ -23,6 +23,8 @@ const SignIn = ({ closeModal }) => {
       userData.address = account;
       userData.chain = chain.id;
 
+      print("user data" +userData);
+
       const { data } = await axios.post('/api/auth/request-message', userData, {
         headers: {
           'content-type': 'application/json',
@@ -30,7 +32,7 @@ const SignIn = ({ closeModal }) => {
       });
 
       const message = data.message;
-
+      print("message" +message);
       const signature = await signMessageAsync({ message });
 
       const { url } = await signIn('credentials', {

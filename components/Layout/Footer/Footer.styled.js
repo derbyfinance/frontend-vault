@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooterWrapper = styled.footer`
+  margin: 200px 0 0 0;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -17,4 +18,6 @@ export const StyledFooterLinks = styled.ul`
   }
 `;
 
-export const StyledFooterLink = styled.li``;
+export const StyledFooterLink = styled.li`
+font-family: 'Roboto-Regular';
+`;

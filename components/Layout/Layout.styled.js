@@ -10,3 +10,10 @@ export const StyledLayoutWrapper = styled.div`
   background: ${({ theme }) => theme?.colors.backgroundMain};
   margin: 0 auto;
 `;
+
+export const ContainerWrapper = styled.div`
+  width: 1100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+`;

@@ -9,6 +9,7 @@ const StyledMainButton = styled.button`
   font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 16px;
   cursor: pointer;
+  font-family: 'Roboto-Bold';
   border: none;
   outline: none;
   min-width: 208px;

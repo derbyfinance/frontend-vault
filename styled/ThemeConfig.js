@@ -97,6 +97,7 @@ const lightThemeColors = {
   vaultTitle: '#5F08EE',
   errorBackground: 'rgba(232, 65, 66, 0.1)',
   changeLabelGreen: '#26A17B',
+  colorTableLabel: '#303030',
 };
 
 const darkThemeColors = {
@@ -131,6 +132,7 @@ const darkThemeColors = {
   vaultTitle: '#5F08EE',
   errorBackground: 'rgba(232, 65, 66, 0.1)',
   changeLabelGreen: '#26A17B',
+  colorTableLabel: '#ffff',
 };
 
 const fonts = {

@@ -66,7 +66,7 @@ const VaultsPageList = () => {
   return (
     <>
       <StyledCoinsListWrapper>
-        <StyledCoinsListHeader>Available Vaults</StyledCoinsListHeader>
+        <StyledCoinsListHeader>Explore available vaults.</StyledCoinsListHeader>
         <Table tableData={data} headers={headers} />
       </StyledCoinsListWrapper>
     </>

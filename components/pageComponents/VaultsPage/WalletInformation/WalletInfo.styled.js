@@ -12,7 +12,7 @@ export const StyledNotConnectedWrapper = styled.div`
   color: ${({ theme }) => theme.colors.textSecondary};
   background: ${({ theme }) => theme.colors.gradientWallet};
   padding: 148px 50px 133px;
-  border-radius: 6px;
+  border-radius: 28px;
   border: ${({ theme }) => theme.colors.borderMain} 1px solid;
 `;
 

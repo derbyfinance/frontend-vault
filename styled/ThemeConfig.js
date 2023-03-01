@@ -75,6 +75,7 @@ const lightThemeColors = {
   textWalletInfo: '#121212',
   backgroundMain: '#F5F5F5',
   backgroundMainForToggle: '#000',
+  backgroundForTable: '#ffff',
   backgroundChart: '#F2E6F1',
   headerMain: '#fe5e76',
   iconColor: '#000',
@@ -108,6 +109,7 @@ const darkThemeColors = {
   textError: '#E84142',
   backgroundMain: '#000',
   backgroundMainForToggle: '#fff',
+  backgroundForTable: '#1C1B1F',
   backgroundChart: '#F2E6F1',
 
   headerMain: '#fe5e76',

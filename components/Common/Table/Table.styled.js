@@ -2,13 +2,16 @@ import styled from 'styled-components';
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
-  width: 100%;
+  width:500px;
+  @media only screen and (max-width: 1000px) {
+    width:700px;
+  }
 `;
 
 export const StyledColumnHeader = styled.th`
-  text-align: left;
-  font: ${({ theme }) => theme.fonts.robotoMedium};
-  font-size: 16px;
+  // text-align: left;
+  font: ${({ theme }) => theme.fonts.robotoRegular};
+  font-size: 15px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
@@ -20,7 +23,7 @@ export const StyledRowItem = styled.tr`
 
 export const StyledRowCell = styled.td`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 18px;
+  font-size: 16px;
   vertical-align: middle;
   padding: 12px;
   & div {
@@ -29,11 +32,16 @@ export const StyledRowCell = styled.td`
     gap: 12px;
     font: ${({ theme }) => theme.fonts.slabMedium};
     font-size: 20px;
-    & span {
-      font: ${({ theme }) => theme.fonts.robotoMedium};
-
-      font-size: 14px;
-      color: ${({ theme }) => theme.colors.textFaded};
-    }
   }
+`;
+
+export const StyledAdd = styled.td`
+  cursor:pointer;
+  font-size: 16px;
+`;
+
+export const StyledCoinShortName = styled.span`
+  font: ${({ theme }) => theme.fonts.robotoRegular};
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.textWalletInfo};
 `;

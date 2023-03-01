@@ -13,6 +13,11 @@ const StyledMainButton = styled.button`
   border: none;
   outline: none;
   min-width: 208px;
+
+  @media only screen and (max-width: 1010px) {
+    min-width: 150px;
+    font-size: 14px;
+  }
 `;
 
 export const ConnectYourWallet = styled(StyledMainButton)`

@@ -3,8 +3,8 @@ import sun from '@icons/sun.svg';
 import Image from 'next/image';
 import {
   StyledDarkThemeButtonContainer,
-  StyledRowIcon,
-  StyledRowIconLeft,
+  StyledRowIconMoon,
+  StyledRowIconSun,
   StyledSwitcher,
 } from './DarkThemeButton.styled';
 
@@ -12,15 +12,15 @@ const DarkThemeButton = ({ toggleTheme, isDark } : { toggleTheme : Function, isD
   return (
     <StyledDarkThemeButtonContainer onClick={toggleTheme} isDark={isDark}>
       {isDark ? (
-        <StyledRowIconLeft>
+        <StyledRowIconSun>
           <Image src={sun} />
-        </StyledRowIconLeft>
+        </StyledRowIconSun>
       ) : null}
       <StyledSwitcher isDark={isDark} />
       {!isDark ? (
-        <StyledRowIcon>
+        <StyledRowIconMoon>
           <Image src={moon} />
-        </StyledRowIcon>
+        </StyledRowIconMoon>
       ) : null}
     </StyledDarkThemeButtonContainer>
   );

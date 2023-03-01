@@ -9,6 +9,8 @@ import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
 import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 import {
   DivMarginLeft,
+  StyledBox,
+  StyledLogo,
   StyledNavBarContent,
   StyledNavBarWrapper,
   StyledNavLink,
@@ -37,11 +39,14 @@ const NavBar = ({
       <ConnectWalletModal isOpen={isOpen} onClose={closeModal} />
       <StyledNavBarContent>
         <StyledNavLinks>
-          <Link href="/" passHref>
-            <a>
-              <Logo />
-            </a>
-          </Link>
+          <StyledLogo>
+            <Link href="/" passHref>
+              <a>
+                <Logo />
+              </a>
+            </Link>
+          </StyledLogo>
+
           <DivMarginLeft />
           <StyledNavLink active={router.pathname === '/vaults'}>
             <Link href="/vaults">Vaults</Link>
@@ -56,13 +61,15 @@ const NavBar = ({
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
           </StyledNavLink>
         </StyledNavLinks>
-        {isConnected ? (
-          <ConnectedWalletAddress />
-        ) : (
-          <StyledNavLink>
-            <MainButton onClick={openModal} btnText="Connect Your Wallet" />
-          </StyledNavLink>
-        )}
+        <StyledBox>
+          {isConnected ? (
+            <ConnectedWalletAddress />
+          ) : (
+            <StyledNavLink>
+              <MainButton onClick={openModal} btnText="Connect Your Wallet" />
+            </StyledNavLink>
+          )}
+        </StyledBox>
       </StyledNavBarContent>
     </StyledNavBarWrapper>
   );

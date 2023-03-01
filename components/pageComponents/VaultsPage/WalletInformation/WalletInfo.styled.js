@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledNotConnectedWrapper = styled.div`
-  position: sticky;
   top: 155px;
   display: flex;
   flex-direction: column;
@@ -11,9 +10,13 @@ export const StyledNotConnectedWrapper = styled.div`
   text-align: center;
   color: ${({ theme }) => theme.colors.textSecondary};
   background: ${({ theme }) => theme.colors.gradientWallet};
-  padding: 148px 50px 133px;
+  padding: 148px 4vh 133px;
   border-radius: 28px;
   border: ${({ theme }) => theme.colors.borderMain} 1px solid;
+
+  // @media only screen and (max-width: 1250px) {
+  //   padding: 148px 50px 133px;
+  // }
 `;
 
 export const WalletInfoConnectedStyled = styled.div`

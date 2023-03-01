@@ -6,7 +6,7 @@ export const StyledFooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 40px 0 15px;
+  padding: 40px 30px 15px;
 `;
 
 export const StyledFooterLinks = styled.ul`

@@ -1,9 +1,8 @@
-import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
 import DepositWithdrawalModal from '@components/DepositWithdrawalModal/DepositWithdrawalModal';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { StyledRowCell, StyledRowItem } from './Table.styled';
+import { StyledRowCell, StyledRowItem, StyledAdd, StyledCoinShortName } from './Table.styled';
 import Link from 'next/link';
 
 const TableRow = ({ rowData, isVaultsPage }) => {
@@ -24,8 +23,8 @@ const TableRow = ({ rowData, isVaultsPage }) => {
       <Link href={`/vaults/${coinShortName}`}>
         <StyledRowCell>
           <div>
-            <Image src={icon} alt={coinShortName} height="64" width="64"></Image>
-            <div>{coinName}</div> <span>{coinShortName}</span>
+            <Image src={icon} alt={coinShortName} height="40" width="40"></Image>
+             <StyledCoinShortName>{coinShortName}</StyledCoinShortName>
           </div>
         </StyledRowCell>
       </Link>
@@ -36,7 +35,7 @@ const TableRow = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         {isVaultsPage && (
           <>
-            <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
+            <StyledAdd onClick={openModal}>+</StyledAdd>
             <DepositWithdrawalModal
               isOpen={isOpen}
               onClose={closeModal}

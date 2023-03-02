@@ -8,17 +8,15 @@ import {
   StyledVaultsPageWrapper,
 } from './index.styled';
 
-
-const VaultsPageComponent:FC = () => {
-
+const VaultsPageComponent: FC = () => {
   return (
     <StyledVaultsPageWrapper>
       <StyledTableWrapper>
-      <StyledCoinsPart>
-        <VaultsPageHero />
+        <StyledCoinsPart>
+          <VaultsPageHero />
           <VaultsPageList />
-      </StyledCoinsPart>
-      <WalletInfo />
+        </StyledCoinsPart>
+        <WalletInfo />
       </StyledTableWrapper>
     </StyledVaultsPageWrapper>
   );

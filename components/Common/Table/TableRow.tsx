@@ -1,20 +1,32 @@
+import React, { FC, useState } from 'react';
 import DepositWithdrawalModal from '@components/DepositWithdrawalModal/DepositWithdrawalModal';
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
-import { StyledRowCell, StyledRowItem, StyledAdd, StyledCoinShortName } from './Table.styled';
 import Link from 'next/link';
+import { NextRouter, useRouter } from 'next/router';
+import { TableDataType } from 'types/table/tableDataTypes';
+import {
+  StyledAdd,
+  StyledCoinShortName,
+  StyledRowCell,
+  StyledRowItem,
+} from './Table.styled';
+import { AddMoneyToVaultBtn } from '../MainButton/MainButton.styled';
 
-const TableRow = ({ rowData, isVaultsPage }) => {
-  const router = useRouter();
+type TableRowType = {
+  rowData: TableDataType;
+  isVaultsPage: boolean;
+};
+
+const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
+  const router: NextRouter = useRouter();
   const { icon, coinName, coinShortName, balance, apy, members, tvl } = rowData;
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const openModal = (e) => {
+  const openModal = (e: Event) => {
     e.preventDefault();
     setIsOpen(true);
-  }
+  };
 
   const closeModal = () => setIsOpen(false);
 
@@ -23,8 +35,13 @@ const TableRow = ({ rowData, isVaultsPage }) => {
       <Link href={`/vaults/${coinShortName}`}>
         <StyledRowCell>
           <div>
-            <Image src={icon} alt={coinShortName} height="40" width="40"></Image>
-             <StyledCoinShortName>{coinShortName}</StyledCoinShortName>
+            <Image
+              src={icon}
+              alt={coinShortName}
+              height="40"
+              width="40"
+            ></Image>
+            <StyledCoinShortName>{coinShortName}</StyledCoinShortName>
           </div>
         </StyledRowCell>
       </Link>
@@ -35,18 +52,15 @@ const TableRow = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         {isVaultsPage && (
           <>
-            <StyledAdd onClick={openModal}>+</StyledAdd>
+            <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
             <DepositWithdrawalModal
               isOpen={isOpen}
               onClose={closeModal}
-              setIsOpen={setIsOpen}
-              APY={apy}
             />
           </>
         )}
       </StyledRowCell>
     </StyledRowItem>
-
   );
 };
 

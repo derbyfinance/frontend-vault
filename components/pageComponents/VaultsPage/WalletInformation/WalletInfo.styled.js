@@ -7,16 +7,19 @@ export const StyledNotConnectedWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+  position: sticky;
   text-align: center;
   color: ${({ theme }) => theme.colors.textSecondary};
   background: ${({ theme }) => theme.colors.gradientWallet};
   padding: 148px 4vh 133px;
   border-radius: 28px;
   border: ${({ theme }) => theme.colors.borderMain} 1px solid;
+  height:550px;
 
-  // @media only screen and (max-width: 1250px) {
-  //   padding: 148px 50px 133px;
-  // }
+  @media only screen and (max-width: 1000px) {
+    height:400px;
+    padding: 80px 4vh 70px;
+  }
 `;
 
 export const WalletInfoConnectedStyled = styled.div`

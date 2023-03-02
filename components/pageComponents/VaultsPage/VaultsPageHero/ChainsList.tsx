@@ -10,10 +10,10 @@ import {
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
 
-const ChainsList = React.forwardRef((props, ref) => {
+const ChainsList = forwardRef((props, ref) => {
   const { chains, switchNetwork } = useSwitchNetwork();
 
-  const handleSwitchNetwork = (id) => {
+  const handleSwitchNetwork = (id: number) => {
     switchNetwork(id);
   };
 

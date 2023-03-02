@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ConnectYourWallet } from '@components/Common/MainButton/MainButton.styled';
 import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 import { WalletInfoLogo } from '@icons/index';
 import { StyledNotConnectedWrapper } from '../WalletInfo.styled';
 
-const WalletInfoNotConnected = ({}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const WalletInfoNotConnected: FC = ({}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openModal = () => setIsOpen(true);
 
@@ -15,7 +15,6 @@ const WalletInfoNotConnected = ({}) => {
     <StyledNotConnectedWrapper>
       <ConnectWalletModal
         isOpen={isOpen}
-        openModal={openModal}
         onClose={closeModal}
       />
 

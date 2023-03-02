@@ -1,18 +1,20 @@
+
+
 import styled from 'styled-components';
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
-  width:500px;
-  @media only screen and (max-width: 1000px) {
-    width:700px;
-  }
+  width: 100%;
 `;
 
 export const StyledColumnHeader = styled.th`
-  // text-align: left;
-  font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 15px;
+  font: ${({ theme }) => theme.fonts.robotoMedium};
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
+
+  @media only screen and (max-width: 1134px) {
+    font-size: 14px;
+  }
 `;
 
 export const StyledRowItem = styled.tr`
@@ -23,7 +25,7 @@ export const StyledRowItem = styled.tr`
 
 export const StyledRowCell = styled.td`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 16px;
+  font-size: 18px;
   vertical-align: middle;
   padding: 12px;
   & div {
@@ -32,10 +34,24 @@ export const StyledRowCell = styled.td`
     gap: 12px;
     font: ${({ theme }) => theme.fonts.slabMedium};
     font-size: 20px;
+
+    @media only screen and (max-width: 1134px) {
+      gap: 5px;
+    }
+    & span {
+      font: ${({ theme }) => theme.fonts.robotoMedium};
+      font-size: 14px;
+      color: ${({ theme }) => theme.colors.textFaded};
+    }
+  }
+
+  @media only screen and (max-width: 1134px) {
+    padding: 8px;
+    font-size: 16px;
   }
 `;
 
-export const StyledAdd = styled.td`
+export const StyledAdd = styled.div`
   cursor:pointer;
   font-size: 16px;
 `;

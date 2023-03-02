@@ -1,10 +1,9 @@
 import MainButton from '@components/Common/MainButton/MainButton';
 import EyeClosed from '@icons/EyeClosed';
 import { EyeOpen, Portfolio, Rewards } from '@icons/index';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
   StyledButtonWrapper,
-  StyledConnectedCell,
   StyledConnectedHeading,
   StyledConnectedIcon,
   StyledConnectedRow,
@@ -20,14 +19,14 @@ import {
   StyledWalletConnectedTable,
 } from './WalletConnected.styled';
 
-const WalletConnected = () => {
-  const [showBalance, setShowBalance] = useState(true);
+const WalletConnected: FC = () => {
+  const [showBalance, setShowBalance] = useState<boolean>(true);
 
-  const toggleBalance = () => {
+  const toggleBalance = (): void => {
     setShowBalance(!showBalance);
   };
 
-  const handleStakeRewards = () => {};
+  const handleStakeRewards = (): void => {};
 
   return (
     <StyledWalletConnectedContainer>

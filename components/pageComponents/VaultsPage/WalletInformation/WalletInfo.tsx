@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import WalletInfoNotConnected from './WalletInfoNotConnected/WalletInfoNotConnected';
 import { useAccount } from 'wagmi';
 import WalletConnected from './WalletConnected/WalletConnected';
 
-const WalletInfo = () => {
+const WalletInfo: FC = () => {
   const { isConnected } = useAccount();
-  const [connected, setConnected] = useState();
+  const [connected, setConnected] = useState<boolean>();
 
   useEffect(() => {
     setConnected(isConnected);

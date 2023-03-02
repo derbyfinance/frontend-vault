@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { ClaimRewards } from '@components/Common/MainButton/MainButton.styled';
 import { Portfolio, Rewards, Yield } from '@icons/index';
 import {
@@ -10,13 +10,20 @@ import {
 } from '../WalletInfo.styled';
 
 //mock temporary data
-const walletAmount = 1000;
+const walletAmount:number = 1000;
 const mockData = {
   portfolioAmount: 11645,
   yieldAmount: '+935,86',
   rewardsAmount: 11645,
 };
-const WalletInfoConnectedRow = ({ icon, title, amount }) => {
+
+type WalletInfoConnectedRowType = {
+  icon: JSX.Element,
+  title: string,
+  amount: string | number,
+}
+
+const WalletInfoConnectedRow:FC<WalletInfoConnectedRowType> = ({ icon, title, amount }) => {
   return (
     <StyledConnectedItem>
       <StyledConnectedLeftWrapper>
@@ -29,7 +36,7 @@ const WalletInfoConnectedRow = ({ icon, title, amount }) => {
     </StyledConnectedItem>
   );
 };
-const WalletInfoConnected = () => {
+const WalletInfoConnected: FC = () => {
   const { portfolioAmount, yieldAmount, rewardsAmount } = mockData;
   return (
     <WalletInfoConnectedStyled>

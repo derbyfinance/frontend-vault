@@ -4,7 +4,7 @@ const StyledMainButton = styled.button`
   background: ${({ theme }) => theme.colors.gradientMain};
   font: ${({ theme }) => theme.font?.slabRegular};
   color: ${({ theme }) => theme.colors.textSecondary};
-  border-radius: 28px;
+  border-radius: 8px;
   padding: 12px 20px;
   font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 16px;

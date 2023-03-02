@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { Lock, Members, Vaults } from '@icons/index';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
@@ -30,7 +30,13 @@ const selectedNetwork = {
   members: 227,
 };
 
-const NetworkInfoBlock = ({ icon, value, description }) => {
+type NetworkInfoBlockType = {
+  icon:JSX.Element,
+  value: string | number,
+  description: string,
+}
+
+const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({ icon, value, description }) => {
   return (
     <StyledInfoBlockWrapper>
       <StyledIcon>{icon}</StyledIcon>
@@ -42,12 +48,12 @@ const NetworkInfoBlock = ({ icon, value, description }) => {
   );
 };
 
-const VaultsPageHero = () => {
-  const [chainsOpen, setChainsOpen] = useState(false);
-  const [open, setOpen] = useState(false);
+const VaultsPageHero: FC = () => {
+  const [chainsOpen, setChainsOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
-  const arrowRef = useRef();
-  const dropdownRef = useRef();
+  const arrowRef: React.MutableRefObject<any> = useRef();
+  const dropdownRef: React.MutableRefObject<any> = useRef();
 
   const { isConnected } = useAccount();
 
@@ -55,7 +61,7 @@ const VaultsPageHero = () => {
   const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e: Event) => {
       if (
         !dropdownRef.current?.contains(e.target) &&
         !arrowRef.current?.contains(e.target)
@@ -67,10 +73,10 @@ const VaultsPageHero = () => {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const onOpen = () => {
+  const onOpen = (): void => {
     setOpen(true);
   };
-  const onClose = () => {
+  const onClose = (): void => {
     setOpen(false);
   };
 
@@ -88,7 +94,7 @@ const VaultsPageHero = () => {
                 onClose={onClose}
                 dropDownButton={<BtnArrow open={open} />}
               >
-                <ChainsList setChainsOpen={onOpen} ref={dropdownRef} />
+                <ChainsList ref={dropdownRef} />
               </DropDownMenu>
             )}
           </StyledNetworkTitle>

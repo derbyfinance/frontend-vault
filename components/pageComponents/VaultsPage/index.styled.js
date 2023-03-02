@@ -19,8 +19,9 @@ export const StyledTableWrapper= styled.div`
   margin: 60px 0 0 0;
   gap: 17px;
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1040px) {
     flex-direction: column;
+    margin: 0 0 0 0;
   }
 `;
 

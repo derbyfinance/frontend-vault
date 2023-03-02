@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Table from '@components/Common/Table/Table';
+import { TableDataType } from 'types/table/tableDataTypes';
 import {
   StyledCoinsListHeader,
-  StyledCoinsListWrapper,
 } from './VaultsPageList.styled';
 
-const headers = ['Assets', 'Wallet balance', 'APY', 'Members', 'TVL'];
+const headers: string[] = ['Assets', 'Wallet balance', 'APY', 'Members', 'TVL'];
 
 // TODO: remove mock data this comes from backend
 
-export const data = [
+export const data: TableDataType[] = [
   {
     id: 1,
     icon: '/images/usdc.svg',
@@ -62,13 +62,11 @@ export const data = [
   },
 ];
 
-const VaultsPageList = () => {
+const VaultsPageList:FC = () => {
   return (
     <>
-      <StyledCoinsListWrapper>
         <StyledCoinsListHeader>Explore available vaults.</StyledCoinsListHeader>
         <Table tableData={data} headers={headers} />
-      </StyledCoinsListWrapper>
     </>
   );
 };

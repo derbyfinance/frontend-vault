@@ -42,7 +42,7 @@ export const StyledHeaderText = styled.div`
 `;
 
 export const StyledPerformanceChart = styled.div`
-  width: 99%;
+  width: 95%;
 `;
 
 export const StyledChartTitleOptions = styled.div`

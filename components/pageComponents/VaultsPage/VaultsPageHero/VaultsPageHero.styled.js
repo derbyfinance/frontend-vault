@@ -12,7 +12,7 @@ export const StyledHeroWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   position: relative;
-  margin: 90px 0 0 0;
+  min-width: 700px
 `;
 
 export const StyledNetworkInfoSection = styled.div`

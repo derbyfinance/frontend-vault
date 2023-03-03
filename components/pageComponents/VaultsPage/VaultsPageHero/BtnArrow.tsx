@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import styled from 'styled-components';
 
@@ -7,10 +7,14 @@ const StyledButtonContainer = styled.div`
   transition: transform 0.3s ease-in-out;
 `;
 
-const BtnArrow = ({ open }) => {
+type BtnArrowType = {
+  open: boolean;
+};
+
+const BtnArrow: FC<BtnArrowType> = ({ open }) => {
   return (
     <StyledButtonContainer open={open}>
-      <ArrowDownComponent />
+      <ArrowDownComponent open={open}/>
     </StyledButtonContainer>
   );
 };

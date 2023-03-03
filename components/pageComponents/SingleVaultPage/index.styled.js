@@ -5,12 +5,27 @@ export const StyledSingleVaultPageWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
+  padding: 0 32px;
+  width: 100%;
+  @media only screen and (max-width: 1130px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
 `;
 
 export const StyledSingleVaultPart = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 1130px) {
+    justify-content: center;
+  // align-items: center;
+  }
+  @media only screen and (max-width: 1060px) {
+    align-items: center;
+  }
 `;
 
 export const StyledVaultInformation = styled.div`
@@ -26,7 +41,9 @@ export const StyledHeaderText = styled.div`
   margin-bottom: 30px;
 `;
 
-export const StyledPerformanceChart = styled.div``;
+export const StyledPerformanceChart = styled.div`
+  width: 99%;
+`;
 
 export const StyledChartTitleOptions = styled.div`
   display: flex;
@@ -45,6 +62,7 @@ export const StyledChartOptions = styled.ul`
   display: flex;
   font: ${({ theme }) => theme.fonts.slabMedium};
   font-size: 20px;
+
 `;
 
 export const StyledChartOption = styled.li`

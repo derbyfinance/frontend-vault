@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import VaultsPageHero from './VaultsPageHero/VaultsPageHero';
 import VaultsPageList from './VaultsPageList/VaultsPageList';
 import WalletInfo from './WalletInformation/WalletInfo';
@@ -8,16 +8,16 @@ import {
   StyledVaultsPageWrapper,
 } from './index.styled';
 
-const VaultsPageComponent = () => {
+const VaultsPageComponent: FC = () => {
   return (
     <StyledVaultsPageWrapper>
-      <StyledCoinsPart>
-        <VaultsPageHero />
-        <StyledTableWrapper>
+      <StyledTableWrapper>
+        <StyledCoinsPart>
+          <VaultsPageHero />
           <VaultsPageList />
-          <WalletInfo />
-        </StyledTableWrapper>
-      </StyledCoinsPart>
+        </StyledCoinsPart>
+        <WalletInfo />
+      </StyledTableWrapper>
     </StyledVaultsPageWrapper>
   );
 };

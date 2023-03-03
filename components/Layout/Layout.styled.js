@@ -10,11 +10,19 @@ export const StyledLayoutWrapper = styled.div`
   background: ${({ theme }) => theme?.colors.backgroundMain};
   margin: 0 auto;
   // overflow: hidden;
+
+  @media only screen and (max-width: 900px) {
+    padding: 0;
+  }
 `;
 
 export const ContainerWrapper = styled.div`
-  width: 1250px;
+  // width: 1250px;
   display: block;
   margin-left: auto;
   margin-right: auto
+`;
+
+export const StyledTextNone= styled.div`
+ font-size: 30px;
 `;

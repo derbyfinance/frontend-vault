@@ -6,10 +6,16 @@ export const StyledSingleVaultInfoContainer = styled.div`
     & > :last-child {
         border-right: none;
     }
+    @media only screen and (max-width: 1160px) {
+        gap: 12px;
+      }
 `
 export const StyledBlockWrapper = styled.div`
     padding: 20px;
     border-right: 1px solid ${({ theme }) => theme.colors.borderMain};
+    @media only screen and (max-width: 1180px) {
+        padding: 14px;
+      }
 `
 export const StyledBlockInfo = styled.div`
     display: flex;
@@ -19,6 +25,9 @@ export const StyledBlockInfo = styled.div`
 export const StyledValue = styled.div`
     font: ${({ theme }) => theme.fonts.robotoMedium};
     font-size: 32px;
+    @media only screen and (max-width: 1180px) {
+        font-size: 24px;
+      }
 `
 
 export const StyledTextPart = styled.div`

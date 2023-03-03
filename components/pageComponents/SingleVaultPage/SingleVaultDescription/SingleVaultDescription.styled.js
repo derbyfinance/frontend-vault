@@ -8,6 +8,7 @@ export const StyledDescriptionWrapper = styled.div`
   padding: 32px;
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
+  // width:80%;
 `;
 
 export const StyledDescriptionHeader = styled.div`

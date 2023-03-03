@@ -5,6 +5,7 @@ export const StyledVaultsPageWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 19px;
+  margin: 0 24px;
 `;
 
 export const StyledCoinsPart = styled.div`
@@ -16,6 +17,11 @@ export const StyledCoinsPart = styled.div`
 
 export const StyledTableWrapper= styled.div`
   display: flex;
-  margin: 60px 0 0 0;
   gap: 17px;
+
+  @media only screen and (max-width: 1040px) {
+    flex-direction: column;
+    margin: 0 0 0 0;
+  }
 `;
+

@@ -87,7 +87,7 @@ const lightThemeColors = {
   gradientTwo: 'linear-gradient(90deg, #fe5e76 50%, #f13abc 90.54%)',
   borderMain: '#e2e2e2',
   borderSecondary: '#160344',
-  borderTertiary: '#121212',
+  borderTertiary: '#f13abc',
   borderFaded: '#6a7278',
   listHover: '#f5f5f5',
   textBalancePositive: '#00c853',

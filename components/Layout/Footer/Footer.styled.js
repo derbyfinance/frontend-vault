@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledFooterWrapper = styled.footer`
-  margin: 200px 0 0 0;
+  margin: 100px 0 0 0;
   position: relative;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 40px 0 15px;
+  padding: 40px 30px 15px;
 `;
 
 export const StyledFooterLinks = styled.ul`

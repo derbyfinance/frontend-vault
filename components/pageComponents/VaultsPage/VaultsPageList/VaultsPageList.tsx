@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Table from '@components/Common/Table/Table';
+import { TableDataType } from 'types/table/tableDataTypes';
 import {
   StyledCoinsListHeader,
-  StyledCoinsListWrapper,
 } from './VaultsPageList.styled';
 
-const headers = ['NAME', 'BALANCE', 'APY', 'MEMBERS', 'TVL'];
+const headers: string[] = ['Assets', 'Wallet balance', 'APY', 'Members', 'TVL'];
 
 // TODO: remove mock data this comes from backend
 
-export const data = [
+export const data: TableDataType[] = [
   {
     id: 1,
-    icon: '/images/Usdc.png',
+    icon: '/images/usdc.svg',
     coinName: 'USD Coin',
     coinShortName: 'USDC',
     balance: 32000,
@@ -22,7 +22,7 @@ export const data = [
   },
   {
     id: 2,
-    icon: '/images/Usdt.png',
+    icon: '/images/usdt.svg',
     coinName: 'USD Tether',
     coinShortName: 'USDT',
     balance: 45000,
@@ -32,7 +32,7 @@ export const data = [
   },
   {
     id: 3,
-    icon: '/images/Dai.png',
+    icon: '/images/dai.svg',
     coinName: 'DAI',
     coinShortName: 'DAI',
     balance: 45000,
@@ -42,7 +42,7 @@ export const data = [
   },
   {
     id: 4,
-    icon: '/images/Eth.png',
+    icon: '/images/ETH.svg',
     coinName: 'Ethereum',
     coinShortName: 'ETH',
     balance: 450000,
@@ -52,23 +52,21 @@ export const data = [
   },
   {
     id: 5,
-    icon: '/images/Wbtc.png',
+    icon: '/images/BTC.svg',
     coinName: 'Wrapped Bitcoin',
     coinShortName: 'WBTC',
-    balance: 1800,
+    balance: 450000,
     apy: '8.1 %',
     members: '12',
     tvl: '$ 1.7 M',
   },
 ];
 
-const VaultsPageList = () => {
+const VaultsPageList:FC = () => {
   return (
     <>
-      <StyledCoinsListWrapper>
         <StyledCoinsListHeader>Explore available vaults.</StyledCoinsListHeader>
         <Table tableData={data} headers={headers} />
-      </StyledCoinsListWrapper>
     </>
   );
 };

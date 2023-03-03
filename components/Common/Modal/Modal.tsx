@@ -1,10 +1,16 @@
-import React from 'react';
-import { StyledModal } from './Modal.styled';
+import React, { FC, ReactNode } from 'react';
 import { useContext } from 'react';
 import { ThemeContext } from 'styled-components';
+import { StyledModal } from './Modal.styled';
 
-const Modal = ({ children, isOpen, onClose }) => {
-  const themeContext = useContext(ThemeContext);
+type ModalType = {
+  children: ReactNode;
+  isOpen: boolean;
+  onClose: Function;
+};
+
+const Modal: FC<ModalType> = ({ children, isOpen, onClose }) => {
+  const themeContext: any = useContext(ThemeContext);
 
   const customStyles = {
     overlay: {

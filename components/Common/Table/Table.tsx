@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { TableDataType } from 'types/table/tableDataTypes';
 import { StyledColumnHeader, StyledTable } from './Table.styled';
 import TableRow from './TableRow';
 
-const Table = ({ headers, tableData }) => {
+type TableProps = {
+  tableData: TableDataType[];
+  headers: string[];
+};
+
+const Table: FC<TableProps> = ({ headers, tableData }) => {
   return (
     <StyledTable>
       <thead>

@@ -26,4 +26,6 @@ export const StyledInput = styled.input`
   border: none;
   font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 24px;
+  color: ${({ theme }) => theme.colors.textFaded};
+  background-color: #fff;
 `;

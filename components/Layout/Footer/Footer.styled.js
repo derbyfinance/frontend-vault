@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledFooterWrapper = styled.footer`
-  margin: 200px 0 0 0;
+  margin: 100px 0 0 0;
   position: relative;
   display: flex;
   justify-content: space-between;

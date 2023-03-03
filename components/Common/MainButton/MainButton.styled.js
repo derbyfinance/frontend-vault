@@ -36,6 +36,10 @@ export const AddMoneyToVaultBtn = styled.button`
   color: ${({ theme }) => theme.colors.textMain};
   border-radius: 6px;
   padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    opacity:0.6;
+  }
 `;
 
 export default StyledMainButton;

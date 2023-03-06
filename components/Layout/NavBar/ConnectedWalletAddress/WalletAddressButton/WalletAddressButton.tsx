@@ -8,7 +8,13 @@ import {
   StyledWalletAddressBtn,
 } from './WalletAddressButton.styled';
 
-const WalletAddressButton = ({ open, address }) => {
+const WalletAddressButton = ({
+  open,
+  address,
+}: {
+  open: boolean;
+  address: string;
+}) => {
   return (
     <StyledWalletAddressBtn>
       <Image
@@ -21,7 +27,7 @@ const WalletAddressButton = ({ open, address }) => {
         {hideMiddleCharacters(address)}
       </StyledAddressWrapper>
       <StyledArrowContainer open={open}>
-        <ArrowDownComponent />
+        <ArrowDownComponent open={open} />
       </StyledArrowContainer>
     </StyledWalletAddressBtn>
   );

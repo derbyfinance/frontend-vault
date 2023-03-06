@@ -8,3 +8,6 @@ export const StyledAddressWrapper = styled.div`
 export const StyledWalletMenuContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.tabDepositWithdrawActive};
 `;
+
+export const StyledDiv = styled.div`
+`;

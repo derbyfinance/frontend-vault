@@ -1,7 +1,7 @@
 import { apiHandler } from '@utils/apiHandler';
 import createHttpError from 'http-errors';
 import { NextApiHandler } from 'next';
-import { IHeaderStats, IVaultData } from 'types/table/stats';
+import { IHeaderStats, IVaultData } from 'types/stats';
 
 type GetResponse = {
   data: {

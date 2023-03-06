@@ -14,6 +14,6 @@ export const StyledDropDownIcon = styled.div`
 export const StyledDropDownContent = styled.div`
   position: absolute;
   transform: translate(-50%);
-  left: 50%;
+  left: 25%;
   z-index: 10;
 `;

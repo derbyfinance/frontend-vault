@@ -6,7 +6,7 @@ export const StyledWalletMenuContent = styled.div`
   border-radius: 6px;
   padding-top: 30px;
   overflow: hidden;
-  margin: 12px 30px 0 0;
+  margin: 12px 0px 0 0;
 `;
 
 export const StyledAddressAvatar = styled.div`

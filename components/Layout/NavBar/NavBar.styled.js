@@ -5,7 +5,7 @@ export const StyledNavBarWrapper = styled.nav`
   width: 100%;
   top: 0;
   background: ${({ theme }) => theme.colors.backgroundMain};
-  padding: 64px 0 40px;
+  padding: 64px 30px 40px;
   z-index: 20;
 `;
 
@@ -54,5 +54,5 @@ export const StyledLogo = styled.div`
 
 
 export const StyledBox = styled.div`
-  margin: 0 30px 0 0;
+  margin: 0 0px 0 0;
 `;

@@ -8,8 +8,10 @@ export const StyledModal = styled(Modal)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 6px;
+  border-radius: 28px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
+  color: #000;
+  max-width: 420px;
 `;
 
 export const StyledModalLogoAndText = styled.div`
@@ -20,7 +22,7 @@ export const StyledModalLogoAndText = styled.div`
   & h3 {
     font: ${({ theme }) => theme.fonts.robotoMedium};
     font-size: 20px;
-    color: ${({ theme }) => theme.colors.textMain};
+    margin: 10px 0 10px 0;
   }
   & h4 {
     font: ${({ theme }) => theme.fonts.robotoLight};
@@ -32,4 +34,10 @@ export const StyledModalConnectOptions = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+`;
+
+export const StyledCloseIcon = styled.div`
+  position: absolute;
+  right: 20px;
+  top: 20px;
 `;

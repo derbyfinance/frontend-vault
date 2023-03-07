@@ -31,7 +31,7 @@ const selectedNetwork = {
 };
 
 type NetworkInfoBlockType = {
-  icon:JSX.Element,
+  icon: JSX.Element,
   value: string | number,
   description: string,
 }

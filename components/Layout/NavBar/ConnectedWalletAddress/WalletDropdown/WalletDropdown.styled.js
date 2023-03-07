@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledWalletMenuContent = styled.div`
-  margin-top: 12px;
   background: ${({ theme }) => theme.colors.backgroundMain};
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px rgba(0, 0, 0, 0.15);
-  border-radius: 28px;
+  border-radius: 6px;
   padding-top: 30px;
   overflow: hidden;
+  margin: 12px 0px 0 0;
 `;
 
 export const StyledAddressAvatar = styled.div`
@@ -31,8 +31,7 @@ export const StyledButtonWrapper = styled.div`
 `;
 
 export const StyledButtonWalletMenu = styled.button`
-
-  background: #f5f5f5;
+  background: #F5F5F5;
   border-radius: 28px;
   padding: 12px 16px;
   font: ${({ theme }) => theme.fonts.robotoRegular};
@@ -40,6 +39,7 @@ export const StyledButtonWalletMenu = styled.button`
   min-width: 130px;
   border: 0.5px solid ${({ theme }) => theme.colors.borderFaded};
   cursor: pointer;
+  color: #160344;
   &:hover {
     background: ${({ theme }) => theme.colors.backgroundMain};
   }

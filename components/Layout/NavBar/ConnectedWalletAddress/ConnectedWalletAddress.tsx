@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
 import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import { useAccount } from 'wagmi';
+import { StyledDiv } from './ConnectedWalletAddress.styled';
 import WalletAddressButton from './WalletAddressButton/WalletAddressButton';
 import WalletDropdown from './WalletDropdown/WalletDropdown';
 
-const ConnectedWalletAddress = () => {
+const ConnectedWalletAddress: FC = () => {
   const [open, setOpen] = useState(false);
 
   const onOpen = () => {
@@ -14,8 +15,21 @@ const ConnectedWalletAddress = () => {
   const onClose = () => {
     setOpen(false);
   };
-
   const { address } = useAccount();
+  const refOnWalletDropdown = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('click', clickHandler, true);
+  });
+
+  const clickHandler: EventListener = (e: MouseEvent) => {
+    if (
+      refOnWalletDropdown.current !== null &&
+      !refOnWalletDropdown.current?.contains(e.target)
+    ) {
+      onClose();
+    }
+  };
 
   return (
     <>
@@ -25,7 +39,11 @@ const ConnectedWalletAddress = () => {
         onOpen={onOpen}
         onClose={onClose}
       >
-        {open && <WalletDropdown address={address} />}
+        {open && (
+          <StyledDiv ref={refOnWalletDropdown}>
+            <WalletDropdown address={address} />
+          </StyledDiv>
+        )}
       </DropDownMenu>
     </>
   );

@@ -73,7 +73,7 @@ const lightThemeColors = {
   textFaded: '#a9a6ae',
   textError: '#E84142',
   textWalletInfo: '#121212',
-  backgroundMain: '#F5F5F5',
+  backgroundMain: '#FFFF',
   backgroundMainForToggle: '#000',
   backgroundForTable: '#ffff',
   backgroundChart: '#F2E6F1',

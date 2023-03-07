@@ -4,6 +4,8 @@ import {
   hideMiddleCharacters,
 } from '@helpers/helperFunctions';
 import Image from 'next/image';
+import copy from 'public/icons/copyIcon.svg';
+import etherscan from 'public/icons/etherscan.svg';
 import { useAccount, useDisconnect, useNetwork } from 'wagmi';
 import { StyledAddressWrapper } from '../WalletAddressButton/WalletAddressButton.styled';
 import {
@@ -19,11 +21,8 @@ import {
   StyledWalletMenuRows,
   StyledWalletRow,
 } from './WalletDropdown.styled';
-import copy from 'public/icons/copyIcon.svg';
-import etherscan from 'public/icons/etherscan.svg';
 
-
-const WalletDropdown = ({ address }) => {
+const WalletDropdown = ({ address }: { address: string }) => {
   const { disconnect } = useDisconnect();
 
   const handleViewOnEtherscan = () => {
@@ -71,13 +70,13 @@ const WalletDropdown = ({ address }) => {
         </StyledWalletRow>
         <StyledWalletRow onClick={handleCopyAddress}>
           <StyledRowIcon>
-            <Image src={copy} layout="fill" />
+            <Image src={copy} layout="fill" alt={'copy text'} />
           </StyledRowIcon>
           <StyledRowText>Copy address</StyledRowText>
         </StyledWalletRow>
         <StyledWalletRow onClick={handleViewOnEtherscan}>
           <StyledRowIcon>
-            <Image src={etherscan} layout="fill" />
+            <Image src={etherscan} layout="fill" alt={'etherscan'} />
           </StyledRowIcon>
           <StyledRowText>View on Etherscan</StyledRowText>
         </StyledWalletRow>

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledHeroContainer = styled.div`
   position: relative;
-  overflow: hidden;
 `;
 
 export const StyledHeroWrapper = styled.div`
@@ -93,9 +92,11 @@ export const StyledNetworkIcon = styled.div`
 `;
 
 export const StyledChainsList = styled.div`
-  top: 70px;
-  left: 170px;
-  z-index: 10;
+position: absolute;
+// right:0px;
+  top: 10px;
+  left: -150px;
+  z-index: 200;
   border-radius: 28px;
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   background: ${({ theme }) => theme.colors.backgroundMain};
@@ -146,6 +147,8 @@ export const StyledChainTitle = styled.div`
 export const StyledBoxBackground = styled.div`
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 0px;
   opacity: .4;
+  overflow:hidden;
+  height 180px;
 `;

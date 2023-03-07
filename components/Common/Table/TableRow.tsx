@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { TableDataType } from 'types/table/tableDataTypes';
 import {
-  StyledAdd,
-  StyledCoinShortName,
   StyledRowCell,
   StyledRowItem,
 } from './Table.styled';
@@ -33,6 +31,7 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
   return (
     <StyledRowItem>
       <Link href={`/vaults/${coinShortName}`}>
+        <>
         <StyledRowCell>
           <div>
             <Image
@@ -41,14 +40,18 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
               height="40"
               width="40"
             ></Image>
-            <StyledCoinShortName>{coinShortName}</StyledCoinShortName>
+            <div>{coinName}</div> <span>{coinShortName}</span>
           </div>
         </StyledRowCell>
-      </Link>
+
       <StyledRowCell>{balance}</StyledRowCell>
+
       <StyledRowCell>{apy}</StyledRowCell>
       <StyledRowCell>{members}</StyledRowCell>
       <StyledRowCell>{tvl}</StyledRowCell>
+      </>
+      </Link>
+
       <StyledRowCell>
         {isVaultsPage && (
           <>

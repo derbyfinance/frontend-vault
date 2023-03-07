@@ -21,6 +21,9 @@ export const StyledRowItem = styled.tr`
   vertical-align: middle;
   border-collapse: collapse;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
+  &:hover {
+    background: #F5F5F5;
+  }
 `;
 
 export const StyledRowCell = styled.td`
@@ -56,8 +59,5 @@ export const StyledAdd = styled.div`
   font-size: 16px;
 `;
 
-export const StyledCoinShortName = styled.span`
-  font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 16px;
-  color: ${({ theme }) => theme.colors.textWalletInfo};
-`;
+
+

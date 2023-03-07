@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
-import ArrowDownComponent from '@components/UI/ArrowDownComponent';
 import { useAccount } from 'wagmi';
 import { StyledDiv } from './ConnectedWalletAddress.styled';
 import WalletAddressButton from './WalletAddressButton/WalletAddressButton';

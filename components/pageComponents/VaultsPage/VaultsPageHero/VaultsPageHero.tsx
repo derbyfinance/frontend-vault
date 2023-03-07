@@ -1,10 +1,14 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
+import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
 import { Lock, Members, Vaults } from '@icons/index';
+import vaultPageHeroBackground from '@icons/vaultPageHeroBackground.svg';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
 import { useAccount, useNetwork } from 'wagmi';
+import BtnArrow from './BtnArrow';
 import ChainsList from './ChainsList';
 import {
+  StyledBoxBackground,
   StyledCircle,
   StyledDescription,
   StyledHeroContainer,
@@ -12,16 +16,14 @@ import {
   StyledIcon,
   StyledInfoBlockWrapper,
   StyledNetworkIcon,
+  StyledNetworkIconContainer,
   StyledNetworkInfo,
   StyledNetworkInfoSection,
   StyledNetworkTitle,
   StyledValue,
   StyledValuePart,
-  StyledNetworkIconContainer,
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
-import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
-import BtnArrow from './BtnArrow';
 
 //dummy data for hero section values
 const selectedNetwork = {
@@ -31,12 +33,16 @@ const selectedNetwork = {
 };
 
 type NetworkInfoBlockType = {
-  icon: JSX.Element,
-  value: string | number,
-  description: string,
-}
+  icon: JSX.Element;
+  value: string | number;
+  description: string;
+};
 
-const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({ icon, value, description }) => {
+const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({
+  icon,
+  value,
+  description,
+}) => {
   return (
     <StyledInfoBlockWrapper>
       <StyledIcon>{icon}</StyledIcon>
@@ -82,6 +88,15 @@ const VaultsPageHero: FC = () => {
 
   return (
     <StyledHeroContainer>
+      <StyledBoxBackground>
+        <Image
+          src={vaultPageHeroBackground}
+          alt={''}
+          width="600"
+          color='blue'
+
+        ></Image>
+      </StyledBoxBackground>
       <StyledHeroWrapper>
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>

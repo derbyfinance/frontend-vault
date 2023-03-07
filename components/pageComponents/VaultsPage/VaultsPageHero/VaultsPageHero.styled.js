@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHeroContainer = styled.div`
   position: relative;
+  overflow: hidden;
 `;
 
 export const StyledHeroWrapper = styled.div`
@@ -140,4 +141,11 @@ export const StyledSwitchTo = styled.div`
 export const StyledChainTitle = styled.div`
   font: ${({ theme }) => theme.fonts.robotoLight};
   font-size: 20px;
+`;
+
+export const StyledBoxBackground = styled.div`
+  position: absolute;
+  top: 0;
+  right: 50px;
+  opacity: .4;
 `;

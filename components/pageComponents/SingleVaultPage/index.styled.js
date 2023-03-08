@@ -6,14 +6,23 @@ export const StyledSingleVaultPageWrapper = styled.div`
   align-items: flex-start;
   gap: 16px;
   padding: 0 32px;
+  position:relative;
   width: 100%;
   @media only screen and (max-width: 1130px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-
+  &:hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0;
+}
 `;
+
 
 export const StyledSingleVaultPart = styled.div`
   width: 100%;
@@ -21,7 +30,6 @@ export const StyledSingleVaultPart = styled.div`
   flex-direction: column;
   @media only screen and (max-width: 1130px) {
     justify-content: center;
-  // align-items: center;
   }
   @media only screen and (max-width: 1060px) {
     align-items: center;

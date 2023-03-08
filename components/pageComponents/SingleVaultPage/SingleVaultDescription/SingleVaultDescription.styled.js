@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledDescriptionWrapper = styled.div`
-  margin-bottom: 40px;
+  margin: 40px 0 60px 0;
   display: flex;
   flex-direction: column;
   gap: 17px;
   padding: 32px;
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
+  width: 100%;
   // width:80%;
 `;
 

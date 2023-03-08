@@ -10,7 +10,9 @@ import {
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
 
-const ChainsList = forwardRef((props, ref) => {
+type ButtonProps = React.HTMLProps<HTMLButtonElement>
+
+const ChainsList = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { chains, switchNetwork } = useSwitchNetwork();
 
   const handleSwitchNetwork = (id: number) => {
@@ -33,6 +35,6 @@ const ChainsList = forwardRef((props, ref) => {
       ))}
     </StyledChainsList>
   );
-});
-
+      });
+      ChainsList.displayName = "ChainsList";
 export default ChainsList;

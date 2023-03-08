@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import MainButton from '@components/Common/MainButton/MainButton';
+import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -19,7 +20,6 @@ import {
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
-import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 
 const WithdrawTab = () => {
   const [withdrawValue, setWithdrawValue] = useState({
@@ -30,17 +30,23 @@ const WithdrawTab = () => {
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
 
   const handleWithdrawField = (e) => {
-    setWithdrawValue({ withdraw: +removeNonNumeric(e.target.value), youGet: +removeNonNumeric(e.target.value) * 2 });
+    setWithdrawValue({
+      withdraw: +removeNonNumeric(e.target.value),
+      youGet: +removeNonNumeric(e.target.value) * 2,
+    });
   };
 
   const handleWithdrawFieldYouGet = (e) => {
-    setWithdrawValue({ youGet: +removeNonNumeric(e.target.value), withdraw: +removeNonNumeric(e.target.value) / 2 });
+    setWithdrawValue({
+      youGet: +removeNonNumeric(e.target.value),
+      withdraw: +removeNonNumeric(e.target.value) / 2,
+    });
   };
 
   const validateInput = (e) => {
-    const number = Number(e.key)
-    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault()
-  }
+    const number = Number(e.key);
+    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault();
+  };
 
   const {
     config,
@@ -120,7 +126,7 @@ const WithdrawTab = () => {
         <Info />
       </StyledGasPrice>
       <StyledDisclaimerDeposit>
-        There is sufficient liquidity to withdraw instantly'
+        There is sufficient liquidity to withdraw instantly
       </StyledDisclaimerDeposit>
       {isPrepareError && <ErrorMessage message={prepareError.message} />}
       <StyledModalDepositButton>

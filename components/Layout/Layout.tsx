@@ -21,7 +21,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   useEffect(() => {
     if (width < 770) {
       setIsBigger(false);
-      console.log('first');
     }
     if (width > 770) {
       setIsBigger(true);

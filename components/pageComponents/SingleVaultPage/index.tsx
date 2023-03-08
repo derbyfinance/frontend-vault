@@ -5,6 +5,8 @@ import {
   currencyFormatter,
   percentageFormatter,
 } from '@helpers/helperFunctions';
+import { ApiService } from 'services/api.sevice';
+import { IVaultData } from 'types/stats';
 import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
 import PerformanceGraph from './PerformanceGraph/PerformanceGraph';
 import SingleVaultDescription from './SingleVaultDescription/SingleVaultDescription';
@@ -77,6 +79,20 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
       weight: 2.9,
     },
   ];
+  const [iconPath, setIconPath] = useState<string>();
+  useEffect(() => {
+    getData();
+  });
+  const getData = async () => {
+    const data = await ApiService.getData();
+    const { vaults } = data.data.data;
+    const vault: IVaultData = vaults.filter((item: IVaultData) => {
+      return item.coinShortName === vaultInfo;
+    });
+    if (vault[0] !== undefined) {
+      setIconPath(vault[0].icon);
+    }
+  };
 
   const headersSingleVault = ['NAME', 'PROTOCOL', 'WEIGHT', 'VALUE'];
 
@@ -90,7 +106,11 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           Technical information regarding the performance of your selected
           vault.
         </StyledHeaderText>
-        <SingleVaultDescription description={description} vault={vaultInfo} />
+        <SingleVaultDescription
+          imagePath={iconPath}
+          description={description}
+          vault={vaultInfo}
+        />
         <SingleVaultInfo />
         <StyledPerformanceChart>
           <StyledChartTitleOptions>

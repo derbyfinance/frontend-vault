@@ -4,11 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { TableDataType } from 'types/table/tableDataTypes';
-import {
-  StyledRowCell,
-  StyledRowItem,
-} from './Table.styled';
 import { AddMoneyToVaultBtn } from '../MainButton/MainButton.styled';
+import { StyledRowCell, StyledRowItem } from './Table.styled';
 
 type TableRowType = {
   rowData: TableDataType;
@@ -31,7 +28,6 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
   return (
     <StyledRowItem>
       <Link href={`/vaults/${coinShortName}`}>
-        <>
         <StyledRowCell>
           <div>
             <Image
@@ -43,23 +39,24 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
             <div>{coinName}</div> <span>{coinShortName}</span>
           </div>
         </StyledRowCell>
-
-      <StyledRowCell>{balance}</StyledRowCell>
-
-      <StyledRowCell>{apy}</StyledRowCell>
-      <StyledRowCell>{members}</StyledRowCell>
-      <StyledRowCell>{tvl}</StyledRowCell>
-      </>
       </Link>
-
+      <Link href={`/vaults/${coinShortName}`}>
+        <StyledRowCell>{balance}</StyledRowCell>
+      </Link>
+      <Link href={`/vaults/${coinShortName}`}>
+        <StyledRowCell>{apy}</StyledRowCell>
+      </Link>
+      <Link href={`/vaults/${coinShortName}`}>
+        <StyledRowCell>{members}</StyledRowCell>
+      </Link>
+      <Link href={`/vaults/${coinShortName}`}>
+        <StyledRowCell>{tvl}</StyledRowCell>
+      </Link>
       <StyledRowCell>
         {isVaultsPage && (
           <>
             <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
-            <DepositWithdrawalModal
-              isOpen={isOpen}
-              onClose={closeModal}
-            />
+            <DepositWithdrawalModal isOpen={isOpen} onClose={closeModal} />
           </>
         )}
       </StyledRowCell>

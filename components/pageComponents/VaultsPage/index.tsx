@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useAccount } from 'wagmi';
 import VaultsPageHero from './VaultsPageHero/VaultsPageHero';
 import VaultsPageList from './VaultsPageList/VaultsPageList';
 import WalletInfo from './WalletInformation/WalletInfo';
@@ -9,9 +10,10 @@ import {
 } from './index.styled';
 
 const VaultsPageComponent: FC = () => {
+  const { isConnected } = useAccount();
   return (
     <StyledVaultsPageWrapper>
-      <StyledTableWrapper>
+      <StyledTableWrapper isConnected={isConnected}>
         <StyledCoinsPart>
           <VaultsPageHero />
           <VaultsPageList />

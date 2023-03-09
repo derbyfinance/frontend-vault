@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Table from '@components/Common/Table/Table';
 import { TableDataType } from 'types/table/tableDataTypes';
 import {
   StyledCoinsListHeader,
 } from './VaultsPageList.styled';
+import { ApiService } from 'services/api.service';
+import { IVaultData } from 'types/stats';
 
 const headers: string[] = ['Assets', 'Wallet balance', 'APY', 'Members', 'TVL'];
 
@@ -63,10 +65,22 @@ export const data: TableDataType[] = [
 ];
 
 const VaultsPageList:FC = () => {
+
+  const [tableData, setTableData] = useState<IVaultData[]>();
+
+  useEffect(() => {
+    getData();
+  });
+  const getData = async () => {
+    const data = await ApiService.getData();
+    const { vaults } = data.data.data;
+    setTableData(vaults);
+  };
+
   return (
     <>
         <StyledCoinsListHeader>Explore available vaults.</StyledCoinsListHeader>
-        <Table tableData={data} headers={headers} />
+        <Table tableData={tableData} headers={headers} />
     </>
   );
 };

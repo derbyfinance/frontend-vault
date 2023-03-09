@@ -1,11 +1,18 @@
 import React, { FC, useState } from 'react';
 import DepositWithdrawalModal from '@components/DepositWithdrawalModal/DepositWithdrawalModal';
+import threeDots from '@images/threeDots.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { TableDataType } from 'types/table/tableDataTypes';
+import { useAccount } from 'wagmi';
 import { AddMoneyToVaultBtn } from '../MainButton/MainButton.styled';
-import { StyledRowCell, StyledRowItem } from './Table.styled';
+import {
+  StyledCircleBorder,
+  StyledRowCell,
+  StyledRowItem,
+  StyledThreeDots,
+} from './Table.styled';
 
 type TableRowType = {
   rowData: TableDataType;
@@ -25,17 +32,21 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
 
   const closeModal = () => setIsOpen(false);
 
+  const { isConnected } = useAccount();
+
   return (
     <StyledRowItem>
       <Link href={`/vaults/${coinShortName}`}>
         <StyledRowCell>
           <div>
-            <Image
-              src={icon}
-              alt={coinShortName}
-              height="40"
-              width="40"
-            ></Image>
+            <StyledCircleBorder>
+              <Image
+                src={icon}
+                alt={coinShortName}
+                height="24"
+                width="24"
+              ></Image>
+            </StyledCircleBorder>
             <div>{coinName}</div> <span>{coinShortName}</span>
           </div>
         </StyledRowCell>
@@ -55,7 +66,13 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         {isVaultsPage && (
           <>
-            <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
+            {isConnected ? (
+              <StyledThreeDots onClick={openModal}>
+                <Image src={threeDots} alt={'settings'} height={22}></Image>
+              </StyledThreeDots>
+            ) : (
+              <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
+            )}
             <DepositWithdrawalModal isOpen={isOpen} onClose={closeModal} />
           </>
         )}

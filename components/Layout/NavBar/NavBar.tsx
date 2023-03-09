@@ -8,8 +8,6 @@ import MainButton from '../../Common/MainButton/MainButton';
 import DarkThemeButton from '../../DarkThemeButton/DarkThemeButton';
 import ConnectedWalletAddress from './ConnectedWalletAddress/ConnectedWalletAddress';
 import {
-  StyledBox,
-  StyledLogo,
   StyledNavBarContent,
   StyledNavBarWrapper,
   StyledNavLink,
@@ -31,13 +29,11 @@ const NavBar = ({ toggleTheme, isDark }) => {
     <StyledNavBarWrapper>
       <ConnectWalletModal isOpen={isOpen} onClose={closeModal} />
       <StyledNavBarContent>
-        <StyledLogo>
-          <Link href="/" passHref>
-            <a>
-              <Logo />
-            </a>
-          </Link>
-        </StyledLogo>
+        <Link href="/" passHref>
+          <a>
+            <Logo />
+          </a>
+        </Link>
         <StyledNavLinks>
           {/* TO DO */}
           {/* <StyledNavLink>
@@ -53,15 +49,13 @@ const NavBar = ({ toggleTheme, isDark }) => {
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
 
-          <StyledBox>
-            {isConnected ? (
-              <ConnectedWalletAddress />
-            ) : (
-              <StyledNavLink>
-                <MainButton onClick={openModal} btnText="Connect Your Wallet" />
-              </StyledNavLink>
-            )}
-          </StyledBox>
+          {isConnected ? (
+            <ConnectedWalletAddress />
+          ) : (
+            <StyledNavLink>
+              <MainButton onClick={openModal} btnText="Connect Your Wallet" />
+            </StyledNavLink>
+          )}
         </StyledNavLinks>
       </StyledNavBarContent>
     </StyledNavBarWrapper>

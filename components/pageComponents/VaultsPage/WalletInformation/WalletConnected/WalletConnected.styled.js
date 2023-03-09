@@ -7,11 +7,13 @@ export const StyledWalletConnectedContainer = styled.div`
   position: sticky;
   top: 155px;
   text-align: left;
-  max-width: 425px;
+  // max-width: 425px;
   background: ${({ theme }) => theme.colors?.backgroundMain};
   border: 1px solid #e2e2e2;
   border-radius: 6px;
-  padding: 48px 24px; ;
+  padding: 48px 24px;
+  height: 540px;
+
 `;
 
 export const StyledConnectedHeading = styled.div`

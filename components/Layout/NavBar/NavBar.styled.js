@@ -32,6 +32,10 @@ export const StyledNavLink = styled.li`
     padding: 10px 12px;
     border-bottom: ${({ active, theme }) =>
       active ? `${theme.colors.borderTertiary} solid 3px` : 'none'};
+      @media only screen and (max-width: 860px) {
+        padding: 10px 6px;
+        font-size: 17px;
+      }
   }
 `;
 
@@ -46,13 +50,4 @@ export const StyledConnectDisclaimer = styled.div`
     background-clip: text;
     margin-left: 4px;
   }
-`;
-
-export const StyledLogo = styled.div`
-  margin: 0 0 0 30px;
-`;
-
-
-export const StyledBox = styled.div`
-  margin: 0 0px 0 0;
 `;

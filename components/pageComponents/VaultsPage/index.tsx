@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { ApiService } from 'services/api.service';
+import { IHeaderStats, IVaultData } from 'types/stats';
 import { useAccount } from 'wagmi';
 import VaultsPageHero from './VaultsPageHero/VaultsPageHero';
 import VaultsPageList from './VaultsPageList/VaultsPageList';
@@ -11,12 +13,25 @@ import {
 
 const VaultsPageComponent: FC = () => {
   const { isConnected } = useAccount();
+
+  const [tableData, setTableData] = useState<IVaultData[]>();
+  const [headerStatsData, setheaderStatsData] = useState<IHeaderStats>();
+
+  useEffect(() => {
+    getData();
+  });
+  const getData = async () => {
+    const data = await ApiService.getData();
+    const { vaults, headerStats } = data.data.data;
+    setheaderStatsData(headerStats);
+    setTableData(vaults);
+  };
   return (
     <StyledVaultsPageWrapper>
       <StyledTableWrapper isConnected={isConnected}>
         <StyledCoinsPart>
-          <VaultsPageHero />
-          <VaultsPageList />
+          <VaultsPageHero headerStats={headerStatsData} />
+          <VaultsPageList tableData={tableData} />
         </StyledCoinsPart>
         <WalletInfo />
       </StyledTableWrapper>

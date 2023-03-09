@@ -5,7 +5,7 @@ import {
   currencyFormatter,
   percentageFormatter,
 } from '@helpers/helperFunctions';
-import { ApiService } from 'services/api.sevice';
+import { ApiService } from 'services/api.service';
 import { IVaultData } from 'types/stats';
 import WalletInfo from '../VaultsPage/WalletInformation/WalletInfo';
 import PerformanceGraph from './PerformanceGraph/PerformanceGraph';

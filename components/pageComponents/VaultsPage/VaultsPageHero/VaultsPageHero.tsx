@@ -3,7 +3,6 @@ import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
 import { Lock, Members, Vaults } from '@icons/index';
 import vaultPageHeroBackground from '@icons/vaultPageHeroBackground.svg';
 import HeroCircle from '@images/HeroCircle.png';
-import axios from 'axios';
 import Image from 'next/image';
 import { IHeaderStats } from 'types/stats';
 import { useAccount, useNetwork } from 'wagmi';
@@ -27,13 +26,6 @@ import {
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
 
-//dummy data for hero section values
-const selectedNetwork = {
-  totalValue: '$11M',
-  vaults: 5,
-  members: 227,
-};
-
 type NetworkInfoBlockType = {
   icon: JSX.Element;
   value: string | number;
@@ -55,30 +47,19 @@ const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({
     </StyledInfoBlockWrapper>
   );
 };
+type VaultsPageHeroPropType = {
+  headerStats: IHeaderStats;
+};
 
-const VaultsPageHero: FC = ({ data }: any) => {
+const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
   const [chainsOpen, setChainsOpen] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-  const [headerStatsData, setheaderStatsData] = useState<IHeaderStats>();
 
   const arrowRef: React.MutableRefObject<any> = useRef();
   const dropdownRef: React.MutableRefObject<any> = useRef();
 
   const { isConnected } = useAccount();
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    const { data } = await axios.get('/api/stats', {
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
-    const { headerStats } = data.data;
-    setheaderStatsData(headerStats);
-  };
   //some default value, until we figure out what to show when wallet is not connected
   const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
@@ -131,17 +112,17 @@ const VaultsPageHero: FC = ({ data }: any) => {
           <StyledNetworkInfo>
             <NetworkInfoBlock
               icon={<Lock />}
-              value={headerStatsData?.totalValue}
+              value={headerStats?.totalValue}
               description="TOTAL VALUE LOCKED"
             />
             <NetworkInfoBlock
               icon={<Vaults />}
-              value={headerStatsData?.vaults}
+              value={headerStats?.vaults}
               description="VAULTS"
             />
             <NetworkInfoBlock
               icon={<Members />}
-              value={headerStatsData?.members}
+              value={headerStats?.members}
               description="MEMBERS"
             />
           </StyledNetworkInfo>
@@ -163,18 +144,5 @@ const VaultsPageHero: FC = ({ data }: any) => {
     </StyledHeroContainer>
   );
 };
-
-export async function getServerSideProps(context: any) {
-  // const { data } = await axios.get('/api/stats',  {
-  //   headers: {
-  //     'content-type': 'application/json',
-  //   },
-  // });
-  return {
-    props: {
-      // data:data,
-    },
-  };
-}
 
 export default VaultsPageHero;

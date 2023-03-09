@@ -19,7 +19,7 @@ const Table: FC<TableProps> = ({ headers, tableData }) => {
         </tr>
       </thead>
       <tbody>
-        {tableData.map((rowData) => (
+        {tableData && tableData.map((rowData) => (
           <TableRow key={rowData.id} rowData={rowData} isVaultsPage />
         ))}
       </tbody>

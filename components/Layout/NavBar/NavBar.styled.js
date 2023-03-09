@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const StyledNavBarWrapper = styled.nav`
-  position: sticky;
   width: 100%;
   top: 0;
   background: ${({ theme }) => theme.colors.backgroundMain};
   padding: 64px 30px 40px;
   z-index: 20;
+  font-size: 15px;
 `;
 
 export const StyledNavBarContent = styled.div`
@@ -25,7 +25,7 @@ export const StyledNavLinks = styled.ul`
 
 export const StyledNavLink = styled.li`
   font-family: ${({ active }) => (active ? 'Slab-Medium' : 'Slab-Light')};
-  font-size: 20px;
+  font-size: 16px;
   & a {
     text-decoration: none;
     color: ${({ theme }) => theme.colors.textMain};
@@ -34,7 +34,6 @@ export const StyledNavLink = styled.li`
       active ? `${theme.colors.borderTertiary} solid 3px` : 'none'};
       @media only screen and (max-width: 860px) {
         padding: 10px 6px;
-        font-size: 17px;
       }
   }
 `;

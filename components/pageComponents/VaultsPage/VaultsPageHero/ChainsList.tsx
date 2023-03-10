@@ -13,7 +13,9 @@ import { chainIcons } from './chainIcons';
 type ButtonProps = React.HTMLProps<HTMLButtonElement>
 
 const ChainsList = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { chains, switchNetwork } = useSwitchNetwork();
+  const { chains, switchNetwork } = useSwitchNetwork({
+    throwForSwitchChainNotSupported: true,
+  });
 
   const handleSwitchNetwork = (id: number) => {
     switchNetwork(id);

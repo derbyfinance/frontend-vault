@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   copyToClipboard,
   hideMiddleCharacters,
@@ -22,7 +22,15 @@ import {
   StyledWalletRow,
 } from './WalletDropdown.styled';
 
-const WalletDropdown = ({ address }: { address: string }) => {
+type WalletDropdownPropsType = {
+  openModal: Function;
+  address: string;
+};
+
+const WalletDropdown: FC<WalletDropdownPropsType> = ({
+  address,
+  openModal,
+}) => {
   const { disconnect } = useDisconnect();
 
   const handleViewOnEtherscan = () => {
@@ -36,6 +44,11 @@ const WalletDropdown = ({ address }: { address: string }) => {
   const { chain } = useNetwork();
 
   const { connector } = useAccount();
+
+  const handlerSwitcher = () => {
+    disconnect();
+    openModal();
+  };
 
   return (
     <StyledWalletMenuContent>
@@ -55,7 +68,9 @@ const WalletDropdown = ({ address }: { address: string }) => {
           Connected with: <br /> {connector.name}
         </StyledConnectedWith>
         <StyledButtonWrapper>
-          <StyledButtonWalletMenu>Switch</StyledButtonWalletMenu>
+          <StyledButtonWalletMenu onClick={handlerSwitcher}>
+            Switch
+          </StyledButtonWalletMenu>
           <StyledButtonWalletMenu onClick={disconnect}>
             Disconnect
           </StyledButtonWalletMenu>

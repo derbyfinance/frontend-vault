@@ -5,7 +5,13 @@ import { StyledDiv } from './ConnectedWalletAddress.styled';
 import WalletAddressButton from './WalletAddressButton/WalletAddressButton';
 import WalletDropdown from './WalletDropdown/WalletDropdown';
 
-const ConnectedWalletAddress: FC = () => {
+type ConnectedWalletAddressPropsType = {
+  openModal: Function;
+};
+
+const ConnectedWalletAddress: FC<ConnectedWalletAddressPropsType> = ({
+  openModal,
+}) => {
   const [open, setOpen] = useState(false);
 
   const onOpen = () => {
@@ -31,20 +37,16 @@ const ConnectedWalletAddress: FC = () => {
   };
 
   return (
-    <>
+    <StyledDiv ref={refOnWalletDropdown}>
       <DropDownMenu
         dropDownButton={<WalletAddressButton address={address} open={open} />}
         open={open}
         onOpen={onOpen}
         onClose={onClose}
       >
-        {open && (
-          <StyledDiv ref={refOnWalletDropdown}>
-            <WalletDropdown address={address} />
-          </StyledDiv>
-        )}
+        {open && <WalletDropdown address={address} openModal={openModal} />}
       </DropDownMenu>
-    </>
+    </StyledDiv>
   );
 };
 

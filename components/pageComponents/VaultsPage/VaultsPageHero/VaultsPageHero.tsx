@@ -1,17 +1,19 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
+import { addSeparators } from '@helpers/helperFunctions';
 import { Lock, Members, Vaults } from '@icons/index';
 import vaultPageHeroBackground from '@icons/vaultPageHeroBackground.svg';
 import HeroCircle from '@images/HeroCircle.png';
 import Image from 'next/image';
 import { IHeaderStats } from 'types/stats';
-import { useAccount, useNetwork } from 'wagmi';
+import { useNetwork } from 'wagmi';
 import BtnArrow from './BtnArrow';
 import ChainsList from './ChainsList';
 import {
   StyledBoxBackground,
   StyledCircle,
   StyledDescription,
+  StyledEmptyDiv,
   StyledHeroContainer,
   StyledHeroWrapper,
   StyledIcon,
@@ -58,8 +60,6 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
   const arrowRef: React.MutableRefObject<any> = useRef();
   const dropdownRef: React.MutableRefObject<any> = useRef();
 
-  const { isConnected } = useAccount();
-
   //some default value, until we figure out what to show when wallet is not connected
   const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
 
@@ -98,31 +98,32 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
           <StyledNetworkTitle>
             <Image src={chainIcons[chain?.id]} alt={`${chain?.name} image`} />
             <h2>{chain.name}</h2>
-            {isConnected && (
+
+            <StyledEmptyDiv ref={dropdownRef}>
               <DropDownMenu
                 open={open}
                 onOpen={onOpen}
                 onClose={onClose}
                 dropDownButton={<BtnArrow open={open} />}
               >
-                <ChainsList ref={dropdownRef} />
+                <ChainsList onClose={onClose} />
               </DropDownMenu>
-            )}
+            </StyledEmptyDiv>
           </StyledNetworkTitle>
           <StyledNetworkInfo>
             <NetworkInfoBlock
               icon={<Lock />}
-              value={headerStats?.totalValue}
+              value={addSeparators(headerStats?.totalValue)}
               description="TOTAL VALUE LOCKED"
             />
             <NetworkInfoBlock
               icon={<Vaults />}
-              value={headerStats?.vaults}
+              value={addSeparators(headerStats?.vaults)}
               description="VAULTS"
             />
             <NetworkInfoBlock
               icon={<Members />}
-              value={headerStats?.members}
+              value={addSeparators(headerStats?.members)}
               description="MEMBERS"
             />
           </StyledNetworkInfo>

@@ -113,17 +113,22 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
           <StyledNetworkInfo>
             <NetworkInfoBlock
               icon={<Lock />}
-              value={addSeparators(headerStats?.totalValue)}
+              value={
+                headerStats?.totalValue &&
+                addSeparators(headerStats?.totalValue)
+              }
               description="TOTAL VALUE LOCKED"
             />
             <NetworkInfoBlock
               icon={<Vaults />}
-              value={addSeparators(headerStats?.vaults)}
+              value={headerStats?.vaults && addSeparators(headerStats?.vaults)}
               description="VAULTS"
             />
             <NetworkInfoBlock
               icon={<Members />}
-              value={addSeparators(headerStats?.members)}
+              value={
+                headerStats?.members && addSeparators(headerStats?.members)
+              }
               description="MEMBERS"
             />
           </StyledNetworkInfo>

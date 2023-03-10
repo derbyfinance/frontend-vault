@@ -12,7 +12,7 @@ type VaultsPageListPropType = {
 const VaultsPageList: FC<VaultsPageListPropType> = ({ tableData }) => {
   return (
     <>
-      <StyledCoinsListHeader>Explore available vaults.</StyledCoinsListHeader>
+      <StyledCoinsListHeader>Available Vaults</StyledCoinsListHeader>
       <Table tableData={tableData} headers={headers} />
     </>
   );

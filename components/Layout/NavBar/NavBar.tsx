@@ -50,7 +50,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
           </StyledNavLink>
 
           {isConnected ? (
-            <ConnectedWalletAddress />
+            <ConnectedWalletAddress openModal={openModal}/>
           ) : (
             <StyledNavLink>
               <MainButton onClick={openModal} btnText="Connect Your Wallet" />

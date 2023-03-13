@@ -22,7 +22,7 @@ export const hideMiddleCharacters = (address) => {
 };
 
 export const addSeparators = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
 export const copyToClipboard = (text) => {

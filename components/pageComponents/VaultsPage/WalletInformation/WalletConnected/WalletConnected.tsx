@@ -1,7 +1,7 @@
-import MainButton from '@components/Common/MainButton/MainButton';
+import React, { FC, useEffect, useState } from 'react';
 import EyeClosed from '@icons/EyeClosed';
 import { EyeOpen, Portfolio, Rewards } from '@icons/index';
-import React, { FC, useState } from 'react';
+import { ApiService } from 'services/api.service';
 import {
   StyledButtonWrapper,
   StyledConnectedHeading,
@@ -18,12 +18,30 @@ import {
   StyledWalletConnectedHeader,
   StyledWalletConnectedTable,
 } from './WalletConnected.styled';
+import { addSeparatorsToThousands } from '@helpers/helperFunctions';
 
 const WalletConnected: FC = () => {
   const [showBalance, setShowBalance] = useState<boolean>(true);
+  const [rewards, setRewards] = useState();
+  const [portfolio, setPortfolio] = useState();
+  const [balanceVaultA, setBalanceVaultA] = useState();
+  const [balanceVaultB, setBalanceVaultB] = useState();
 
   const toggleBalance = (): void => {
     setShowBalance(!showBalance);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const response = await ApiService.getUserDataByUserAddress('mockAddress');
+    const data = response.data.data;
+    setRewards(data.rewards);
+    setPortfolio(data.portfolio);
+    setBalanceVaultA(data.balances.vaultUSDC);
+    setBalanceVaultB(data.balances.vaultDAI);
   };
 
   const handleStakeRewards = (): void => {};
@@ -46,7 +64,7 @@ const WalletConnected: FC = () => {
             </StyledConnectedIcon>
             <StyledConnectedTitle>Portfolio</StyledConnectedTitle>
             {showBalance ? (
-              <StyledConnectedValue>11645</StyledConnectedValue>
+              <StyledConnectedValue>${addSeparatorsToThousands(portfolio)}</StyledConnectedValue>
             ) : (
               <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
             )}
@@ -55,7 +73,7 @@ const WalletConnected: FC = () => {
             <StyledConnectedIcon></StyledConnectedIcon>
             <StyledVaultTitle>Balance vault A</StyledVaultTitle>
             {showBalance ? (
-              <StyledVaultBalance>7.656</StyledVaultBalance>
+              <StyledVaultBalance>${addSeparatorsToThousands(balanceVaultA)}</StyledVaultBalance>
             ) : (
               <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
             )}
@@ -64,7 +82,7 @@ const WalletConnected: FC = () => {
             <StyledConnectedIcon></StyledConnectedIcon>
             <StyledVaultTitle>Balance vault B</StyledVaultTitle>
             {showBalance ? (
-              <StyledVaultBalance>3.989</StyledVaultBalance>
+              <StyledVaultBalance>${addSeparatorsToThousands(balanceVaultB)}</StyledVaultBalance>
             ) : (
               <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
             )}
@@ -75,7 +93,7 @@ const WalletConnected: FC = () => {
             </StyledConnectedIcon>
             <StyledConnectedTitle>Rewards</StyledConnectedTitle>
             {showBalance ? (
-              <StyledConnectedValue>11645</StyledConnectedValue>
+              <StyledConnectedValue>${addSeparatorsToThousands(rewards)}</StyledConnectedValue>
             ) : (
               <StyledHiddenBalance>XXXXX</StyledHiddenBalance>
             )}

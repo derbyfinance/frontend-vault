@@ -8,4 +8,12 @@ export const ApiService = {
       },
     });
   },
+
+  async getUserDataByUserAddress(address: string) {
+    return await axios.get(`/api/user?address=${address}`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  },
 };

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import Image from 'next/image';
-import { useSwitchNetwork } from 'wagmi';
+import { useAccount, useSwitchNetwork } from 'wagmi';
 import {
   StyledChain,
   StyledChainTitle,
@@ -10,19 +10,19 @@ import {
 } from './VaultsPageHero.styled';
 import { chainIcons } from './chainIcons';
 
-type ButtonProps = React.HTMLProps<HTMLButtonElement>
-
-const ChainsList = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { chains, switchNetwork } = useSwitchNetwork({
-    throwForSwitchChainNotSupported: true,
-  });
+const ChainsList = ({ onClose }: { onClose: Function }) => {
+  const { chains, switchNetwork } = useSwitchNetwork();
+  const { isConnected } = useAccount();
 
   const handleSwitchNetwork = (id: number) => {
-    switchNetwork(id);
+    if (isConnected) {
+      switchNetwork(id);
+      onClose();
+    }
   };
 
   return (
-    <StyledChainsList ref={ref}>
+    <StyledChainsList>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
       {chains.map((chain) => (
         <StyledChainWrapper
@@ -37,6 +37,6 @@ const ChainsList = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       ))}
     </StyledChainsList>
   );
-      });
-      ChainsList.displayName = "ChainsList";
+};
+ChainsList.displayName = 'ChainsList';
 export default ChainsList;

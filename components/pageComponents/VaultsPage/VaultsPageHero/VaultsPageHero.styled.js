@@ -148,7 +148,11 @@ export const StyledBoxBackground = styled.div`
   position: absolute;
   top: 0;
   right: 0px;
-  opacity: .4;
+  opacity: .8;
   overflow:hidden;
   height 180px;
+`;
+
+export const StyledEmptyDiv = styled.div`
+
 `;

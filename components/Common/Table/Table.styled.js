@@ -8,6 +8,7 @@ export const StyledTable = styled.table`
 export const StyledColumnHeader = styled.th`
   font: ${({ theme }) => theme.fonts.robotoMedium};
   font-size: 16px;
+  text-align:left;
   color: ${({ theme }) => theme.colors.textFaded};
   padding: 0 10px 0 0;
   @media only screen and (max-width: 1134px) {
@@ -26,29 +27,19 @@ export const StyledRowItem = styled.tr`
 
 export const StyledRowCell = styled.td`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 18px;
+  font-size: 15px;
   vertical-align: middle;
-  padding: 12px 12px 12px 12px;
+  padding: 12px 12px 12px 0px;
   & div {
     display: flex;
     align-items: center;
-    gap: 12px;
     font: ${({ theme }) => theme.fonts.slabMedium};
-    font-size: 20px;
   }
   & span {
     font: ${({ theme }) => theme.fonts.robotoRegular};
-    font-size: 14px;
     color: ${({ theme }) => theme.colors.textFaded};
-  }
+    margin: 0 0 0 10px;
 
-  @media only screen and (max-width: 1190px) {
-    padding: 5px;
-    font-size: 18px;
-  }
-  @media only screen and (max-width: 1109px) {
-    padding: 12px;
-    font-size: 20px;
   }
 `;
 
@@ -67,6 +58,7 @@ export const StyledCircleBorder = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 10px 0 0;
 `;
 
 export const StyledThreeDots = styled.button`

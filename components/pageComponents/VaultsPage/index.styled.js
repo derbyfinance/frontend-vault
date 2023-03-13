@@ -12,7 +12,6 @@ export const StyledCoinsPart = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 38px;
 `;
 
 export const StyledTableWrapper= styled.div`

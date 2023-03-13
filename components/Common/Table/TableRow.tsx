@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { NextRouter, useRouter } from 'next/router';
 import { TableDataType } from 'types/table/tableDataTypes';
-import { useAccount } from 'wagmi';
 import { AddMoneyToVaultBtn } from '../MainButton/MainButton.styled';
 import {
   StyledCircleBorder,
@@ -32,7 +31,6 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
 
   const closeModal = () => setIsOpen(false);
 
-  const { isConnected } = useAccount();
 
   return (
     <StyledRowItem>
@@ -66,13 +64,7 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         {isVaultsPage && (
           <>
-            {isConnected ? (
-              <StyledThreeDots onClick={openModal}>
-                <Image src={threeDots} alt={'settings'} height={22}></Image>
-              </StyledThreeDots>
-            ) : (
-              <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
-            )}
+            <AddMoneyToVaultBtn onClick={openModal}>+ Add</AddMoneyToVaultBtn>
             <DepositWithdrawalModal isOpen={isOpen} onClose={closeModal} />
           </>
         )}

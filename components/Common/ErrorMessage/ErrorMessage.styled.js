@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const StyledErrorContainer = styled.div`
-    padding: 15px 38px;
+    padding: 15px 20px;
     background-color: ${({ theme }) => theme.colors.errorBackground};
     border-radius: 6px;
     margin-bottom: 30px;
+    // width: 300px;
 `
 
 export const StyledErrorWrapper = styled.div`

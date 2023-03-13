@@ -10,6 +10,7 @@ import {
   StyledCloseIcon,
   StyledModalConnectOptions,
   StyledModalLogoAndText,
+  StyledErrorWrapper,
 } from '../Modal.styled';
 
 type ConnectWalletModalProps = {
@@ -21,7 +22,11 @@ const ConnectWalletModal: FC<ConnectWalletModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [walletDetected, setWalletDetected] = useState<boolean>(true);
+  const [walletDetected, setWalletDetected] = useState<boolean>(false);
+
+  const walletDetectionHandler = (detection: boolean) => {
+    setWalletDetected(detection);
+  }
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <StyledCloseIcon>
@@ -32,11 +37,11 @@ const ConnectWalletModal: FC<ConnectWalletModalProps> = ({
         <h3>Connect Wallet</h3>
         <h4>to start using Derby Finance</h4>
       </StyledModalLogoAndText>
-      {!walletDetected && (
-        <ErrorMessage message="wallet not detected. Connect or install wallet and retry" />
+      {walletDetected && (
+       <StyledErrorWrapper> <ErrorMessage message="wallet not detected. Connect or install wallet and retry" /></StyledErrorWrapper>
       )}
       <StyledModalConnectOptions>
-        <SignIn closeModal={onClose} />
+        <SignIn closeModal={onClose} walletDetectionHandler={walletDetectionHandler}/>
       </StyledModalConnectOptions>
       <StyledConnectDisclaimer>
         By connecting, I accept Derby Finance’s

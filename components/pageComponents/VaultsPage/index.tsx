@@ -19,7 +19,8 @@ const VaultsPageComponent: FC = () => {
 
   useEffect(() => {
     getData();
-  });
+  },[]);
+
   const getData = async () => {
     const data = await ApiService.getData();
     const { vaults, headerStats } = data.data.data;

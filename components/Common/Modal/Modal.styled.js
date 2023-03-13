@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Modal from 'react-modal';
+import styled from 'styled-components';
 
 export const StyledModal = styled(Modal)`
   padding: 50px 32px;
@@ -40,4 +40,8 @@ export const StyledCloseIcon = styled.div`
   position: absolute;
   right: 20px;
   top: 20px;
+`;
+
+export const StyledErrorWrapper = styled.div`
+  width: 300px;
 `;

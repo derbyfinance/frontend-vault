@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
@@ -6,7 +7,12 @@ import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
 import ConnectVia from './ConnectVia/ConnectVia';
 import { SignInContainer } from './SignIn.styled';
 
-const SignIn = ({ closeModal }) => {
+type SignInProps = {
+  closeModal: Function;
+  walletDetectionHandler: Function;
+};
+
+const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
   const { connectors, connectAsync } = useConnect();
   const { disconnectAsync, disconnect } = useDisconnect();
   const { isConnected } = useAccount();
@@ -18,7 +24,7 @@ const SignIn = ({ closeModal }) => {
       if (isConnected) {
         await disconnectAsync();
       }
-      const userData = { network: 'evm' };
+      const userData: any = { network: 'evm' };
       const { account, chain } = await connectAsync({ connector });
       userData.address = account;
       userData.chain = chain.id;
@@ -45,8 +51,13 @@ const SignIn = ({ closeModal }) => {
   };
 
   const handleWalletConnect = (connector) => {
-    connectWallet(connector);
-    closeModal();
+    if (typeof window.ethereum == 'undefined') {
+      walletDetectionHandler(true);
+    } else {
+      walletDetectionHandler(false);
+      connectWallet(connector);
+      closeModal();
+    }
   };
 
   const walletIcons = {

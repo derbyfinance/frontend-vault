@@ -11,12 +11,13 @@ import {
   StyledHandleAction,
 } from './DepositWithdrawalModal.styled';
 import WithdrawTab from './WithdrawTab/WithdrawTab';
+import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 
 const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const [financialActionType, setFinancialActionType] = useState(
     financialActionTypes.DEPOSIT,
   );
-
+  const [isOpenWallet, setIsOpenWallet] = useState(false);
   const handleDeposit = () => {
     setFinancialActionType(financialActionTypes.DEPOSIT);
   };
@@ -24,9 +25,16 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const handleWithdraw = () => {
     setFinancialActionType(financialActionTypes.WITHDRAW);
   };
+  const closeModalWallet = () => {
+    setIsOpenWallet(false)
+  }
+  const openModalWallet = () => {
+    setIsOpenWallet(true)
+  }
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
+      <ConnectWalletModal isOpen={isOpenWallet} onClose={closeModalWallet} />
       <StyledDepositWithdrawalModalContainer>
         <StyledTitle>USDC Vault</StyledTitle>
         <StyledClose onClick={onClose}>
@@ -51,9 +59,9 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
           </StyledHandleAction>
         </StyledDepositWithdrawButtons>
         {financialActionType === financialActionTypes.DEPOSIT ? (
-          <DepositTab />
+          <DepositTab openModal={openModalWallet}/>
         ) : (
-          <WithdrawTab />
+          <WithdrawTab openModal={openModalWallet}/>
         )}
       </StyledDepositWithdrawalModalContainer>
     </Modal>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
-import MainButton from '@components/Common/MainButton/MainButton';
 import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
+  useAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -20,14 +20,16 @@ import {
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
+import AppButton from '@components/Common/AppButton/AppButton';
 
-const WithdrawTab = () => {
-  const [withdrawValue, setWithdrawValue] = useState({
+const WithdrawTab = ({ openModal }) => {
+  const [withdrawValue, setWithdrawValue] = useState<any>({
     withdraw: '',
     youGet: '',
   });
 
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
+  const { isConnected } = useAccount();
 
   const handleWithdrawField = (e) => {
     setWithdrawValue({
@@ -56,7 +58,7 @@ const WithdrawTab = () => {
     addressOrName: '0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA',
     contractInterface: abi,
     functionName: 'withdraw',
-    args: [parseInt(debouncedValue)],
+    args: [parseInt(debouncedValue[0])],
     enabled: Boolean(debouncedValue),
   });
 
@@ -130,11 +132,19 @@ const WithdrawTab = () => {
       </StyledDisclaimerDeposit>
       {isPrepareError && <ErrorMessage message={prepareError.message} />}
       <StyledModalDepositButton>
-        <MainButton
-          disabled={!write}
-          btnText={financialActionTypes.WITHDRAW}
-          onClick={handleWithdraw}
-        />
+      {isConnected ? (
+          <AppButton
+            disable={withdrawValue.deposit == ''}
+            btnText={financialActionTypes.WITHDRAW}
+            onClick={handleWithdraw}
+          />
+        ) : (
+          <AppButton
+          disable={false}
+            btnText={'Connect Your Wallet'}
+            onClick={() => openModal()}
+          />
+        )}
       </StyledModalDepositButton>
     </>
   );

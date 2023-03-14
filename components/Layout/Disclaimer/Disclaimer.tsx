@@ -1,26 +1,22 @@
 import { FC } from 'react';
-import Discord from '@icons/Discord';
 import {
   StyledButton,
+  StyledButtonOutlined,
   StyledTextNone,
   StyledTextWrapper,
-} from '../Layout.styled';
+} from './Disclaimer.styled';
 
 const Disclaimer: FC = () => {
   return (
     <StyledTextNone>
       <StyledTextWrapper>
-        {' '}
-        The Derby Finance application is currently only optimized for larger
-        screens (desktop, laptop, tablet). Apologies for the inconvenience{' '}
+        The vaults of Derby Finance are currently only accessible from larger
+        screens. Join our discord for future updates
       </StyledTextWrapper>
       <a href="https://discord.gg/DyxRxs9mQ6" target="_blank" rel="noreferrer">
-        <StyledButton onClick={null}>
-          <Discord isDark={true} />
-          Join Discord
-        </StyledButton>
+        <StyledButton>Join Discord</StyledButton>
       </a>
-      <StyledButton onClick={null}>Back to website</StyledButton>
+      <StyledButtonOutlined onClick={null}>Back to home</StyledButtonOutlined>
     </StyledTextNone>
   );
 };

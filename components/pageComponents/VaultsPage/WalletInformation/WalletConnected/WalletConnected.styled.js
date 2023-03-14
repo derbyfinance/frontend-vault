@@ -13,7 +13,6 @@ export const StyledWalletConnectedContainer = styled.div`
   border-radius: 6px;
   padding: 48px 24px;
   height: 540px;
-
 `;
 
 export const StyledConnectedHeading = styled.div`
@@ -32,7 +31,9 @@ export const StyledWalletConnectedHeader = styled.div`
 `;
 
 export const StyledConnectedRow = styled.tr`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
+  :not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
+  }
 `;
 
 export const StyledVaultRow = styled.tr`

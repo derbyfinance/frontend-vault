@@ -1,14 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import {
+  helperForERC20Error,
   notValidNumberInput,
   percentageFormatter,
   removeNonNumeric,
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
+import { BigNumber } from 'ethers';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -29,16 +31,20 @@ import {
 } from '../DepositWithdrawalModal.styled';
 
 type DepositTabPropsType = {
-  openModal: Function
-}
+  openModal: Function;
+};
 
-const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
+const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
   const [depositValue, setDepositValue] = useState<any>({
     deposit: '',
     youGet: '',
   });
+  const [balanceOfWallet, setBalanceOfWallet] = useState('');
+  const [balanceOfWalletDfUSDC, setBalanceOfWalletDfUSDC] = useState('');
+  const [ERC20Error, setERC20Error] = useState('');
+  const [exchangeRateOfWallet, setExchangeRateOfWallet] = useState(0);
   const debouncedValue = useDebounce(depositValue.deposit, 500);
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
 
   const APY = 187; //backend
   const gasPrice = 187; //backend
@@ -48,47 +54,103 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    addressOrName: '0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA',
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
     contractInterface: abi,
     functionName: 'deposit',
-    args: [parseInt(debouncedValue[0])],
+    args: [parseInt(debouncedValue[0]), address],
     enabled: Boolean(debouncedValue),
   });
 
+  const {
+    config:approveConfig,
+    error: approveError,
+    isError: isApproveError,
+  } = usePrepareContractWrite({
+    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    contractInterface: abi,
+    functionName: 'approve',
+    args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26']
+  });
+
+
+  const approvePrepareContract = () =>{
+
+  }
+
+
   const { data, write } = useContractWrite(config);
-
-  const contractReadForUSDCUserBalance = useContractRead({
-    addressOrName: '0x23b082f6bB8B6A0F51B5D4900Dc1b465d39024D8',
-    contractInterface: abi,
-    functionName: 'balanceOf',
-  });
-
-
-  const contractReadFordfUSDCUserBalance = useContractRead({
-    addressOrName: '0x35a7014248162BE670B4BB4Cb08505FB78B17Bcf',
-    contractInterface: abi,
-    functionName: 'balanceOf',
-  });
-
-  const contractReadExchangeRate = useContractRead({
-    addressOrName: '0x35a7014248162BE670B4BB4Cb08505FB78B17Bcf',
-    contractInterface: abi,
-    functionName: 'exchangeRate',
-  });
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
   });
 
+  const contractReadForUSDCUserBalance = useContractRead({
+    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    contractInterface: abi,
+    functionName: 'balanceOf',
+    args: [address],
+  });
+
+  const contractReadForDfUSDCUserBalance = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'balanceOf',
+    args: [address],
+  });
+
+  const contractReadDecimals = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'decimals',
+  });
+
+  const contractReadExchangeRate = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'exchangeRate',
+  });
+
+
+  useEffect(() => {
+    setBalanceOfWallet(
+      (Number(contractReadForUSDCUserBalance?.data) / 1e18).toString(),
+    );
+    setExchangeRateOfWallet(
+      Number(
+        BigNumber.from(contractReadExchangeRate?.data).div(
+          BigNumber.from(10).pow(contractReadDecimals?.data),
+        ),
+      ),
+    );
+    setBalanceOfWalletDfUSDC(
+      (Number(contractReadForDfUSDCUserBalance?.data) / 1e18).toString(),
+    );
+    if (helperForERC20Error(prepareError?.message)) {
+      setERC20Error(
+        'execution reverted: ERC20: transfer amount exceeds allowance',
+      );
+    }
+    console.log(balanceOfWallet);
+    console.log(exchangeRateOfWallet);
+    helperForERC20Error(prepareError?.message);
+    // console.log(prepareError?.message);
+  }, [
+    balanceOfWallet,
+    contractReadDecimals?.data,
+    contractReadExchangeRate,
+    contractReadForUSDCUserBalance,
+    exchangeRateOfWallet,
+  ]);
+
   const handleDepositField = (e) => {
     setDepositValue({
       deposit: +removeNonNumeric(e.target.value),
-      youGet: +removeNonNumeric(e.target.value) * 2,
+      youGet: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
     });
   };
   const handleDepositFieldYouGet = (e) => {
     setDepositValue({
-      deposit: +removeNonNumeric(e.target.value) / 2,
+      deposit: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
       youGet: +removeNonNumeric(e.target.value),
     });
   };
@@ -96,7 +158,7 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
   const handleClick = (e) => {
     e.preventDefault();
     try {
-      if(isPrepareError) return;
+      if (isPrepareError) return;
       write();
     } catch (error) {
       console.error(error, 'wallet not connected');
@@ -119,11 +181,7 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
           onKeyDown={validateInput}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={
-                contractReadForUSDCUserBalance.data !== undefined
-                  ? contractReadForUSDCUserBalance.data
-                  : 0
-              }
+              balance={balanceOfWallet && balanceOfWallet}
               coinIcon={<USDC />}
               coinName={'USDC'}
               isMax={true}
@@ -148,11 +206,7 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
           value={depositValue.youGet}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={
-                contractReadFordfUSDCUserBalance.data !== undefined
-                  ? contractReadFordfUSDCUserBalance.data
-                  : 0
-              }
+              balance={balanceOfWalletDfUSDC && balanceOfWalletDfUSDC}
               coinIcon={<DFUSDC />}
               coinName={'dfUSDC'}
               isMax={false}
@@ -174,7 +228,9 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
         intervals
       </StyledDisclaimerDeposit>
       {isPrepareError && depositValue.deposit !== '' && (
-        <ErrorMessage message={prepareError.message} />
+          <ErrorMessage
+            message={ERC20Error == '' ? prepareError?.message : ERC20Error}
+          />
       )}
       <StyledModalDepositButton>
         {isConnected ? (

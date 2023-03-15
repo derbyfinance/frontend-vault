@@ -1,4 +1,4 @@
-export const abi = [
+export const abi =[
   {
     inputs: [
       { internalType: 'string', name: '_name', type: 'string' },

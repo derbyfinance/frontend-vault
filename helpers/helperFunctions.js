@@ -22,7 +22,7 @@ export const hideMiddleCharacters = (address) => {
 };
 
 export const addSeparators = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 };
 
 export const copyToClipboard = (text) => {
@@ -37,3 +37,11 @@ export const removeNonNumeric = (num) => num.toString().replace(/[^0-9]/g, '');
 
 export const notValidNumberInput = (key, number) =>
   !number && key !== 'Backspace' && key !== 'Tab' && key !== '0';
+
+export const helperForERC20Error = (error) => {
+  if (error?.includes('ERC20: transfer amount exceeds allowance')) {
+    return true;
+  } else {
+    return false;
+  }
+};

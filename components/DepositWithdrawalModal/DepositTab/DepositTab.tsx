@@ -34,7 +34,7 @@ type DepositTabPropsType = {
   openModal: Function;
 };
 
-const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
+const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
   const [depositValue, setDepositValue] = useState<any>({
     deposit: '',
     youGet: '',
@@ -43,6 +43,8 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
   const [balanceOfWalletDfUSDC, setBalanceOfWalletDfUSDC] = useState('');
   const [ERC20Error, setERC20Error] = useState('');
   const [exchangeRateOfWallet, setExchangeRateOfWallet] = useState(0);
+  const [isApprove, setIsApprove] = useState(true);
+
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
 
@@ -59,26 +61,33 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
     functionName: 'deposit',
     args: [parseInt(debouncedValue[0]), address],
     enabled: Boolean(debouncedValue),
+    onError(error) {
+      console.log('Error', error);
+    },
   });
 
   const {
-    config:approveConfig,
+    config: approveConfig,
     error: approveError,
     isError: isApproveError,
   } = usePrepareContractWrite({
     addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
     contractInterface: abi,
     functionName: 'approve',
-    args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26']
+    args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
   });
+  const { data, write } = useContractWrite(isApprove ? approveConfig : config);
 
 
-  const approvePrepareContract = () =>{
+  const approvePrepareContract = () => {
+    if (!isApproveError) {
+      setIsApprove(true)
+      write?.();
+    } else {
+      setERC20Error(approveError?.message);
+    }
+  };
 
-  }
-
-
-  const { data, write } = useContractWrite(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
@@ -110,7 +119,6 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
     functionName: 'exchangeRate',
   });
 
-
   useEffect(() => {
     setBalanceOfWallet(
       (Number(contractReadForUSDCUserBalance?.data) / 1e18).toString(),
@@ -129,11 +137,10 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
       setERC20Error(
         'execution reverted: ERC20: transfer amount exceeds allowance',
       );
+      setIsApprove(false);
+    } else {
+      setIsApprove(true)
     }
-    console.log(balanceOfWallet);
-    console.log(exchangeRateOfWallet);
-    helperForERC20Error(prepareError?.message);
-    // console.log(prepareError?.message);
   }, [
     balanceOfWallet,
     contractReadDecimals?.data,
@@ -159,7 +166,8 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
     e.preventDefault();
     try {
       if (isPrepareError) return;
-      write();
+
+      write?.();
     } catch (error) {
       console.error(error, 'wallet not connected');
     }
@@ -228,17 +236,25 @@ const DepositTab: FC<DepositTabPropsType> = ({ openModal }) => {
         intervals
       </StyledDisclaimerDeposit>
       {isPrepareError && depositValue.deposit !== '' && (
-          <ErrorMessage
-            message={ERC20Error == '' ? prepareError?.message : ERC20Error}
-          />
+        <ErrorMessage
+          message={ERC20Error == '' ? prepareError?.message : ERC20Error}
+        />
       )}
       <StyledModalDepositButton>
         {isConnected ? (
-          <AppButton
-            disable={depositValue.deposit == ''}
-            btnText={financialActionTypes.DEPOSIT}
-            onClick={handleClick}
-          />
+          isApprove ? (
+            <AppButton
+              disable={depositValue.deposit == ''}
+              btnText={financialActionTypes.DEPOSIT}
+              onClick={handleClick}
+            />
+          ) : (
+            <AppButton
+              disable={!write}
+              btnText={'Approve'}
+              onClick={approvePrepareContract}
+            />
+          )
         ) : (
           <AppButton
             disable={false}

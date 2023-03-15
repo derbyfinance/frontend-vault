@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
+import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
@@ -20,9 +21,12 @@ import {
   StyledInputsContainer,
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
-import AppButton from '@components/Common/AppButton/AppButton';
 
-const WithdrawTab = ({ openModal }) => {
+type WithdrawTabPropsType = {
+  openModal: Function
+}
+
+const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
   const [withdrawValue, setWithdrawValue] = useState<any>({
     withdraw: '',
     youGet: '',
@@ -132,7 +136,7 @@ const WithdrawTab = ({ openModal }) => {
       </StyledDisclaimerDeposit>
       {isPrepareError && <ErrorMessage message={prepareError.message} />}
       <StyledModalDepositButton>
-      {isConnected ? (
+        {isConnected ? (
           <AppButton
             disable={withdrawValue.deposit == ''}
             btnText={financialActionTypes.WITHDRAW}
@@ -140,7 +144,7 @@ const WithdrawTab = ({ openModal }) => {
           />
         ) : (
           <AppButton
-          disable={false}
+            disable={false}
             btnText={'Connect Your Wallet'}
             onClick={() => openModal()}
           />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
@@ -28,7 +28,11 @@ import {
   StyledModalDepositButton,
 } from '../DepositWithdrawalModal.styled';
 
-const DepositTab = ({ openModal }) => {
+type DepositTabPropsType = {
+  openModal: Function
+}
+
+const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
   const [depositValue, setDepositValue] = useState<any>({
     deposit: '',
     youGet: '',
@@ -54,10 +58,12 @@ const DepositTab = ({ openModal }) => {
   const { data, write } = useContractWrite(config);
 
   const contractReadForUSDCUserBalance = useContractRead({
-    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    addressOrName: '0x23b082f6bB8B6A0F51B5D4900Dc1b465d39024D8',
     contractInterface: abi,
     functionName: 'balanceOf',
   });
+
+
   const contractReadFordfUSDCUserBalance = useContractRead({
     addressOrName: '0x35a7014248162BE670B4BB4Cb08505FB78B17Bcf',
     contractInterface: abi,

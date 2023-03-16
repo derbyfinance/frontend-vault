@@ -25,64 +25,22 @@ import {
   StyledVaultInformation,
 } from './index.styled';
 
-const description = `Oh no, don't touch that. That's some new specialized weather sensing equipment.
-                    Hey, hey, I've seen this one, I've seen this one. This is a classic, this is
-                    where Ralph dresses up as the man from space. Something wrong with the starter,
-                    so I hid it. Just turn around, McFly, and walk away. Are you deaf, McFly?
-                    Close the door and beat it. Well, aren't you going up to the lake tonight, you've been
-                    planning it for two weeks.`;
-
 const SingleVaultPageComponent = ({ vaultInfo }) => {
+  const [description, setDescription] = useState('second');
+  const [dataSingleVault, setDataSingleVault] = useState([]);
+  const [vaultStats, setVaultStats] = useState({});
+
   const options = ['D', 'W', 'M', 'Y', 'All'];
 
   const [view, setView] = useState('D');
 
-  const setChartView = (value) => {
-    setView(value);
-  };
-
-  const dataSingleVault = [
-    {
-      id: 1,
-      icon: '/images/ProtocolIcons/yearn-finance.svg',
-      name: 'USDC yVault',
-      network: 'ETH',
-      protocol: 'Yearn Finance',
-      value: 1150000,
-      weight: 11.64,
-    },
-    {
-      id: 2,
-      icon: '/images/ProtocolIcons/aave.svg',
-      name: 'USD Coin',
-      network: 'ETH',
-      protocol: 'Aave',
-      value: 925000,
-      weight: 9.35,
-    },
-    {
-      id: 3,
-      icon: '/images/ProtocolIcons/gearbox.svg',
-      name: 'dUSDC',
-      network: 'ETH',
-      protocol: 'Gearbox',
-      value: 743000,
-      weight: 7.51,
-    },
-    {
-      id: 4,
-      icon: '/images/ProtocolIcons/harvest-finance-farm.svg',
-      name: 'fUSDC',
-      network: 'ETH',
-      protocol: 'Harvest Finance',
-      value: 287000,
-      weight: 2.9,
-    },
-  ];
   const [iconPath, setIconPath] = useState<string>();
+
   useEffect(() => {
     getData();
-  });
+    getVaultDataById();
+  }, []);
+
   const getData = async () => {
     const data = await ApiService.getData();
     const { vaults } = data.data.data;
@@ -91,6 +49,18 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
     });
     if (vault[0] !== undefined) {
       setIconPath(vault[0].icon);
+    }
+  };
+
+  const getVaultDataById = async () => {
+    try {
+      const { data } = await ApiService.getUserVaultById(vaultInfo);
+      setDescription(data.data.description);
+      setDataSingleVault(data.data.vaultAllocations);
+      setVaultStats(data.data.vaultStats)
+      console.log(data);
+    } catch (error) {
+      console.log(error)
     }
   };
 
@@ -111,7 +81,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           description={description}
           vault={vaultInfo}
         />
-        <SingleVaultInfo />
+        <SingleVaultInfo vaultStats={vaultStats}/>
         <StyledPerformanceChart>
           <StyledChartTitleOptions>
             <StyledChartTitle>

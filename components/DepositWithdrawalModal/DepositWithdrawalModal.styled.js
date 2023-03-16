@@ -87,3 +87,10 @@ export const DepositWithdrawButtonContainer = styled.div`
 export const StyledModalDepositButton = styled.div`
   text-align: center;
 `;
+
+export const StyledSuccessBox= styled.div`
+    padding: 15px 20px;
+    background-color: ${({ theme }) => theme.colors.changeLabelGreen};
+    border-radius: 6px;
+    margin-bottom: 30px;
+`

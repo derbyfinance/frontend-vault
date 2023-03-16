@@ -26,6 +26,7 @@ import {
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
+  StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
 
 type DepositTabPropsType = {
@@ -67,6 +68,14 @@ const DepositTab: FC<DepositTabPropsType> = ({
     onError(error) {
       console.log('Error', error);
     },
+    onSuccess() {
+      setERC20Error('');
+      setIsApprove(true);
+      setDepositValue({
+        deposit: '',
+        youGet: '',
+      });
+    },
   });
 
   const {
@@ -78,6 +87,14 @@ const DepositTab: FC<DepositTabPropsType> = ({
     contractInterface: abi,
     functionName: 'approve',
     args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
+    onSuccess() {
+      setERC20Error('');
+      setIsApprove(true);
+      setDepositValue({
+        deposit: '',
+        youGet: '',
+      });
+    },
   });
   const { data, write } = useContractWrite(config);
   const { data: dataApprove, write: writeApprove } =
@@ -87,6 +104,8 @@ const DepositTab: FC<DepositTabPropsType> = ({
     if (!isApproveError) {
       setIsApprove(true);
       writeApprove?.();
+      setERC20Error('');
+      setIsApprove(true);
     } else {
       setERC20Error(approveError?.message);
     }
@@ -155,15 +174,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
           }
         />
 
-        {isLoading && <div>Waiting for transaction...</div>}
-        {isSuccess && (
-          <div>
-            Success!{' '}
-            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>
-              Etherscan
-            </a>
-          </div>
-        )}
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
@@ -193,7 +203,23 @@ const DepositTab: FC<DepositTabPropsType> = ({
         By depositing, I acknowledge that withdrawals can be subject to fixed
         intervals
       </StyledDisclaimerDeposit>
-      {isPrepareError && depositValue.deposit !== '' && (
+      {isLoading && (
+        <StyledSuccessBox>Waiting for transaction...</StyledSuccessBox>
+      )}
+
+      {isSuccess && (
+        <StyledSuccessBox>
+          Success!{' '}
+          <a
+            href={`https://goerli.etherscan.io/tx/${
+              (data || dataApprove)?.hash
+            }`}
+          >
+            Etherscan
+          </a>
+        </StyledSuccessBox>
+      )}
+      {isPrepareError && depositValue.deposit != false && (
         <ErrorMessage
           message={ERC20Error == '' ? prepareError?.message : ERC20Error}
         />
@@ -202,13 +228,13 @@ const DepositTab: FC<DepositTabPropsType> = ({
         {isConnected ? (
           isApprove ? (
             <AppButton
-              disable={depositValue.deposit == ''}
+              disable={depositValue.deposit == false || isPrepareError}
               btnText={financialActionTypes.DEPOSIT}
               onClick={handleClick}
             />
           ) : (
             <AppButton
-              disable={false}
+              disable={isApproveError}
               btnText={'Approve'}
               onClick={approvePrepareContract}
             />

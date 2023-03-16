@@ -87,14 +87,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
     contractInterface: abi,
     functionName: 'approve',
     args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
-    onSuccess() {
-      setERC20Error('');
-      setIsApprove(true);
-      setDepositValue({
-        deposit: '',
-        youGet: '',
-      });
-    },
   });
   const { data, write } = useContractWrite(config);
   const { data: dataApprove, write: writeApprove } =
@@ -105,7 +97,10 @@ const DepositTab: FC<DepositTabPropsType> = ({
       setIsApprove(true);
       writeApprove?.();
       setERC20Error('');
-      setIsApprove(true);
+      setDepositValue({
+        deposit: '',
+        youGet: '',
+      });
     } else {
       setERC20Error(approveError?.message);
     }

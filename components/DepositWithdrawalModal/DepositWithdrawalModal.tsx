@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 import Modal from '@components/Common/Modal/Modal';
 import { CloseButton } from '@icons/index';
+import { abi } from '@utils/abis/abi';
 import { financialActionTypes } from 'Constants/walletConstants';
+import { BigNumber } from 'ethers';
+import { useAccount, useContractRead } from 'wagmi';
 import DepositTab from './DepositTab/DepositTab';
 import {
   StyledClose,
   StyledDepositWithdrawButtons,
   StyledDepositWithdrawalModalContainer,
-  StyledTitle,
   StyledHandleAction,
+  StyledTitle,
 } from './DepositWithdrawalModal.styled';
 import WithdrawTab from './WithdrawTab/WithdrawTab';
-import ConnectWalletModal from '@components/Common/Modal/ConnectWalletModal/ConnectWalletModal';
 
 const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const [financialActionType, setFinancialActionType] = useState(
@@ -21,16 +24,71 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const handleDeposit = () => {
     setFinancialActionType(financialActionTypes.DEPOSIT);
   };
+  const [balanceOfWallet, setBalanceOfWallet] = useState('');
+  const [balanceOfWalletDfUSDC, setBalanceOfWalletDfUSDC] = useState('');
+  const [exchangeRateOfWallet, setExchangeRateOfWallet] = useState<any>(0);
+  const { isConnected, address } = useAccount();
 
   const handleWithdraw = () => {
     setFinancialActionType(financialActionTypes.WITHDRAW);
   };
   const closeModalWallet = () => {
-    setIsOpenWallet(false)
-  }
+    setIsOpenWallet(false);
+  };
   const openModalWallet = () => {
-    setIsOpenWallet(true)
-  }
+    setIsOpenWallet(true);
+  };
+  const contractReadForUSDCUserBalance = useContractRead({
+    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    contractInterface: abi,
+    functionName: 'balanceOf',
+    args: [address],
+  });
+
+  const contractReadForDfUSDCUserBalance = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'balanceOf',
+    args: [address],
+  });
+
+  const contractReadDecimals = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'decimals',
+  });
+
+  const contractReadExchangeRate = useContractRead({
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    contractInterface: abi,
+    functionName: 'exchangeRate',
+  });
+
+  useEffect(() => {
+    if (
+      contractReadExchangeRate.data !== undefined &&
+      contractReadForDfUSDCUserBalance?.data !== undefined
+    ) {
+      setBalanceOfWallet(
+        (Number(contractReadForUSDCUserBalance?.data) / 1e18).toString(),
+      );
+      setExchangeRateOfWallet(
+        Number(
+          BigNumber.from(contractReadExchangeRate.data).div(
+            BigNumber.from(10).pow(contractReadDecimals.data),
+          ),
+        ),
+      );
+      setBalanceOfWalletDfUSDC(
+        Number(contractReadForDfUSDCUserBalance?.data).toString(),
+      );
+    }
+  }, [
+    contractReadDecimals,
+    contractReadExchangeRate,
+    contractReadForDfUSDCUserBalance,
+    contractReadForUSDCUserBalance,
+  ]);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -59,9 +117,19 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
           </StyledHandleAction>
         </StyledDepositWithdrawButtons>
         {financialActionType === financialActionTypes.DEPOSIT ? (
-          <DepositTab openModal={openModalWallet}/>
+          <DepositTab
+            openModal={openModalWallet}
+            balanceOfWallet={balanceOfWallet}
+            balanceOfWalletDfUSDC={balanceOfWalletDfUSDC}
+            exchangeRateOfWallet={exchangeRateOfWallet}
+          />
         ) : (
-          <WithdrawTab openModal={openModalWallet}/>
+          <WithdrawTab
+            openModal={openModalWallet}
+            balanceOfWallet={balanceOfWallet}
+            balanceOfWalletDfUSDC={balanceOfWalletDfUSDC}
+            exchangeRateOfWallet={exchangeRateOfWallet}
+          />
         )}
       </StyledDepositWithdrawalModalContainer>
     </Modal>

@@ -10,12 +10,10 @@ import {
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { BigNumber } from 'ethers';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
   useAccount,
-  useContractRead,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -32,18 +30,23 @@ import {
 
 type DepositTabPropsType = {
   openModal: Function;
+  balanceOfWallet: string;
+  balanceOfWalletDfUSDC: string;
+  exchangeRateOfWallet: number;
 };
 
-const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
+const DepositTab: FC<DepositTabPropsType> = ({
+  openModal,
+  balanceOfWallet,
+  balanceOfWalletDfUSDC,
+  exchangeRateOfWallet,
+}) => {
   const [depositValue, setDepositValue] = useState<any>({
     deposit: '',
     youGet: '',
   });
-  const [balanceOfWallet, setBalanceOfWallet] = useState('');
-  const [balanceOfWalletDfUSDC, setBalanceOfWalletDfUSDC] = useState('');
-  const [ERC20Error, setERC20Error] = useState('');
-  const [exchangeRateOfWallet, setExchangeRateOfWallet] = useState(0);
   const [isApprove, setIsApprove] = useState(true);
+  const [ERC20Error, setERC20Error] = useState('');
 
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
@@ -76,78 +79,33 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
     functionName: 'approve',
     args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
   });
-  const { data, write } = useContractWrite(isApprove ? approveConfig : config);
-
+  const { data, write } = useContractWrite(config);
+  const { data: dataApprove, write: writeApprove } =
+    useContractWrite(approveConfig);
 
   const approvePrepareContract = () => {
     if (!isApproveError) {
-      setIsApprove(true)
-      write?.();
+      setIsApprove(true);
+      writeApprove?.();
     } else {
       setERC20Error(approveError?.message);
     }
   };
 
-
   const { isLoading, isSuccess } = useWaitForTransaction({
-    hash: data?.hash,
-  });
-
-  const contractReadForUSDCUserBalance = useContractRead({
-    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
-    contractInterface: abi,
-    functionName: 'balanceOf',
-    args: [address],
-  });
-
-  const contractReadForDfUSDCUserBalance = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
-    contractInterface: abi,
-    functionName: 'balanceOf',
-    args: [address],
-  });
-
-  const contractReadDecimals = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
-    contractInterface: abi,
-    functionName: 'decimals',
-  });
-
-  const contractReadExchangeRate = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
-    contractInterface: abi,
-    functionName: 'exchangeRate',
+    hash: (data || dataApprove)?.hash,
   });
 
   useEffect(() => {
-    setBalanceOfWallet(
-      (Number(contractReadForUSDCUserBalance?.data) / 1e18).toString(),
-    );
-    setExchangeRateOfWallet(
-      Number(
-        BigNumber.from(contractReadExchangeRate?.data).div(
-          BigNumber.from(10).pow(contractReadDecimals?.data),
-        ),
-      ),
-    );
-    setBalanceOfWalletDfUSDC(
-      (Number(contractReadForDfUSDCUserBalance?.data) / 1e18).toString(),
-    );
     if (helperForERC20Error(prepareError?.message)) {
       setERC20Error(
         'execution reverted: ERC20: transfer amount exceeds allowance',
       );
       setIsApprove(false);
     } else {
-      setIsApprove(true)
+      setIsApprove(true);
     }
-  }, [
-    balanceOfWallet,
-    contractReadDecimals?.data,
-    contractReadExchangeRate,
-    contractReadForUSDCUserBalance,
-    exchangeRateOfWallet,
-  ]);
+  }, [prepareError?.message]);
 
   const handleDepositField = (e) => {
     setDepositValue({
@@ -250,7 +208,7 @@ const DepositTab:FC<DepositTabPropsType> = ({ openModal }) => {
             />
           ) : (
             <AppButton
-              disable={!write}
+              disable={false}
               btnText={'Approve'}
               onClick={approvePrepareContract}
             />

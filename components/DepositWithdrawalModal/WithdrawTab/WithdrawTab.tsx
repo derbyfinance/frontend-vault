@@ -1,7 +1,11 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
-import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
+import {
+  currencyFormatter,
+  helperForERC20Error,
+  removeNonNumeric,
+} from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
 import { useDebounce } from 'use-debounce';
@@ -23,29 +27,37 @@ import {
 } from '../DepositWithdrawalModal.styled';
 
 type WithdrawTabPropsType = {
-  openModal: Function
-}
+  openModal: Function;
+  balanceOfWallet: string;
+  balanceOfWalletDfUSDC: string;
+  exchangeRateOfWallet: number;
+};
 
-const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
+const WithdrawTab: FC<WithdrawTabPropsType> = ({
+  openModal,
+  balanceOfWallet,
+  balanceOfWalletDfUSDC,
+  exchangeRateOfWallet,
+}) => {
   const [withdrawValue, setWithdrawValue] = useState<any>({
     withdraw: '',
     youGet: '',
   });
 
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
 
   const handleWithdrawField = (e) => {
     setWithdrawValue({
       withdraw: +removeNonNumeric(e.target.value),
-      youGet: +removeNonNumeric(e.target.value) * 2,
+      youGet: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
     });
   };
 
   const handleWithdrawFieldYouGet = (e) => {
     setWithdrawValue({
       youGet: +removeNonNumeric(e.target.value),
-      withdraw: +removeNonNumeric(e.target.value) / 2,
+      withdraw: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
     });
   };
 
@@ -59,18 +71,22 @@ const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    addressOrName: '0xE97C826aA3ffca41694D5b6e3eD6bE3638F0EEeA',
+    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
     contractInterface: abi,
     functionName: 'withdraw',
-    args: [parseInt(debouncedValue[0])],
+    args: [parseInt(debouncedValue[0]), address],
     enabled: Boolean(debouncedValue),
   });
 
   const { data, write } = useContractWrite(config);
 
   const handleWithdraw = (e) => {
-    e.preventDefault();
-    write();
+    try {
+      e.preventDefault();
+      write?.();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { isLoading, isSuccess } = useWaitForTransaction({
@@ -90,7 +106,7 @@ const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
           onChange={handleWithdrawField}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={1553}
+              balance={balanceOfWallet && balanceOfWallet}
               coinIcon={<DFUSDC />}
               coinName={'dfUSDC'}
               isMax={true}
@@ -114,7 +130,7 @@ const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
           onChange={handleWithdrawFieldYouGet}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={20}
+              balance={balanceOfWalletDfUSDC && balanceOfWalletDfUSDC}
               coinIcon={<USDC />}
               coinName={'USDC'}
               isMax={false}
@@ -134,11 +150,13 @@ const WithdrawTab:FC<WithdrawTabPropsType> = ({ openModal }) => {
       <StyledDisclaimerDeposit>
         There is sufficient liquidity to withdraw instantly
       </StyledDisclaimerDeposit>
-      {isPrepareError && <ErrorMessage message={prepareError.message} />}
+      {isPrepareError && withdrawValue.withdraw !== 0 && (
+        <ErrorMessage message={prepareError.message} />
+      )}
       <StyledModalDepositButton>
         {isConnected ? (
           <AppButton
-            disable={withdrawValue.deposit == ''}
+            disable={withdrawValue.withdraw == ''}
             btnText={financialActionTypes.WITHDRAW}
             onClick={handleWithdraw}
           />

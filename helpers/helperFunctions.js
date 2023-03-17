@@ -39,7 +39,7 @@ export const notValidNumberInput = (key, number) =>
   !number && key !== 'Backspace' && key !== 'Tab' && key !== '0';
 
 export const helperForERC20Error = (error) => {
-  if (error?.includes('execution reverted: ERC20')) {
+  if (error?.includes('ERC20')) {
     return true;
   } else {
     return false;

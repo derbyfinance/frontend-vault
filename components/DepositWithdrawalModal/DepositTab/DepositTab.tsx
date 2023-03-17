@@ -48,6 +48,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
   });
   const [isApprove, setIsApprove] = useState(true);
   const [ERC20Error, setERC20Error] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
@@ -67,14 +68,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
     enabled: Boolean(debouncedValue),
     onError(error) {
       console.log('Error', error);
-    },
-    onSuccess() {
-      setERC20Error('');
-      setIsApprove(true);
-      setDepositValue({
-        deposit: '',
-        youGet: '',
-      });
     },
   });
 
@@ -96,11 +89,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
     if (!isApproveError) {
       setIsApprove(true);
       writeApprove?.();
-      setERC20Error('');
-      setDepositValue({
-        deposit: '',
-        youGet: '',
-      });
     } else {
       setERC20Error(approveError?.message);
     }
@@ -109,17 +97,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: (data || dataApprove)?.hash,
   });
-
-  useEffect(() => {
-    if (helperForERC20Error(prepareError?.message)) {
-      setERC20Error(
-        'execution reverted: ERC20: transfer amount exceeds allowance',
-      );
-      setIsApprove(false);
-    } else {
-      setIsApprove(true);
-    }
-  }, [prepareError?.message]);
 
   const handleDepositField = (e) => {
     setDepositValue({
@@ -133,6 +110,39 @@ const DepositTab: FC<DepositTabPropsType> = ({
       youGet: +removeNonNumeric(e.target.value),
     });
   };
+
+  // useEffect(() => {
+  //   if (helperForERC20Error(prepareError?.message) && !isSuccess) {
+  //     console.log("error ---- ")
+  //     setERC20Error(
+  //       'execution reverted: ERC20: transfer amount exceeds allowance',
+  //     );
+  //     setIsApprove(false);
+  //   } else {
+  //     setIsApprove(true);
+  //   }
+  // }, [prepareError?.message,isSuccess]);
+
+  useEffect(() => {
+    if (isLoading) {
+      setERC20Error('');
+    }
+    if (isSuccess) {
+      console.log('isSuccess');
+      setIsApprove(true);
+      setERC20Error('');
+      setIsError(false);
+    } else {
+      if (helperForERC20Error(prepareError?.message)) {
+        setIsError(true);
+        console.log('error ---- ');
+        setERC20Error(
+          'execution reverted: ERC20: transfer amount exceeds allowance',
+        );
+        setIsApprove(false);
+      }
+    }
+  }, [isSuccess, isLoading, prepareError?.message]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -223,13 +233,13 @@ const DepositTab: FC<DepositTabPropsType> = ({
         {isConnected ? (
           isApprove ? (
             <AppButton
-              disable={depositValue.deposit == false || isPrepareError}
+              disable={depositValue.deposit == false || isError}
               btnText={financialActionTypes.DEPOSIT}
               onClick={handleClick}
             />
           ) : (
             <AppButton
-              disable={isApproveError}
+              disable={isApproveError || isLoading}
               btnText={'Approve'}
               onClick={approvePrepareContract}
             />

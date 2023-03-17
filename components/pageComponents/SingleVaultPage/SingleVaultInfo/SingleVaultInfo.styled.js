@@ -13,8 +13,12 @@ export const StyledSingleVaultInfoContainer = styled.div`
 export const StyledBlockWrapper = styled.div`
   padding: 20px;
   border-right: 1px solid ${({ theme }) => theme.colors.borderMain};
+  cursor: pointer;
   @media only screen and (max-width: 1180px) {
     padding: 14px;
+  }
+  &:hover {
+    opacity: 0.6;
   }
 `;
 export const StyledBlockInfo = styled.div`

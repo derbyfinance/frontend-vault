@@ -26,7 +26,7 @@ const ArrowDown = () => {
   );
 };
 
-const SingleVaultInfo = ({ vaultStats }) => {
+const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
   const [price, setPrice] = useState(0);
   const [apy, setAPY] = useState(0);
   const [tvl, setTVl] = useState(0);
@@ -61,6 +61,7 @@ const SingleVaultInfo = ({ vaultStats }) => {
 
   const dataToShow = [
     {
+      id: 0,
       icon: priceIcon,
       value: `$ ${price}`,
       priceChange: `${priceChange}%`,
@@ -68,11 +69,13 @@ const SingleVaultInfo = ({ vaultStats }) => {
       description: 'Price',
     },
     {
+      id: 1,
       icon: yieldIcon,
       value: `$ ${apy}`,
       description: 'Annual Percentage Yield',
     },
     {
+      id: 2,
       icon: locked,
       value: `${tvl} M`,
       description: 'Total Value Locked',
@@ -82,7 +85,10 @@ const SingleVaultInfo = ({ vaultStats }) => {
   return (
     <StyledSingleVaultInfoContainer>
       {dataToShow.map((el, index) => (
-        <StyledBlockWrapper key={index}>
+        <StyledBlockWrapper
+          key={index}
+          onClick={() => setDataForGraphHandler(el.id)}
+        >
           <StyledBlockInfo>
             <Image src={el.icon} alt={'coin'} />
             <StyledTextPart>

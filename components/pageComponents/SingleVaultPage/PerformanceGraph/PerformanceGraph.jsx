@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import image from '@images/HeroCircle.png';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -9,16 +10,6 @@ import {
 } from 'chart.js';
 import gradient from 'chartjs-plugin-gradient';
 import { Line } from 'react-chartjs-2';
-import { useTheme } from 'styled-components';
-
-ChartJS.register(
-  CategoryScale,
-  Filler,
-  LinearScale,
-  PointElement,
-  LineElement,
-  gradient,
-);
 
 const mockChartData = {
   D: {
@@ -34,7 +25,7 @@ const mockChartData = {
       '29/01/2022 - 05/02/2022',
       '05/02/2022 - 13/02/2022',
     ],
-    datasets: [0, 15, 0, 25, 20, 30],
+    datasets: [0, 15, 0, 25, 20, 30, 40],
   },
   M: {
     labels: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL'],
@@ -50,32 +41,63 @@ const mockChartData = {
   },
 };
 
-const PerformanceGraph = ({ chartView }) => {
-  // const theme = useTheme();
+const plugin = {
+  id: 'corsair',
+  afterDraw: (chart) => {
+    if (chart.tooltip?._active?.length) {
+      let x = chart.tooltip._active[0].element.x;
+      let yAxis = chart.scales.y;
+      let ctx = chart.ctx;
+      ctx.save();
+      ctx.beginPath();
+      ctx.setLineDash([5, 5]);
+      ctx.moveTo(x, yAxis.top + chart.tooltip._active[0]?.element.y - 50);
+      ctx.lineTo(x, yAxis.bottom);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#F13ABC';
+      ctx.stroke();
+      ctx.restore();
+    }
+  },
+};
 
+ChartJS.register(
+  CategoryScale,
+  Filler,
+  LinearScale,
+  PointElement,
+  LineElement,
+  gradient,
+  plugin,
+);
+
+const PerformanceGraph = ({ chartView, graphData }) => {
   const chartData = {
     labels: mockChartData[chartView]?.labels.map((label) => label),
     datasets: [
       {
         label: 'Performance',
-        data: mockChartData[chartView]?.datasets.map((data) => data),
-        // borderColor: '#a02bbd',
+        data: graphData?.map((data) => data),
         fill: true,
         lineTension: 0.5,
-        tension: 0.1,
+        tension: 0.3,
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: '#F13ABC',
+        pointHoverRadius: 10,
+        hoverBorderWidth: '5',
         gradient: {
           backgroundColor: {
             axis: 'y',
             colors: {
-              1: 'rgba(254, 94, 118, 0.2)',
-              50: 'rgba(57, 7, 155, 0.2)',
+              1: '#fff',
+              10: '#FAEAEF',
             },
           },
           borderColor: {
             axis: 'x',
             colors: {
-              1: '#B034B1',
-              2: '#6A0EE5',
+              1: '#FE5E76',
+              4: '#6A0EE5',
             },
           },
         },
@@ -84,28 +106,74 @@ const PerformanceGraph = ({ chartView }) => {
   };
 
   const options = {
-    plugins: {
-      legend: false,
-      gradient,
-    },
-
-    scales: {
-      x: {
-        display: true,
-        title: {
-          display: false,
-          text: 'Month',
-        },
+    layout: {
+      padding: {
+        bottom: 50,
       },
+    },
+    scales: {
       y: {
         display: false,
-        title: {
+      },
+      x: {
+        border: {
           display: false,
-          text: 'Value',
+        },
+        ticks: {
+          color: '#A9A6AE',
+
+          font: {
+            size: chartView == 'W' ? 9 : 16,
+            family: 'Roboto-Medium',
+          },
         },
       },
     },
+    position: 'right',
+    showLine: true,
+    elements: {
+      point: {
+        radius: 0,
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        backgroundColor: '#160344',
+        titleFont: {
+          size: 18,
+        },
+        bodyFont: {
+          size: 12,
+        },
+        callbacks: {
+          label: function (tooltipItem) {
+            return tooltipItem.label;
+          },
+          title: function (tooltipItem, data) {
+            return '$' + tooltipItem[0].dataset.data[tooltipItem[0].dataIndex];
+          },
+          labelColor: function (context) {
+            return {
+              fontSize: 30,
+            };
+          },
+
+          labelTextColor: function (context) {
+            return '#B9B3C7';
+          },
+        },
+      },
+    },
+    interaction: {
+      intersect: false,
+      mode: 'index',
+    },
+    spanGaps: true,
   };
+
   return (
     <>
       <Line data={chartData} options={options}></Line>

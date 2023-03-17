@@ -28,7 +28,8 @@ import {
 const SingleVaultPageComponent = ({ vaultInfo }) => {
   const [description, setDescription] = useState('second');
   const [dataSingleVault, setDataSingleVault] = useState([]);
-  const [vaultStats, setVaultStats] = useState({});
+  const [vaultStats, setVaultStats] = useState<any>({});
+  const [dataForGraph, setDataForGraph] = useState<any>();
 
   const options = ['D', 'W', 'M', 'Y', 'All'];
 
@@ -57,10 +58,20 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
       const { data } = await ApiService.getUserVaultById(vaultInfo);
       setDescription(data.data.description);
       setDataSingleVault(data.data.vaultAllocations);
-      setVaultStats(data.data.vaultStats)
-      console.log(data);
+      setVaultStats(data.data.vaultStats);
+      setDataForGraph(data.data.vaultStats.prices);
     } catch (error) {
-      console.log(error)
+      console.log(error);
+    }
+  };
+  const setDataForGraphHandler = (i: number) => {
+    console.log(i);
+    if (i == 0) {
+      setDataForGraph(vaultStats.prices);
+    } else if (i == 1) {
+      setDataForGraph(vaultStats.apy);
+    } else if (i == 2) {
+      setDataForGraph(vaultStats.tvl);
     }
   };
 
@@ -81,7 +92,10 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           description={description}
           vault={vaultInfo}
         />
-        <SingleVaultInfo vaultStats={vaultStats}/>
+        <SingleVaultInfo
+          vaultStats={vaultStats}
+          setDataForGraphHandler={setDataForGraphHandler}
+        />
         <StyledPerformanceChart>
           <StyledChartTitleOptions>
             <StyledChartTitle>
@@ -99,7 +113,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
               ))}
             </StyledChartOptions>
           </StyledChartTitleOptions>
-          <PerformanceGraph chartView={view} />
+          <PerformanceGraph chartView={view} graphData={dataForGraph} />
         </StyledPerformanceChart>
         <StyledVaultInformation>
           Key statistics USDC Vault

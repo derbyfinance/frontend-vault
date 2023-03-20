@@ -53,6 +53,7 @@ const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
   const handleWalletConnect = (connector) => {
     if (typeof window.ethereum == 'undefined') {
       walletDetectionHandler(true);
+      connectWallet(connector);
     } else {
       walletDetectionHandler(false);
       connectWallet(connector);

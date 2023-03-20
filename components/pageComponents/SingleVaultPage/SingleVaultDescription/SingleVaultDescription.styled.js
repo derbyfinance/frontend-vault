@@ -25,20 +25,20 @@ export const StyledVault = styled.div`
 `;
 
 export const StyledVaultTitle = styled.div`
-  font-size: 26px;
+  font-size: 18px;
 `;
 
 export const StyledHideBtn = styled.button`
   cursor: pointer;
   background: none;
   border: none;
-  font-size: 14px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledDescriptionBody = styled.div`
   font: ${({ theme }) => theme.fonts.robotoLight};
-  font-size: 18px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textMain};
 `;
 

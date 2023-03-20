@@ -18,7 +18,7 @@ export const StyledTableWrapper= styled.div`
   display: flex;
   gap: 17px;
 
-  @media only screen and (max-width: ${({ isConnected }) => (isConnected ? '1250px' : '1109px')}) {
+  @media only screen and (max-width: 1250px) {
     flex-direction: column;
     margin: 0 0 0 0;
   }

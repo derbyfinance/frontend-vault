@@ -26,9 +26,14 @@ export type IVaultAllocations = {
 };
 
 export type IVaultStats = {
-  prices: number[];
-  apy: number[];
-  tvl: number[];
+  data: IVaultDates[];
   depositors: number;
   rebalanceIn: number;
+};
+
+type IVaultDates = {
+  price: number;
+  apy: number;
+  tvl: number;
+  date: string;
 };

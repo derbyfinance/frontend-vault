@@ -25,7 +25,7 @@ export const StyledConnectedHeading = styled.div`
 
 export const StyledWalletConnectedHeader = styled.div`
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 24px;
+  font-size: 18px;
   color: ${({ theme }) => theme.colors.headerMain};
   white-space: nowrap;
 `;
@@ -56,32 +56,32 @@ export const StyledConnectedIcon = styled.td`
 export const StyledConnectedTitle = styled.td`
   padding: 20px;
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 20px;
+  font-size: 16px;
   white-space: nowrap;
 `;
 
 export const StyledConnectedValue = styled.td`
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const StyledVaultTitle = styled.td`
   padding: 20px;
   white-space: nowrap;
   font: ${({ theme }) => theme.fonts.slabLight};
-  font-size: 20px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledVaultBalance = styled.td`
   font: ${({ theme }) => theme.fonts.slabLight};
-  font-size: 18px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 
 export const StyledHiddenBalance = styled.td`
   font: ${({ theme }) => theme.fonts.robotoLight};
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: 0.25em;
   color: #e2e2e2;
   text-align: right;

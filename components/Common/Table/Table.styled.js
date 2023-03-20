@@ -27,7 +27,7 @@ export const StyledRowItem = styled.tr`
 
 export const StyledRowCell = styled.td`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 15px;
+  font-size: 16px;
   vertical-align: middle;
   padding: 12px 12px 12px 0px;
   & div {

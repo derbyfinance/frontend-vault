@@ -27,6 +27,7 @@ import {
   StyledGasPrice,
   StyledInputsContainer,
   StyledModalDepositButton,
+  StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
 
 type WithdrawTabPropsType = {
@@ -111,7 +112,7 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
     try {
       if (gasData?.request != undefined) {
         let totalPrice = gasData?.request?.gasLimit.mul(feeData?.gasPrice);
-        setGasTotalPrice(formatEther(totalPrice));
+        setGasTotalPrice(Number(formatEther(totalPrice)).toFixed(4));
       }
     } catch (error) {
       console.log(error.message);
@@ -138,15 +139,7 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
             />
           }
         />
-        {isLoading && <p>Transaction is pending...</p>}
-        {isSuccess && (
-          <p>
-            Transaction is successful!
-            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>
-              Etherscan
-            </a>
-          </p>
-        )}
+
         <DepositWithdrawInput
           label={'YOU GET'}
           placeholder="0.00"
@@ -175,13 +168,26 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
       <StyledDisclaimerDeposit>
         There is sufficient liquidity to withdraw instantly
       </StyledDisclaimerDeposit>
+      {isLoading && (
+        <StyledSuccessBox>Transaction is pending...</StyledSuccessBox>
+      )}
+      {isSuccess && (
+        <StyledSuccessBox>
+          <p>
+            Transaction is successful!
+            <a href={`https://goerli.etherscan.io/tx/${data?.hash}`}>
+              Etherscan
+            </a>
+          </p>
+        </StyledSuccessBox>
+      )}
       {isPrepareError && withdrawValue.withdraw !== 0 && (
         <ErrorMessage message={prepareError.message} />
       )}
       <StyledModalDepositButton>
         {isConnected ? (
           <AppButton
-            disable={withdrawValue.withdraw == ''}
+            disable={withdrawValue.withdraw == '' || isLoading}
             btnText={financialActionTypes.WITHDRAW}
             onClick={handleWithdraw}
           />

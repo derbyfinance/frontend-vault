@@ -39,27 +39,35 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
     setIsOpenWallet(true);
   };
   const contractReadForUSDCUserBalance = useContractRead({
-    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    addressOrName: isConnected
+      ? '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1'
+      : '',
     contractInterface: abi,
     functionName: 'balanceOf',
     args: [address],
   });
 
   const contractReadForDfUSDCUserBalance = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    addressOrName: isConnected
+      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      : '',
     contractInterface: abi,
     functionName: 'balanceOf',
     args: [address],
   });
 
   const contractReadDecimals = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    addressOrName: isConnected
+      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      : '',
     contractInterface: abi,
     functionName: 'decimals',
   });
 
   const contractReadExchangeRate = useContractRead({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    addressOrName: isConnected
+      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      : '',
     contractInterface: abi,
     functionName: 'exchangeRate',
   });

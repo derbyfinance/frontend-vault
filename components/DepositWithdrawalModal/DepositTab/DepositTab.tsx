@@ -10,11 +10,13 @@ import {
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
+import { formatEther, parseEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
   useAccount,
   useContractWrite,
+  useFeeData,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
@@ -43,33 +45,47 @@ const DepositTab: FC<DepositTabPropsType> = ({
   exchangeRateOfWallet,
 }) => {
   const [depositValue, setDepositValue] = useState<any>({
-    deposit: '',
-    youGet: '',
+    deposit: 0,
+    youGet: 0,
   });
   const [isApprove, setIsApprove] = useState(true);
   const [ERC20Error, setERC20Error] = useState('');
   const [isError, setIsError] = useState(false);
+  const [gasTotalPrice, setGasTotalPrice] = useState<any>(0);
 
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
 
   const APY = 187; //backend
-  const gasPrice = 187; //backend
+
+  const { data: feeData } = useFeeData();
 
   const {
     config,
+    data: gasData,
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
     addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
     contractInterface: abi,
     functionName: 'deposit',
-    args: [parseInt(debouncedValue[0]), address],
+    args: [parseEther(debouncedValue[0].toString()), address],
     enabled: Boolean(debouncedValue),
     onError(error) {
       console.log('Error', error);
     },
   });
+
+  useEffect(() => {
+    try {
+      if (gasData?.request != undefined) {
+        let totalPrice = gasData?.request?.gasLimit.mul(feeData?.gasPrice);
+        setGasTotalPrice(Number(formatEther(totalPrice)).toFixed(4));
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [gasData, feeData]);
 
   const {
     config: approveConfig,
@@ -79,7 +95,10 @@ const DepositTab: FC<DepositTabPropsType> = ({
     addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
     contractInterface: abi,
     functionName: 'approve',
-    args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
+    args: [
+      '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+      parseEther(debouncedValue[0].toString()),
+    ],
   });
   const { data, write } = useContractWrite(config);
   const { data: dataApprove, write: writeApprove } =
@@ -101,27 +120,19 @@ const DepositTab: FC<DepositTabPropsType> = ({
   const handleDepositField = (e) => {
     setDepositValue({
       deposit: +removeNonNumeric(e.target.value),
-      youGet: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
+      youGet:
+        +removeNonNumeric(e.target.value) /
+        (isConnected ? exchangeRateOfWallet : 1),
     });
   };
   const handleDepositFieldYouGet = (e) => {
     setDepositValue({
-      deposit: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
+      deposit:
+        +removeNonNumeric(e.target.value) *
+        (isConnected ? exchangeRateOfWallet : 1),
       youGet: +removeNonNumeric(e.target.value),
     });
   };
-
-  // useEffect(() => {
-  //   if (helperForERC20Error(prepareError?.message) && !isSuccess) {
-  //     console.log("error ---- ")
-  //     setERC20Error(
-  //       'execution reverted: ERC20: transfer amount exceeds allowance',
-  //     );
-  //     setIsApprove(false);
-  //   } else {
-  //     setIsApprove(true);
-  //   }
-  // }, [prepareError?.message,isSuccess]);
 
   useEffect(() => {
     if (isLoading) {
@@ -171,7 +182,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
           onKeyDown={validateInput}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={balanceOfWallet && balanceOfWallet}
+              balance={isConnected ? balanceOfWallet && balanceOfWallet : 0}
               coinIcon={<USDC />}
               coinName={'USDC'}
               isMax={true}
@@ -187,7 +198,9 @@ const DepositTab: FC<DepositTabPropsType> = ({
           value={depositValue.youGet}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={balanceOfWalletDfUSDC && balanceOfWalletDfUSDC}
+              balance={
+                isConnected ? balanceOfWalletDfUSDC && balanceOfWalletDfUSDC : 0
+              }
               coinIcon={<DFUSDC />}
               coinName={'dfUSDC'}
               isMax={false}
@@ -201,7 +214,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
       </StyledAPY>
       <StyledGasPrice>
         <Gas />
-        <span>{gasPrice}</span>
+        <span>{gasTotalPrice}</span>
         <Info />
       </StyledGasPrice>
       <StyledDisclaimerDeposit>

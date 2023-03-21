@@ -120,12 +120,16 @@ const DepositTab: FC<DepositTabPropsType> = ({
   const handleDepositField = (e) => {
     setDepositValue({
       deposit: +removeNonNumeric(e.target.value),
-      youGet: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
+      youGet:
+        +removeNonNumeric(e.target.value) /
+        (isConnected ? exchangeRateOfWallet : 1),
     });
   };
   const handleDepositFieldYouGet = (e) => {
     setDepositValue({
-      deposit: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
+      deposit:
+        +removeNonNumeric(e.target.value) *
+        (isConnected ? exchangeRateOfWallet : 1),
       youGet: +removeNonNumeric(e.target.value),
     });
   };
@@ -178,7 +182,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
           onKeyDown={validateInput}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={balanceOfWallet && balanceOfWallet}
+              balance={isConnected ? balanceOfWallet && balanceOfWallet : 0}
               coinIcon={<USDC />}
               coinName={'USDC'}
               isMax={true}
@@ -194,7 +198,9 @@ const DepositTab: FC<DepositTabPropsType> = ({
           value={depositValue.youGet}
           endAddOn={
             <DepositWithdrawInputAdornment
-              balance={balanceOfWalletDfUSDC && balanceOfWalletDfUSDC}
+              balance={
+                isConnected ? balanceOfWalletDfUSDC && balanceOfWalletDfUSDC : 0
+              }
               coinIcon={<DFUSDC />}
               coinName={'dfUSDC'}
               isMax={false}

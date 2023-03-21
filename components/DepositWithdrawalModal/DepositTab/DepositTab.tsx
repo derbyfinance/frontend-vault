@@ -10,11 +10,13 @@ import {
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
+import { formatEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
   useAccount,
   useContractWrite,
+  useFeeData,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from 'wagmi';
@@ -43,21 +45,24 @@ const DepositTab: FC<DepositTabPropsType> = ({
   exchangeRateOfWallet,
 }) => {
   const [depositValue, setDepositValue] = useState<any>({
-    deposit: '',
-    youGet: '',
+    deposit: 0,
+    youGet: 0,
   });
   const [isApprove, setIsApprove] = useState(true);
   const [ERC20Error, setERC20Error] = useState('');
   const [isError, setIsError] = useState(false);
+  const [gasTotalPrice, setGasTotalPrice] = useState<any>(0);
 
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
 
   const APY = 187; //backend
-  const gasPrice = 187; //backend
+
+  const { data: feeData } = useFeeData();
 
   const {
     config,
+    data: gasData,
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
@@ -70,6 +75,17 @@ const DepositTab: FC<DepositTabPropsType> = ({
       console.log('Error', error);
     },
   });
+
+  useEffect(() => {
+    try {
+      if (gasData?.request != undefined) {
+        let totalPrice = gasData?.request?.gasLimit.mul(feeData?.gasPrice);
+        setGasTotalPrice(formatEther(totalPrice));
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [gasData, feeData]);
 
   const {
     config: approveConfig,
@@ -101,27 +117,15 @@ const DepositTab: FC<DepositTabPropsType> = ({
   const handleDepositField = (e) => {
     setDepositValue({
       deposit: +removeNonNumeric(e.target.value),
-      youGet: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
+      youGet: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
     });
   };
   const handleDepositFieldYouGet = (e) => {
     setDepositValue({
-      deposit: +removeNonNumeric(e.target.value) / exchangeRateOfWallet,
+      deposit: +removeNonNumeric(e.target.value) * exchangeRateOfWallet,
       youGet: +removeNonNumeric(e.target.value),
     });
   };
-
-  // useEffect(() => {
-  //   if (helperForERC20Error(prepareError?.message) && !isSuccess) {
-  //     console.log("error ---- ")
-  //     setERC20Error(
-  //       'execution reverted: ERC20: transfer amount exceeds allowance',
-  //     );
-  //     setIsApprove(false);
-  //   } else {
-  //     setIsApprove(true);
-  //   }
-  // }, [prepareError?.message,isSuccess]);
 
   useEffect(() => {
     if (isLoading) {
@@ -201,7 +205,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
       </StyledAPY>
       <StyledGasPrice>
         <Gas />
-        <span>{gasPrice}</span>
+        <span>{gasTotalPrice}</span>
         <Info />
       </StyledGasPrice>
       <StyledDisclaimerDeposit>

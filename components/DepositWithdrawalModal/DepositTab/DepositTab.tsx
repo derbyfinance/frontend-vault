@@ -10,7 +10,7 @@ import {
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { formatEther } from 'ethers/lib/utils';
+import { formatEther, parseEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
 import {
@@ -69,7 +69,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
     addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
     contractInterface: abi,
     functionName: 'deposit',
-    args: [parseInt(debouncedValue[0]), address],
+    args: [parseEther(debouncedValue[0].toString()), address],
     enabled: Boolean(debouncedValue),
     onError(error) {
       console.log('Error', error);
@@ -80,7 +80,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
     try {
       if (gasData?.request != undefined) {
         let totalPrice = gasData?.request?.gasLimit.mul(feeData?.gasPrice);
-        setGasTotalPrice(formatEther(totalPrice));
+        setGasTotalPrice(Number(formatEther(totalPrice)).toFixed(4));
       }
     } catch (error) {
       console.log(error.message);
@@ -95,7 +95,10 @@ const DepositTab: FC<DepositTabPropsType> = ({
     addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
     contractInterface: abi,
     functionName: 'approve',
-    args: ['0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26', debouncedValue[0]],
+    args: [
+      '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+      parseEther(debouncedValue[0].toString()),
+    ],
   });
   const { data, write } = useContractWrite(config);
   const { data: dataApprove, write: writeApprove } =

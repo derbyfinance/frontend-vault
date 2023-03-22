@@ -89,6 +89,9 @@ const config = {
 
 const StyledTreeMap = styled.div`
   margin-bottom: 84px;
+  @media only screen and (max-width: 1130px) {
+    width:700px;
+  }
 `;
 
 export default function TreemapChart() {

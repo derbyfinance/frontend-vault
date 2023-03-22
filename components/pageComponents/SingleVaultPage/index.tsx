@@ -127,13 +127,13 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           <KeyStatisticsItem value={593} description="Depositors" />
           <KeyStatisticsItem value="6 Days" description="Time To Rebalance" />
         </StyledKeyStatistics>
-        <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
+       <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
         <StyledHeaderText>
           How is this specific vault split into different protocols, what are
           you investing in specifically.
         </StyledHeaderText>
-        <TreeMapGraph />
-        <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
+         <TreeMapGraph />
+      <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
       </StyledSingleVaultPart>
       <WalletInfo />
     </StyledSingleVaultPageWrapper>

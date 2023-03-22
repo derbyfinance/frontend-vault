@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
 import image from '@images/HeroCircle.png';
 import {
   CategoryScale,
@@ -10,6 +11,7 @@ import {
 } from 'chart.js';
 import gradient from 'chartjs-plugin-gradient';
 import { Line } from 'react-chartjs-2';
+import { ApiService } from 'services/api.service';
 
 const mockChartData = {
   D: {
@@ -72,12 +74,64 @@ ChartJS.register(
 );
 
 const PerformanceGraph = ({ chartView, graphData }) => {
+  const [vaultStats, setVaultStats] = useState();
+  const [chartLabelOfChartView, setChartLabelOfChartView] = useState([]);
+  const [chartDataOfChartView, setChartDataOfChartView] = useState([]);
+  useEffect(() => {
+    getVaultDataById();
+  }, []);
+
+  useEffect(() => {
+    console.log(chartView);
+    if (chartView == 'W') {
+      let labels = [];
+      let datasets = [];
+      vaultStats?.slice(-7).map((item) => {
+        labels.push(item.date);
+        datasets.push(item.price);
+      });
+      setChartDataOfChartView(datasets);
+      setChartLabelOfChartView(labels);
+    } else if (chartView == 'D') {
+      const today = getTodayInDDMMYYYYFormat();
+      let vaultStatByDate = vaultStats?.filter((stat) => {
+        return stat.date == today;
+      });
+      console.log(vaultStatByDate);
+      if (vaultStatByDate?.length != 0 && vaultStatByDate != undefined) {
+        setChartDataOfChartView([vaultStatByDate[0].price]);
+        setChartLabelOfChartView([vaultStatByDate[0].date]);
+      } else {
+        setChartDataOfChartView([0]);
+        setChartLabelOfChartView(['there is no actual data for this period']);
+      }
+    } else {
+      setChartDataOfChartView([]);
+      setChartLabelOfChartView([]);
+    }
+  }, [chartView, vaultStats]);
+
+  const getVaultDataById = async () => {
+    try {
+      const { data } = await ApiService.getUserVaultById('');
+      setVaultStats(data.data.vaultStats.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const chartData = {
-    labels: mockChartData[chartView]?.labels.map((label) => label),
+    labels:
+      chartLabelOfChartView.length == 0
+        ? mockChartData[chartView]?.labels.map((label) => label)
+        : chartLabelOfChartView,
     datasets: [
       {
         label: 'Performance',
-        data: graphData?.map((data) => data),
+        data:
+          chartDataOfChartView.length == 0
+            ? mockChartData[chartView]?.datasets.map((data) => data)
+            : chartDataOfChartView,
         fill: true,
         lineTension: 0.5,
         tension: 0.3,

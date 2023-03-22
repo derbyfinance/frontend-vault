@@ -3,12 +3,10 @@ import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import {
   currencyFormatter,
-  helperForERC20Error,
   removeNonNumeric,
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
-import { ethers } from 'ethers';
 import { formatEther, parseEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
 import { abi } from 'utils/abis/abi';
@@ -46,8 +44,8 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
   exchangeRateOfWallet,
 }) => {
   const [withdrawValue, setWithdrawValue] = useState<any>({
-    withdraw: 1,
-    youGet: 1,
+    withdraw: 0,
+    youGet: 0,
   });
 
   const debouncedValue = useDebounce(withdrawValue.withdraw, 500);

@@ -88,7 +88,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
         ),
       );
       setBalanceOfWalletDfUSDC(
-        Number(contractReadForDfUSDCUserBalance?.data).toString(),
+        (Number(contractReadForDfUSDCUserBalance?.data) / 1e18).toString(),
       );
     }
   }, [

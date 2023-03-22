@@ -128,7 +128,7 @@ const mockVaultStats = {
 const getVaultInfo: NextApiHandler<GetResponse> = async (req, res) => {
   const { vaultId } = req.query;
 
-  const data:any = {
+  const data: any = {
     description: mockDescription,
     vaultAllocations: mockVaultAllocations,
     vaultStats: mockVaultStats,

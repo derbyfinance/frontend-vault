@@ -20,3 +20,16 @@ export const ContainerWrapper = styled.div`
   margin-right: auto
 `;
 
+
+export const StyledContainerWrapper = styled.div`
+display: flex;
+gap: 17px;
+
+@media only screen and (max-width: 1250px) {
+  width:720px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 18px;
+}
+`;

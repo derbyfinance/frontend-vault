@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
+import { StyledContainerWrapper } from '@components/Layout/Layout.styled';
 import { ApiService } from 'services/api.service';
 import { IHeaderStats, IVaultData } from 'types/stats';
 import { useAccount } from 'wagmi';
@@ -7,7 +8,6 @@ import VaultsPageList from './VaultsPageList/VaultsPageList';
 import WalletInfo from './WalletInformation/WalletInfo';
 import {
   StyledCoinsPart,
-  StyledTableWrapper,
   StyledVaultsPageWrapper,
 } from './index.styled';
 
@@ -29,13 +29,13 @@ const VaultsPageComponent: FC = () => {
   };
   return (
     <StyledVaultsPageWrapper>
-      <StyledTableWrapper isConnected={isConnected}>
-        <StyledCoinsPart>
-          <VaultsPageHero headerStats={headerStatsData} />
-          <VaultsPageList tableData={tableData} />
-        </StyledCoinsPart>
-        <WalletInfo />
-      </StyledTableWrapper>
+        <StyledContainerWrapper>
+          <StyledCoinsPart>
+            <VaultsPageHero headerStats={headerStatsData} />
+            <VaultsPageList tableData={tableData} />
+          </StyledCoinsPart>
+          <WalletInfo />
+        </StyledContainerWrapper>
     </StyledVaultsPageWrapper>
   );
 };

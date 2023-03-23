@@ -9,6 +9,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
   position:relative;
   width: 100%;
 
+
   &:hr {
     display: block;
     height: 1px;
@@ -22,6 +23,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
 
 export const StyledSingleVaultPart = styled.div`
   width: 100%;
+  max-width:830px;
   display: flex;
   flex-direction: column;
 `;

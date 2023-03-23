@@ -14,14 +14,15 @@ export const StyledNotConnectedWrapper = styled.div`
   padding: 148px 4vh 133px;
   border-radius: 28px;
   border: ${({ theme }) => theme.colors.borderMain} 1px solid;
-  height:550px;
-  @media only screen and (max-width: 1000px) {
-    height:400px;
-    padding: 80px 4vh 70px;
+  height: 550px;
+  width: 425px;
+  @media only screen and (max-width: 1250px) {
+    height: 400px;
+    padding: 80px 1vh 70px;
   }
 `;
 export const StyledNotConnectedText = styled.div`
-  width:310px;
+  width: 310px;
 `;
 export const WalletInfoConnectedStyled = styled.div`
   display: flex;

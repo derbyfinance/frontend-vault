@@ -20,6 +20,7 @@ export const StyledTableWrapper= styled.div`
 
   @media only screen and (max-width: 1250px) {
     flex-direction: column;
+    align-items:center;
     margin: 0 0 0 0;
   }
 `;

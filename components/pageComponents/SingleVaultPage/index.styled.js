@@ -8,12 +8,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
   padding: 0 32px;
   position:relative;
   width: 100%;
-  @media only screen and (max-width: 1130px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 18px;
-  }
+
   &:hr {
     display: block;
     height: 1px;
@@ -29,12 +24,6 @@ export const StyledSingleVaultPart = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  @media only screen and (max-width: 1130px) {
-    justify-content: center;
-    width:720px;
-    align-items: center;
-  }
-
 `;
 
 export const StyledVaultInformation = styled.div`

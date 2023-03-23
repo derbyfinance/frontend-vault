@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import KeyStatisticsItem from '@components/Common/KeyStatisticItem/KeyStatisticsItem';
+import { StyledContainerWrapper } from '@components/Layout/Layout.styled';
 import ReusableTable from '@components/ReusableTable/ReusableTable';
 import {
   currencyFormatter,
@@ -71,71 +72,70 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
 
   return (
     <StyledSingleVaultPageWrapper>
-      <StyledSingleVaultPart>
-        <StyledVaultInformation>
-          Vault information {vaultInfo?.toUpperCase()}
-        </StyledVaultInformation>
-        <StyledHeaderText>
-          Technical information regarding the performance of your selected
-          vault.
-        </StyledHeaderText>
-        <SingleVaultDescription
-          imagePath={iconPath}
-          description={description}
-          vault={vaultInfo}
-        />
-        <SingleVaultInfo
-          vaultStats={vaultStats}
-          setDataForGraphHandler={setDataForGraphHandler}
-        />
-        <StyledPerformanceChart>
-          <StyledChartTitleOptions>
-            <StyledChartTitle>
-              Historical Performance USDC Vault
-            </StyledChartTitle>
-            <StyledChartOptions>
-              {options.map((option) => (
-                <StyledChartOption
-                  onClick={() => setView(option)}
-                  active={view === option}
-                  key={option}
-                >
-                  {option}
-                </StyledChartOption>
-              ))}
-            </StyledChartOptions>
-          </StyledChartTitleOptions>
-          <PerformanceGraph chartView={view} optionIndex={optionIndex}/>
-        </StyledPerformanceChart>
-        <StyledVaultInformation>
-          Key statistics USDC Vault
-        </StyledVaultInformation>
-        <StyledHeaderText>
-          The most important data of this vault, use it to compare
-        </StyledHeaderText>
-        <StyledKeyStatistics>
-          <KeyStatisticsItem
-            value={currencyFormatter(9900000)}
-            description="Total Value Locked"
+      <StyledContainerWrapper>
+        <StyledSingleVaultPart>
+          <StyledVaultInformation>
+            Vault information {vaultInfo?.toUpperCase()}
+          </StyledVaultInformation>
+          <StyledHeaderText>
+            Technical information regarding the performance of your selected
+            vault.
+          </StyledHeaderText>
+          <SingleVaultDescription
+            imagePath={iconPath}
+            description={description}
+            vault={vaultInfo}
           />
-          <KeyStatisticsItem value={'$157.74'} description="Price LP Token" />
-          <KeyStatisticsItem
-            value={percentageFormatter(6.32)}
-            description="Annual Percentage Yield"
-          />
-          <KeyStatisticsItem value="USD Stablecoin" description="Type" />
-          <KeyStatisticsItem value={593} description="Depositors" />
-          <KeyStatisticsItem value="6 Days" description="Time To Rebalance" />
-        </StyledKeyStatistics>
-       <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
-        <StyledHeaderText>
-          How is this specific vault split into different protocols, what are
-          you investing in specifically.
-        </StyledHeaderText>
-         <TreeMapGraph />
-      <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
-      </StyledSingleVaultPart>
-      <WalletInfo />
+          <SingleVaultInfo vaultStats={vaultStats} />
+          <StyledPerformanceChart>
+            <StyledChartTitleOptions>
+              <StyledChartTitle>
+                Historical Performance USDC Vault
+              </StyledChartTitle>
+              <StyledChartOptions>
+                {options.map((option) => (
+                  <StyledChartOption
+                    onClick={() => setView(option)}
+                    active={view === option}
+                    key={option}
+                  >
+                    {option}
+                  </StyledChartOption>
+                ))}
+              </StyledChartOptions>
+            </StyledChartTitleOptions>
+            <PerformanceGraph chartView={view} />
+          </StyledPerformanceChart>
+          <StyledVaultInformation>
+            Key statistics USDC Vault
+          </StyledVaultInformation>
+          <StyledHeaderText>
+            The most important data of this vault, use it to compare
+          </StyledHeaderText>
+          <StyledKeyStatistics>
+            <KeyStatisticsItem
+              value={currencyFormatter(9900000)}
+              description="Total Value Locked"
+            />
+            <KeyStatisticsItem value={'$157.74'} description="Price LP Token" />
+            <KeyStatisticsItem
+              value={percentageFormatter(6.32)}
+              description="Annual Percentage Yield"
+            />
+            <KeyStatisticsItem value="USD Stablecoin" description="Type" />
+            <KeyStatisticsItem value={593} description="Depositors" />
+            <KeyStatisticsItem value="6 Days" description="Time To Rebalance" />
+          </StyledKeyStatistics>
+          <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
+          <StyledHeaderText>
+            How is this specific vault split into different protocols, what are
+            you investing in specifically.
+          </StyledHeaderText>
+          <TreeMapGraph />
+          <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
+        </StyledSingleVaultPart>
+        <WalletInfo />
+      </StyledContainerWrapper>
     </StyledSingleVaultPageWrapper>
   );
 };

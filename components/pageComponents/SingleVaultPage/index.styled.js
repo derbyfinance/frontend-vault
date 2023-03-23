@@ -23,7 +23,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
 
 export const StyledSingleVaultPart = styled.div`
   width: 100%;
-  max-width:690px;
+  max-width:700px;
   display: flex;
   flex-direction: column;
 `;

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const ApiService = {
-  async getData() {
-    return await axios.get('/api/stats', {
+  async getData(chainId: number) {
+    return await axios.get(`/api/stats?chainId=${chainId}`, {
       headers: {
         'content-type': 'application/json',
       },

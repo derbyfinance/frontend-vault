@@ -3,13 +3,11 @@ import createHttpError from 'http-errors';
 import { NextApiHandler } from 'next';
 import { IHeaderStats, IVaultData } from 'types/stats';
 
-type IStats = {
-  headerStats: IHeaderStats;
-  vaults: IVaultData[];
-};
-
 type GetResponse = {
-  data: IStats;
+  data: {
+    headerStats: IHeaderStats;
+    vaults: IVaultData[];
+  };
 };
 
 const headerStats: IHeaderStats = {
@@ -72,19 +70,21 @@ const mockVaults: IVaultData[] = [
 ];
 
 const getStats: NextApiHandler<GetResponse> = async (req, res) => {
-  const { address } = req.query;
+  const { chainId, address } = req.query;
   const stats = headerStats;
 
   if (address) {
-    const vaults = mockVaults;
+    let vaults = mockVaults;
+    if (chainId != '1') vaults.slice(0, 3);
 
     if (!stats) throw new createHttpError.NotFound(`msg`);
 
     res.status(200).json({ data: { headerStats: stats, vaults: vaults } });
   } else {
-    const vaults = mockVaults.map((vault) => {
+    let vaults = mockVaults.map((vault) => {
       return { ...vault, balance: 0 };
     });
+    if (chainId != '1') vaults = vaults.slice(0, 3);
 
     res.status(200).json({ data: { headerStats: stats, vaults: vaults } });
   }

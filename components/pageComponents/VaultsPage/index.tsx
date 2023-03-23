@@ -19,10 +19,10 @@ const VaultsPageComponent: FC = () => {
 
   useEffect(() => {
     getData();
-  },[]);
+  }, []);
 
   const getData = async () => {
-    const data = await ApiService.getData();
+    const data = await ApiService.getData(1);
     const { vaults, headerStats } = data.data.data;
     setheaderStatsData(headerStats);
     setTableData(vaults);

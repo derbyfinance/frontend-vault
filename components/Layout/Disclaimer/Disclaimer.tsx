@@ -16,7 +16,9 @@ const Disclaimer: FC = () => {
       <a href="https://discord.gg/DyxRxs9mQ6" target="_blank" rel="noreferrer">
         <StyledButton>Join Discord</StyledButton>
       </a>
-      <StyledButtonOutlined onClick={null}>Back to home</StyledButtonOutlined>
+      <a href="https://derby.finance" target="_blank" rel="noreferrer">
+        <StyledButtonOutlined onClick={null}>Back to home</StyledButtonOutlined>
+      </a>
     </StyledTextNone>
   );
 };

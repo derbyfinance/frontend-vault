@@ -3,15 +3,26 @@ import createHttpError from 'http-errors';
 import { NextApiHandler } from 'next';
 import { IVaultAllocations, IVaultStats } from 'types/stats';
 
+type IVault = {
+  description: string;
+  chainAllocations: { [key: string]: number }[];
+  vaultAllocations: IVaultAllocations[];
+  vaultStats: IVaultStats;
+};
+
 type GetResponse = {
-  data: {
-    description: string;
-    vaultAllocations: IVaultAllocations[];
-    vaultStats: IVaultStats;
-  };
+  data: IVault;
 };
 
 const mockDescription = `Oh no, don't touch that. That's some new specialized weather sensing equipment. Hey, hey, I've seen this one, I've seen this one. This is a classic, this is where Ralph dresses up as the man from space. Something wrong with the starter, so I hid it. Just turn around, McFly, and walk away. Are you deaf, McFly? Close the door and beat it. Well, aren't you going up to the lake tonight, you've been planning it for two weeks.`;
+
+const mockChainAllocations = [
+  { ETH: 31.4 },
+  { OPT: 10.2 },
+  { ARB: 12.8 },
+  { BSC: 20.1 },
+  { AVA: 25.5 },
+];
 
 const mockVaultAllocations = [
   {
@@ -128,8 +139,9 @@ const mockVaultStats = {
 const getVaultInfo: NextApiHandler<GetResponse> = async (req, res) => {
   const { vaultId } = req.query;
 
-  const data: any = {
+  const data: IVault = {
     description: mockDescription,
+    chainAllocations: mockChainAllocations,
     vaultAllocations: mockVaultAllocations,
     vaultStats: mockVaultStats,
   };

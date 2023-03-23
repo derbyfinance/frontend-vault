@@ -3,11 +3,13 @@ import createHttpError from 'http-errors';
 import { NextApiHandler } from 'next';
 import { IHeaderStats, IVaultData } from 'types/stats';
 
+type IStats = {
+  headerStats: IHeaderStats;
+  vaults: IVaultData[];
+};
+
 type GetResponse = {
-  data: {
-    headerStats: IHeaderStats;
-    vaults: IVaultData[];
-  };
+  data: IStats;
 };
 
 const headerStats: IHeaderStats = {

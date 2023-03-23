@@ -5,7 +5,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
-  padding: 0 32px;
+  padding: 0 24px;
   position:relative;
   width: 100%;
 
@@ -23,7 +23,7 @@ export const StyledSingleVaultPageWrapper = styled.div`
 
 export const StyledSingleVaultPart = styled.div`
   width: 100%;
-  max-width:830px;
+  max-width:690px;
   display: flex;
   flex-direction: column;
 `;

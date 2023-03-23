@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
-import image from '@images/HeroCircle.png';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -12,36 +11,6 @@ import {
 import gradient from 'chartjs-plugin-gradient';
 import { Line } from 'react-chartjs-2';
 import { ApiService } from 'services/api.service';
-
-const mockChartData = {
-  D: {
-    labels: ['OCT 14', 'OCT 16', 'OCT 18', 'OCT 20', 'OCT 22', 'OCT 24'],
-    datasets: [0, 10, 5, 2, 20, 30],
-  },
-  W: {
-    labels: [
-      '01/01/2022 - 08/01/2022',
-      '08/08/2022 - 15/01/2022',
-      '15/01/2022 - 22/01/2022',
-      '22/01/2022 - 29/01/2022',
-      '29/01/2022 - 05/02/2022',
-      '05/02/2022 - 13/02/2022',
-    ],
-    datasets: [0, 15, 0, 25, 20, 30, 40],
-  },
-  M: {
-    labels: ['JAN', 'FEB', 'MAR', 'APR', 'JUN', 'JUL'],
-    datasets: [0, 15, 0, 25, 20, 30],
-  },
-  Y: {
-    labels: [2017, 2018, 2019, 2020, 2021, 2022],
-    datasets: [0, 30, 15, 8, 21, 30],
-  },
-  All: {
-    labels: [2017, 2018, 2019, 2020, 2021, 2022],
-    datasets: [0, 30, 15, 8, 21, 30],
-  },
-};
 
 const plugin = {
   id: 'corsair',
@@ -73,43 +42,70 @@ ChartJS.register(
   plugin,
 );
 
-const PerformanceGraph = ({ chartView, graphData }) => {
+const PerformanceGraph = ({ chartView, optionIndex }) => {
   const [vaultStats, setVaultStats] = useState();
   const [chartLabelOfChartView, setChartLabelOfChartView] = useState([]);
   const [chartDataOfChartView, setChartDataOfChartView] = useState([]);
+
   useEffect(() => {
     getVaultDataById();
   }, []);
 
   useEffect(() => {
-    console.log(chartView);
     if (chartView == 'W') {
       let labels = [];
       let datasets = [];
       vaultStats?.slice(-7).map((item) => {
         labels.push(item.date);
-        datasets.push(item.price);
+        datasets.push(item[optionIndex]);
       });
       setChartDataOfChartView(datasets);
       setChartLabelOfChartView(labels);
     } else if (chartView == 'D') {
       const today = getTodayInDDMMYYYYFormat();
       let vaultStatByDate = vaultStats?.filter((stat) => {
-        return stat.date == today;
+        return stat.date == '20-03-2023'; //Temp solution for UI
+        // return stat.date == today;
       });
-      console.log(vaultStatByDate);
       if (vaultStatByDate?.length != 0 && vaultStatByDate != undefined) {
-        setChartDataOfChartView([vaultStatByDate[0].price]);
+        setChartDataOfChartView([vaultStatByDate[0][optionIndex]]);
         setChartLabelOfChartView([vaultStatByDate[0].date]);
       } else {
         setChartDataOfChartView([0]);
         setChartLabelOfChartView(['there is no actual data for this period']);
       }
+    } else if (chartView == 'M') {
+      let labels = [];
+      let datasets = [];
+      vaultStats?.map((item) => {
+        labels.push(item.date);
+        datasets.push(item[optionIndex]);
+      });
+      setChartDataOfChartView(datasets);
+      setChartLabelOfChartView(labels);
+    } else if (chartView == 'Y') {
+      let labels = [];
+      let datasets = [];
+      vaultStats?.map((item) => {
+        labels.push(item.date);
+        datasets.push(item[optionIndex]);
+      });
+      setChartDataOfChartView(datasets);
+      setChartLabelOfChartView(labels);
+    } else if (chartView == 'All') {
+      let labels = [];
+      let datasets = [];
+      vaultStats?.map((item) => {
+        labels.push(item.date);
+        datasets.push(item[optionIndex]);
+      });
+      setChartDataOfChartView(datasets);
+      setChartLabelOfChartView(labels);
     } else {
       setChartDataOfChartView([]);
       setChartLabelOfChartView([]);
     }
-  }, [chartView, vaultStats]);
+  }, [chartView, vaultStats, optionIndex]);
 
   const getVaultDataById = async () => {
     try {
@@ -121,17 +117,11 @@ const PerformanceGraph = ({ chartView, graphData }) => {
   };
 
   const chartData = {
-    labels:
-      chartLabelOfChartView.length == 0
-        ? mockChartData[chartView]?.labels.map((label) => label)
-        : chartLabelOfChartView,
+    labels: chartLabelOfChartView,
     datasets: [
       {
         label: 'Performance',
-        data:
-          chartDataOfChartView.length == 0
-            ? mockChartData[chartView]?.datasets.map((data) => data)
-            : chartDataOfChartView,
+        data: chartDataOfChartView,
         fill: true,
         lineTension: 0.5,
         tension: 0.3,
@@ -177,7 +167,7 @@ const PerformanceGraph = ({ chartView, graphData }) => {
           color: '#A9A6AE',
 
           font: {
-            size: chartView == 'W' ? 9 : 16,
+            size: 16,
             family: 'Roboto-Medium',
           },
         },

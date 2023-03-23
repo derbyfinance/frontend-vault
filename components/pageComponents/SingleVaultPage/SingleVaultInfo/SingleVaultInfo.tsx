@@ -34,24 +34,19 @@ const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
   const [isPositive, setIsPositive] = useState(true);
 
   useEffect(() => {
-    if (vaultStats.prices !== undefined) {
-      const prices = vaultStats.prices[vaultStats.prices.length - 1];
-      const apys = vaultStats.apy[vaultStats.apy.length - 1];
-      const tvls = vaultStats.tvl[vaultStats.tvl.length - 1];
-      setPrice(prices);
-      setAPY(apys);
-      setTVl(addSeparators(tvls / 1e6));
+    let vaultStatsLastEl = vaultStats[vaultStats.length - 1];
+
+    if (vaultStatsLastEl !== undefined) {
+      setPrice(vaultStatsLastEl.price);
+      setAPY(vaultStatsLastEl.apy);
+      setTVl(addSeparators(vaultStatsLastEl.tvl / 1e6));
       setPriceChange(
         (
-          (vaultStats?.prices[vaultStats.prices.length - 1] -
-            vaultStats?.prices[vaultStats.prices.length - 2]) /
+          (vaultStatsLastEl.price - vaultStats[vaultStats.length - 2].price) /
           100
         ).toFixed(3),
       );
-      if (
-        vaultStats.prices[vaultStats.prices.length - 1] <
-        vaultStats.prices[vaultStats.prices.length - 2]
-      ) {
+      if (vaultStatsLastEl < vaultStats[vaultStats.length - 2]) {
         setIsPositive(false);
       } else {
         setIsPositive(true);
@@ -61,7 +56,7 @@ const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
 
   const dataToShow = [
     {
-      id: 0,
+      id: 'price',
       icon: priceIcon,
       value: `$ ${price}`,
       priceChange: `${priceChange}%`,
@@ -69,13 +64,13 @@ const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
       description: 'Price',
     },
     {
-      id: 1,
+      id: 'apy',
       icon: yieldIcon,
       value: `$ ${apy}`,
       description: 'Annual Percentage Yield',
     },
     {
-      id: 2,
+      id: 'tvl',
       icon: locked,
       value: `${tvl} M`,
       description: 'Total Value Locked',

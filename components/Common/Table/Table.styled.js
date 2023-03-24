@@ -6,14 +6,11 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledColumnHeader = styled.th`
-  font: ${({ theme }) => theme.fonts.robotoMedium};
+  font: 'Roboto-Medium';
   font-size: 16px;
   text-align:left;
   color: ${({ theme }) => theme.colors.textFaded};
   padding: 0 10px 0 0;
-  @media only screen and (max-width: 1134px) {
-    font-size: 14px;
-  }
 `;
 
 export const StyledRowItem = styled.tr`
@@ -26,17 +23,17 @@ export const StyledRowItem = styled.tr`
 `;
 
 export const StyledRowCell = styled.td`
-  font: ${({ theme }) => theme.fonts.robotoRegular};
+  font: 'Roboto-Regular';
   font-size: 16px;
   vertical-align: middle;
   padding: 12px 12px 12px 0px;
   & div {
     display: flex;
     align-items: center;
-    font: ${({ theme }) => theme.fonts.slabMedium};
+    font: 'Slab-Medium';
   }
   & span {
-    font: ${({ theme }) => theme.fonts.robotoRegular};
+    font: 'Roboto-Regular';
     color: ${({ theme }) => theme.colors.textFaded};
     margin: 0 0 0 10px;
 

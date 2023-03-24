@@ -63,3 +63,23 @@ export const getTodayInDDMMYYYYFormat = () => {
   const formattedToday = dd + '-' + mm + '-' + yyyy;
   return formattedToday;
 };
+
+export const formatDateToMonthDay = (date) => {
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  let month = date.substring(4, 5);
+  let newDate = `${monthNames[month]} ${date.substring(0, 2)}`;
+  return newDate;
+};

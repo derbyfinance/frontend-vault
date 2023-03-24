@@ -16,6 +16,8 @@ import {
 } from './DepositWithdrawalModal.styled';
 import WithdrawTab from './WithdrawTab/WithdrawTab';
 
+const addressOrName: string = '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
+
 const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const [financialActionType, setFinancialActionType] = useState(
     financialActionTypes.DEPOSIT,
@@ -49,7 +51,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
 
   const contractReadForDfUSDCUserBalance = useContractRead({
     addressOrName: isConnected
-      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      ? addressOrName
       : '',
     contractInterface: abi,
     functionName: 'balanceOf',
@@ -58,7 +60,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
 
   const contractReadDecimals = useContractRead({
     addressOrName: isConnected
-      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      ? addressOrName
       : '',
     contractInterface: abi,
     functionName: 'decimals',
@@ -66,7 +68,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
 
   const contractReadExchangeRate = useContractRead({
     addressOrName: isConnected
-      ? '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26'
+      ? addressOrName
       : '',
     contractInterface: abi,
     functionName: 'exchangeRate',

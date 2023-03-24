@@ -30,13 +30,13 @@ export const StyledSingleVaultPart = styled.div`
 
 export const StyledVaultInformation = styled.div`
   font: ${({ theme }) => theme.fonts.slabRegular};
-  font-size: 26px;
+  font-size: 18px;
   color: ${({ theme }) => theme.colors.vaultTitle};
 `;
 
 export const StyledHeaderText = styled.div`
   font: ${({ theme }) => theme.fonts.robotoMedium};
-  font-size: 20px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
   margin-bottom: 30px;
 `;

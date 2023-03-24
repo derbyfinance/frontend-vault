@@ -122,6 +122,13 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       {
         label: 'Performance',
         data: chartDataOfChartView,
+        // data: chartDataOfChartView.map((item) => {
+        //   if(item.toString().length > 6){
+        //     return (item / 1e6)
+        //   }else{
+        //     return item
+        //   }
+        // }),
         fill: true,
         lineTension: 0.5,
         tension: 0.3,
@@ -187,7 +194,8 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       tooltip: {
         backgroundColor: '#160344',
         titleFont: {
-          size: 18,
+          size: 16,
+          family: 'Roboto-Medium',
         },
         bodyFont: {
           size: 12,
@@ -197,11 +205,22 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
             return tooltipItem.label;
           },
           title: function (tooltipItem, data) {
+            console.log(tooltipItem[0].dataset.data[tooltipItem[0].dataIndex]);
+            if (
+              tooltipItem[0].dataset.data[tooltipItem[0].dataIndex].toString()
+                .length > 6
+            ) {
+              return (
+                '$' +
+                tooltipItem[0].dataset.data[tooltipItem[0].dataIndex] / 1e6 +
+                'M'
+              );
+            }
             return '$' + tooltipItem[0].dataset.data[tooltipItem[0].dataIndex];
           },
           labelColor: function (context) {
             return {
-              fontSize: 30,
+              fontSize: 8,
             };
           },
 

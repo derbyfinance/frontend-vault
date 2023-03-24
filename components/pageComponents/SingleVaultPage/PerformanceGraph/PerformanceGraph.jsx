@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
+import { formatDateToMonthDay, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -117,7 +117,7 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
   };
 
   const chartData = {
-    labels: chartLabelOfChartView,
+    labels: chartLabelOfChartView.map((date) => formatDateToMonthDay(date)),
     datasets: [
       {
         label: 'Performance',

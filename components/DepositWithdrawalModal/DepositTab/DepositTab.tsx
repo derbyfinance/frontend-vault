@@ -38,6 +38,8 @@ type DepositTabPropsType = {
   exchangeRateOfWallet: number;
 };
 
+const addressOrName: string = '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
+
 const DepositTab: FC<DepositTabPropsType> = ({
   openModal,
   balanceOfWallet,
@@ -66,7 +68,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
     error: prepareError,
     isError: isPrepareError,
   } = usePrepareContractWrite({
-    addressOrName: '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+    addressOrName: addressOrName,
     contractInterface: abi,
     functionName: 'deposit',
     args: [parseEther(debouncedValue[0].toString()), address],

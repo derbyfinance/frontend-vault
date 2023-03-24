@@ -1,10 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
-import {
-  currencyFormatter,
-  removeNonNumeric,
-} from '@helpers/helperFunctions';
+import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { financialActionTypes } from 'Constants/walletConstants';
 import { formatEther, parseEther } from 'ethers/lib/utils';
@@ -35,7 +32,7 @@ type WithdrawTabPropsType = {
   exchangeRateOfWallet: number;
 };
 const addressOrNameWithdraw: string =
-  '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26';
+  '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
 
 const WithdrawTab: FC<WithdrawTabPropsType> = ({
   openModal,

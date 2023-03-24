@@ -55,14 +55,13 @@ export const StyledChartTitleOptions = styled.div`
 
 export const StyledChartTitle = styled.div`
   font: ${({ theme }) => theme.fonts.slabRegular};
-  font-size: 22px;
+  font-size: 18px;
 `;
 
 export const StyledChartOptions = styled.ul`
   display: flex;
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 20px;
-
+  font-size: 16px;
 `;
 
 export const StyledChartOption = styled.li`

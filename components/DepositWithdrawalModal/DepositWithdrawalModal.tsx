@@ -15,8 +15,9 @@ import {
   StyledTitle,
 } from './DepositWithdrawalModal.styled';
 import WithdrawTab from './WithdrawTab/WithdrawTab';
+import { derbyVault, usdcTestToken } from 'Constants/addresses';
 
-const addressOrName: string = '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
+const addressOrName: string = derbyVault;
 
 const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   const [financialActionType, setFinancialActionType] = useState(
@@ -42,7 +43,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
   };
   const contractReadForUSDCUserBalance = useContractRead({
     addressOrName: isConnected
-      ? '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1'
+      ? usdcTestToken
       : '',
     contractInterface: abi,
     functionName: 'balanceOf',

@@ -28,6 +28,7 @@ const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
       const { account, chain } = await connectAsync({ connector });
       userData.address = account;
       userData.chain = chain.id;
+      console.log(userData)
       const { data } = await axios.post('/api/auth/request-message', userData, {
         headers: {
           'content-type': 'application/json',

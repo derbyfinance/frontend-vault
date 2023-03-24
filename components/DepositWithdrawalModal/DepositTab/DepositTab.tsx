@@ -30,6 +30,7 @@ import {
   StyledModalDepositButton,
   StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
+import { derbyVault, usdcTestToken } from 'Constants/addresses';
 
 type DepositTabPropsType = {
   openModal: Function;
@@ -38,7 +39,7 @@ type DepositTabPropsType = {
   exchangeRateOfWallet: number;
 };
 
-const addressOrName: string = '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
+const addressOrName: string = derbyVault;
 
 const DepositTab: FC<DepositTabPropsType> = ({
   openModal,
@@ -94,11 +95,11 @@ const DepositTab: FC<DepositTabPropsType> = ({
     error: approveError,
     isError: isApproveError,
   } = usePrepareContractWrite({
-    addressOrName: '0x7ea6eA49B0b0Ae9c5db7907d139D9Cd3439862a1',
+    addressOrName: usdcTestToken,
     contractInterface: abi,
     functionName: 'approve',
     args: [
-      '0x3e5B75E1F65cc4940824CFa4d21AD63857Fe1E26',
+      derbyVault,
       parseEther(debouncedValue[0].toString()),
     ],
   });
@@ -231,9 +232,8 @@ const DepositTab: FC<DepositTabPropsType> = ({
         <StyledSuccessBox>
           Success!{' '}
           <a
-            href={`https://goerli.etherscan.io/tx/${
-              (data || dataApprove)?.hash
-            }`}
+            href={`https://goerli.etherscan.io/tx/${(data || dataApprove)?.hash
+              }`}
           >
             Etherscan
           </a>

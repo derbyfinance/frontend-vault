@@ -3,12 +3,20 @@ import { WagmiConfig, chain, configureChains, createClient } from 'wagmi';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { infuraProvider } from 'wagmi/providers/infura';
 import '../styles/globals.css';
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.arbitrum, chain.optimism, chain.goerli],
-  [infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID })],
+  [
+    chain.mainnet,
+    chain.polygon,
+    chain.arbitrum,
+    chain.arbitrumGoerli,
+    chain.optimism,
+    chain.goerli,
+  ],
+  [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API })],
 );
 
 const client = createClient({

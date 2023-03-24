@@ -24,6 +24,7 @@ import {
   StyledModalDepositButton,
   StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
+import { derbyVault } from 'Constants/addresses';
 
 type WithdrawTabPropsType = {
   openModal: Function;
@@ -31,8 +32,7 @@ type WithdrawTabPropsType = {
   balanceOfWalletDfUSDC: string;
   exchangeRateOfWallet: number;
 };
-const addressOrNameWithdraw: string =
-  '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
+const addressOrNameWithdraw: string = derbyVault;
 
 const WithdrawTab: FC<WithdrawTabPropsType> = ({
   openModal,

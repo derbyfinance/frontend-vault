@@ -12,7 +12,7 @@ export const StyledWalletConnectedContainer = styled.div`
   border-radius: 6px;
   padding: 48px 24px;
   height: 540px;
-  width: 425px;
+  min-width: 425px;
 `;
 
 export const StyledConnectedHeading = styled.div`

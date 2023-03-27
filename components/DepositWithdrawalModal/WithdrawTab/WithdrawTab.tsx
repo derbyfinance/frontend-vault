@@ -1,8 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
+import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessageWithButton';
 import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { NetworkContext } from '@pages/context/NetworkContext';
+import { derbyVault } from 'Constants/addresses';
 import { financialActionTypes } from 'Constants/walletConstants';
 import { formatEther, parseEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
@@ -11,7 +14,9 @@ import {
   useAccount,
   useContractWrite,
   useFeeData,
+  useNetwork,
   usePrepareContractWrite,
+  useSwitchNetwork,
   useWaitForTransaction,
 } from 'wagmi';
 import DepositWithdrawInput from '../DepositWithdrawInput';
@@ -24,10 +29,10 @@ import {
   StyledModalDepositButton,
   StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
-import { derbyVault } from 'Constants/addresses';
 
 type WithdrawTabPropsType = {
   openModal: Function;
+  closeModalWallet: Function;
   balanceOfWallet: string;
   balanceOfWalletDfUSDC: string;
   exchangeRateOfWallet: number;
@@ -39,6 +44,7 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
   balanceOfWallet,
   balanceOfWalletDfUSDC,
   exchangeRateOfWallet,
+  closeModalWallet,
 }) => {
   const [withdrawValue, setWithdrawValue] = useState<any>({
     withdraw: 0,
@@ -49,6 +55,8 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
   const { isConnected, address } = useAccount();
   const [gasTotalPrice, setGasTotalPrice] = useState<any>(0);
   const { data: feeData } = useFeeData();
+
+  const [isShowNetwork, setIsShowNetwork] = useState<boolean>(false);
 
   const handleWithdrawField = (e) => {
     setWithdrawValue({
@@ -114,6 +122,29 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
     }
   }, [gasData, feeData]);
 
+  const { network } = useContext(NetworkContext);
+  const { chain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+
+  useEffect(() => {
+    if (isConnected) {
+      console.log(network.id);
+      console.log(chain.id);
+      if (chain.id !== network.id) {
+        setIsShowNetwork(true);
+      }
+    } else {
+      setIsShowNetwork(false);
+    }
+  }, [network, isConnected, chain]);
+
+  const errorMessageClickHandler = (id: number) => {
+    if (isConnected) {
+      switchNetwork(id);
+      closeModalWallet();
+    }
+  };
+
   return (
     <>
       <StyledInputsContainer>
@@ -175,6 +206,13 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
             </a>
           </p>
         </StyledSuccessBox>
+      )}
+      {isShowNetwork && (
+        <ErrorMessageWithButton
+          errorMessageClickHandler={() => errorMessageClickHandler(network.id)}
+          buttonMessage={'Switch Network'}
+          message={`Please switch to ${network.name}. `}
+        />
       )}
       {isPrepareError && withdrawValue.withdraw !== 0 && (
         <ErrorMessage message={prepareError.message} />

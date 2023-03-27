@@ -6,6 +6,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { infuraProvider } from 'wagmi/providers/infura';
 import '../styles/globals.css';
+import NetworkProvider from './context/NetworkContext';
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -34,7 +35,9 @@ const MyPage = ({ Component, pageProps }) => {
   return (
     <WagmiConfig client={client}>
       <SessionProvider session={pageProps.session} refetchInterval={0}>
-        <Component {...pageProps} />
+        <NetworkProvider>
+          <Component {...pageProps} />
+        </NetworkProvider>
       </SessionProvider>
     </WagmiConfig>
   );

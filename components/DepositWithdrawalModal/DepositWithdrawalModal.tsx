@@ -130,6 +130,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
         {financialActionType === financialActionTypes.DEPOSIT ? (
           <DepositTab
             openModal={openModalWallet}
+            closeModalWallet={closeModalWallet}
             balanceOfWallet={balanceOfWallet}
             balanceOfWalletDfUSDC={balanceOfWalletDfUSDC}
             exchangeRateOfWallet={exchangeRateOfWallet}
@@ -137,6 +138,7 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
         ) : (
           <WithdrawTab
             openModal={openModalWallet}
+            closeModalWallet={closeModalWallet}
             balanceOfWallet={balanceOfWallet}
             balanceOfWalletDfUSDC={balanceOfWalletDfUSDC}
             exchangeRateOfWallet={exchangeRateOfWallet}

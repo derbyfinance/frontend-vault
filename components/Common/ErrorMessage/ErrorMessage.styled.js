@@ -18,3 +18,9 @@ export const StyledErrorMessage = styled.div`
     font: ${({ theme }) => theme.fonts.robotoLight};
     font-size: 12px;
 `
+
+export const StyledButtonMessage = styled.div`
+    font: ${({ theme }) => theme.fonts.robotoLight};
+    font-size: 12px;
+    text-decoration: underline;
+`

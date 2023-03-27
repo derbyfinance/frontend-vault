@@ -7,7 +7,7 @@ const ErrorMessage = ({ message }) => {
     return (
         <StyledErrorContainer>
             <StyledErrorWrapper>
-                <Image src={error} />
+                <Image src={error} alt='error'/>
                 <StyledErrorMessage>
                     {message}
                 </StyledErrorMessage>

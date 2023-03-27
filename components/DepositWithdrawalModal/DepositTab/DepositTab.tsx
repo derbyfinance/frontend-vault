@@ -197,8 +197,8 @@ const DepositTab: FC<DepositTabPropsType> = ({
 
   const errorMessageClickHandler = (id: number) => {
     if (isConnected) {
-      switchNetwork(id);
       closeModalWallet();
+      switchNetwork(id);
     }
   };
 

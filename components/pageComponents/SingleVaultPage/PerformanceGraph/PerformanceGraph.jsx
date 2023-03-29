@@ -65,6 +65,7 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       const today = getTodayInDDMMYYYYFormat();
       let vaultStatByDate = vaultStats?.filter((stat) => {
         return stat.date == '20-03-2023'; //Temp solution for UI
+        //TODO
         // return stat.date == today;
       });
       if (vaultStatByDate?.length != 0 && vaultStatByDate != undefined) {
@@ -122,13 +123,6 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       {
         label: 'Performance',
         data: chartDataOfChartView,
-        // data: chartDataOfChartView.map((item) => {
-        //   if(item.toString().length > 6){
-        //     return (item / 1e6)
-        //   }else{
-        //     return item
-        //   }
-        // }),
         fill: true,
         lineTension: 0.5,
         tension: 0.3,
@@ -204,8 +198,7 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
           label: function (tooltipItem) {
             return tooltipItem.label;
           },
-          title: function (tooltipItem, data) {
-            console.log(tooltipItem[0].dataset.data[tooltipItem[0].dataIndex]);
+          title: function (tooltipItem) {
             if (
               tooltipItem[0].dataset.data[tooltipItem[0].dataIndex].toString()
                 .length > 6

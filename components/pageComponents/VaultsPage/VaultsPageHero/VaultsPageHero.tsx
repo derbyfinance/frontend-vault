@@ -1,12 +1,12 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import DropDownMenu from '@components/Common/DropDownMenu/DropDownMenu';
 import { addSeparators } from '@helpers/helperFunctions';
 import { Lock, Members, Vaults } from '@icons/index';
 import vaultPageHeroBackground from '@icons/vaultPageHeroBackground.svg';
 import HeroCircle from '@images/HeroCircle.png';
+import { NetworkContext } from '@pages/context/NetworkContext';
 import Image from 'next/image';
 import { IHeaderStats } from 'types/stats';
-import { useNetwork } from 'wagmi';
 import BtnArrow from './BtnArrow';
 import ChainsList from './ChainsList';
 import {
@@ -34,6 +34,11 @@ type NetworkInfoBlockType = {
   description: string;
 };
 
+export type INetworkData = {
+  id: number;
+  name: string;
+};
+
 const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({
   icon,
   value,
@@ -51,17 +56,26 @@ const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({
 };
 type VaultsPageHeroPropType = {
   headerStats: IHeaderStats;
+  setNetworkId: Function;
 };
 
-const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
-  const [chainsOpen, setChainsOpen] = useState<boolean>(false);
+const VaultsPageHero: FC<VaultsPageHeroPropType> = ({
+  headerStats,
+  setNetworkId,
+}) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const arrowRef: React.MutableRefObject<any> = useRef();
   const dropdownRef: React.MutableRefObject<any> = useRef();
+  const { setNetwork, network } = useContext(NetworkContext);
 
-  //some default value, until we figure out what to show when wallet is not connected
-  const { chain = { id: 1, name: 'Ethereum' } } = useNetwork();
+  const changeChainHandler = (id: number) => {
+    let networkData: INetworkData[] = NetworksData.filter(
+      (network: INetworkData) => network.id === id,
+    );
+    setNetwork(networkData[0]);
+    setNetworkId(id);
+  };
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -96,8 +110,11 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
       <StyledHeroWrapper>
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
-            <Image src={chainIcons[chain?.id]} alt={`${chain?.name} image`} />
-            <h2>{chain.name}</h2>
+            <Image
+              src={chainIcons[network?.id]}
+              alt={`${network?.name} image`}
+            />
+            <h2>{network.name}</h2>
 
             <StyledEmptyDiv ref={dropdownRef}>
               <DropDownMenu
@@ -106,7 +123,10 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
                 onClose={onClose}
                 dropDownButton={<BtnArrow open={open} />}
               >
-                <ChainsList onClose={onClose} />
+                <ChainsList
+                  onClose={onClose}
+                  changeChainHandler={changeChainHandler}
+                />
               </DropDownMenu>
             </StyledEmptyDiv>
           </StyledNetworkTitle>
@@ -139,8 +159,8 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
           </StyledCircle>
           <StyledNetworkIcon>
             <Image
-              alt={`${chain.name} Image`}
-              src={chainIcons[chain.id]}
+              alt={`${network.name} Image`}
+              src={chainIcons[network.id]}
               width={'80px'}
               height={'120px'}
             />
@@ -152,3 +172,12 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
 };
 
 export default VaultsPageHero;
+
+const NetworksData: INetworkData[] = [
+  { id: 1, name: 'Ethereum' },
+  { id: 137, name: 'Polygon' },
+  { id: 42161, name: 'Arbitrum One' },
+  { id: 421613, name: 'Arbitrum Goerli' },
+  { id: 10, name: 'Optimism' },
+  { id: 5, name: 'Goerli' },
+];

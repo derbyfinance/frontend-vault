@@ -6,36 +6,35 @@ import { useAccount } from 'wagmi';
 import VaultsPageHero from './VaultsPageHero/VaultsPageHero';
 import VaultsPageList from './VaultsPageList/VaultsPageList';
 import WalletInfo from './WalletInformation/WalletInfo';
-import {
-  StyledCoinsPart,
-  StyledVaultsPageWrapper,
-} from './index.styled';
+import { StyledCoinsPart, StyledVaultsPageWrapper } from './index.styled';
 
 const VaultsPageComponent: FC = () => {
-  const { isConnected } = useAccount();
-
   const [tableData, setTableData] = useState<IVaultData[]>();
   const [headerStatsData, setheaderStatsData] = useState<IHeaderStats>();
+  const [networkId, setNetworkId] = useState(1);
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    const data = await ApiService.getData(1);
+    const data = await ApiService.getData(networkId);
     const { vaults, headerStats } = data.data.data;
     setheaderStatsData(headerStats);
     setTableData(vaults);
   };
   return (
     <StyledVaultsPageWrapper>
-        <StyledContainerWrapper>
-          <StyledCoinsPart>
-            <VaultsPageHero headerStats={headerStatsData} />
-            <VaultsPageList tableData={tableData} />
-          </StyledCoinsPart>
-          <WalletInfo />
-        </StyledContainerWrapper>
+      <StyledContainerWrapper>
+        <StyledCoinsPart>
+          <VaultsPageHero
+            headerStats={headerStatsData}
+            setNetworkId={setNetworkId}
+          />
+          <VaultsPageList tableData={tableData} />
+        </StyledCoinsPart>
+        <WalletInfo />
+      </StyledContainerWrapper>
     </StyledVaultsPageWrapper>
   );
 };

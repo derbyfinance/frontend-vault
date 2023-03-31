@@ -1,7 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useContext, useEffect } from 'react';
 import { useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
+import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessageWithButton';
 import {
   helperForERC20Error,
   notValidNumberInput,
@@ -9,6 +10,8 @@ import {
   removeNonNumeric,
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
+import { NetworkContext } from '@pages/context/NetworkContext';
+import { derbyVault, usdcTestToken } from 'Constants/addresses';
 import { financialActionTypes } from 'Constants/walletConstants';
 import { formatEther, parseEther } from 'ethers/lib/utils';
 import { useDebounce } from 'use-debounce';
@@ -17,7 +20,9 @@ import {
   useAccount,
   useContractWrite,
   useFeeData,
+  useNetwork,
   usePrepareContractWrite,
+  useSwitchNetwork,
   useWaitForTransaction,
 } from 'wagmi';
 import DepositWithdrawInput from '../DepositWithdrawInput';
@@ -30,10 +35,10 @@ import {
   StyledModalDepositButton,
   StyledSuccessBox,
 } from '../DepositWithdrawalModal.styled';
-import { derbyVault, usdcTestToken } from 'Constants/addresses';
 
 type DepositTabPropsType = {
   openModal: Function;
+  closeModalWallet: Function;
   balanceOfWallet: string;
   balanceOfWalletDfUSDC: string;
   exchangeRateOfWallet: number;
@@ -46,6 +51,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
   balanceOfWallet,
   balanceOfWalletDfUSDC,
   exchangeRateOfWallet,
+  closeModalWallet,
 }) => {
   const [depositValue, setDepositValue] = useState<any>({
     deposit: 0,
@@ -55,6 +61,8 @@ const DepositTab: FC<DepositTabPropsType> = ({
   const [ERC20Error, setERC20Error] = useState('');
   const [isError, setIsError] = useState(false);
   const [gasTotalPrice, setGasTotalPrice] = useState<any>(0);
+
+  const [isShowNetwork, setIsShowNetwork] = useState<boolean>(false);
 
   const debouncedValue = useDebounce(depositValue.deposit, 500);
   const { isConnected, address } = useAccount();
@@ -98,10 +106,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
     addressOrName: usdcTestToken,
     contractInterface: abi,
     functionName: 'approve',
-    args: [
-      derbyVault,
-      parseEther(debouncedValue[0].toString()),
-    ],
+    args: [derbyVault, parseEther(debouncedValue[0].toString())],
   });
   const { data, write } = useContractWrite(config);
   const { data: dataApprove, write: writeApprove } =
@@ -174,6 +179,29 @@ const DepositTab: FC<DepositTabPropsType> = ({
     if (notValidNumberInput(e.key, number)) e.preventDefault();
   };
 
+  const { network } = useContext(NetworkContext);
+  const { chain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+
+  useEffect(() => {
+    if (isConnected) {
+      console.log(network.id);
+      console.log(chain.id);
+      if (chain.id !== network.id) {
+        setIsShowNetwork(true);
+      }
+    } else {
+      setIsShowNetwork(false);
+    }
+  }, [network, isConnected, chain]);
+
+  const errorMessageClickHandler = (id: number) => {
+    if (isConnected) {
+      closeModalWallet();
+      switchNetwork(id);
+    }
+  };
+
   return (
     <>
       <StyledInputsContainer>
@@ -232,12 +260,20 @@ const DepositTab: FC<DepositTabPropsType> = ({
         <StyledSuccessBox>
           Success!{' '}
           <a
-            href={`https://goerli.etherscan.io/tx/${(data || dataApprove)?.hash
-              }`}
+            href={`https://goerli.etherscan.io/tx/${
+              (data || dataApprove)?.hash
+            }`}
           >
             Etherscan
           </a>
         </StyledSuccessBox>
+      )}
+      {isShowNetwork && (
+        <ErrorMessageWithButton
+          errorMessageClickHandler={() => errorMessageClickHandler(network.id)}
+          buttonMessage={'Switch Network'}
+          message={`Please switch to ${network.name}. `}
+        />
       )}
       {isPrepareError && depositValue.deposit != false && (
         <ErrorMessage

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { formatDateToMonthDay, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
+import { formatDateToMonthDay, formatter, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -205,8 +205,9 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
             ) {
               return (
                 '$' +
-                tooltipItem[0].dataset.data[tooltipItem[0].dataIndex] / 1e6 +
-                'M'
+                formatter.format(
+                  tooltipItem[0].dataset.data[tooltipItem[0].dataIndex],
+                )
               );
             }
             return '$' + tooltipItem[0].dataset.data[tooltipItem[0].dataIndex];

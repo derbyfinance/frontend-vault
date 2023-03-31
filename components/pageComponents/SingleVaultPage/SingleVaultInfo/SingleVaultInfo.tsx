@@ -34,6 +34,7 @@ const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
   const [isPositive, setIsPositive] = useState(true);
 
   useEffect(() => {
+    if(vaultStats != undefined){
     let vaultStatsLastEl = vaultStats[vaultStats.length - 1];
 
     if (vaultStatsLastEl !== undefined) {
@@ -52,6 +53,7 @@ const SingleVaultInfo = ({ vaultStats, setDataForGraphHandler }) => {
         setIsPositive(true);
       }
     }
+  }
   }, [vaultStats]);
 
   const dataToShow = [

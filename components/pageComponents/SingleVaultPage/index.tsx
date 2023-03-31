@@ -26,11 +26,19 @@ import {
   StyledVaultInformation,
 } from './index.styled';
 
+type IVaultStats = {
+  price: number,
+  apy: number,
+  tvl: number,
+  date: string,
+}
+
 const SingleVaultPageComponent = ({ vaultInfo }) => {
   const [description, setDescription] = useState('second');
   const [dataSingleVault, setDataSingleVault] = useState([]);
   const [vaultStats, setVaultStats] = useState<any>({});
   const [optionIndex, setOptionIndex] = useState<string>('price');
+  const [keyStatisticsData, setKeyStatisticsData] = useState<IVaultStats>();
 
   const options = ['D', 'W', 'M', 'Y', 'All'];
 
@@ -44,7 +52,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
   }, []);
 
   const getData = async () => {
-    const data = await ApiService.getData();
+    const data = await ApiService.getData(vaultInfo);
     const { vaults } = data.data.data;
     const vault: IVaultData = vaults.filter((item: IVaultData) => {
       return item.coinShortName === vaultInfo;
@@ -59,7 +67,8 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
       const { data } = await ApiService.getUserVaultById(vaultInfo);
       setDescription(data.data.description);
       setDataSingleVault(data.data.vaultAllocations);
-      setVaultStats(data.data.vaultStats.data);
+      setVaultStats(data.data.vaultStats);
+      setKeyStatisticsData(data.data.vaultStats.data[data.data.vaultStats.data.length - 1])
     } catch (error) {
       console.log(error);
     }
@@ -86,7 +95,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
             description={description}
             vault={vaultInfo}
           />
-          <SingleVaultInfo vaultStats={vaultStats} setDataForGraphHandler={setDataForGraphHandler}/>
+          <SingleVaultInfo vaultStats={vaultStats.data} setDataForGraphHandler={setDataForGraphHandler}/>
           <StyledPerformanceChart>
             <StyledChartTitleOptions>
               <StyledChartTitle>
@@ -104,7 +113,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
                 ))}
               </StyledChartOptions>
             </StyledChartTitleOptions>
-            <PerformanceGraph chartView={view} optionIndex={optionIndex}/>
+            <PerformanceGraph chartView={view} optionIndex={optionIndex} vaultInfo={vaultInfo}/>
           </StyledPerformanceChart>
           <StyledVaultInformation>
             Key statistics USDC Vault
@@ -114,17 +123,17 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
           </StyledHeaderText>
           <StyledKeyStatistics>
             <KeyStatisticsItem
-              value={currencyFormatter(9900000)}
+              value={currencyFormatter(keyStatisticsData?.tvl)}
               description="Total Value Locked"
             />
-            <KeyStatisticsItem value={'$157.74'} description="Price LP Token" />
+            <KeyStatisticsItem value={keyStatisticsData?.price} description="Price LP Token" />
             <KeyStatisticsItem
-              value={percentageFormatter(6.32)}
+              value={percentageFormatter(keyStatisticsData?.apy)}
               description="Annual Percentage Yield"
             />
             <KeyStatisticsItem value="USD Stablecoin" description="Type" />
-            <KeyStatisticsItem value={593} description="Depositors" />
-            <KeyStatisticsItem value="6 Days" description="Time To Rebalance" />
+            <KeyStatisticsItem value={vaultStats?.depositors} description="Depositors" />
+            <KeyStatisticsItem value={`${vaultStats?.rebalanceIn} Days`} description="Time To Rebalance" />
           </StyledKeyStatistics>
           <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
           <StyledHeaderText>

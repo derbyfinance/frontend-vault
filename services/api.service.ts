@@ -18,7 +18,7 @@ export const ApiService = {
   },
 
   async getUserVaultById(id: string) {
-    return await axios.get(`/api/vaults/id`, {
+    return await axios.get(`/api/vaults/${id}`, {
       headers: {
         'content-type': 'application/json',
       },

@@ -5,18 +5,18 @@ const StyledKeyStatisticsContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.borderMain};
   border-radius: 6px;
   padding: 20px;
-  min-width: 280px;
+  min-width: 215px;
 `;
 
 const StyledKeyStatisticsValue = styled.div`
   font: ${({ theme }) => theme.fonts.robotoBold};
-  font-size: 24px;
+  font-size: 19px;
   color: ${({ theme }) => theme.colors.headerMain};
 `;
 
 const StyledKeyStatisticsDescription = styled.div`
   font: ${({ theme }) => theme.fonts.robotoMedium};
-  font-size: 18px;
+  font-size: 16px;
   color: ${({ theme }) => theme.colors.textFaded};
 `;
 

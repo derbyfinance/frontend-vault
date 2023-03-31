@@ -42,7 +42,7 @@ ChartJS.register(
   plugin,
 );
 
-const PerformanceGraph = ({ chartView, optionIndex }) => {
+const PerformanceGraph = ({ chartView, optionIndex, vaultInfo }) => {
   const [vaultStats, setVaultStats] = useState();
   const [chartLabelOfChartView, setChartLabelOfChartView] = useState([]);
   const [chartDataOfChartView, setChartDataOfChartView] = useState([]);
@@ -110,7 +110,7 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
 
   const getVaultDataById = async () => {
     try {
-      const { data } = await ApiService.getUserVaultById('');
+      const { data } = await ApiService.getUserVaultById(vaultInfo);
       setVaultStats(data.data.vaultStats.data);
     } catch (error) {
       console.log(error);

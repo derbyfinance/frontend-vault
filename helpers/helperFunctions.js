@@ -83,3 +83,5 @@ export const formatDateToMonthDay = (date) => {
   let newDate = `${monthNames[month]} ${date.substring(0, 2)}`;
   return newDate;
 };
+
+export const formatter = Intl.NumberFormat('en', { notation: 'compact' });

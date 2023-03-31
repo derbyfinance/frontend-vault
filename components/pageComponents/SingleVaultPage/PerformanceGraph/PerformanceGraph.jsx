@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { formatDateToMonthDay, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
+import { formatDateToMonthDay, formatter, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -65,6 +65,7 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       const today = getTodayInDDMMYYYYFormat();
       let vaultStatByDate = vaultStats?.filter((stat) => {
         return stat.date == '20-03-2023'; //Temp solution for UI
+        //TODO
         // return stat.date == today;
       });
       if (vaultStatByDate?.length != 0 && vaultStatByDate != undefined) {
@@ -187,7 +188,8 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
       tooltip: {
         backgroundColor: '#160344',
         titleFont: {
-          size: 18,
+          size: 16,
+          family: 'Roboto-Medium',
         },
         bodyFont: {
           size: 12,
@@ -196,12 +198,23 @@ const PerformanceGraph = ({ chartView, optionIndex }) => {
           label: function (tooltipItem) {
             return tooltipItem.label;
           },
-          title: function (tooltipItem, data) {
+          title: function (tooltipItem) {
+            if (
+              tooltipItem[0].dataset.data[tooltipItem[0].dataIndex].toString()
+                .length > 6
+            ) {
+              return (
+                '$' +
+                formatter.format(
+                  tooltipItem[0].dataset.data[tooltipItem[0].dataIndex],
+                )
+              );
+            }
             return '$' + tooltipItem[0].dataset.data[tooltipItem[0].dataIndex];
           },
           labelColor: function (context) {
             return {
-              fontSize: 30,
+              fontSize: 8,
             };
           },
 

@@ -52,7 +52,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
   }, []);
 
   const getData = async () => {
-    const data = await ApiService.getData(1);
+    const data = await ApiService.getData(vaultInfo);
     const { vaults } = data.data.data;
     const vault: IVaultData = vaults.filter((item: IVaultData) => {
       return item.coinShortName === vaultInfo;

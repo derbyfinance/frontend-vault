@@ -1,7 +1,17 @@
+import { useState } from 'react';
 import MainButton from '@components/Common/MainButton/MainButton';
-import ConnectedWalletAddress from '@components/Layout/NavBar/ConnectedWalletAddress/ConnectedWalletAddress';
+import { StyledAddressWrapper } from '@components/Layout/NavBar/ConnectedWalletAddress/ConnectedWalletAddress.styled';
+import WalletAddressButton from '@components/Layout/NavBar/ConnectedWalletAddress/WalletAddressButton/WalletAddressButton';
+import {
+  StyledArrowContainer,
+  StyledWalletAddressBtn,
+} from '@components/Layout/NavBar/ConnectedWalletAddress/WalletAddressButton/WalletAddressButton.styled';
+import ArrowDownComponent from '@components/UI/ArrowDownComponent';
+import { hideMiddleCharacters } from '@helpers/helperFunctions';
+import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../public/icons/Logo';
+import ConnectWalletModal from './ConnectWalletModal';
 import {
   StyledNavBarContent,
   StyledNavBarWrapper,
@@ -9,21 +19,19 @@ import {
   StyledNavLinks,
 } from './NavBar.styled';
 
-const NavBar = ({ isConnected }) => {
+const NavBar = ({ isConnected, open }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const closeModal = () => setIsOpen(false);
+
   return (
     <StyledNavBarWrapper>
-      {/* <ConnectWalletModal isOpen={isOpen} onClose={closeModal} /> */}
+      <ConnectWalletModal isOpen={open} onClose={closeModal} />
       <StyledNavBarContent>
-        {/* <Link href="/" passHref> */}
         <a>
           <Logo />
         </a>
-        {/* </Link> */}
         <StyledNavLinks>
-          {/* TO DO */}
-          {/* <StyledNavLink>
-            <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
-          </StyledNavLink> */}
           <StyledNavLink active={false}>
             <Link href="/vaults">Vault</Link>
           </StyledNavLink>
@@ -35,7 +43,20 @@ const NavBar = ({ isConnected }) => {
           </StyledNavLink>
 
           {isConnected ? (
-            <ConnectedWalletAddress openModal={() => false} />
+            <StyledWalletAddressBtn>
+              <Image
+                src="/stories/assets/MetamaskAvatar.svg"
+                alt=""
+                width={32}
+                height={32}
+              />
+              <StyledAddressWrapper>
+                {hideMiddleCharacters('w231241241241eewgweg332r2')}
+              </StyledAddressWrapper>
+              <StyledArrowContainer open={open}>
+                <ArrowDownComponent open={open} />
+              </StyledArrowContainer>
+            </StyledWalletAddressBtn>
           ) : (
             <StyledNavLink>
               <MainButton onClick={false} btnText="Connect Your Wallet" />

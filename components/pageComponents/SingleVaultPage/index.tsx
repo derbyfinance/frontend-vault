@@ -140,7 +140,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
             How is this specific vault split into different protocols, what are
             you investing in specifically.
           </StyledHeaderText>
-          <TreeMapGraph />
+          <TreeMapGraph vaultInfo={vaultInfo}/>
           <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
         </StyledSingleVaultPart>
         <WalletInfo />

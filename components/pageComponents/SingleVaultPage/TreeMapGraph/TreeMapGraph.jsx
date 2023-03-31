@@ -31,7 +31,7 @@ const StyledTreeMap = styled.div`
   margin-bottom: 84px;
 `;
 
-export default function TreemapChart() {
+export default function TreemapChart({vaultInfo}) {
   const [chainAllocations, setChainAllocations] = useState([]);
 
   useEffect(() => {
@@ -40,7 +40,8 @@ export default function TreemapChart() {
 
   const getVaultDataById = async () => {
     try {
-      const { data } = await ApiService.getUserVaultById('');
+      const { data } = await ApiService.getUserVaultById(vaultInfo);
+      console.log(data)
       let newChainAllocations = data.data.chainAllocations.map((el, index) => {
         return {
           name: Object.keys(el)[0],
@@ -48,6 +49,7 @@ export default function TreemapChart() {
           colorProps: 1 - Number(`0.${index}`),
         };
       });
+      console.log(newChainAllocations)
       setChainAllocations(newChainAllocations);
     } catch (error) {
       console.log(error);

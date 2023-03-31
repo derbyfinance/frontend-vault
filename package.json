@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -27,6 +29,14 @@
     "wagmi": "^0.6.7"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.0-rc.11",
+    "@storybook/addon-interactions": "^7.0.0-rc.11",
+    "@storybook/addon-links": "^7.0.0-rc.11",
+    "@storybook/addon-styling": "^1.0.0-next.1",
+    "@storybook/blocks": "^7.0.0-rc.11",
+    "@storybook/nextjs": "^7.0.0-rc.11",
+    "@storybook/react": "^7.0.0-rc.11",
+    "@storybook/testing-library": "^0.0.14-next.1",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/http-errors": "^2.0.1",
     "@types/node": "^18.14.2",
@@ -36,6 +46,8 @@
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "prettier": "^2.7.1",
+    "storybook": "^7.0.0-rc.11",
+    "tsconfig-paths-webpack-plugin": "^4.0.1",
     "typescript": "^4.9.5"
   }
 }

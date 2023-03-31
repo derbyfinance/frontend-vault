@@ -12,18 +12,11 @@ import {
 const NavBar = ({ isConnected }) => {
   return (
     <StyledNavBarWrapper>
-      {/* <ConnectWalletModal isOpen={isOpen} onClose={closeModal} /> */}
       <StyledNavBarContent>
-        {/* <Link href="/" passHref> */}
         <a>
           <Logo />
         </a>
-        {/* </Link> */}
         <StyledNavLinks>
-          {/* TO DO */}
-          {/* <StyledNavLink>
-            <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
-          </StyledNavLink> */}
           <StyledNavLink active={false}>
             <Link href="/vaults">Vault</Link>
           </StyledNavLink>

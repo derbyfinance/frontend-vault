@@ -56,9 +56,13 @@ const NetworkInfoBlock: FC<NetworkInfoBlockType> = ({
 };
 type VaultsPageHeroPropType = {
   headerStats: IHeaderStats;
+  setNetworkId: Function;
 };
 
-const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
+const VaultsPageHero: FC<VaultsPageHeroPropType> = ({
+  headerStats,
+  setNetworkId,
+}) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const arrowRef: React.MutableRefObject<any> = useRef();
@@ -70,6 +74,7 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({ headerStats }: any) => {
       (network: INetworkData) => network.id === id,
     );
     setNetwork(networkData[0]);
+    setNetworkId(id);
   };
 
   useEffect(() => {

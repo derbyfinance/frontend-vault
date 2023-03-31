@@ -113,7 +113,7 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
                 ))}
               </StyledChartOptions>
             </StyledChartTitleOptions>
-            <PerformanceGraph chartView={view} optionIndex={optionIndex}/>
+            <PerformanceGraph chartView={view} optionIndex={optionIndex} vaultInfo={vaultInfo}/>
           </StyledPerformanceChart>
           <StyledVaultInformation>
             Key statistics USDC Vault

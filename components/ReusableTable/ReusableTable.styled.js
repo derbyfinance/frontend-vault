@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledReusableTable = styled.table``;
-
-export const StyledTable = styled.table`
+export const StyledReusableTable = styled.table`
   border-collapse: collapse;
   width: 100%;
 `;
@@ -17,9 +15,8 @@ export const StyledColumnReusableHeader = styled.th`
 
 export const StyledReusableRowItem = styled.tr`
   vertical-align: middle;
-  text-align: left;
   border-collapse: collapse;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};
+  border-bottom: 1px solid #e2e2e2;
 `;
 
 export const StyledRowReusableCell = styled.td`

@@ -24,4 +24,12 @@ export const ApiService = {
       },
     });
   },
+
+  async getNft() {
+    return await axios.get(`/api/nft`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  },
 };

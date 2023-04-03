@@ -29,9 +29,10 @@ ChartJS.defaults.font.size = 18;
 
 const StyledTreeMap = styled.div`
   margin-bottom: 84px;
+  clip-path: inset(0% 0% 0% 0% round 6px);
 `;
 
-export default function TreemapChart({vaultInfo}) {
+export default function TreemapChart({ vaultInfo }) {
   const [chainAllocations, setChainAllocations] = useState([]);
 
   useEffect(() => {
@@ -41,7 +42,6 @@ export default function TreemapChart({vaultInfo}) {
   const getVaultDataById = async () => {
     try {
       const { data } = await ApiService.getUserVaultById(vaultInfo);
-      console.log(data)
       let newChainAllocations = data.data.chainAllocations.map((el, index) => {
         return {
           name: Object.keys(el)[0],
@@ -49,7 +49,6 @@ export default function TreemapChart({vaultInfo}) {
           colorProps: 1 - Number(`0.${index}`),
         };
       });
-      console.log(newChainAllocations)
       setChainAllocations(newChainAllocations);
     } catch (error) {
       console.log(error);
@@ -94,6 +93,7 @@ export default function TreemapChart({vaultInfo}) {
     data: {
       datasets: [
         {
+          spacing: 2,
           tree: chainAllocations,
           key: 'dataCoverage',
           hoverBackgroundColor: (ctx) => colorFromRaw(ctx),

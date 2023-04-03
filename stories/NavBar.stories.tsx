@@ -1,5 +1,3 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import NavBar from './NavBar';
 
 export default {
@@ -8,10 +6,29 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-} ;
+};
 
 export const Connected = {
   args: {
-    isConnected: false
+    isConnected: true,
+    open: false,
+  },
+};
+export const UnConnected = {
+  args: {
+    isConnected: false,
+    open: false,
+  },
+};
+export const OpenModal = {
+  args: {
+    open: true,
+    isConnected: false,
+  },
+};
+export const CloseModal = {
+  args: {
+    open: false,
+    isConnected: false,
   },
 };

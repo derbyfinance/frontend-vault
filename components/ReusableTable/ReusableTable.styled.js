@@ -21,7 +21,7 @@ export const StyledReusableRowItem = styled.tr`
 
 export const StyledRowReusableCell = styled.td`
   font: ${({ theme }) => theme.fonts.robotoRegular};
-  font-size: 18px;
+  font-size: 16px;
   vertical-align: middle;
   text-align: left;
   padding: 12px;
@@ -30,11 +30,10 @@ export const StyledRowReusableCell = styled.td`
     align-items: center;
     gap: 12px;
     font: ${({ theme }) => theme.fonts.slabMedium};
-    font-size: 20px;
+    font-size: 16px;
     & span {
       font: ${({ theme }) => theme.fonts.robotoMedium};
-
-      font-size: 14px;
+      font-size: 16px;
       color: ${({ theme }) => theme.colors.textFaded};
     }
   }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { formatter } from '@helpers/helperFunctions';
+import { formatterStandard } from '@helpers/helperFunctions';
 import ArrowDown from '@icons/ArrowDown';
 import BronzeMedal from '@icons/BronzeMedal.svg';
 import GoldMedal from '@icons/GoldMedal.svg';
@@ -53,7 +53,7 @@ const RaceStatisticsComponent = () => {
         <StyledRaceStatisticRow
           icon={Stats}
           name={'Staked amount'}
-          price={formatter.format(nftData?.NFT.stakedAmount)}
+          price={formatterStandard.format(nftData?.NFT.stakedAmount)}
           border={true}
         />
         <StyledRaceStatisticRowPerformance
@@ -92,7 +92,7 @@ const RaceStatisticsComponent = () => {
         <StyledRaceStatisticRow
           icon={PortfolioIcon}
           name={'Portfolio'}
-          price={formatter.format(nftData?.wallet.portfolio)}
+          price={formatterStandard.format(nftData?.wallet.portfolio)}
           border={true}
         />
         <StyledRaceStatisticRowPerformance

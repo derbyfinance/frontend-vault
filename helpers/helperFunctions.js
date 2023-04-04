@@ -85,3 +85,4 @@ export const formatDateToMonthDay = (date) => {
 };
 
 export const formatter = Intl.NumberFormat('en', { notation: 'compact' });
+export const formatterStandard = Intl.NumberFormat('en', { notation: 'standard' });

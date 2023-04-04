@@ -32,4 +32,12 @@ export const ApiService = {
       },
     });
   },
+
+  async getRaceData() {
+    return await axios.get(`/api/race`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
+  },
 };

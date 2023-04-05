@@ -32,7 +32,7 @@ export const GameDescriptionContainer = styled.div`
 
 export const StyledSeeMore = styled.div`
   cursor: pointer;
-  margin: 10px 0 0 0;
+  margin: 10px 0 60px 0;
   background-color: #fff;
   font-family: 'Roboto-Medium';
   font-size: 20px;
@@ -43,4 +43,11 @@ export const StyledSeeMore = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+export const StyledWiderBox = styled.div`
+  margin: 30px 0;
+`;
+
+export const StyledImageMargin = styled.div`
+  margin: 5px 0 0 3px;
 `;

@@ -7,7 +7,7 @@ export const StyledTable = styled.table`
 `;
 
 export const StyledColumnHeader = styled.th`
-font-family: 'Roboto-Regular';
+  font-family: 'Roboto-Regular';
   font-size: 16px;
   text-align: left;
   color: ${({ theme }) => theme.colors.textFaded};
@@ -37,6 +37,13 @@ export const StyledRowCell = styled.td`
     display: flex;
     align-items: center;
     font: 'Slab-Medium';
+
+  }
+  & span {
+    margin: 0 0 0 8px;
+    font-family: 'Roboto-Bold';
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.textFaded};
   }
 `;
 

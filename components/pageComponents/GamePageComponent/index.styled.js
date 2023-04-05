@@ -21,6 +21,12 @@ export const GamePageContainer = styled.div`
   width: 100%;
 `;
 
+export const GamePageBodyContainer = styled.div`
+  display: flex;
+  flex-direction:column;
+
+`;
+
 export const GameDescriptionContainer = styled.div`
   width: 800px;
 `;

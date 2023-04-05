@@ -23,10 +23,24 @@ export const GamePageContainer = styled.div`
 
 export const GamePageBodyContainer = styled.div`
   display: flex;
-  flex-direction:column;
-
+  flex-direction: column;
 `;
 
 export const GameDescriptionContainer = styled.div`
   width: 800px;
+`;
+
+export const StyledSeeMore = styled.div`
+  cursor: pointer;
+  margin: 10px 0 0 0;
+  background-color: #fff;
+  font-family: 'Roboto-Medium';
+  font-size: 20px;
+  line-height: 23px;
+  color: #2775c9;
+  display: flex;
+  align-items: center;
+  &:hover {
+    text-decoration: underline;
+  }
 `;

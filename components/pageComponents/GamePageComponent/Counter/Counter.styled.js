@@ -10,6 +10,7 @@ export const CounterWrapper = styled.div`
   padding: 28px 35px;
   display: flex;
   justify-content: space-between;
+  margin: 0 0 60px 0;
 `;
 
 export const StyleCountdownCircle = styled.div`

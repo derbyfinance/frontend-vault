@@ -35,7 +35,7 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
         </div>
       </StyledRowCell>
       <StyledRowCell>{followers}</StyledRowCell>
-      <StyledRowCell>{formatter.format(invested)}</StyledRowCell>
+      <StyledRowCell>$ {formatter.format(invested)}</StyledRowCell>
       <StyledRowCell>{performance}%</StyledRowCell>
       <StyledRowCell>
         {isVaultsPage && (

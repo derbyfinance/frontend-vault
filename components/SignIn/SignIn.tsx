@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Coinbase, MetaMask, WalletConnect } from '@icons/index';
-import axios from 'axios';
+import { useAuthRequestChallengeEvm } from '@moralisweb3/next';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useAccount, useConnect, useDisconnect, useSignMessage } from 'wagmi';
@@ -14,9 +14,10 @@ type SignInProps = {
 
 const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
   const { connectors, connectAsync } = useConnect();
-  const { disconnectAsync, disconnect } = useDisconnect();
+  const { disconnectAsync } = useDisconnect();
   const { isConnected } = useAccount();
   const { signMessageAsync } = useSignMessage();
+  const { requestChallengeAsync } = useAuthRequestChallengeEvm();
   const { push } = useRouter();
 
   const connectWallet = async (connector) => {
@@ -29,20 +30,19 @@ const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
       userData.address = account;
       userData.chain = chain.id;
       console.log(userData)
-      const { data } = await axios.post('/api/auth/request-message', userData, {
-        headers: {
-          'content-type': 'application/json',
-        },
+      const { message } = await requestChallengeAsync({
+        address: account,
+        chainId: chain.id,
       });
 
-      const message = data.message;
       const signature = await signMessageAsync({ message });
 
-      const { url } = await signIn('credentials', {
+      // redirect user after success authentication to '/user' page
+      const { url } = await signIn('moralis-auth', {
         message,
         signature,
         redirect: false,
-        callbackUrl: '/',
+        callbackUrl: '/vaults',
       });
 
       push(url);

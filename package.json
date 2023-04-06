@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@moralisweb3/next": "^2.18.2",
     "axios": "^0.27.2",
     "chart.js": "^4.0.1",
     "chartjs-chart-treemap": "^2.2.0",
@@ -30,14 +31,6 @@
     "wagmi": "^0.6.7"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.0-rc.11",
-    "@storybook/addon-interactions": "^7.0.0-rc.11",
-    "@storybook/addon-links": "^7.0.0-rc.11",
-    "@storybook/addon-styling": "^1.0.0-next.1",
-    "@storybook/blocks": "^7.0.0-rc.11",
-    "@storybook/nextjs": "^7.0.0-rc.11",
-    "@storybook/react": "^7.0.0-rc.11",
-    "@storybook/testing-library": "^0.0.14-next.1",
     "@trivago/prettier-plugin-sort-imports": "^3.4.0",
     "@types/http-errors": "^2.0.1",
     "@types/node": "^18.14.2",

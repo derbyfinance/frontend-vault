@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import seeMoreIcon from '@icons/seeMore.svg';
 import Image from 'next/image';
-import { IRaceLeaderboard } from 'types/race';
+import { IRaceKeyStats, IRaceLeaderboard } from 'types/race';
 import HeaderAndDesc from '../HeaderAndDesc/HeaderAndDesc';
 import {
   StyledImageMargin,
@@ -12,30 +12,35 @@ import {
   StyledColumnHeader,
   StyledTable,
   StyledTableWrapper,
-} from './Table.styled';
+} from './RaceTable.styled';
 import TableRow from './TableRow';
 
 type TableProps = {
-  tableData: IRaceLeaderboard[];
+  tableData: IRaceKeyStats[];
 };
-const headers: string[] = ['NAME', 'MEDALS', 'STAKED', 'PERFORMANCE'];
+const headers: string[] = [
+  'RACE',
+  '#NFTS',
+  'TOTAL STAKED',
+  'PERFORMANCE',
+  'REWARDS',
+];
 
-const LeaderBoard: FC<TableProps> = ({ tableData }) => {
-  const [sliceIndexLeaderBoard, setSliceIndexLeaderBoard] = useState<number>(5);
+const RaceTable: FC<TableProps> = ({ tableData }) => {
+  const [raceKeySliceData, setRaceKeySliceData] = useState<IRaceKeyStats[]>();
 
-  const [leaderBoardSliceData, setLeaderBoardSliceData] =
-    useState<IRaceLeaderboard[]>();
+  const [sliceIndexRaceKey, setSliceIndexRaceKey] = useState<number>(3);
 
   useEffect(() => {
-    setLeaderBoardSliceData(tableData?.slice(0, sliceIndexLeaderBoard));
-  }, [tableData, sliceIndexLeaderBoard]);
+    setRaceKeySliceData(tableData?.slice(0, sliceIndexRaceKey));
+  }, [sliceIndexRaceKey, tableData]);
 
   return (
     <StyledTableWrapper>
       <HeaderAndDesc
-        header={'Leaderboard '}
+        header={'Key statistics'}
         description={
-          'Who are the best of the best. The 5 best are shown here as inspiration to follow. '
+          'The most important data of this months game, use it to compare'
         }
       />
       <StyledTable>
@@ -47,21 +52,21 @@ const LeaderBoard: FC<TableProps> = ({ tableData }) => {
           </tr>
         </thead>
         <tbody>
-          {leaderBoardSliceData &&
-            leaderBoardSliceData.map((rowData) => (
-              <TableRow key={rowData.name} rowData={rowData} isVaultsPage />
+          {raceKeySliceData &&
+            raceKeySliceData.map((rowData) => (
+              <TableRow key={rowData.invested} rowData={rowData} isVaultsPage />
             ))}
         </tbody>
       </StyledTable>
-      {tableData?.length > 5 ? (
+      {tableData?.length > 3 ? (
         <StyledSeeMore
           onClick={() => {
-            leaderBoardSliceData?.length > 5
-              ? setSliceIndexLeaderBoard((prev) => prev - 5)
-              : setSliceIndexLeaderBoard((prev) => prev + 5);
+            raceKeySliceData?.length > 3
+              ? setSliceIndexRaceKey((prev) => prev - 3)
+              : setSliceIndexRaceKey((prev) => prev + 3);
           }}
         >
-          {leaderBoardSliceData?.length > 5 ? 'Hide' : 'See more'}
+          {raceKeySliceData?.length > 5 ? 'Hide' : 'See more'}
           <StyledImageMargin>
             <Image src={seeMoreIcon} alt={'see more'} />
           </StyledImageMargin>
@@ -73,4 +78,4 @@ const LeaderBoard: FC<TableProps> = ({ tableData }) => {
   );
 };
 
-export default LeaderBoard;
+export default RaceTable;

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+export const StyledTableWrapper = styled.table``;
+
 export const StyledTable = styled.table`
   border-collapse: collapse;
   width: 100%;
@@ -37,7 +39,6 @@ export const StyledRowCell = styled.td`
     display: flex;
     align-items: center;
     font: 'Slab-Medium';
-
   }
   & span {
     margin: 0 0 0 8px;
@@ -59,18 +60,3 @@ export const StyledCircleBorder = styled.div`
   justify-content: center;
   margin: 0 10px 0 0;
 `;
-
-export const StyledThreeDots = styled.button`
-  background: #fff;
-  cursor: pointer;
-  border: none;
-  outline: none;
-`;
-
-export const StyledCircleAvatar = styled.div`
-  width: 30px;
-  border-radius: 50%;
-  height: 30px;
-  background-color: #26a17b;
-`;
-

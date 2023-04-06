@@ -25,15 +25,6 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>$ {formatter.format(invested)}</StyledRowCell>
       <StyledRowCell>{performance}%</StyledRowCell>
       <StyledRowCell>$ {formatter.format(rewards)}</StyledRowCell>
-      <StyledRowCell>
-        {isVaultsPage && (
-          <>
-            <AddMoneyToVaultBtn onClick={() => false}>
-              + Follow
-            </AddMoneyToVaultBtn>
-          </>
-        )}
-      </StyledRowCell>
     </StyledRowItem>
   );
 };

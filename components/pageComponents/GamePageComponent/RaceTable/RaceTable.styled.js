@@ -34,7 +34,7 @@ export const StyledRowCell = styled.td`
   font: 'Roboto-Regular';
   font-size: 18px;
   vertical-align: middle;
-  padding: 12px 12px 12px 0px;
+  padding: 25px 12px 25px 0px;
   & div {
     display: flex;
     align-items: center;

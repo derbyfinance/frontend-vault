@@ -14,7 +14,7 @@ type TableRowType = {
 };
 
 const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
-  const { race, followers, invested, performance } = rowData;
+  const { race, followers, invested, performance, rewards } = rowData;
 
   return (
     <StyledRowItem>
@@ -24,6 +24,7 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>{followers}</StyledRowCell>
       <StyledRowCell>$ {formatter.format(invested)}</StyledRowCell>
       <StyledRowCell>{performance}%</StyledRowCell>
+      <StyledRowCell>$ {formatter.format(rewards)}</StyledRowCell>
       <StyledRowCell>
         {isVaultsPage && (
           <>

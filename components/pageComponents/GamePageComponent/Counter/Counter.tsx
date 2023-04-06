@@ -20,8 +20,8 @@ import {
 import { useCountdown } from './useCount';
 
 const Counter = ({ nextRace, raceHeader }) => {
+  const secondsInWeek = 604800;
   const [hours, setHours] = useState<any>(0);
-  const [secondsOverall, setSecondsOverall] = useState<any>();
 
   const time = useCountdown(
     nextRace !== undefined
@@ -31,16 +31,17 @@ const Counter = ({ nextRace, raceHeader }) => {
 
   useEffect(() => {
     setHours(Number(time.hours) + 24 * Number(time.days));
-    setSecondsOverall(time.secondsOverall);
   }, [time.days, time.hours]);
+
+
 
   return (
     <CounterWrapper>
       <StyleCountdownCircle>
         <CountdownCircleTimer
           isPlaying
-          duration={secondsOverall}
-          initialRemainingTime={secondsOverall * 0.7}
+          duration={secondsInWeek}
+          initialRemainingTime={time.secondsOverall}
           colors={['#fff', '#fff']}
           colorsTime={[7, 0]}
           size={148}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTableWrapper = styled.table``;
+export const StyledTableWrapper = styled.div``;
 
 export const StyledTable = styled.table`
   border-collapse: collapse;
@@ -34,7 +34,7 @@ export const StyledRowCell = styled.td`
   font: 'Roboto-Regular';
   font-size: 18px;
   vertical-align: middle;
-  padding: 12px 12px 12px 0px;
+  padding: 25px 12px 25px 0px;
   & div {
     display: flex;
     align-items: center;
@@ -42,22 +42,3 @@ export const StyledRowCell = styled.td`
   }
 `;
 
-export const StyledCircleBorder = styled.div`
-  border: 1px solid #e2e2e2;
-  height: 64px;
-  border-radius: 1000%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  width: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10px 0 0;
-`;
-
-export const StyledCircleAvatar = styled.div`
-  width: 30px;
-  border-radius: 50%;
-  height: 30px;
-  background-color: #26a17b;
-`;

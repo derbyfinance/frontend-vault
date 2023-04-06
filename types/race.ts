@@ -29,4 +29,5 @@ export type IRaceKeyStats = {
   followers: number;
   invested: number;
   performance: number;
+  rewards: number;
 };

@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
 import { formatter } from '@helpers/helperFunctions';
 import Image from 'next/image';
-import { IRaceBestPerformingVaults, IRaceLeaderboard } from 'types/race';
+import { IRaceBestPerformingVaults } from 'types/race';
 import {
   StyleRowName,
-  StyledCircleAvatar,
   StyledCircleBorder,
   StyledRowCell,
   StyledRowItem,

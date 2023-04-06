@@ -50,6 +50,12 @@ const mockLeaderboard: IRaceLeaderboard[] = [
     invested: 981_000,
     performance: 6.81,
   },
+  {
+    name: 'BadmintonGoblet',
+    followers: 1,
+    invested: 981_000,
+    performance: 6.81,
+  },
 ];
 
 const mockBestPerformingVaults: IRaceBestPerformingVaults[] = [
@@ -86,18 +92,21 @@ const mockRaceKeyStats: IRaceKeyStats[] = [
     followers: 39,
     invested: 9_900_000,
     performance: 6.32,
+    rewards: 110_000,
   },
   {
     race: 'Race 2',
     followers: 143,
     invested: 7_310_000,
     performance: 5.93,
+    rewards: 460_000,
   },
   {
     race: 'Race 3',
     followers: 1,
     invested: 11_540_000,
     performance: 4.38,
+    rewards: 210_000,
   },
 ];
 

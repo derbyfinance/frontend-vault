@@ -1,2 +1,2 @@
-export const derbyVault = '0xff998FD69f9F3F93e2D6B10f3e747eb7CA1B645E';
-export const usdcTestToken = '0xDC805eAaaBd6F68904cA706C221c72F8a8a68F9f';
+export const derbyVault = '0xB4cb47bc9C7c7E49d742EB032D8BafD377Be1f31';
+export const usdcTestToken = '0xeDb95D8037f769B72AAab41deeC92903A98C9E16';

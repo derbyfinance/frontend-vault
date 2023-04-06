@@ -76,6 +76,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
     data: gasData,
     error: prepareError,
     isError: isPrepareError,
+    isLoading: prepareLoading,
   } = usePrepareContractWrite({
     addressOrName: addressOrName,
     contractInterface: abi,
@@ -86,6 +87,12 @@ const DepositTab: FC<DepositTabPropsType> = ({
       console.log('Error', error);
     },
   });
+
+  // console.log(config)
+  // console.log(gasData)
+  // console.log(prepareError)
+  // console.log(isPrepareError)
+  console.log({ prepareLoading })
 
   useEffect(() => {
     try {
@@ -260,9 +267,11 @@ const DepositTab: FC<DepositTabPropsType> = ({
         <StyledSuccessBox>
           Success!{' '}
           <a
-            href={`https://goerli.etherscan.io/tx/${
-              (data || dataApprove)?.hash
-            }`}
+
+            href={`https://mumbai.polygonscan.com//tx/${(data || dataApprove)?.hash
+              }`}
+            target="_blank"
+            rel="noreferrer"
           >
             Etherscan
           </a>

@@ -1,5 +1,5 @@
-import { numberPrettier } from '@helpers/helperFunctions';
 import React from 'react';
+import { numberPrettier } from '@helpers/helperFunctions';
 import {
   StyledInput,
   StyledInputContainer,
@@ -12,7 +12,7 @@ const DepositWithdrawInput = ({
   placeholder,
   value,
   onChange,
-  onKeyDown
+  onKeyDown,
 }) => {
   return (
     <StyledInputContainer>

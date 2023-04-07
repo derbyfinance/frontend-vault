@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
 import { formatter } from '@helpers/helperFunctions';
 import Image from 'next/image';
+import Link from 'next/link';
 import { IRaceBestPerformingVaults } from 'types/race';
 import {
   StyleRowName,
@@ -40,9 +41,11 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         {isVaultsPage && (
           <>
-            <AddMoneyToVaultBtn onClick={() => false}>
-              + Invest
-            </AddMoneyToVaultBtn>
+            <Link href={`/game/coin`}>
+              <AddMoneyToVaultBtn onClick={() => false}>
+                + Invest
+              </AddMoneyToVaultBtn>
+            </Link>
           </>
         )}
       </StyledRowCell>

@@ -88,12 +88,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
     },
   });
 
-  // console.log(config)
-  // console.log(gasData)
-  // console.log(prepareError)
-  // console.log(isPrepareError)
-  console.log({ prepareLoading })
-
   useEffect(() => {
     try {
       if (gasData?.request != undefined) {

@@ -50,10 +50,6 @@ const DepositWithdrawalModal = ({ isOpen, onClose }) => {
     args: [address],
   });
 
-  console.log({ isConnected })
-  console.log({ usdcTestToken })
-  console.log({ contractReadForUSDCUserBalance })
-
   const contractReadForDfUSDCUserBalance = useContractRead({
     addressOrName: isConnected
       ? addressOrName

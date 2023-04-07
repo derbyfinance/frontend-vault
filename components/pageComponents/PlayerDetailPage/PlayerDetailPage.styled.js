@@ -11,7 +11,7 @@ export const GameSinglePageWrapper = styled.div`
 `;
 
 export const GameSinglePageContainer = styled.div`
-  padding: 30px 0 0 0;
+  padding: 30px 30px 0 0;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -26,6 +26,3 @@ export const GameSinglePageBodyContainer = styled.div`
   flex-direction: column;
 `;
 
-export const GameDescriptionContainer = styled.div`
-  width: 800px;
-`;

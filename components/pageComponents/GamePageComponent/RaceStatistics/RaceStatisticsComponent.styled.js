@@ -5,6 +5,7 @@ export const StyleRaceStatistics = styled.div`
   height: 797px;
   border: 1px solid #e2e2e2;
   border-radius: 8px;
+  margin: 0 0 0 30px;
 `;
 export const StyleYourRace = styled.div`
   padding: 15px 22px;

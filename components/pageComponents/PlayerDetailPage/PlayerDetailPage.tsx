@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ApiService } from 'services/api.service';
-import { IRaceKeyStats } from 'types/race';
+import { IRaceKeyStats, IRaceLeaderboard } from 'types/race';
 import RaceStatisticsComponent from '../GamePageComponent/RaceStatistics/RaceStatisticsComponent';
+import FollowPeopleTable from './FollowPeopleTable/FollowPeopleTable';
 import KeyStatisticsTable from './KeyStatisticsTable/KeyStatisticsTable';
 import {
-  GameDescriptionContainer,
   GameSinglePageBodyContainer,
   GameSinglePageContainer,
   GameSinglePageWrapper,
@@ -12,6 +12,8 @@ import {
 
 const PlayerDetailPage = () => {
   const [raceKeyData, setRaceKeyData] = useState<IRaceKeyStats[]>();
+  const [leaderBoardData, setLeaderBoardData] = useState<IRaceLeaderboard[]>();
+
   useEffect(() => {
     getRaceData();
   }, []);
@@ -20,6 +22,7 @@ const PlayerDetailPage = () => {
     try {
       const { data } = await ApiService.getRaceData();
       setRaceKeyData(data.data.keyStats);
+      setLeaderBoardData(data.data.leaderBoard);
     } catch (error) {
       console.log(error);
     }
@@ -28,9 +31,8 @@ const PlayerDetailPage = () => {
     <GameSinglePageWrapper>
       <GameSinglePageContainer>
         <GameSinglePageBodyContainer>
-          <GameDescriptionContainer>
             <KeyStatisticsTable tableData={raceKeyData} />
-          </GameDescriptionContainer>
+            <FollowPeopleTable tableData={leaderBoardData} />
         </GameSinglePageBodyContainer>
         <RaceStatisticsComponent />
       </GameSinglePageContainer>

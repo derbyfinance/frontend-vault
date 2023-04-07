@@ -11,6 +11,7 @@ import Stats from '@icons/Stats.svg';
 import StatsGraph from '@icons/StatsGraph.svg';
 import arrowUp from '@images/singleVaultIcons/arrowUp.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ApiService } from 'services/api.service';
 import { INFTWallet } from 'types/nft';
 import {
@@ -105,7 +106,9 @@ const RaceStatisticsComponent = () => {
           price={nftData?.wallet.rewards}
           border={false}
         />
-        <StyledButton>Claim Rewards</StyledButton>
+        <Link href={`/game/player/1`}>
+          <StyledButton>More info</StyledButton>
+        </Link>
       </StyleYourWallet>
     </StyleRaceStatistics>
   );

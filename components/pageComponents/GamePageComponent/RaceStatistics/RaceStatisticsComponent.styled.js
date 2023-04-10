@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyleRaceStatistics = styled.div`
-  width: 427px;
+  width: 425px;
   height: 760px;
   border: 1px solid #e2e2e2;
   border-radius: 8px;

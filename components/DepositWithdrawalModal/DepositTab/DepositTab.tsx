@@ -126,12 +126,14 @@ const DepositTab: FC<DepositTabPropsType> = ({
   });
 
   const handleDepositField = (e) => {
-    setDepositValue({
-      deposit: +removeNonNumeric(e.target.value),
-      youGet:
-        +removeNonNumeric(e.target.value) /
-        (isConnected ? exchangeRateOfWallet : 1),
-    });
+    if (removeNonNumeric(e.target.value).toString().length < 12) {
+      setDepositValue({
+        deposit: +removeNonNumeric(e.target.value),
+        youGet:
+          +removeNonNumeric(e.target.value) /
+          (isConnected ? exchangeRateOfWallet : 1),
+      });
+    }
   };
   const handleDepositFieldYouGet = (e) => {
     setDepositValue({

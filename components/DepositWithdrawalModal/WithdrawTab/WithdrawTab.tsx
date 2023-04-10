@@ -2,7 +2,11 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessageWithButton';
-import { currencyFormatter, notValidNumberInput, removeNonNumeric } from '@helpers/helperFunctions';
+import {
+  currencyFormatter,
+  notValidNumberInput,
+  removeNonNumeric,
+} from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { NetworkContext } from '@pages/context/NetworkContext';
 import { derbyVault } from 'Constants/addresses';
@@ -59,12 +63,14 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
   const [isShowNetwork, setIsShowNetwork] = useState<boolean>(false);
 
   const handleWithdrawField = (e) => {
-    setWithdrawValue({
-      withdraw: +removeNonNumeric(e.target.value),
-      youGet:
-        +removeNonNumeric(e.target.value) *
-        (isConnected ? exchangeRateOfWallet : 1),
-    });
+    if (removeNonNumeric(e.target.value).toString().length < 12) {
+      setWithdrawValue({
+        withdraw: +removeNonNumeric(e.target.value),
+        youGet:
+          +removeNonNumeric(e.target.value) *
+          (isConnected ? exchangeRateOfWallet : 1),
+      });
+    }
   };
 
   const handleWithdrawFieldYouGet = (e) => {

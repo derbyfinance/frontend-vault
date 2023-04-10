@@ -2,7 +2,7 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import AppButton from '@components/Common/AppButton/AppButton';
 import ErrorMessage from '@components/Common/ErrorMessage/ErrorMessage';
 import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessageWithButton';
-import { currencyFormatter, removeNonNumeric } from '@helpers/helperFunctions';
+import { currencyFormatter, notValidNumberInput, removeNonNumeric } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
 import { NetworkContext } from '@pages/context/NetworkContext';
 import { derbyVault } from 'Constants/addresses';
@@ -78,7 +78,7 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
 
   const validateInput = (e) => {
     const number = Number(e.key);
-    if (!number && e.key !== 'Backspace' && e.key !== 'Tab') e.preventDefault();
+    if (notValidNumberInput(e.key, number)) e.preventDefault();
   };
 
   const {

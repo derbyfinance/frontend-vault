@@ -59,5 +59,8 @@ export const StyledCircleAvatar = styled.div`
   width: 30px;
   border-radius: 50%;
   height: 30px;
-  background-color: #26a17b;
+  background-color: ${({ backgroundColor  }) => backgroundColor};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

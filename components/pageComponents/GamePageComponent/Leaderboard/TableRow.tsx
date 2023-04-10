@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import { AddMoneyToVaultBtn } from '@components/Common/MainButton/MainButton.styled';
 import { formatter } from '@helpers/helperFunctions';
 import { IRaceLeaderboard } from 'types/race';
+import LogoIcon from '@icons/LogoIcon.svg';
 import {
+  StyleRowName,
+  StyledCircleAvatar,
   StyledCircleBorder,
   StyledRowCell,
   StyledRowItem,
-  StyleRowName,
-  StyledCircleAvatar
 } from './Table.styled';
+import Image from 'next/image';
 
 type TableRowType = {
   rowData: IRaceLeaderboard;
@@ -17,6 +19,7 @@ type TableRowType = {
 };
 
 const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
+  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   const { name, followers, invested, performance } = rowData;
 
   return (
@@ -24,12 +27,9 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
       <StyledRowCell>
         <div>
           <StyledCircleBorder>
-            <StyledCircleAvatar></StyledCircleAvatar>
-            {/* <Image
-                src={icon}
-                height="24"
-                width="24"
-              ></Image> */}
+            <StyledCircleAvatar
+              backgroundColor={`#${randomColor}`}
+            ><Image src={LogoIcon} width={15} alt={'logo'} /></StyledCircleAvatar>
           </StyledCircleBorder>
           <StyleRowName>{name}</StyleRowName>
         </div>

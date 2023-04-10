@@ -277,7 +277,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
       )}
       {isPrepareError && depositValue.deposit != false && (
         <ErrorMessage
-          message={ERC20Error == '' ? prepareError?.message : ERC20Error}
+          message={ERC20Error == '' ? 'Error' : ERC20Error}
         />
       )}
       <StyledModalDepositButton>

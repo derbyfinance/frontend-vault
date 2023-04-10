@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyleRaceStatistics = styled.div`
   width: 427px;
-  height: 797px;
+  height: 760px;
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   margin: 0 0 0 30px;
@@ -18,14 +18,14 @@ export const StyleYourWallet = styled.div`
 export const StyledRaceStatisticsHeader = styled.div`
   color: ${({ theme }) => theme.colors.headerMain};
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 26px;
+  font-size: 18px;
   line-height: 23px;
 `;
 
 export const StyledRaceWalletHeader = styled.div`
   color: #5f08ee;
   font: ${({ theme }) => theme.fonts.slabMedium};
-  font-size: 26px;
+  font-size: 18px;
   line-height: 23px;
   margin: 20px 0 0 0;
 `;
@@ -33,16 +33,16 @@ export const StyledRaceWalletHeader = styled.div`
 export const StyledRaceStatisticsSub = styled.div`
   color: #a9a6ae;
   font-family: 'Roboto-Medium';
-  font-size: 20px;
+  font-size: 16px;
   line-height: 23px;
-  margin: 5px 0 60px 0;
+  margin: 5px 0 40px 0;
 `;
 export const StyledRaceStatisticsRow = styled.div`
   color: #160344;
   display: flex;
   justify-content: space-between;
   align-items: start;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 23px;
   margin: 20px 0 0 0;
   padding: 0 0 15px 0;
@@ -51,7 +51,7 @@ export const StyledRaceStatisticsRow = styled.div`
 
 export const StyledRaceStatisticsText = styled.div`
   color: #160344;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: start;
   & div {
@@ -60,12 +60,13 @@ export const StyledRaceStatisticsText = styled.div`
     margin: 2px 0 0 5px;
   }
   & span {
+    font-family: 'Slab-Regular';
     margin: 0 0 0 7px;
   }
 `;
 export const StyledRaceStatisticsPerformanceText = styled.div`
   color: #160344;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   & div {
@@ -106,7 +107,7 @@ export const StyledMedalsRowTextContainer = styled.div`
     font-size: 32px;
     & span {
       color: #160344;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
   & span {

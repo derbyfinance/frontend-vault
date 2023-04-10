@@ -27,12 +27,12 @@ export const StyledRowItem = styled.tr`
 
 export const StyleRowName = styled.div`
   font-family: 'Roboto-Medium';
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const StyledRowCell = styled.td`
   font: 'Roboto-Regular';
-  font-size: 18px;
+  font-size: 16px;
   vertical-align: middle;
   padding: 12px 12px 12px 0px;
   & div {
@@ -43,7 +43,6 @@ export const StyledRowCell = styled.td`
   & span {
     margin: 0 0 0 8px;
     font-family: 'Roboto-Bold';
-    font-size: 14px;
     color: ${({ theme }) => theme.colors.textFaded};
   }
 `;

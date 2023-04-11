@@ -29,7 +29,7 @@ ChartJS.defaults.font.size = 18;
 
 const StyledTreeMap = styled.div`
   margin-bottom: 84px;
-  clip-path: inset(0% 0% 0% 0% round 6px);
+  clip-path: inset(0% 0% 0% 0% round 10px);
 `;
 
 export default function TreemapChart({ vaultInfo }) {

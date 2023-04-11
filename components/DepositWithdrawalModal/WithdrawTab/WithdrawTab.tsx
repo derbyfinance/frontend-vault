@@ -221,7 +221,7 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
         />
       )}
       {isPrepareError && withdrawValue.withdraw !== 0 && (
-        <ErrorMessage message={prepareError.message} />
+        <ErrorMessage message={'Error'} />
       )}
       <StyledModalDepositButton>
         {isConnected ? (

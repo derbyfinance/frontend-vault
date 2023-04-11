@@ -19,10 +19,10 @@ const ItemContainer = ({
   name,
   network,
   price,
-  percent,
   id,
   deleteVault,
   updateVault,
+  summaryPrice,
 }) => {
   return (
     <StyleItemContainer>
@@ -44,7 +44,7 @@ const ItemContainer = ({
           <span>DRB</span>
         </StyleItemPrice>
         <StyleItemPrice>
-          <div>{percent}</div>
+          <div>{((price / summaryPrice) * 100).toFixed(1)}</div>
           <span>%</span>
         </StyleItemPrice>
         <StyleToolIcon>

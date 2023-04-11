@@ -6,6 +6,7 @@ import NetworkIcon from '@icons/NetworkIcon.svg';
 import VaultIcon from '@icons/VaultIcon.svg';
 import USDCIcon from '@icons/usdc.svg';
 import Image from 'next/image';
+import { useAccount } from 'wagmi';
 import {
   StylesOutlineButton,
   StylesPercentBox,
@@ -24,7 +25,6 @@ import {
   StyledNetworkSelect,
 } from './BuyComponent.styled';
 import DropDownNetwork from './components/DropDownNetwork';
-import { useAccount } from 'wagmi';
 
 type IBuyComponent = {
   addVaultHandler: Function;
@@ -163,10 +163,10 @@ const BuyComponent: FC<IBuyComponent> = ({
     deleteVault(id);
   };
 
-const changePercentage = (percent) =>{
-  // setAmountValue();
-  console.log(percent)
-}
+  const changePercentage = (percent) => {
+    // setAmountValue();
+    console.log(percent);
+  };
 
   return (
     <>
@@ -188,12 +188,11 @@ const changePercentage = (percent) =>{
           <BtnArrow open={openNetwork} />
         </StyledNetworkSelect>
         {openNetwork && (
-           <DropDownNetwork
-           vaultData={networksData}
-           vaultHandler={networkHandler}
-           changeVaultCheckbox={changeNetworkCheckbox}
-         />
-
+          <DropDownNetwork
+            vaultData={networksData}
+            vaultHandler={networkHandler}
+            changeVaultCheckbox={changeNetworkCheckbox}
+          />
         )}
         <StyledHeader>
           <Image src={VaultIcon} alt="VaultIcon" />
@@ -212,7 +211,6 @@ const changePercentage = (percent) =>{
             vaultHandler={vaultHandler}
             changeVaultCheckbox={changeVaultCheckbox}
           />
-
         )}
         <StyledHeader>Amount</StyledHeader>
         <AmountInput
@@ -230,12 +228,20 @@ const changePercentage = (percent) =>{
         />
         <StylesPercentBoxContainer>
           {percentData.map((box) => (
-            <StylesPercentBox onClick={()=>changePercentage(box.value)} key={box.value} color={box.color}>
+            <StylesPercentBox
+              onClick={() => changePercentage(box.value)}
+              key={box.value}
+              color={box.color}
+            >
               {box.value}%
             </StylesPercentBox>
           ))}
         </StylesPercentBoxContainer>
-        <StylesOutlineButton disabled={!connected} disable={!connected} onClick={addVaultsAnotherHandler}>
+        <StylesOutlineButton
+          disabled={!connected}
+          disable={!connected}
+          onClick={addVaultsAnotherHandler}
+        >
           + Save and Add another vault
         </StylesOutlineButton>
       </BuyComponentWrapper>
@@ -252,9 +258,9 @@ const changePercentage = (percent) =>{
               network={item.network}
               id={item.id}
               price={item.price}
-              percent={item.percent}
               deleteVault={deleteVault}
               updateVault={updateVault}
+              summaryPrice={summaryPrice}
             />
           ))}
           <StyledBuyButton>

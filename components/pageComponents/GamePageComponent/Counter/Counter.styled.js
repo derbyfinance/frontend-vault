@@ -61,6 +61,7 @@ export const StyleTimerText = styled.div`
 `;
 
 export const StyleButton = styled.div`
+  cursor: pointer;
   font-family: 'Slab-Medium';
   margin: 20px 0 0 0;
   display: flex;

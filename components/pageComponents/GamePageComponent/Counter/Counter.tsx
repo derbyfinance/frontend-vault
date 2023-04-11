@@ -4,6 +4,7 @@ import LogoIcon from '@icons/LogoIcon.svg';
 import groupIcon from '@icons/groupIcon.svg';
 import lockedIcon from '@icons/lockedIcon.svg';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import {
   CounterWrapper,
@@ -32,8 +33,6 @@ const Counter = ({ nextRace, raceHeader }) => {
   useEffect(() => {
     setHours(Number(time.hours) + 24 * Number(time.days));
   }, [time.days, time.hours]);
-
-
 
   return (
     <CounterWrapper>
@@ -73,7 +72,9 @@ const Counter = ({ nextRace, raceHeader }) => {
             iconPath={groupIcon}
           />
         </StyleInfoItems>
-        <StyleButton>Join the Race Today</StyleButton>
+        <Link href={`/game/coin`}>
+          <StyleButton>Join the Race Today</StyleButton>
+        </Link>
       </StyleInfo>
     </CounterWrapper>
   );

@@ -11,6 +11,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@moralisweb3/next": "^2.18.2",
     "axios": "^0.27.2",
     "chart.js": "^4.0.1",
     "chartjs-chart-treemap": "^2.2.0",
@@ -27,7 +28,7 @@
     "react-modal": "^3.16.1",
     "styled-components": "^5.3.6",
     "use-debounce": "^8.0.4",
-    "wagmi": "^0.6.7"
+    "wagmi": "^0.6.8"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.0.0-rc.11",

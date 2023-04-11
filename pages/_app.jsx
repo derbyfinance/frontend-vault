@@ -12,6 +12,7 @@ const { chains, provider, webSocketProvider } = configureChains(
   [
     chain.mainnet,
     chain.polygon,
+    chain.polygonMumbai,
     chain.arbitrum,
     chain.arbitrumGoerli,
     chain.optimism,

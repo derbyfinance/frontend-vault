@@ -1,5 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { formatDateToMonthDay, formatter, getTodayInDDMMYYYYFormat } from '@helpers/helperFunctions';
+import {
+  formatDateToMonthDay,
+  formatter,
+  getTodayInDDMMYYYYFormat,
+} from '@helpers/helperFunctions';
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -68,9 +72,19 @@ const PerformanceGraph = ({ chartView, optionIndex, vaultInfo }) => {
         //TODO
         // return stat.date == today;
       });
+      let vaultStatByDateSecondDay = vaultStats?.filter((stat) => {
+        return stat.date == '19-03-2023';
+      });
+
       if (vaultStatByDate?.length != 0 && vaultStatByDate != undefined) {
-        setChartDataOfChartView([vaultStatByDate[0][optionIndex]]);
-        setChartLabelOfChartView([vaultStatByDate[0].date]);
+        setChartDataOfChartView([
+          vaultStatByDateSecondDay[0][optionIndex],
+          vaultStatByDate[0][optionIndex],
+        ]);
+        setChartLabelOfChartView([
+          vaultStatByDateSecondDay[0].date,
+          vaultStatByDate[0].date,
+        ]);
       } else {
         setChartDataOfChartView([0]);
         setChartLabelOfChartView(['there is no actual data for this period']);

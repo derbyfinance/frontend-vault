@@ -44,9 +44,7 @@ const PlayerDetailPage = () => {
       <GameSinglePageContainer>
         <GameSinglePageBodyContainer>
           <StyledChartTitleOptions>
-            <StyledChartTitle>
-              Historical Performance USDC Vault
-            </StyledChartTitle>
+            <StyledChartTitle>Your historical performance</StyledChartTitle>
             <StyledChartOptions>
               {options.map((option) => (
                 <StyledChartOption

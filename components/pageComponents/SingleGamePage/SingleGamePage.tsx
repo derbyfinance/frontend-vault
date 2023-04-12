@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ApiService } from 'services/api.service';
 import { IRace } from 'types/race';
-import RaceStatisticsComponent from '../GamePageComponent/RaceStatistics/RaceStatisticsComponent';
+import RaceInfo from '../GamePageComponent/RaceStatistics/RaceInfo';
 import SingleVaultDescription from '../SingleVaultPage/SingleVaultDescription/SingleVaultDescription';
+import AllocationComponent from './AllocationComponent/AllocationComponent';
 import SinglePageCounter from './SingleGameCounter/SingleGameCounter';
 import {
   GameDescriptionContainer,
@@ -38,6 +39,7 @@ const SingleGamePage = () => {
               vault={'Welcome to The Game'}
               imagePath={undefined}
             />
+            <AllocationComponent/>
             {raceData ? (
               <SinglePageCounter
                 raceHeader={raceData?.header}
@@ -46,7 +48,7 @@ const SingleGamePage = () => {
             ) : null}
           </GameDescriptionContainer>
         </GameSinglePageBodyContainer>
-        <RaceStatisticsComponent />
+        <RaceInfo/>
       </GameSinglePageContainer>
     </GameSinglePageWrapper>
   );

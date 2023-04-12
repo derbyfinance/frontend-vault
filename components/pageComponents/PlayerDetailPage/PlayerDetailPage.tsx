@@ -8,7 +8,6 @@ import {
   StyledChartOptions,
   StyledChartTitle,
   StyledChartTitleOptions,
-  StyledPerformanceChart,
 } from '../SingleVaultPage/index.styled';
 import FollowPeopleTable from './FollowPeopleTable/FollowPeopleTable';
 import KeyStatisticsTable from './KeyStatisticsTable/KeyStatisticsTable';
@@ -44,31 +43,29 @@ const PlayerDetailPage = () => {
     <GameSinglePageWrapper>
       <GameSinglePageContainer>
         <GameSinglePageBodyContainer>
-          <StyledPerformanceChart>
-            <StyledChartTitleOptions>
-              <StyledChartTitle>
-                Historical Performance USDC Vault
-              </StyledChartTitle>
-              <StyledChartOptions>
-                {options.map((option) => (
-                  <StyledChartOption
-                    onClick={() => setView(option)}
-                    active={view === option}
-                    key={option}
-                  >
-                    {option}
-                  </StyledChartOption>
-                ))}
-              </StyledChartOptions>
-            </StyledChartTitleOptions>
-            <PerformanceGraph
-              chartView={view}
-              optionIndex={optionIndex}
-              vaultInfo={'vaultInfo'}
-            />
-          </StyledPerformanceChart>
-          <KeyStatisticsTable tableData={raceKeyData} />
-          <FollowPeopleTable tableData={leaderBoardData} />
+          <StyledChartTitleOptions>
+            <StyledChartTitle>
+              Historical Performance USDC Vault
+            </StyledChartTitle>
+            <StyledChartOptions>
+              {options.map((option) => (
+                <StyledChartOption
+                  onClick={() => setView(option)}
+                  active={view === option}
+                  key={option}
+                >
+                  {option}
+                </StyledChartOption>
+              ))}
+            </StyledChartOptions>
+          </StyledChartTitleOptions>
+          <PerformanceGraph
+            chartView={view}
+            optionIndex={optionIndex}
+            vaultInfo={'vaultInfo'}
+          />
+          {raceKeyData && <KeyStatisticsTable tableData={raceKeyData} />}
+          {leaderBoardData && <FollowPeopleTable tableData={leaderBoardData} />}
         </GameSinglePageBodyContainer>
         <RaceStatisticsComponent />
       </GameSinglePageContainer>

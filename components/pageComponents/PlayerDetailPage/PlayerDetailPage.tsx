@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { ApiService } from 'services/api.service';
 import { IRaceKeyStats, IRaceLeaderboard } from 'types/race';
 import RaceStatisticsComponent from '../GamePageComponent/RaceStatistics/RaceStatisticsComponent';
-import { StyledChartOption, StyledChartOptions, StyledChartTitle, StyledChartTitleOptions, StyledPerformanceChart } from '../SingleVaultPage/index.styled';
 import PerformanceGraph from '../SingleVaultPage/PerformanceGraph/PerformanceGraph';
+import {
+  StyledChartOption,
+  StyledChartOptions,
+  StyledChartTitle,
+  StyledChartTitleOptions,
+  StyledPerformanceChart,
+} from '../SingleVaultPage/index.styled';
 import FollowPeopleTable from './FollowPeopleTable/FollowPeopleTable';
 import KeyStatisticsTable from './KeyStatisticsTable/KeyStatisticsTable';
 import {
@@ -38,7 +44,7 @@ const PlayerDetailPage = () => {
     <GameSinglePageWrapper>
       <GameSinglePageContainer>
         <GameSinglePageBodyContainer>
-        <StyledPerformanceChart>
+          <StyledPerformanceChart>
             <StyledChartTitleOptions>
               <StyledChartTitle>
                 Historical Performance USDC Vault
@@ -55,10 +61,14 @@ const PlayerDetailPage = () => {
                 ))}
               </StyledChartOptions>
             </StyledChartTitleOptions>
-            <PerformanceGraph chartView={view} optionIndex={optionIndex} vaultInfo={"vaultInfo"}/>
+            <PerformanceGraph
+              chartView={view}
+              optionIndex={optionIndex}
+              vaultInfo={'vaultInfo'}
+            />
           </StyledPerformanceChart>
-            <KeyStatisticsTable tableData={raceKeyData} />
-            <FollowPeopleTable tableData={leaderBoardData} />
+          <KeyStatisticsTable tableData={raceKeyData} />
+          <FollowPeopleTable tableData={leaderBoardData} />
         </GameSinglePageBodyContainer>
         <RaceStatisticsComponent />
       </GameSinglePageContainer>

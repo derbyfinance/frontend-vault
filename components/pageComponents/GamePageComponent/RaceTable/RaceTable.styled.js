@@ -27,12 +27,12 @@ export const StyledRowItem = styled.tr`
 
 export const StyleRowName = styled.div`
   font-family: 'Roboto-Medium';
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export const StyledRowCell = styled.td`
   font: 'Roboto-Regular';
-  font-size: 18px;
+  font-size: 16px;
   vertical-align: middle;
   padding: 25px 12px 25px 0px;
   & div {

@@ -43,7 +43,10 @@ export const numberPrettier = (number) => {
 export const removeNonNumeric = (num) => num.toString();
 
 export const notValidNumberInput = (key, number) =>
-  !number && key !== 'Backspace' && key !== 'Tab' && key !== '0';
+  !number && key !== 'Backspace' && key !== 'Tab' && key !== '0' ;
+
+  export const notValidNumberInputDet = (key, number) =>
+  !number && key !== 'Backspace' && key !== 'Tab' && key !== '0' && key !== '.';
 
 export const helperForERC20Error = (error) => {
   if (error?.includes('ERC20')) {

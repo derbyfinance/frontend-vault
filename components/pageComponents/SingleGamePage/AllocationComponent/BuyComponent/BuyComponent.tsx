@@ -1,7 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import HeaderAndDesc from '@components/pageComponents/GamePageComponent/HeaderAndDesc/HeaderAndDesc';
 import BtnArrow from '@components/pageComponents/VaultsPage/VaultsPageHero/BtnArrow';
-import { notValidNumberInput } from '@helpers/helperFunctions';
+import {
+  notValidNumberInput,
+  notValidNumberInputDet,
+} from '@helpers/helperFunctions';
 import NetworkIcon from '@icons/NetworkIcon.svg';
 import VaultIcon from '@icons/VaultIcon.svg';
 import USDCIcon from '@icons/usdc.svg';
@@ -49,6 +52,11 @@ const BuyComponent: FC<IBuyComponent> = ({
   const [selectNetwork, setSelectNetwork] = useState<INetworksData>();
   const [selectVault, setSelectVault] = useState<IMockVault>();
 
+  const [derbyBalance, setDerbyBalance] = useState<number>(1000);
+
+  const networkDropdownSelect: React.MutableRefObject<any> = useRef();
+  const vaultDropdownSelect: React.MutableRefObject<any> = useRef();
+
   const networkDropdown: React.MutableRefObject<any> = useRef();
   const vaultDropdown: React.MutableRefObject<any> = useRef();
 
@@ -66,10 +74,15 @@ const BuyComponent: FC<IBuyComponent> = ({
 
   const validateInput = (e) => {
     const number = Number(e.key);
-    if (notValidNumberInput(e.key, number)) e.preventDefault();
+    if (amountValue.includes('.')) {
+      if (notValidNumberInput(e.key, number)) e.preventDefault();
+    } else {
+      if (notValidNumberInputDet(e.key, number)) e.preventDefault();
+    }
   };
 
   const changeNetworkCheckbox = (value: any) => {
+    console.log(value);
     setNetworksData(
       networksData.map((item) => {
         if (item.id === value) {
@@ -84,6 +97,7 @@ const BuyComponent: FC<IBuyComponent> = ({
   };
 
   const changeVaultCheckbox = (value: any) => {
+    console.log(value);
     setVaultData(
       vaultData.map((item) => {
         if (item.id === value) {
@@ -133,19 +147,27 @@ const BuyComponent: FC<IBuyComponent> = ({
       setSelectVault(null);
     }
   };
-  // useEffect(() => {
-  //   const handler = (e: Event) => {
-  //     if (
-  //       !vaultDropdown.current?.contains(e.target) &&
-  //       !networkDropdown.current?.contains(e.target)
-  //     ) {
-  //       setOpenVault(false);
-  //       setOpenNetwork(false);
-  //     }
-  //   };
-  //   document.addEventListener('mousedown', handler);
-  //   return () => document.removeEventListener('mousedown', handler);
-  // }, []);
+  useEffect(() => {
+    const handler = (e: Event) => {
+      if (
+        !vaultDropdownSelect.current?.contains(e.target) &&
+        !vaultDropdown.current?.contains(e.target)
+      ) {
+        setOpenVault(false);
+      }
+      if (
+        !networkDropdownSelect.current?.contains(e.target) &&
+        !networkDropdown.current?.contains(e.target)
+      ) {
+        if (openNetwork) {
+        }
+        setOpenNetwork(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
   const updateVault = (id: any) => {
     let updatedVault = summaryData.filter((vault: any) => vault.id == id);
     let networkUpdate = networksData.filter(
@@ -164,8 +186,11 @@ const BuyComponent: FC<IBuyComponent> = ({
   };
 
   const changePercentage = (percent) => {
-    // setAmountValue();
-    console.log(percent);
+    if (typeof percent == 'string') {
+      setAmountValue(derbyBalance);
+    } else {
+      setAmountValue((derbyBalance * percent) / 100);
+    }
   };
 
   return (
@@ -176,7 +201,7 @@ const BuyComponent: FC<IBuyComponent> = ({
           <span>Network</span>
         </StyledHeader>
         <StyledNetworkSelect
-          ref={networkDropdown}
+          ref={networkDropdownSelect}
           onClick={() => setOpenNetwork(!openNetwork)}
         >
           <div>
@@ -188,29 +213,33 @@ const BuyComponent: FC<IBuyComponent> = ({
           <BtnArrow open={openNetwork} />
         </StyledNetworkSelect>
         {openNetwork && (
-          <DropDownNetwork
-            vaultData={networksData}
-            vaultHandler={networkHandler}
-            changeVaultCheckbox={changeNetworkCheckbox}
-          />
+          <div ref={networkDropdown}>
+            <DropDownNetwork
+              vaultData={networksData}
+              vaultHandler={networkHandler}
+              changeVaultCheckbox={changeNetworkCheckbox}
+            />
+          </div>
         )}
         <StyledHeader>
           <Image src={VaultIcon} alt="VaultIcon" />
           <span>Vault</span>
         </StyledHeader>
         <StyledNetworkSelect
-          ref={vaultDropdown}
+          ref={vaultDropdownSelect}
           onClick={() => setOpenVault(!openVault)}
         >
           <div>{selectVault != null ? selectVault.name : 'Select a Vault'}</div>
           <BtnArrow open={openVault} />
         </StyledNetworkSelect>
         {openVault && (
-          <DropDownNetwork
-            vaultData={vaultData}
-            vaultHandler={vaultHandler}
-            changeVaultCheckbox={changeVaultCheckbox}
-          />
+          <div ref={vaultDropdown}>
+            <DropDownNetwork
+              vaultData={vaultData}
+              vaultHandler={vaultHandler}
+              changeVaultCheckbox={changeVaultCheckbox}
+            />
+          </div>
         )}
         <StyledHeader>Amount</StyledHeader>
         <AmountInput
@@ -233,7 +262,8 @@ const BuyComponent: FC<IBuyComponent> = ({
               key={box.value}
               color={box.color}
             >
-              {box.value}%
+              {box.value}
+              {typeof box.value !== 'string' && '%'}
             </StylesPercentBox>
           ))}
         </StylesPercentBoxContainer>

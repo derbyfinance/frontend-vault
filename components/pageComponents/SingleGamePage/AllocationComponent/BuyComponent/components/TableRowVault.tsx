@@ -1,29 +1,34 @@
 import React, { FC, useState } from 'react';
 import { formatter } from '@helpers/helperFunctions';
 import {
+  StyleRowVaultName,
   StyledCircleBorder,
   StyledRowCell,
-  StyledRowItem,
   StyledRowCellName,
-  StyleRowVaultName,
+  StyledRowItem,
 } from '../BuyComponent.styled';
 import Checkbox from './Checkbox';
 
 type TableRowType = {
   rowData: any;
-  changeVaultCheckbox:Function
+  changeVaultCheckbox: Function;
 };
 
 const TableRowVault: FC<TableRowType> = ({ rowData, changeVaultCheckbox }) => {
   const { name, allocated, checked, performance, id } = rowData;
 
+  const changeHandler = (e) => {
+    e.preventDefault();
+    changeVaultCheckbox(id);
+  };
+
   return (
-    <StyledRowItem>
+    <StyledRowItem onClick={(e) => changeHandler(e)}>
       <StyledRowCellName>
-      <Checkbox
+        <Checkbox
           value={checked}
           checked={checked}
-          onChange={()=> changeVaultCheckbox(id)}
+          onChange={() => false}
           id={id}
           name={id}
         />

@@ -51,7 +51,7 @@ export default AllocationComponent;
 
 let data = [
   {
-    name: 'USDC Coin',
+    name: 'USD Coin',
     network: 'Ethereum',
     price: 200,
     percent: 20,

@@ -28,6 +28,7 @@ import {
   StyledNetworkSelect,
 } from './BuyComponent.styled';
 import DropDownNetwork from './components/DropDownNetwork';
+import { setNetwork, sortAllocations } from './utils';
 
 type IBuyComponent = {
   addVaultHandler: Function;
@@ -53,6 +54,15 @@ const BuyComponent: FC<IBuyComponent> = ({
   const [selectVault, setSelectVault] = useState<IMockVault>();
 
   const [derbyBalance, setDerbyBalance] = useState<number>(1000);
+
+  const [allocations, setAllocations] = useState<any>([
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0],
+  ]);
 
   const networkDropdownSelect: React.MutableRefObject<any> = useRef();
   const vaultDropdownSelect: React.MutableRefObject<any> = useRef();
@@ -82,7 +92,6 @@ const BuyComponent: FC<IBuyComponent> = ({
   };
 
   const changeNetworkCheckbox = (value: any) => {
-    console.log(value);
     setNetworksData(
       networksData.map((item) => {
         if (item.id === value) {
@@ -97,7 +106,6 @@ const BuyComponent: FC<IBuyComponent> = ({
   };
 
   const changeVaultCheckbox = (value: any) => {
-    console.log(value);
     setVaultData(
       vaultData.map((item) => {
         if (item.id === value) {
@@ -142,7 +150,7 @@ const BuyComponent: FC<IBuyComponent> = ({
         percent: '20',
         id: selectNetwork.id * selectVault.id * amountValue,
       });
-      setAmountValue(0);
+      setAmountValue('');
       setSelectNetwork(null);
       setSelectVault(null);
     }
@@ -191,6 +199,12 @@ const BuyComponent: FC<IBuyComponent> = ({
     } else {
       setAmountValue((derbyBalance * percent) / 100);
     }
+  };
+
+  const getAllocations = () => {
+    const getNetworkData = setNetwork(summaryData);
+    const resOfSortAllocations = sortAllocations(getNetworkData);
+    console.log(resOfSortAllocations);
   };
 
   return (
@@ -268,8 +282,8 @@ const BuyComponent: FC<IBuyComponent> = ({
           ))}
         </StylesPercentBoxContainer>
         <StylesOutlineButton
-          disabled={!connected}
-          disable={!connected}
+          disabled={connected}
+          disable={connected}
           onClick={addVaultsAnotherHandler}
         >
           + Save and Add another vault
@@ -293,7 +307,7 @@ const BuyComponent: FC<IBuyComponent> = ({
               summaryPrice={summaryPrice}
             />
           ))}
-          <StyledBuyButton>
+          <StyledBuyButton onClick={getAllocations}>
             Buy now {summaryPrice ? summaryPrice : 0} DRB
           </StyledBuyButton>
         </SummaryComponentWrapper>
@@ -303,6 +317,14 @@ const BuyComponent: FC<IBuyComponent> = ({
 };
 
 export default BuyComponent;
+
+export type IAllocation = {
+  name: string;
+  network: string;
+  price: number;
+  percent: string;
+  id: number;
+};
 
 const percentData = [
   {
@@ -383,35 +405,35 @@ type IMockVault = {
 const mockVault: IMockVault[] = [
   {
     id: 84,
-    name: 'USDC yVault',
+    name: 'USD Coin',
     allocated: 9_900_000,
     performance: 6.1,
     checked: false,
   },
   {
     id: 24,
-    name: 'USDC Coin',
+    name: 'USD Tether',
     allocated: 7_310_000,
     performance: 6.32,
     checked: false,
   },
   {
     id: 5,
-    name: 'dUSDC',
+    name: 'DAI',
     allocated: 11_540_000,
     performance: 12.5,
     checked: false,
   },
   {
     id: 47,
-    name: 'USDC yVault',
+    name: 'Ethereum',
     allocated: 9_900_000,
     performance: 6.1,
     checked: false,
   },
   {
     id: 25,
-    name: 'USDC Coin',
+    name: 'Wrapped Bitcoin',
     allocated: 7_310_000,
     performance: 6.32,
     checked: false,

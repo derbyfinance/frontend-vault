@@ -22,7 +22,7 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
 
   return (
     <StyledRowItem>
-      <StyledRowCell>
+      <ItemRowWrapper name={name}>
         <div>
           <StyledCircleBorder>
             <Image
@@ -35,9 +35,11 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
           <StyleRowName>{name}</StyleRowName>
           <span>ETH</span>
         </div>
-      </StyledRowCell>
-      <StyledRowCell>$ {formatter.format(allocated)}</StyledRowCell>
-      <StyledRowCell>{performance}%</StyledRowCell>
+      </ItemRowWrapper>
+      <ItemRowWrapper name={name}>
+        $ {formatter.format(allocated)}
+      </ItemRowWrapper>
+      <ItemRowWrapper name={name}>{performance}%</ItemRowWrapper>
       <StyledRowCell>
         {isVaultsPage && (
           <>
@@ -54,3 +56,11 @@ const TableRow: FC<TableRowType> = ({ rowData, isVaultsPage }) => {
 };
 
 export default TableRow;
+
+const ItemRowWrapper = ({ name, children }) => {
+  return (
+    <Link href={`/game/detail/${name}`}>
+      <StyledRowCell>{children}</StyledRowCell>
+    </Link>
+  );
+};

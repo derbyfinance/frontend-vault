@@ -282,8 +282,8 @@ const BuyComponent: FC<IBuyComponent> = ({
           ))}
         </StylesPercentBoxContainer>
         <StylesOutlineButton
-          disabled={connected}
-          disable={connected}
+          disabled={!connected}
+          disable={!connected}
           onClick={addVaultsAnotherHandler}
         >
           + Save and Add another vault

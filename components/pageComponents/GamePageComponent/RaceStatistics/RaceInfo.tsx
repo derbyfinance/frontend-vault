@@ -1,5 +1,5 @@
 import WalletInfoNotConnected from '@components/pageComponents/VaultsPage/WalletInformation/WalletInfoNotConnected/WalletInfoNotConnected';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useLayoutEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import RaceStatisticsComponent from './RaceStatisticsComponent';
 
@@ -7,7 +7,7 @@ const RaceInfo: FC = () => {
   const { isConnected } = useAccount();
   const [connected, setConnected] = useState<boolean>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setConnected(isConnected);
   }, [isConnected]);
 

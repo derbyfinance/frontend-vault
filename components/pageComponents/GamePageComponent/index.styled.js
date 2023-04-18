@@ -35,7 +35,7 @@ export const StyledSeeMore = styled.div`
   margin: 10px 0 60px 0;
   background-color: #fff;
   font-family: 'Roboto-Medium';
-  font-size: 20px;
+  font-size: 16px;
   line-height: 23px;
   color: #2775c9;
   display: flex;

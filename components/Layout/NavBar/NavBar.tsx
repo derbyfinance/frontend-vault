@@ -29,7 +29,7 @@ const NavBar = ({ toggleTheme, isDark }) => {
     <StyledNavBarWrapper>
       <ConnectWalletModal isOpen={isOpen} onClose={closeModal} />
       <StyledNavBarContent>
-        <Link href="/" passHref>
+        <Link href="/vaults" passHref>
           <a>
             <Logo />
           </a>

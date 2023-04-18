@@ -42,7 +42,6 @@ const SignIn: FC<SignInProps> = ({ closeModal, walletDetectionHandler }) => {
         message,
         signature,
         redirect: false,
-        callbackUrl: '/vaults',
       });
 
       push(url);

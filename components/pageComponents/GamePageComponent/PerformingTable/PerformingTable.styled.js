@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTableWrapper = styled.table``;
+export const StyledTableWrapper = styled.div``;
 
 export const StyledTable = styled.table`
   border-collapse: collapse;

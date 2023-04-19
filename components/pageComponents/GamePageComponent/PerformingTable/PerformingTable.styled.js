@@ -17,6 +17,7 @@ export const StyledColumnHeader = styled.th`
 `;
 
 export const StyledRowItem = styled.tr`
+  cursor: pointer;
   vertical-align: middle;
   border-collapse: collapse;
   border-bottom: 1px solid ${({ theme }) => theme.colors.borderMain};

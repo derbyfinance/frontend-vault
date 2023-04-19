@@ -6,6 +6,7 @@ import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessage
 import {
   helperForERC20Error,
   notValidNumberInput,
+  notValidNumberInputDet,
   percentageFormatter,
   removeNonNumeric,
 } from '@helpers/helperFunctions';
@@ -127,22 +128,24 @@ const DepositTab: FC<DepositTabPropsType> = ({
   });
 
   const handleDepositField = (e) => {
-    if (removeNonNumeric(e.target.value).toString().length < 12) {
+    if (Number(e.target.value) < 10e9) {
       setDepositValue({
-        deposit: +removeNonNumeric(e.target.value),
-        youGet:
-          +removeNonNumeric(e.target.value) /
-          (isConnected ? exchangeRateOfWallet : 1),
+        deposit: e.target.value.includes('.')
+          ? e.target.value
+          : +e.target.value,
+        youGet: e.target.value / (isConnected ? exchangeRateOfWallet : 1),
       });
     }
   };
   const handleDepositFieldYouGet = (e) => {
-    setDepositValue({
-      deposit:
-        +removeNonNumeric(e.target.value) *
-        (isConnected ? exchangeRateOfWallet : 1),
-      youGet: +removeNonNumeric(e.target.value),
-    });
+    if (Number(e.target.value) < 10e9) {
+      setDepositValue({
+        deposit:
+          +removeNonNumeric(e.target.value) *
+          (isConnected ? exchangeRateOfWallet : 1),
+        youGet: e.target.value.includes('.') ? e.target.value : +e.target.value,
+      });
+    }
   };
 
   useEffect(() => {
@@ -170,7 +173,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
     e.preventDefault();
     try {
       if (isPrepareError) return;
-
       write?.();
     } catch (error) {
       console.error(error, 'wallet not connected');
@@ -179,7 +181,11 @@ const DepositTab: FC<DepositTabPropsType> = ({
 
   const validateInput = (e) => {
     const number = Number(e.key);
-    if (notValidNumberInput(e.key, number)) e.preventDefault();
+    if (depositValue.deposit.toString().includes('.')) {
+      if (notValidNumberInput(e.key, number)) e.preventDefault();
+    } else {
+      if (notValidNumberInputDet(e.key, number)) e.preventDefault();
+    }
   };
 
   const { network } = useContext(NetworkContext);
@@ -188,8 +194,6 @@ const DepositTab: FC<DepositTabPropsType> = ({
 
   useEffect(() => {
     if (isConnected) {
-      console.log(network.id);
-      console.log(chain.id);
       if (chain.id !== network.id) {
         setIsShowNetwork(true);
       }
@@ -263,9 +267,9 @@ const DepositTab: FC<DepositTabPropsType> = ({
         <StyledSuccessBox>
           Success!{' '}
           <a
-
-            href={`https://mumbai.polygonscan.com//tx/${(data || dataApprove)?.hash
-              }`}
+            href={`https://mumbai.polygonscan.com//tx/${
+              (data || dataApprove)?.hash
+            }`}
             target="_blank"
             rel="noreferrer"
           >
@@ -281,9 +285,7 @@ const DepositTab: FC<DepositTabPropsType> = ({
         />
       )}
       {isPrepareError && depositValue.deposit != false && (
-        <ErrorMessage
-          message={ERC20Error == '' ? 'Error' : ERC20Error}
-        />
+        <ErrorMessage message={ERC20Error == '' ? 'Error' : ERC20Error} />
       )}
       <StyledModalDepositButton>
         {isConnected ? (

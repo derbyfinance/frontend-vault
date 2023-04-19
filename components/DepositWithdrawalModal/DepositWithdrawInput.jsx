@@ -19,7 +19,7 @@ const DepositWithdrawInput = ({
       <StyledLabel>{label}</StyledLabel>
       <StyledInput
         placeholder={placeholder}
-        value={numberPrettier(value)}
+        value={value}
         onKeyDown={onKeyDown}
         onChange={onChange}
       />

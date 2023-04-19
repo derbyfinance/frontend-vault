@@ -5,6 +5,8 @@ import Polygon from '@images/chainIcons/Polygon.svg';
 
 export const chainIcons = {
   42161: Arbitrum,
+  80001: Polygon,
+  421613: Arbitrum,
   10: Optimism,
   137: Polygon,
   1: Ethereum,

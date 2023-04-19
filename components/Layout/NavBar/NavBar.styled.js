@@ -4,7 +4,7 @@ export const StyledNavBarWrapper = styled.nav`
   width: 100%;
   top: 0;
   background: ${({ theme }) => theme.colors.backgroundMain};
-  padding: 64px 30px 40px;
+  padding: 30px 30px 40px;
   z-index: 20;
   font-size: 15px;
 `;

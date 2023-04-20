@@ -24,6 +24,8 @@ const ChainsList = ({
     onClose();
   };
 
+  console.log(chains);
+
   return (
     <StyledChainsList>
       <StyledSwitchTo>SWITCH TO:</StyledSwitchTo>
@@ -33,7 +35,10 @@ const ChainsList = ({
           onClick={() => handleSwitchNetwork(chain.id)}
         >
           <StyledChain>
-            <Image src={chainIcons[chain.id]} alt={chain.name} />
+            <Image
+              src={chainIcons[chain.id] ? chainIcons[chain.id] : chainIcons[1]}
+              alt={chain.name}
+            />
             <StyledChainTitle>{chain.name}</StyledChainTitle>
           </StyledChain>
         </StyledChainWrapper>

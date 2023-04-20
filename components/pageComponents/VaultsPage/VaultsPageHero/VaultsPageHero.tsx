@@ -111,7 +111,7 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({
         <StyledNetworkInfoSection>
           <StyledNetworkTitle>
             <Image
-              src={chainIcons[network?.id]}
+              src={chainIcons[network.id]?chainIcons[network.id]:chainIcons[1]}
               alt={`${network?.name} image`}
             />
             <h2>{network.name}</h2>
@@ -160,7 +160,7 @@ const VaultsPageHero: FC<VaultsPageHeroPropType> = ({
           <StyledNetworkIcon>
             <Image
               alt={`${network.name} Image`}
-              src={chainIcons[network.id]}
+              src={chainIcons[network.id]?chainIcons[network.id]:chainIcons[1]}
               width={'80px'}
               height={'120px'}
             />

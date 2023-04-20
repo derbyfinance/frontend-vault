@@ -39,18 +39,18 @@ const NavBar = ({ toggleTheme, isDark }) => {
           {/* <StyledNavLink>
             <DarkThemeButton toggleTheme={toggleTheme} isDark={isDark} />
           </StyledNavLink> */}
-          <StyledNavLink active={router.pathname === '/vaults'}>
+          <StyledNavLink active={router.pathname.includes('/vaults')}>
             <Link href="/vaults">Vault</Link>
           </StyledNavLink>
-          <StyledNavLink active={router.pathname === '/game'}>
+          <StyledNavLink active={router.pathname.includes('/game')}>
             <Link href="/game">Game</Link>
           </StyledNavLink>
-          <StyledNavLink active={router.pathname === '/governance'}>
+          <StyledNavLink active={router.pathname.includes('/governance')}>
             <Link href="/governance">Governance</Link>
           </StyledNavLink>
 
           {isConnected ? (
-            <ConnectedWalletAddress openModal={openModal}/>
+            <ConnectedWalletAddress openModal={openModal} />
           ) : (
             <StyledNavLink>
               <MainButton onClick={openModal} btnText="Connect Your Wallet" />

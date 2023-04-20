@@ -5,6 +5,7 @@ import ErrorMessageWithButton from '@components/Common/ErrorMessage/ErrorMessage
 import {
   currencyFormatter,
   notValidNumberInput,
+  notValidNumberInputDet,
   removeNonNumeric,
 } from '@helpers/helperFunctions';
 import { DFUSDC, Gas, Info, USDC } from '@icons/index';
@@ -63,28 +64,34 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
   const [isShowNetwork, setIsShowNetwork] = useState<boolean>(false);
 
   const handleWithdrawField = (e) => {
-    if (removeNonNumeric(e.target.value).toString().length < 12) {
+    if (Number(e.target.value) < 10e9) {
       setWithdrawValue({
-        withdraw: +removeNonNumeric(e.target.value),
-        youGet:
-          +removeNonNumeric(e.target.value) *
-          (isConnected ? exchangeRateOfWallet : 1),
+        withdraw: e.target.value.includes('.')
+          ? e.target.value
+          : +e.target.value,
+        youGet: e.target.value / (isConnected ? exchangeRateOfWallet : 1),
       });
     }
   };
 
   const handleWithdrawFieldYouGet = (e) => {
-    setWithdrawValue({
-      youGet: +removeNonNumeric(e.target.value),
-      withdraw:
-        +removeNonNumeric(e.target.value) /
-        (isConnected ? exchangeRateOfWallet : 1),
-    });
+    if (Number(e.target.value) < 10e9) {
+      setWithdrawValue({
+        withdraw:
+          +removeNonNumeric(e.target.value) *
+          (isConnected ? exchangeRateOfWallet : 1),
+        youGet: e.target.value.includes('.') ? e.target.value : +e.target.value,
+      });
+    }
   };
 
   const validateInput = (e) => {
     const number = Number(e.key);
-    if (notValidNumberInput(e.key, number)) e.preventDefault();
+    if (withdrawValue.withdraw.toString().includes('.')) {
+      if (notValidNumberInput(e.key, number)) e.preventDefault();
+    } else {
+      if (notValidNumberInputDet(e.key, number)) e.preventDefault();
+    }
   };
 
   const {
@@ -134,8 +141,6 @@ const WithdrawTab: FC<WithdrawTabPropsType> = ({
 
   useEffect(() => {
     if (isConnected) {
-      console.log(network.id);
-      console.log(chain.id);
       if (chain.id !== network.id) {
         setIsShowNetwork(true);
       }

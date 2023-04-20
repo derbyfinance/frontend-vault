@@ -2,9 +2,14 @@ import styled from 'styled-components';
 
 export const BuyComponentWrapper = styled.div`
   width: 100%;
-  padding: 30px 100px;
   border-top: 1px solid #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
+
+export const BuyComponentContainer = styled.div``;
 
 export const StyledHeader = styled.div`
   font-family: 'Slab-Medium';
@@ -19,6 +24,7 @@ export const StyledHeader = styled.div`
 
 export const StyledDropDownNetwork = styled.div`
   position: absolute;
+  left: 15px;
   background: #fff;
   border: 1px solid #e2e2e2;
   box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
@@ -174,4 +180,3 @@ export const StyledAddInputInfo = styled.div`
     margin: 0 10px 0 0;
   }
 `;
-

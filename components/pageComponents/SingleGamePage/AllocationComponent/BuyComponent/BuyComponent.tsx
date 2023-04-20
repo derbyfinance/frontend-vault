@@ -22,6 +22,7 @@ import {
 } from '../SummaryComponent/SummaryComponent.styled';
 import AmountInput from '../input/AmountInput';
 import {
+  BuyComponentContainer,
   BuyComponentWrapper,
   StyledAddInputInfo,
   StyledHeader,
@@ -208,24 +209,26 @@ const BuyComponent: FC<IBuyComponent> = ({
   };
 
   return (
-    <>
+    <BuyComponentContainer>
       <BuyComponentWrapper>
-        <StyledHeader>
-          <Image src={NetworkIcon} alt="NetworkIcon" />
-          <span>Network</span>
-        </StyledHeader>
-        <StyledNetworkSelect
-          ref={networkDropdownSelect}
-          onClick={() => setOpenNetwork(!openNetwork)}
-        >
-          <div>
-            {selectNetwork != null
-              ? selectNetwork.name
-              : 'All networks selected'}
-          </div>
+        <div>
+          <StyledHeader>
+            <Image src={NetworkIcon} alt="NetworkIcon" />
+            <span>Network</span>
+          </StyledHeader>
+          <StyledNetworkSelect
+            ref={networkDropdownSelect}
+            onClick={() => setOpenNetwork(!openNetwork)}
+          >
+            <div>
+              {selectNetwork != null
+                ? selectNetwork.name
+                : 'All networks selected'}
+            </div>
 
-          <BtnArrow open={openNetwork} />
-        </StyledNetworkSelect>
+            <BtnArrow open={openNetwork} />
+          </StyledNetworkSelect>
+        </div>
         {openNetwork && (
           <div ref={networkDropdown}>
             <DropDownNetwork
@@ -235,17 +238,21 @@ const BuyComponent: FC<IBuyComponent> = ({
             />
           </div>
         )}
-        <StyledHeader>
-          <Image src={VaultIcon} alt="VaultIcon" />
-          <span>Vault</span>
-        </StyledHeader>
-        <StyledNetworkSelect
-          ref={vaultDropdownSelect}
-          onClick={() => setOpenVault(!openVault)}
-        >
-          <div>{selectVault != null ? selectVault.name : 'Select a Vault'}</div>
-          <BtnArrow open={openVault} />
-        </StyledNetworkSelect>
+        <div>
+          <StyledHeader>
+            <Image src={VaultIcon} alt="VaultIcon" />
+            <span>Vault</span>
+          </StyledHeader>
+          <StyledNetworkSelect
+            ref={vaultDropdownSelect}
+            onClick={() => setOpenVault(!openVault)}
+          >
+            <div>
+              {selectVault != null ? selectVault.name : 'Select a Vault'}
+            </div>
+            <BtnArrow open={openVault} />
+          </StyledNetworkSelect>
+        </div>
         {openVault && (
           <div ref={vaultDropdown}>
             <DropDownNetwork
@@ -255,20 +262,22 @@ const BuyComponent: FC<IBuyComponent> = ({
             />
           </div>
         )}
-        <StyledHeader>Amount</StyledHeader>
-        <AmountInput
-          placeholder="0.0"
-          onKeyDown={validateInput}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setAmountValue(e.target.value)
-          }
-          value={amountValue}
-          endAddOn={
-            <StyledAddInputInfo>
-              <span>DRB</span> <Image src={USDCIcon} alt="USDCIcon" />
-            </StyledAddInputInfo>
-          }
-        />
+        <div>
+          <StyledHeader>Amount</StyledHeader>
+          <AmountInput
+            placeholder="0.0"
+            onKeyDown={validateInput}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setAmountValue(e.target.value)
+            }
+            value={amountValue}
+            endAddOn={
+              <StyledAddInputInfo>
+                <span>DRB</span> <Image src={USDCIcon} alt="USDCIcon" />
+              </StyledAddInputInfo>
+            }
+          />
+        </div>
         <StylesPercentBoxContainer>
           {percentData.map((box) => (
             <StylesPercentBox
@@ -312,7 +321,7 @@ const BuyComponent: FC<IBuyComponent> = ({
           </StyledBuyButton>
         </SummaryComponentWrapper>
       )}
-    </>
+    </BuyComponentContainer>
   );
 };
 

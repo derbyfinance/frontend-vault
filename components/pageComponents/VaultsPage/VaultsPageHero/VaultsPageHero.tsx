@@ -176,6 +176,7 @@ export default VaultsPageHero;
 const NetworksData: INetworkData[] = [
   { id: 1, name: 'Ethereum' },
   { id: 137, name: 'Polygon' },
+  { id: 80001, name: 'Polygon Mumbai' },
   { id: 42161, name: 'Arbitrum One' },
   { id: 421613, name: 'Arbitrum Goerli' },
   { id: 10, name: 'Optimism' },

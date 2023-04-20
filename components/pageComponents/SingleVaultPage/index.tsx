@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import KeyStatisticsItem from '@components/Common/KeyStatisticItem/KeyStatisticsItem';
 import { StyledContainerWrapper } from '@components/Layout/Layout.styled';
 import ReusableTable from '@components/ReusableTable/ReusableTable';
@@ -82,9 +82,12 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
     setOptionIndex(i);
   };
 
-  const setVaultName = (idx: number) => {
-    setDataVault(dataSingleVault[idx].vaultAllocations);
-  };
+  const setVaultName = useCallback(
+    (idx: number) => {
+      setDataVault(dataSingleVault[idx]?.vaultAllocations);
+    },
+    [dataSingleVault],
+  );
 
   const headersSingleVault = ['NAME', 'PROTOCOL', 'WEIGHT', 'VALUE'];
 

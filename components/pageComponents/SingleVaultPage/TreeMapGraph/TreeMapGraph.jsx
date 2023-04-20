@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BarElement,
   CategoryScale,
@@ -32,7 +32,7 @@ const StyledTreeMap = styled.div`
   clip-path: inset(0% 0% 0% 0% round 10px);
 `;
 
-export default function TreemapChart({ vaultInfo, setVaultName }) {
+ function TreemapChart({ vaultInfo, setVaultName }) {
   const [chainAllocations, setChainAllocations] = useState([]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function TreemapChart({ vaultInfo, setVaultName }) {
 
   const getVaultDataById = async () => {
     try {
-      const { data } = await ApiService.getUserVaultById(vaultInfo);
+      const { data } = await ApiService.getUserVaultById("vaultInfo");
       let newChainAllocations = data.data.chainAllocations.map((el, index) => {
         return {
           name: Object.keys(el)[0],
@@ -58,7 +58,10 @@ export default function TreemapChart({ vaultInfo, setVaultName }) {
   const options = {
     plugins: false,
     onClick: function (evt, element) {
-      setVaultName(element[0].index);
+      if(element[0]?.index !== undefined){
+        setVaultName(element[0].index);
+
+      }
     },
     //TODO
     // legend: {
@@ -134,3 +137,6 @@ export default function TreemapChart({ vaultInfo, setVaultName }) {
     </StyledTreeMap>
   );
 }
+
+
+export default React.memo(TreemapChart); ;

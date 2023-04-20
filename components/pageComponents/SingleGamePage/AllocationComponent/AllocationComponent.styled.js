@@ -20,7 +20,7 @@ export const StylesPercentBoxContainer = styled.div`
 `;
 
 export const StylesPercentBox = styled.div`
-cursor:pointer;
+  cursor:pointer;
   color: #fff;
   padding: 6px 8px;
   background: ${({ color }) => color};

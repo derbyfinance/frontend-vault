@@ -16,7 +16,6 @@ export const GameSinglePageContainer = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 16px;
-  border-top: 1px solid #e2e2e2;
   position: relative;
   width: 100%;
 `;

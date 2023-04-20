@@ -3,26 +3,19 @@ import createHttpError from 'http-errors';
 import { NextApiHandler } from 'next';
 import { IVaultAllocations, IVaultStats } from 'types/stats';
 
-type IVault = {
+interface IVault {
   description: string;
-  chainAllocations: { [key: string]: number }[];
-  vaultAllocations: IVaultAllocations[];
+  chainAllocations: {
+    [key: string]: number | IVaultAllocations[];
+  }[];
   vaultStats: IVaultStats;
-};
+}
 
 type GetResponse = {
   data: IVault;
 };
 
 const mockDescription = `Oh no, don't touch that. That's some new specialized weather sensing equipment. Hey, hey, I've seen this one, I've seen this one. This is a classic, this is where Ralph dresses up as the man from space. Something wrong with the starter, so I hid it. Just turn around, McFly, and walk away. Are you deaf, McFly? Close the door and beat it. Well, aren't you going up to the lake tonight, you've been planning it for two weeks.`;
-
-const mockChainAllocations = [
-  { ETH: 31.4 },
-  { OPT: 10.2 },
-  { ARB: 12.8 },
-  { BSC: 20.1 },
-  { AVA: 25.5 },
-];
 
 const mockVaultAllocations = [
   {
@@ -139,10 +132,17 @@ const mockVaultStats = {
 const getVaultInfo: NextApiHandler<GetResponse> = async (req, res) => {
   const { vaultId } = req.query;
 
+  const mockChainAllocations = [
+    { ETH: 31.4, vaultAllocations: shuffleArray([...mockVaultAllocations]) },
+    { OPT: 10.2, vaultAllocations: shuffleArray([...mockVaultAllocations]) },
+    { ARB: 12.8, vaultAllocations: shuffleArray([...mockVaultAllocations]) },
+    { BSC: 20.1, vaultAllocations: shuffleArray([...mockVaultAllocations]) },
+    { AVA: 25.5, vaultAllocations: shuffleArray([...mockVaultAllocations]) },
+  ];
+
   const data: IVault = {
     description: mockDescription,
     chainAllocations: mockChainAllocations,
-    vaultAllocations: mockVaultAllocations,
     vaultStats: mockVaultStats,
   };
 
@@ -150,6 +150,23 @@ const getVaultInfo: NextApiHandler<GetResponse> = async (req, res) => {
 
   res.status(200).json({ data });
 };
+
+function shuffleArray<T>(array: T[]): T[] {
+  let currentIndex = array.length;
+  let temporaryValue: T;
+  let randomIndex: number;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 export default apiHandler({
   GET: getVaultInfo,

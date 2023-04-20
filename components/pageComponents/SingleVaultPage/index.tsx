@@ -27,15 +27,17 @@ import {
 } from './index.styled';
 
 type IVaultStats = {
-  price: number,
-  apy: number,
-  tvl: number,
-  date: string,
-}
+  price: number;
+  apy: number;
+  tvl: number;
+  date: string;
+};
 
 const SingleVaultPageComponent = ({ vaultInfo }) => {
   const [description, setDescription] = useState('second');
   const [dataSingleVault, setDataSingleVault] = useState([]);
+  const [dataVault, setDataVault] = useState([]);
+  const [dataVaultName, setDataVaultName] = useState('');
   const [vaultStats, setVaultStats] = useState<any>({});
   const [optionIndex, setOptionIndex] = useState<string>('price');
   const [keyStatisticsData, setKeyStatisticsData] = useState<IVaultStats>();
@@ -66,15 +68,22 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
     try {
       const { data } = await ApiService.getUserVaultById(vaultInfo);
       setDescription(data.data.description);
-      setDataSingleVault(data.data.vaultAllocations);
+      setDataSingleVault(data.data.chainAllocations);
+      setDataVault(data.data.chainAllocations[0].vaultAllocations);
       setVaultStats(data.data.vaultStats);
-      setKeyStatisticsData(data.data.vaultStats.data[data.data.vaultStats.data.length - 1])
+      setKeyStatisticsData(
+        data.data.vaultStats.data[data.data.vaultStats.data.length - 1],
+      );
     } catch (error) {
       console.log(error);
     }
   };
   const setDataForGraphHandler = (i: string) => {
-    setOptionIndex(i)
+    setOptionIndex(i);
+  };
+
+  const setVaultName = (idx: number) => {
+    setDataVault(dataSingleVault[idx].vaultAllocations);
   };
 
   const headersSingleVault = ['NAME', 'PROTOCOL', 'WEIGHT', 'VALUE'];
@@ -95,7 +104,10 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
             description={description}
             vault={vaultInfo}
           />
-          <SingleVaultInfo vaultStats={vaultStats.data} setDataForGraphHandler={setDataForGraphHandler}/>
+          <SingleVaultInfo
+            vaultStats={vaultStats.data}
+            setDataForGraphHandler={setDataForGraphHandler}
+          />
           <StyledPerformanceChart>
             <StyledChartTitleOptions>
               <StyledChartTitle>
@@ -113,7 +125,11 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
                 ))}
               </StyledChartOptions>
             </StyledChartTitleOptions>
-            <PerformanceGraph chartView={view} optionIndex={optionIndex} vaultInfo={vaultInfo}/>
+            <PerformanceGraph
+              chartView={view}
+              optionIndex={optionIndex}
+              vaultInfo={vaultInfo}
+            />
           </StyledPerformanceChart>
           <StyledVaultInformation>
             Key statistics USDC Vault
@@ -126,22 +142,31 @@ const SingleVaultPageComponent = ({ vaultInfo }) => {
               value={currencyFormatter(keyStatisticsData?.tvl)}
               description="Total Value Locked"
             />
-            <KeyStatisticsItem value={keyStatisticsData?.price} description="Price LP Token" />
+            <KeyStatisticsItem
+              value={keyStatisticsData?.price}
+              description="Price LP Token"
+            />
             <KeyStatisticsItem
               value={percentageFormatter(keyStatisticsData?.apy)}
               description="Annual Percentage Yield"
             />
             <KeyStatisticsItem value="USD Stablecoin" description="Type" />
-            <KeyStatisticsItem value={vaultStats?.depositors} description="Depositors" />
-            <KeyStatisticsItem value={`${vaultStats?.rebalanceIn} Days`} description="Time To Rebalance" />
+            <KeyStatisticsItem
+              value={vaultStats?.depositors}
+              description="Depositors"
+            />
+            <KeyStatisticsItem
+              value={`${vaultStats?.rebalanceIn} Days`}
+              description="Time To Rebalance"
+            />
           </StyledKeyStatistics>
           <StyledVaultInformation>USDC Vault allocation</StyledVaultInformation>
           <StyledHeaderText>
             How is this specific vault split into different protocols, what are
             you investing in specifically.
           </StyledHeaderText>
-          <TreeMapGraph vaultInfo={vaultInfo}/>
-          <ReusableTable data={dataSingleVault} headers={headersSingleVault} />
+          <TreeMapGraph vaultInfo={vaultInfo} setVaultName={setVaultName} />
+          <ReusableTable data={dataVault} headers={headersSingleVault} />
         </StyledSingleVaultPart>
         <WalletInfo />
       </StyledContainerWrapper>

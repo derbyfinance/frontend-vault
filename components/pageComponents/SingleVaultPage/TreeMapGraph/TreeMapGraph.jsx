@@ -32,7 +32,7 @@ const StyledTreeMap = styled.div`
   clip-path: inset(0% 0% 0% 0% round 10px);
 `;
 
-export default function TreemapChart({ vaultInfo }) {
+export default function TreemapChart({ vaultInfo, setVaultName }) {
   const [chainAllocations, setChainAllocations] = useState([]);
 
   useEffect(() => {
@@ -57,6 +57,9 @@ export default function TreemapChart({ vaultInfo }) {
 
   const options = {
     plugins: false,
+    onClick: function (evt, element) {
+      setVaultName(element[0].index);
+    },
     //TODO
     // legend: {
     //   display: false,
@@ -113,6 +116,7 @@ export default function TreemapChart({ vaultInfo }) {
               weight: 500,
             },
           },
+
           backgroundColor(context) {
             if (context.type !== 'data') return 'transparent';
             const { dataCoverage, colorProps } = context.raw._data;

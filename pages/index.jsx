@@ -21,6 +21,7 @@ const Home = ({ session, ...props }) => {
   const router = useRouter();
   useEffect(() => {
     if (router.pathname === '/') router.push('/vaults');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const account = useAccount();
 

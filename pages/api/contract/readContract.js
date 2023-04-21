@@ -1,4 +1,4 @@
-import { EvmChain } from '@moralisweb3/evm-utils';
+import { EvmChain } from '@moralisweb3/common-evm-utils';
 import Moralis from 'moralis';
 import vaultAbi from '/utils/abis/vault.json';
 

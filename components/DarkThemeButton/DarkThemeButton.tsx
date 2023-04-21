@@ -13,13 +13,13 @@ const DarkThemeButton = ({ toggleTheme, isDark } : { toggleTheme : Function, isD
     <StyledDarkThemeButtonContainer onClick={toggleTheme} isDark={isDark}>
       {isDark ? (
         <StyledRowIconSun>
-          <Image src={sun} />
+          <Image src={sun} alt={'sun'}/>
         </StyledRowIconSun>
       ) : null}
       <StyledSwitcher isDark={isDark} />
       {!isDark ? (
         <StyledRowIconMoon>
-          <Image src={moon} />
+          <Image src={moon} alt={'moon'}/>
         </StyledRowIconMoon>
       ) : null}
     </StyledDarkThemeButtonContainer>

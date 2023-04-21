@@ -46,6 +46,7 @@ const GameCoinDetailPage = ({ vaultInfo }) => {
   useEffect(() => {
     getData();
     getVaultDataById();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getData = async () => {

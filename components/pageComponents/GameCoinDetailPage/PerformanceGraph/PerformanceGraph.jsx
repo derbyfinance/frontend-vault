@@ -49,6 +49,7 @@ const PerformanceGraph = ({ chartView, optionIndex, vaultInfo }) => {
 
   useEffect(() => {
     getVaultDataById();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -108,6 +109,7 @@ const PerformanceGraph = ({ chartView, optionIndex, vaultInfo }) => {
     }
   }, [chartView, vaultStats, optionIndex]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getVaultDataById = async () => {
     try {
       const { data } = await ApiService.getUserVaultById(vaultInfo);

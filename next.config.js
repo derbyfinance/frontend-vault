@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   async redirects() {
     return [
       {
@@ -11,4 +11,4 @@ module.exports = {
       },
     ];
   },
-}; 
+};

@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useEffect, useState } from 'react';
+import AppLoader from '@components/Common/AppLoader/AppLoader';
 import Footer from '@components/Layout/Footer/Footer';
 import NavBar from '@components/Layout/NavBar/NavBar';
 import { ThemeProvider } from 'styled-components';
@@ -27,6 +28,14 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     }
   }, [height, width]);
 
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLoading(false);
+    }, 400);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       {isBigger ? (
@@ -34,7 +43,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           <GlobalStyles />
           <NavBar toggleTheme={toggleTheme} isDark={isDark} />
           <StyledLayoutWrapper>
-            <ContainerWrapper>{children}</ContainerWrapper>
+            <ContainerWrapper>
+              {loading ? <AppLoader /> : children}
+            </ContainerWrapper>
             <Footer isDark={isDark} />
           </StyledLayoutWrapper>
         </>
